@@ -45,6 +45,17 @@ Constraints: No text, no logos, no extra people.
 
 ## 📚 Documentation Index
 
+### 🆕 v1.1 — New Additions
+
+| Feature | Source | Added to |
+|---------|--------|----------|
+| Beat Direction (节拍编排) | HyperFrames | 01-directing-engine.md § Step 7 |
+| Composition Density (构图密度) | HyperFrames | 09-anti-slop.md § 构图密度规则 |
+| Multi-Modal Reference Formula | Seedance 2.0 | 05-multi-image-omni.md § 多模态引用公式 |
+| Video Editing Operations | Seedance 2.0 | 06-video-extension.md § 视频编辑操作 |
+| Video Extension Formulas | Seedance 2.0 | 06-video-extension.md § 视频续写公式 |
+| Portrait Consistency Strategy | Seedance Studio | 04-i2v-guide.md § 人物一致性策略 |
+
 | Doc | Content |
 |-----|---------|
 | [01-directing-engine](01-directing-engine.md) | Director Engine: 5-step reading → consistency principles → scene types |

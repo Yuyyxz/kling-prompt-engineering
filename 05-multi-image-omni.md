@@ -63,6 +63,60 @@
 ---
 
 ## 注意事项
+---
+
+## 多模态引用公式（Multi-Modal Reference Formula）
+
+> 借鉴 Seedance 2.0 的多模态引用系统。核心：用 **类型 + 索引** 引用素材，prompt 中直接描述素材间的关系。
+
+### 引用语法
+
+在 prompt 中用 `Image N`、`Video N`、`Audio N` 引用对应类型的第 N 个素材。索引对应上传顺序。
+
+### 三种引用公式
+
+**图片引用（身份/外观/场景）：**
+```
+Refer to the [主体] from [Image N] to generate [场景], keeping [主体] consistent.
+中文：参照 [Image N] 中的 [主体] 生成 [场景]，保持 [主体] 一致。
+```
+
+**视频引用（动作/镜头）：**
+```
+Refer to the [camera movement/action] from [Video N].
+中文：参照 [Video N] 中的 [镜头运动/动作]。
+```
+
+**音频引用（声音/节奏）：**
+```
+[Character] says: [dialogue], voice style referenced from [Audio N].
+中文：[角色] 说：「[台词]」，声音风格参照 [Audio N]。
+```
+
+### 混合引用示例
+
+```
+[Image 1] 锁定角色面部和发型。[Image 2] 锁定服装款式。
+[Video 1] 参考舞蹈动作的节奏和身体轨迹，不复制表演者外观。
+[Audio 1] 参考背景音乐的节奏和能量。
+角色在空旷仓库中起舞，光线从天窗斜射而下。
+镜头：锁定远景，缓慢环绕。
+```
+
+### 多角色 + 多素材组合
+
+```
+The girl from [Image 1] wearing the outfit from [Image 2] walks through the cafe from [Image 3].
+中文：[Image 1] 中的女孩穿着 [Image 2] 中的服装，走过 [Image 3] 中的咖啡馆。
+镜头：35mm 中景跟拍。声音：咖啡馆环境音。
+```
+
+### 关键规则
+
+1. **索引 = 上传顺序** — Image 1 是第一张图，不是"最重要的图"
+2. **类型隔离** — Image 和 Video/EndImage 互斥，不能同时用首帧图和参考图
+3. **文字优先级最低** — 图片/视频的密集条件比文字更有力，文字只写参考无法承载的内容
+4. **引用必须在 prompt 中出现** — 不引用的素材不会被使用
 
 1. **参考通道会互相渗透：** 一个动作参考会想把它的外观也带过来。必须用文字明确排除。
 2. **文字在参考重叠区域优先级最低：** 图片/视频的密集条件比一段文字更有力。用文字写参考无法承载的东西——变化、约束。
