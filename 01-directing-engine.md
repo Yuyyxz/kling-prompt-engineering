@@ -191,3 +191,160 @@
 ### 与导演五问的关系
 
 节拍编排服务于**功能**和**转折**。如果这场戏的功能是"揭示"，节奏应该是 `slow...BURST`——长蓄力后爆发。如果是"对抗"，节奏应该是 `FAST-slow-FAST`——来回拉扯。
+
+---
+
+## 引导式构建模式
+
+> 如果你不知道从哪开始写提示词，不要试图一步到位。按顺序回答下面的问题，每个答案直接变成提示词的一部分。
+
+### 构建流程
+
+**第 1 步：确定类型和意图**
+
+先问自己两个问题：
+- 这段视频是什么类型？（产品广告 / 短剧 / 科幻 / 恐怖 / 纪录片 / MV / 时尚 / 教育 / 运动 / 旅行 / 开箱 / 其他）
+- 这段视频要对观众做什么？（吸引注意 / 传递信息 / 制造紧张 / 引发共鸣 / 展示产品 / 讲述故事）
+
+类型决定优先级顺序（见 11-genre-guides.md），意图决定导演五问的答案。
+
+**第 2 步：一句话描述核心画面**
+
+用一句大白话描述你脑子里看到的画面。不要加任何技术参数。
+
+```
+❌ "史诗级电影感的未来城市航拍"
+✅ "一个外卖员骑着电动车穿过下雨的城中村窄巷"
+```
+
+**第 3 步：加镜头信息**
+
+从镜头合约（见 02-shot-language.md）里选：
+- 景别：你想让观众看到多大的范围？
+- 角度：观众站在什么位置看？
+- 运动：镜头怎么动？动多快？
+
+```
+中近景 / 平视 / 手持跟拍，从左后方跟随
+```
+
+**第 4 步：加光线和声音**
+
+- 光线：什么时间？什么天气？光源在哪？
+- 声音：现场有什么声音？有没有音乐？
+
+```
+光线：傍晚，暖色路灯反射在湿路面上
+声音：雨声、电动车电机声、远处的外卖提示音
+```
+
+**第 5 步：加约束**
+
+- 什么不能变？（面部、产品、logo、文字）
+- 什么不能出现？（多余的人、水印、变形）
+
+```
+约束：保持外卖员的服装和电动车颜色不变，无文字
+```
+
+**第 6 步：组装**
+
+把以上5步的答案按公式组装：
+
+```
+[第2步] + [第3步] + [第4步] + [第5步]
+```
+
+示例：
+```
+一个外卖员骑着电动车穿过下雨的城中村窄巷。
+镜头：中近景/平视/手持跟拍，从左后方跟随外卖员骑行，
+镜头微微上下抖动模拟手持感。
+光线：傍晚，暖色路灯反射在湿路面上，电动车前灯在墙上投出移动的光斑。
+声音：雨声、电动车电机声、远处的外卖提示音。
+约束：保持外卖员服装和电动车颜色不变，无文字，无水印。
+```
+
+### 快速参考：常见意图→镜头选择
+
+| 意图 | 推荐镜头 | 推荐运动 |
+|------|---------|---------|
+| 展示产品 | 近景/微距 | 缓慢环绕/推进 |
+| 制造紧张 | 中近景 | 极慢推进/锁定 |
+| 展示规模 | 极远景/远景 | 摇臂上升/后退 |
+| 传递亲密 | 近景/极近景 | 缓慢推进 |
+| 跟随动作 | 中景/中远景 | 横向跟拍/手持 |
+| 揭示真相 | 中景→近景 | 焦点转移/推进 |
+| 建立氛围 | 远景/中远景 | 缓慢摇/锁定 |
+
+---
+
+## 魔法前缀系统
+
+> 来自 ai-shortfilm-prompts（241⭐）的核心洞察：真实摄影机型号+镜头参数比"电影感""4K""高清"有效10倍。原因是AI模型在训练数据中见过大量真实摄影机拍摄的画面，用真实设备名锚定模型的输出风格。
+
+### 原理
+
+"cinematic""epic""beautiful"是空洞的——模型不知道你想要哪种电影感。
+"Panavision C-series 35mm f/4"是具体的——模型知道这种镜头拍出来是什么样的。
+
+### 可灵适用的魔法前缀模板
+
+**通用电影感：**
+```
+Anamorphic widescreen cinematic. Simulated IMAX film camera + Panavision C-series lens (35mm focal, f/4 aperture). Handheld shot — extremely subtle, breath-like camera float throughout.
+{{你的场景描述}}. No score. Production audio only.
+```
+
+**产品广告：**
+```
+Product cinematography. Shot on ARRI Alexa Mini + Cooke S4 50mm lens. Studio lighting setup: key light 45° camera left, fill light camera right, rim light from behind. Shallow depth of field, f/2.8.
+{{你的产品描述}}. No text, no watermark.
+```
+
+**纪录片/真实感：**
+```
+Documentary style. Shot on Sony FX6 + 24-70mm f/2.8 GM. Natural available light, slight handheld movement. Slight film grain, desaturated color grade.
+{{你的场景描述}}. Production audio only, no music.
+```
+
+**科幻/未来感：**
+```
+Sci-fi cinematography. Shot on RED V-Raptor + Cooke Anamorphic/i 40mm. Teal and orange color grade, volumetric haze, practical LED lighting from set pieces.
+{{你的场景描述}}. No text on screens.
+```
+
+**恐怖/悬疑：**
+```
+Horror cinematography. Shot on ARRI Alexa Mini + Vintage Cooke Speed Panchro 50mm. Single source hard light from above, deep shadows, minimal fill. Slow push-in, locked tripod.
+{{你的场景描述}}. Near-silence, one ambient tone.
+```
+
+**动作/运动：**
+```
+Action cinematography. Shot on Sony Venice 2 + 85mm f/1.4. Slow motion 120fps. Low angle, tracking shot. High contrast, slight orange-teal grade.
+{{你的动作描述}}. Impact sounds only.
+```
+
+**时尚/杂志：**
+```
+Fashion editorial. Shot on Hasselblad X2D + 80mm f/1.9. Clean white studio background, soft overhead light with subtle rim light. Medium close-up, locked.
+{{你的模特/服装描述}}. No music.
+```
+
+### 使用方法
+
+1. 根据视频类型选择一个前缀模板
+2. 把 `{{你的场景描述}}` 替换成你的具体描述
+3. 前缀处理"怎么拍"，你的描述处理"拍什么"
+4. 两者结合 = 专业的视频提示词
+
+### 为什么不直接用"cinematic"
+
+| 空洞描述 | 具体描述 | 效果差异 |
+|---------|---------|---------|
+| "cinematic shot" | "ARRI Alexa + Cooke 50mm, f/2.8" | 后者画面质感稳定10倍 |
+| "beautiful lighting" | "key light 45° camera left, rim light from behind" | 后者光线可控可预期 |
+| "4K高清" | "shallow depth of field, f/2.8, 85mm" | 后者景深和焦外虚化更专业 |
+| "电影感" | "anamorphic lens, 35mm focal, f/4" | 后者有变形宽银幕光斑 |
+| "震撼" | "low angle, slow push-in, volumetric haze" | 后者有具体的压迫感营造 |

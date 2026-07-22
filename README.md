@@ -45,6 +45,17 @@ Constraints: No text, no logos, no extra people.
 
 ## 📚 Documentation Index
 
+### 🆕 v1.2 — Deep Optimization (GitHub Research)
+
+| Feature | Source | Added to |
+|---------|--------|----------|
+| Magic Prefix System (魔法前缀) | ai-shortfilm-prompts (241⭐) | 01-directing-engine.md § 魔法前缀系统 |
+| Guided Construction Mode (引导式构建) | seedance-skills | 01-directing-engine.md § 引导式构建模式 |
+| FPV/Drone Scenarios (FPV/无人机) | ai9app | 02-shot-language.md § FPV/无人机场景 |
+| Genre Expansion 8→15 (类型扩展) | ai-shortfilm-prompts | 11-genre-guides.md (新增9种类型) |
+| Troubleshooting Gallery (故障排除案例库) | ai-shortfilm-prompts | 18-troubleshooting-gallery.md |
+| Cinematography Dictionary (电影摄影术语) | AI-Cinematic-Prompt-Director | 19-cinematography-dictionary.md |
+
 ### 🆕 v1.1 — New Additions
 
 | Feature | Source | Added to |
@@ -58,8 +69,8 @@ Constraints: No text, no logos, no extra people.
 
 | Doc | Content |
 |-----|---------|
-| [01-directing-engine](01-directing-engine.md) | Director Engine: 5-step reading → consistency principles → scene types |
-| [02-shot-language](02-shot-language.md) | Shot Language: sizes, angles, camera movements, support modes |
+| [01-directing-engine](01-directing-engine.md) | Director Engine: 导演五问 → 风格 → 节拍编排 → 引导式构建 → 魔法前缀 |
+| [02-shot-language](02-shot-language.md) | Shot Language: 景别、角度、运动、支撑、FPV/无人机 |
 | [03-t2v-guide](03-t2v-guide.md) | Text-to-Video: prompt structure, multi-shot syntax, duration control |
 | [04-i2v-guide](04-i2v-guide.md) | Image-to-Video: hold vs change mode, character/product protection |
 | [05-multi-image-omni](05-multi-image-omni.md) | Multi-Image Reference: character lock, motion ref, camera ref |
@@ -68,10 +79,12 @@ Constraints: No text, no logos, no extra people.
 | [08-audio-guide](08-audio-guide.md) | Audio: native audio, dialogue, lip sync, audio-visual relationship |
 | [09-anti-slop](09-anti-slop.md) | Anti-Slop Lexicon: 6 categories of empty words + replacement table |
 | [10-allocation-model](10-allocation-model.md) | Budget Allocation: identity fidelity vs action amplitude vs scene density |
-| [11-genre-guides](11-genre-guides.md) | Genre Guides: product ads, short drama, action, animation, food, scenery |
+| [11-genre-guides](11-genre-guides.md) | Genre Guides: 15种类型（产品/短剧/动作/动画/节拍/美食/风景/VFX/科幻/恐怖/纪录片/MV/时尚/教育/体育/旅行/开箱） |
 | [12-kling-capability-map](12-kling-capability-map.md) | Kling Capability Map: what it can do, how to use it, workarounds |
 | [13-templates](13-templates.md) | Ready-to-Use Templates: prompt skeletons for every mode and scenario |
 | [14-model-mechanics](14-model-mechanics.md) | Model Mechanics: understanding why the generator works this way |
+| [18-troubleshooting-gallery](18-troubleshooting-gallery.md) | Troubleshooting Gallery: 10种常见失败模式 + 修复方法 + 快速诊断表 |
+| [19-cinematography-dictionary](19-cinematography-dictionary.md) | Cinematography Dictionary: 100+项电影摄影术语速查（景别/角度/运动/光线/色彩/音频/VFX/构图） |
 
 ### 🔧 Advanced References (for Hermes Agent integration)
 
