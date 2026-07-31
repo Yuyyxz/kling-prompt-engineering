@@ -1,0 +1,256 @@
+# Anti-Slop 弱词替换表
+# 质量治理：把抽象形容词替换为具体的技术描述
+
+name: "anti-slop"
+version: "1.0"
+description: "Anti-Slop 弱词替换表，把抽象形容词替换为具体的技术描述"
+
+# 核心理念
+philosophy: |
+  不要教用户"怎么写提示词"，要教 AI "怎么当导演"。
+  
+  核心原则：
+  1. 禁止堆砌形容词（cinematic, beautiful, 4k, ultra detailed）
+  2. 必须使用具体的技术描述
+  3. 必须说明镜头在故事中的功能
+
+# 弱词替换表
+weak_words_replacement:
+  # 视觉风格类
+  visual_style:
+    - weak_word: "cinematic"
+      replacement: "电影级质感"
+      specific_description: "戏剧性光影、镜头语言、景深、调色"
+      example: "❌ cinematic shot → ✅ 中景，眼平角度；缓慢推进；侧光，营造层次感"
+    
+    - weak_word: "beautiful"
+      replacement: "精美"
+      specific_description: "具体的视觉元素"
+      example: "❌ beautiful scene → ✅ 远景，夕阳下的海边，金色光芒洒在海面上"
+    
+    - weak_word: "stunning"
+      replacement: "震撼"
+      specific_description: "强烈的视觉冲击"
+      example: "❌ stunning visual → ✅ 特写，眼睛的特写，瞳孔中倒映出火焰"
+    
+    - weak_word: "breathtaking"
+      replacement: "令人窒息"
+      specific_description: "极致的视觉体验"
+      example: "❌ breathtaking view → ✅ 远景，广阔的草原上，一个孤独的身影"
+    
+    - weak_word: "epic"
+      replacement: "史诗级"
+      specific_description: "宏大的规模感"
+      example: "❌ epic scene → ✅ 远景，千军万马，尘土飞扬"
+    
+    - weak_word: "dramatic"
+      replacement: "戏剧性"
+      specific_description: "强烈的情感对比"
+      example: "❌ dramatic lighting → ✅ 侧光，一半脸在阴影中，一半脸在光明中"
+  
+  # 画质类
+  quality:
+    - weak_word: "4K"
+      replacement: "高清"
+      specific_description: "具体的分辨率"
+      example: "❌ 4K quality → ✅ 高清，细节丰富，色彩准确"
+    
+    - weak_word: "8K"
+      replacement: "超高清"
+      specific_description: "极致的清晰度"
+      example: "❌ 8K resolution → ✅ 超高清，细节清晰，无噪点"
+    
+    - weak_word: "ultra detailed"
+      replacement: "细节丰富"
+      specific_description: "具体的细节描述"
+      example: "❌ ultra detailed → ✅ 特写，皮肤纹理清晰，毛孔可见"
+    
+    - weak_word: "high quality"
+      replacement: "高品质"
+      specific_description: "具体的品质描述"
+      example: "❌ high quality → ✅ 电影级质感，色彩准确，光影自然"
+    
+    - weak_word: "masterpiece"
+      replacement: "杰作"
+      specific_description: "具体的艺术价值"
+      example: "❌ masterpiece → ✅ 构图精美，光影戏剧性，情感表达深刻"
+  
+  # 情感类
+  emotion:
+    - weak_word: "emotional"
+      replacement: "情感丰富"
+      specific_description: "具体的情感表达"
+      example: "❌ emotional scene → ✅ 近景，眼神中透露出悲伤，泪水在眼眶中打转"
+    
+    - weak_word: "powerful"
+      replacement: "强烈"
+      specific_description: "具体的力量感"
+      example: "❌ powerful moment → ✅ 特写，拳头紧握，青筋暴起"
+    
+    - weak_word: "intense"
+      replacement: "紧张"
+      specific_description: "具体的紧张感"
+      example: "❌ intense scene → ✅ 快速推进，手持晃动，心跳声加速"
+    
+    - weak_word: "touching"
+      replacement: "感人"
+      specific_description: "具体的感人元素"
+      example: "❌ touching moment → ✅ 近景，母亲抚摸孩子的脸，眼神温柔"
+  
+  # 运动类
+  movement:
+    - weak_word: "smooth"
+      replacement: "流畅"
+      specific_description: "具体的运动轨迹"
+      example: "❌ smooth movement → ✅ 缓慢推进，稳定器跟拍，无晃动"
+    
+    - weak_word: "dynamic"
+      replacement: "动态"
+      specific_description: "具体的运动方式"
+      example: "❌ dynamic shot → ✅ 快速推进，手持晃动，节奏感强"
+    
+    - weak_word: "elegant"
+      replacement: "优雅"
+      specific_description: "具体的优雅感"
+      example: "❌ elegant movement → ✅ 缓慢横移，稳定器跟拍，动作流畅"
+  
+  # 光影类
+  lighting:
+    - weak_word: "moody"
+      replacement: "氛围感"
+      specific_description: "具体的光影效果"
+      example: "❌ moody lighting → ✅ 侧光，一半脸在阴影中，营造神秘感"
+    
+    - weak_word: "atmospheric"
+      replacement: "氛围"
+      specific_description: "具体的环境氛围"
+      example: "❌ atmospheric scene → ✅ 远景，雾气弥漫，若隐若现"
+    
+    - weak_word: "warm"
+      replacement: "温暖"
+      specific_description: "具体的色温"
+      example: "❌ warm lighting → ✅ 暖色调，金色光芒，温馨感"
+    
+    - weak_word: "cold"
+      replacement: "冷峻"
+      specific_description: "具体的色温"
+      example: "❌ cold lighting → ✅ 冷色调，蓝光为主，科技感"
+
+# 强词替换表
+strong_words:
+  # 镜头语言
+  camera_language:
+    - strong_word: "远景"
+      description: "展示环境，建立规模"
+      use_when: "开场、展示地点、强调孤独/渺小"
+    
+    - strong_word: "中景"
+      description: "展示人物上半身，适合对话"
+      use_when: "对话、日常互动"
+    
+    - strong_word: "近景"
+      description: "聚焦面部，展示情感"
+      use_when: "情感表达、反应捕捉"
+    
+    - strong_word: "特写"
+      description: "聚焦细节，强调重要性"
+      use_when: "关键物品、眼神、微表情"
+  
+  # 运镜技术
+  camera_movement:
+    - strong_word: "推镜头"
+      description: "镜头向前推进"
+      use_when: "发现、强调、亲密"
+    
+    - strong_word: "拉镜头"
+      description: "镜头向后拉远"
+      use_when: "揭示环境、分离"
+    
+    - strong_word: "环绕镜头"
+      description: "镜头围绕主体旋转"
+      use_when: "展示全貌、强调重要性"
+    
+    - strong_word: "希区柯克变焦"
+      description: "推拉镜头同时变焦，产生眩晕效果"
+      use_when: "心理混乱、紧张、悬疑"
+  
+  # 光影技术
+  lighting_technique:
+    - strong_word: "自然光"
+      description: "真实、自然"
+      use_when: "日常场景、写实风格"
+    
+    - strong_word: "电影级光线"
+      description: "戏剧性、层次感"
+      use_when: "戏剧场景、情感表达"
+    
+    - strong_word: "逆光"
+      description: "轮廓、神秘感"
+      use_when: "剪影、神秘、英雄出场"
+    
+    - strong_word: "侧光"
+      description: "层次、立体感"
+      use_when: "悬疑、复杂情感"
+
+# 替换流程
+replacement_workflow:
+  step_1: "识别提示词中的弱词"
+  step_2: "根据弱词查找对应的强词"
+  step_3: "将弱词替换为强词"
+  step_4: "添加具体的技术描述"
+  step_5: "确保替换后的提示词可执行"
+
+# 使用示例
+usage_examples:
+  # 示例 1：替换弱词
+  example_1:
+    original: "cinematic shot, beautiful lighting, 4k, ultra detailed"
+    replaced: "中景，眼平角度；缓慢推进；侧光，营造层次感；高清，细节丰富，色彩准确"
+    explanation: |
+      ❌ 原始：cinematic shot, beautiful lighting, 4k, ultra detailed
+      ✅ 替换后：中景，眼平角度；缓慢推进；侧光，营造层次感；高清，细节丰富，色彩准确
+      
+      替换说明：
+      - cinematic shot → 中景，眼平角度（具体的景别和角度）
+      - beautiful lighting → 侧光，营造层次感（具体的光影效果）
+      - 4K → 高清，细节丰富，色彩准确（具体的画质描述）
+      - ultra detailed → 细节丰富（具体的细节描述）
+  
+  # 示例 2：替换情感词
+  example_2:
+    original: "emotional scene, powerful moment, intense feeling"
+    replaced: "近景，眼神中透露出悲伤，泪水在眼眶中打转；特写，拳头紧握，青筋暴起；快速推进，手持晃动，心跳声加速"
+    explanation: |
+      ❌ 原始：emotional scene, powerful moment, intense feeling
+      ✅ 替换后：近景，眼神中透露出悲伤，泪水在眼眶中打转；特写，拳头紧握，青筋暴起；快速推进，手持晃动，心跳声加速
+      
+      替换说明：
+      - emotional scene → 近景，眼神中透露出悲伤，泪水在眼眶中打转（具体的情感表达）
+      - powerful moment → 特写，拳头紧握，青筋暴起（具体的力量感）
+      - intense feeling → 快速推进，手持晃动，心跳声加速（具体的紧张感）
+
+# 检查清单
+checklist:
+  - item: "禁止弱词"
+    description: "检查提示词中是否包含弱词"
+    action: "如果包含，替换为强词"
+  
+  - item: "具体技术描述"
+    description: "检查提示词中是否有具体的技术描述"
+    action: "如果没有，添加具体的技术描述"
+  
+  - item: "可执行性"
+    description: "检查提示词是否可执行"
+    action: "如果不可执行，修改为可执行的描述"
+  
+  - item: "意图明确"
+    description: "检查提示词的意图是否明确"
+    action: "如果不明确，使用导演回答五问"
+
+# 约束条件
+constraints:
+  - "禁止使用弱词（cinematic, beautiful, 4k, ultra detailed）"
+  - "必须使用具体的技术描述"
+  - "必须说明镜头在故事中的功能"
+  - "必须使用强词替换弱词"
+  - "必须确保替换后的提示词可执行"

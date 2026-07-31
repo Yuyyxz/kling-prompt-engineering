@@ -29,6 +29,31 @@ Don't ask the model for "cinematic feel" — answer: *what does this shot do to 
 | **导演引擎** | 从意图推导到技术执行 | `skills/director-engine.skill` |
 | **时间轴格式** | 用时间轴替代 JSON | `skills/timeline-format.skill` |
 
+### 🆕 v2.2 — Domain Skills & Quality Governance (P1 优先级)
+
+**新增组件：**
+
+| 组件 | 说明 | 文件 |
+|------|------|------|
+| **领域垂直 Skill** | 15 个行业专业 Skill 模板 | `skills/domain-skills.skill` |
+| **多集连续叙事** | 尾帧衔接 + 视频延长 | `skills/multi-episode-narrative.skill` |
+| **Anti-Slop** | 弱词替换表 | `skills/anti-slop.skill` |
+
+**15 个领域覆盖：**
+- **创意风格：** 电影风格、3D CGI、卡通动画、漫画转视频、打斗场景、动漫
+- **商业营销：** 动态设计广告、电商广告、产品 360°、社交钩子、品牌故事
+- **行业专项：** 音乐视频、时尚型录、美食饮品、房地产
+
+**多集连续叙事：**
+- 尾帧衔接：每集结尾记录最后一帧画面描述
+- 视频延长：用"将@视频1延长15s"实现无缝过渡
+- 四幕结构：起承转合 → 自动拆分为多集
+
+**Anti-Slop 弱词替换：**
+- ❌ 禁止：cinematic, beautiful, 4k, ultra detailed, masterpiece
+- ✅ 替换：具体的技术描述（景别、角度、运镜、光影、声音）
+
+**详细文档：** [领域垂直 Skill](skills/domain-skills.skill) | [多集连续叙事](skills/multi-episode-narrative.skill) | [Anti-Slop](skills/anti-slop.skill)
 **核心理念：**
 - ❌ 旧：堆砌形容词 → "cinematic, beautiful, 4k, ultra detailed"
 - ✅ 新：意图推导 → "这个镜头在做什么？"
@@ -285,7 +310,10 @@ kling-prompt-engineering/
 │   ├── kling-style-tags.skill         # Style tags system
 │   ├── kling-storyboard.skill         # Storyboard output
 │   ├── director-engine.skill          # 🆕 Director Engine (P0)
-│   └── timeline-format.skill          # 🆕 Timeline Format (P0)
+│   ├── timeline-format.skill          # 🆕 Timeline Format (P0)
+│   ├── domain-skills.skill            # 🆕 Domain Skills (P1)
+│   ├── multi-episode-narrative.skill  # 🆕 Multi-Episode Narrative (P1)
+│   └── anti-slop.skill                # 🆕 Anti-Slop (P1)
 └── examples/                          # 🆕 Usage examples
     └── model_routing_examples.yaml    # Model routing examples
 ```
