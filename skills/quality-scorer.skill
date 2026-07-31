@@ -1,0 +1,333 @@
+# 质量评分器 (Quality Scorer)
+# 自动评估视频质量
+
+name: "quality-scorer"
+version: "1.0"
+description: "质量评分器，自动评估视频质量"
+
+# 核心理念
+philosophy: |
+  不是主观感觉，是客观评分。
+  用数据驱动质量改进。
+
+# 评分维度
+scoring_dimensions:
+  # 画面质量
+  visual_quality:
+    weight: 25
+    criteria:
+      - name: "清晰度"
+        weight: 30
+        description: "画面是否清晰"
+        scoring:
+          90-100: "非常清晰，细节丰富"
+          70-89: "清晰，细节可见"
+          50-69: "基本清晰，细节模糊"
+          0-49: "模糊，细节丢失"
+      
+      - name: "噪点"
+        weight: 20
+        description: "画面是否有噪点"
+        scoring:
+          90-100: "无噪点"
+          70-89: "轻微噪点"
+          50-69: "明显噪点"
+          0-49: "严重噪点"
+      
+      - name: "色彩"
+        weight: 25
+        description: "色彩是否准确"
+        scoring:
+          90-100: "色彩准确，饱和度适中"
+          70-89: "色彩基本准确"
+          50-69: "色彩偏差"
+          0-49: "色彩严重偏差"
+      
+      - name: "光影"
+        weight: 25
+        description: "光影是否恰当"
+        scoring:
+          90-100: "光影自然，层次分明"
+          70-89: "光影基本恰当"
+          50-69: "光影不自然"
+          0-49: "光影严重失真"
+  
+  # 构图质量
+  composition_quality:
+    weight: 25
+    criteria:
+      - name: "主体位置"
+        weight: 30
+        description: "主体位置是否合理"
+        scoring:
+          90-100: "主体位置完美，符合三分法"
+          70-89: "主体位置合理"
+          50-69: "主体位置偏移"
+          0-49: "主体位置不当"
+      
+      - name: "背景"
+        weight: 25
+        description: "背景是否简洁"
+        scoring:
+          90-100: "背景简洁，突出主体"
+          70-89: "背景基本简洁"
+          50-69: "背景杂乱"
+          0-49: "背景严重杂乱"
+      
+      - name: "空间"
+        weight: 25
+        description: "空间是否充足"
+        scoring:
+          90-100: "空间充足，构图舒适"
+          70-89: "空间基本充足"
+          50-69: "空间不足"
+          0-49: "空间严重不足"
+      
+      - name: "平衡"
+        weight: 20
+        description: "画面是否平衡"
+        scoring:
+          90-100: "画面平衡，视觉舒适"
+          70-89: "画面基本平衡"
+          50-69: "画面失衡"
+          0-49: "画面严重失衡"
+  
+  # 运动质量
+  motion_quality:
+    weight: 25
+    criteria:
+      - name: "流畅度"
+        weight: 30
+        description: "运动是否流畅"
+        scoring:
+          90-100: "运动非常流畅"
+          70-89: "运动基本流畅"
+          50-69: "运动有卡顿"
+          0-49: "运动严重卡顿"
+      
+      - name: "自然度"
+        weight: 30
+        description: "运动是否自然"
+        scoring:
+          90-100: "运动自然，符合物理规律"
+          70-89: "运动基本自然"
+          50-69: "运动不自然"
+          0-49: "运动严重不自然"
+      
+      - name: "连贯性"
+        weight: 20
+        description: "运动是否连贯"
+        scoring:
+          90-100: "运动连贯，无跳跃"
+          70-89: "运动基本连贯"
+          50-69: "运动有跳跃"
+          0-49: "运动严重跳跃"
+      
+      - name: "节奏"
+        weight: 20
+        description: "节奏是否合适"
+        scoring:
+          90-100: "节奏完美，配合内容"
+          70-89: "节奏基本合适"
+          50-69: "节奏不当"
+          0-49: "节奏严重不当"
+  
+  # 内容质量
+  content_quality:
+    weight: 25
+    criteria:
+      - name: "意图明确"
+        weight: 30
+        description: "意图是否明确"
+        scoring:
+          90-100: "意图非常明确"
+          70-89: "意图基本明确"
+          50-69: "意图模糊"
+          0-49: "意图不明确"
+      
+      - name: "情感表达"
+        weight: 25
+        description: "情感表达是否到位"
+        scoring:
+          90-100: "情感表达深刻"
+          70-89: "情感表达基本到位"
+          50-69: "情感表达不足"
+          0-49: "情感表达缺失"
+      
+      - name: "故事性"
+        weight: 25
+        description: "故事性是否强"
+        scoring:
+          90-100: "故事性强，引人入胜"
+          70-89: "故事性基本强"
+          50-69: "故事性弱"
+          0-49: "故事性缺失"
+      
+      - name: "创意性"
+        weight: 20
+        description: "创意性是否强"
+        scoring:
+          90-100: "创意性强，独特新颖"
+          70-89: "创意性基本强"
+          50-69: "创意性弱"
+          0-49: "创意性缺失"
+
+# 评分计算
+score_calculation:
+  # 总分计算
+  total_score: |
+    总分 = 画面质量分 × 25% + 构图质量分 × 25% + 运动质量分 × 25% + 内容质量分 × 25%
+  
+  # 维度分计算
+  dimension_score: |
+    维度分 = Σ(标准分 × 标准权重)
+  
+  # 示例计算
+  example: |
+    画面质量分 = 清晰度分 × 30% + 噪点分 × 20% + 色彩分 × 25% + 光影分 × 25%
+    
+    示例：
+    - 清晰度：85 分
+    - 噪点：90 分
+    - 色彩：80 分
+    - 光影：75 分
+    
+    画面质量分 = 85 × 0.3 + 90 × 0.2 + 80 × 0.25 + 75 × 0.25 = 82.25 分
+
+# 评分等级
+score_grades:
+  - grade: "A+"
+    range: "95-100"
+    description: "完美，无需改进"
+    action: "保留原片"
+  
+  - grade: "A"
+    range: "90-94"
+    description: "优秀，微调即可"
+    action: "微调后保留"
+  
+  - grade: "B+"
+    range: "85-89"
+    description: "良好，需要优化"
+    action: "优化后保留"
+  
+  - grade: "B"
+    range: "80-84"
+    description: "中等，需要改进"
+    action: "改进后保留"
+  
+  - grade: "C+"
+    range: "75-79"
+    description: "及格，需要重拍"
+    action: "重拍"
+  
+  - grade: "C"
+    range: "70-74"
+    description: "不及格，需要重拍"
+    action: "重拍"
+  
+  - grade: "D"
+    range: "60-69"
+    description: "差，需要重新设计"
+    action: "重新设计"
+  
+  - grade: "F"
+    range: "0-59"
+    description: "失败，需要放弃"
+    action: "放弃重来"
+
+# 改进建议
+improvement_suggestions:
+  # 画面质量改进
+  visual_quality_improvement:
+    - issue: "清晰度不足"
+      suggestion: "调整焦点，使用浅景深"
+    
+    - issue: "噪点明显"
+      suggestion: "增加光线，使用自然光"
+    
+    - issue: "色彩偏差"
+      suggestion: "调整色温，使用准确的色彩描述"
+    
+    - issue: "光影不自然"
+      suggestion: "使用具体光源，避免矛盾描述"
+  
+  # 构图质量改进
+  composition_quality_improvement:
+    - issue: "主体位置不当"
+      suggestion: "使用三分法，调整主体位置"
+    
+    - issue: "背景杂乱"
+      suggestion: "简化背景，使用虚化"
+    
+    - issue: "空间不足"
+      suggestion: "调整构图，增加空间"
+    
+    - issue: "画面失衡"
+      suggestion: "调整元素分布，保持平衡"
+  
+  # 运动质量改进
+  motion_quality_improvement:
+    - issue: "运动卡顿"
+      suggestion: "调整帧率，使用稳定器"
+    
+    - issue: "运动不自然"
+      suggestion: "使用具体动词，参考真实动作"
+    
+    - issue: "运动跳跃"
+      suggestion: "添加过渡，保持连贯"
+    
+    - issue: "节奏不当"
+      suggestion: "调整节奏，匹配内容"
+  
+  # 内容质量改进
+  content_quality_improvement:
+    - issue: "意图不明确"
+      suggestion: "使用导演五问，明确意图"
+    
+    - issue: "情感表达不足"
+      suggestion: "使用情感锚点，强化表达"
+    
+    - issue: "故事性弱"
+      suggestion: "使用四幕结构，增强故事性"
+    
+    - issue: "创意性弱"
+      suggestion: "使用创意探索，增加新颖性"
+
+# 使用示例
+usage_examples:
+  # 示例 1：产品广告
+  example_product:
+    description: "产品广告视频评分"
+    scores:
+      visual_quality: 85
+      composition_quality: 80
+      motion_quality: 75
+      content_quality: 90
+    total_score: 82.5
+    grade: "B"
+    improvement_suggestions:
+      - "光影需要调整，从侧光改为柔和的侧光"
+      - "运动需要优化，从固定改为缓慢推进"
+      - "构图需要改进，主体位置从居中改为左侧 1/3"
+  
+  # 示例 2：叙事短剧
+  example_narrative:
+    description: "叙事短剧评分"
+    scores:
+      visual_quality: 90
+      composition_quality: 85
+      motion_quality: 80
+      content_quality: 95
+    total_score: 87.5
+    grade: "B+"
+    improvement_suggestions:
+      - "运动需要优化，从缓慢改为中等"
+      - "构图需要改进，增加空间"
+
+# 约束条件
+constraints:
+  - "必须客观评分"
+  - "必须提供改进建议"
+  - "必须支持多维度评分"
+  - "必须支持评分等级"

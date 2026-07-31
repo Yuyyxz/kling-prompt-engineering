@@ -1,0 +1,232 @@
+# 重拍协议 (Retake Protocol)
+# 借鉴 Emily2040/seedance-2.0 的重拍机制
+
+name: "retake-protocol"
+version: "1.0"
+description: "重拍协议，支持单变量重拍、尝试预算、评判标准"
+
+# 核心理念
+philosophy: |
+  不是盲目重拍，是系统性优化。
+  
+  核心原则：
+  1. 单变量重拍：每次只改变一个变量
+  2. 尝试预算：限制重拍次数
+  3. 评判标准：明确什么情况需要重拍
+
+# 评判标准
+evaluation_criteria:
+  # 5 级评判
+  levels:
+    - level: "keep"
+      description: "保留原片"
+      criteria:
+        - "画面符合预期"
+        - "动作自然流畅"
+        - "光影恰当"
+        - "构图合理"
+    
+    - level: "retake"
+      description: "重新拍摄"
+      criteria:
+        - "画面部分符合预期"
+        - "需要调整某个变量"
+        - "整体方向正确"
+    
+    - level: "abandon"
+      description: "放弃重来"
+      criteria:
+        - "画面完全不符合预期"
+        - "需要重新设计"
+        - "方向错误"
+    
+    - level: "single_variable"
+      description: "单变量重拍"
+      criteria:
+        - "只改变一个变量"
+        - "保持其他变量不变"
+        - "测试变量的影响"
+    
+    - level: "attempt_budget"
+      description: "尝试预算"
+      criteria:
+        - "限制重拍次数"
+        - "避免无限循环"
+        - "强制做出决策"
+
+# 单变量重拍规则
+single_variable_rules:
+  # 可以改变的变量
+  changeable_variables:
+    - variable: "主体位置"
+      description: "调整主体在画面中的位置"
+      example: "从居中改为左侧 1/3"
+    
+    - variable: "光影方向"
+      description: "调整光源的方向"
+      example: "从侧光改为逆光"
+    
+    - variable: "镜头运动"
+      description: "调整镜头的运动方式"
+      example: "从固定改为缓慢推进"
+    
+    - variable: "节奏"
+      description: "调整运动的节奏"
+      example: "从缓慢改为中等"
+    
+    - variable: "情感锚点"
+      description: "调整情感基调"
+      example: "从孤独改为希望"
+  
+  # 不可以同时改变的变量
+  forbidden_combinations:
+    - combination: "主体位置 + 光影方向"
+      reason: "同时改变会导致画面混乱"
+    
+    - combination: "镜头运动 + 节奏"
+      reason: "同时改变会导致运动不协调"
+    
+    - combination: "情感锚点 + 戏剧功能"
+      reason: "同时改变会导致意图不明确"
+
+# 尝试预算
+attempt_budget:
+  # 默认预算
+  default_budget: 3
+  
+  # 预算分配
+  allocation:
+    - stage: "分镜图"
+      budget: 3
+      description: "分镜图最多重做 3 次"
+    
+    - stage: "视频生成"
+      budget: 3
+      description: "视频生成最多重做 3 次"
+    
+    - stage: "后处理"
+      budget: 1
+      description: "后处理最多重做 1 次"
+  
+  # 预算耗尽处理
+  budget_exhausted:
+    action: "使用当前最佳版本"
+    reason: "避免无限循环"
+    documentation: "记录尝试过程，供后续参考"
+
+# 重拍流程
+retake_workflow:
+  step_1:
+    name: "评判"
+    description: "评判当前版本是否符合预期"
+    options: ["keep", "retake", "abandon"]
+  
+  step_2:
+    name: "分析"
+    description: "分析需要改变的变量"
+    method: "单变量分析"
+  
+  step_3:
+    name: "重拍"
+    description: "改变一个变量，重新生成"
+    constraint: "每次只改变一个变量"
+  
+  step_4:
+    name: "对比"
+    description: "对比新旧版本"
+    method: "并排对比"
+  
+  step_5:
+    name: "决策"
+    description: "决定是否保留新版本"
+    options: ["保留新版本", "保留旧版本", "继续优化"]
+
+# 使用示例
+usage_examples:
+  # 示例 1：光影调整
+  example_lighting:
+    description: "调整光影方向"
+    original:
+      lighting: "侧光，暖色调"
+      result: "光影太强，细节丢失"
+    retake:
+      variable: "光影方向"
+      change: "从侧光改为柔和的侧光"
+      result: "光影柔和，细节清晰"
+    decision: "保留新版本"
+  
+  # 示例 2：节奏调整
+  example_rhythm:
+    description: "调整运动节奏"
+    original:
+      rhythm: "缓慢"
+      result: "节奏太慢，观众失去耐心"
+    retake:
+      variable: "节奏"
+      change: "从缓慢改为中等"
+      result: "节奏适中，观众保持兴趣"
+    decision: "保留新版本"
+  
+  # 示例 3：主体位置调整
+  example_position:
+    description: "调整主体位置"
+    original:
+      position: "居中"
+      result: "构图呆板，缺乏动感"
+    retake:
+      variable: "主体位置"
+      change: "从居中改为左侧 1/3"
+      result: "构图动感，符合三分法"
+    decision: "保留新版本"
+
+# 评判清单
+evaluation_checklist:
+  # 画面质量
+  visual_quality:
+    - item: "清晰度"
+      check: "画面是否清晰？"
+      action: "如果不清晰，调整焦点"
+    
+    - item: "噪点"
+      check: "画面是否有噪点？"
+      action: "如果有噪点，调整光线"
+    
+    - item: "色彩"
+      check: "色彩是否准确？"
+      action: "如果不准确，调整色温"
+  
+  # 构图质量
+  composition_quality:
+    - item: "主体位置"
+      check: "主体位置是否合理？"
+      action: "如果不合理，调整位置"
+    
+    - item: "背景"
+      check: "背景是否简洁？"
+      action: "如果杂乱，简化背景"
+    
+    - item: "空间"
+      check: "空间是否充足？"
+      action: "如果不足，调整构图"
+  
+  # 运动质量
+  motion_quality:
+    - item: "流畅度"
+      check: "运动是否流畅？"
+      action: "如果不流畅，调整节奏"
+    
+    - item: "自然度"
+      check: "运动是否自然？"
+      action: "如果不自然，调整描述"
+    
+    - item: "连贯性"
+      check: "运动是否连贯？"
+      action: "如果不连贯，添加过渡"
+
+# 约束条件
+constraints:
+  - "必须单变量重拍"
+  - "必须限制尝试预算"
+  - "必须明确评判标准"
+  - "必须记录尝试过程"
+  - "必须避免无限循环"

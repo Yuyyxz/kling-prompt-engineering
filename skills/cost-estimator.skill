@@ -1,0 +1,243 @@
+# 成本估算器 (Cost Estimator)
+# 估算视频生成的成本
+
+name: "cost-estimator"
+version: "1.0"
+description: "成本估算器，估算视频生成的成本"
+
+# 核心理念
+philosophy: |
+  在生成视频之前，先估算成本。
+  避免超出预算，做出明智决策。
+
+# 成本模型
+cost_models:
+  # 可灵（Kling）
+  kling:
+    # 基础成本
+    base_cost:
+      std_mode: 0.1  # 元/秒
+      pro_mode: 0.3  # 元/秒
+    
+    # 分辨率加成
+    resolution_multiplier:
+      "720p": 1.0
+      "1080p": 1.5
+      "4K": 3.0
+    
+    # 时长加成
+    duration_multiplier:
+      "5s": 1.0
+      "10s": 1.8
+      "15s": 2.5
+    
+    # 精度加成
+    precision_multiplier:
+      "low": 1.0
+      "medium": 1.2
+      "high": 1.5
+  
+  # Seedance
+  seedance:
+    # 基础成本
+    base_cost:
+      standard: 0.15  # 元/秒
+    
+    # 分辨率加成
+    resolution_multiplier:
+      "720p": 1.0
+      "1080p": 1.3
+    
+    # 时长加成
+    duration_multiplier:
+      "5s": 1.0
+      "10s": 1.5
+      "15s": 2.0
+  
+  # Runway
+  runway:
+    # 基础成本
+    base_cost:
+      standard: 0.2  # 元/秒
+    
+    # 分辨率加成
+    resolution_multiplier:
+      "720p": 1.0
+      "1080p": 1.5
+    
+    # 时长加成
+    duration_multiplier:
+      "5s": 1.0
+      "10s": 1.8
+      "15s": 2.5
+
+# 成本计算公式
+cost_formula: |
+  总成本 = 基础成本 × 时长 × 分辨率加成 × 精度加成 × 重拍次数
+  
+  示例：
+  - 可灵 pro 模式，1080p，10 秒，高精度，重拍 2 次
+  - 总成本 = 0.3 × 10 × 1.5 × 1.5 × 2 = 13.5 元
+
+# 成本优化建议
+cost_optimization:
+  # 降低分辨率
+  reduce_resolution:
+    description: "使用 720p 代替 1080p"
+    savings: "33%"
+    tradeoff: "画质降低"
+  
+  # 缩短时长
+  reduce_duration:
+    description: "使用 5 秒代替 10 秒"
+    savings: "50%"
+    tradeoff: "内容减少"
+  
+  # 降低精度
+  reduce_precision:
+    description: "使用中精度代替高精度"
+    savings: "20%"
+    tradeoff: "控制力降低"
+  
+  # 减少重拍
+  reduce_retakes:
+    description: "优化提示词，减少重拍次数"
+    savings: "50%+"
+    tradeoff: "需要更好的提示词"
+
+# 成本估算流程
+estimation_workflow:
+  step_1:
+    name: "确定模型"
+    description: "选择使用的模型"
+    options: ["kling", "seedance", "runway"]
+  
+  step_2:
+    name: "确定参数"
+    description: "确定分辨率、时长、精度"
+    parameters:
+      - "分辨率：720p/1080p/4K"
+      - "时长：5s/10s/15s"
+      - "精度：low/medium/high"
+  
+  step_3:
+    name: "估算重拍次数"
+    description: "估算需要的重拍次数"
+    factors:
+      - "精度等级"
+      - "内容复杂度"
+      - "历史数据"
+  
+  step_4:
+    name: "计算成本"
+    description: "使用公式计算总成本"
+    formula: "总成本 = 基础成本 × 时长 × 分辨率加成 × 精度加成 × 重拍次数"
+  
+  step_5:
+    name: "优化建议"
+    description: "提供成本优化建议"
+    method: "根据预算调整参数"
+
+# 使用示例
+usage_examples:
+  # 示例 1：简单视频
+  example_simple:
+    description: "简单的风景视频"
+    parameters:
+      model: "kling"
+      mode: "std"
+      resolution: "720p"
+      duration: "5s"
+      precision: "low"
+      retakes: 1
+    cost_calculation:
+      base_cost: 0.1
+      duration: 5
+      resolution_multiplier: 1.0
+      precision_multiplier: 1.0
+      retakes: 1
+      total_cost: 0.5
+    optimization_suggestions:
+      - "当前成本已经很低，无需优化"
+  
+  # 示例 2：产品广告
+  example_product:
+    description: "产品广告视频"
+    parameters:
+      model: "kling"
+      mode: "pro"
+      resolution: "1080p"
+      duration: "10s"
+      precision: "high"
+      retakes: 2
+    cost_calculation:
+      base_cost: 0.3
+      duration: 10
+      resolution_multiplier: 1.5
+      precision_multiplier: 1.5
+      retakes: 2
+      total_cost: 13.5
+    optimization_suggestions:
+      - "使用 720p 代替 1080p，节省 33%"
+      - "使用中精度代替高精度，节省 20%"
+      - "优化提示词，减少重拍次数"
+  
+  # 示例 3：多集短剧
+  example_series:
+    description: "多集短剧"
+    parameters:
+      model: "kling"
+      mode: "pro"
+      resolution: "1080p"
+      duration: "15s"
+      precision: "high"
+      retakes: 3
+      episodes: 8
+    cost_calculation:
+      base_cost: 0.3
+      duration: 15
+      resolution_multiplier: 1.5
+      precision_multiplier: 1.5
+      retakes: 3
+      episodes: 8
+      total_cost: 162
+    optimization_suggestions:
+      - "使用 720p 代替 1080p，节省 33%"
+      - "使用中精度代替高精度，节省 20%"
+      - "优化提示词，减少重拍次数"
+      - "考虑使用视频延长功能，减少新生成次数"
+
+# 预算管理
+budget_management:
+  # 预算设置
+  budget_settings:
+    - name: "个人预算"
+      description: "个人使用的预算"
+      monthly_budget: 100
+      per_video_budget: 10
+    
+    - name: "商业预算"
+      description: "商业使用的预算"
+      monthly_budget: 1000
+      per_video_budget: 50
+    
+    - name: "企业预算"
+      description: "企业使用的预算"
+      monthly_budget: 10000
+      per_video_budget: 200
+  
+  # 预算超限处理
+  budget_exceeded:
+    action: "提供优化建议"
+    options:
+      - "降低分辨率"
+      - "缩短时长"
+      - "降低精度"
+      - "减少重拍次数"
+
+# 约束条件
+constraints:
+  - "必须在生成前估算成本"
+  - "必须提供优化建议"
+  - "必须支持预算管理"
+  - "必须记录成本历史"

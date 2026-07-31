@@ -1,0 +1,174 @@
+# 可视化 Pipeline (Visual Pipeline)
+# 借鉴 ComfyUI 的节点式工作流
+
+name: "visual-pipeline"
+version: "1.0"
+description: "可视化 Pipeline，支持节点式工作流"
+
+# 核心理念
+philosophy: |
+  借鉴 ComfyUI 的节点式工作流，让用户可以可视化地构建视频生成流程。
+
+# 节点类型
+node_types:
+  # 输入节点
+  input_nodes:
+    - name: "文本输入"
+      description: "用户输入主题或故事"
+      inputs: []
+      outputs: ["text"]
+    
+    - name: "图片输入"
+      description: "用户上传参考图片"
+      inputs: []
+      outputs: ["image"]
+    
+    - name: "视频输入"
+      description: "用户上传参考视频"
+      inputs: []
+      outputs: ["video"]
+  
+  # 处理节点
+  process_nodes:
+    - name: "导演引擎"
+      description: "回答导演五问，确定场景意图"
+      inputs: ["text"]
+      outputs: ["director_answers"]
+    
+    - name: "分镜图生成"
+      description: "生成分镜图"
+      inputs: ["director_answers"]
+      outputs: ["keyframes"]
+    
+    - name: "运动设计"
+      description: "设计运动指令"
+      inputs: ["keyframes"]
+      outputs: ["motion_instructions"]
+    
+    - name: "提示词组装"
+      description: "组装最终提示词"
+      inputs: ["keyframes", "motion_instructions"]
+      outputs: ["final_prompts"]
+    
+    - name: "模型调用"
+      description: "调用视频生成模型"
+      inputs: ["final_prompts"]
+      outputs: ["video"]
+  
+  # 输出节点
+  output_nodes:
+    - name: "视频输出"
+      description: "输出最终视频"
+      inputs: ["video"]
+      outputs: []
+
+# 工作流示例
+workflow_examples:
+  # 示例 1：简单视频
+  simple_video:
+    description: "简单的视频生成工作流"
+    nodes:
+      - type: "文本输入"
+        config:
+          text: "一个孤独的武士在夕阳下行走"
+      
+      - type: "导演引擎"
+        config:
+          function: "引入"
+          turn: "孤独→希望"
+      
+      - type: "分镜图生成"
+        config:
+          precision: "medium"
+          shots: 3
+      
+      - type: "运动设计"
+        config:
+          rhythm: "缓慢"
+      
+      - type: "提示词组装"
+        config:
+          format: "timeline"
+      
+      - type: "模型调用"
+        config:
+          model: "kling"
+          aspect_ratio: "16:9"
+      
+      - type: "视频输出"
+        config:
+          format: "mp4"
+  
+  # 示例 2：复杂视频
+  complex_video:
+    description: "复杂的视频生成工作流"
+    nodes:
+      - type: "文本输入"
+        config:
+          text: "产品广告，主角是一个穿白衬衫的女生"
+      
+      - type: "图片输入"
+        config:
+          images: ["@C01 女生参考", "@P01 产品参考"]
+      
+      - type: "导演引擎"
+        config:
+          function: "引入"
+          turn: "无"
+          perspective: "客观"
+      
+      - type: "分镜图生成"
+        config:
+          precision: "high"
+          shots: 4
+      
+      - type: "运动设计"
+        config:
+          rhythm: "中等"
+      
+      - type: "提示词组装"
+        config:
+          format: "timeline"
+      
+      - type: "模型调用"
+        config:
+          model: "kling"
+          aspect_ratio: "9:16"
+      
+      - type: "视频输出"
+        config:
+          format: "mp4"
+          platforms: ["抖音", "YouTube"]
+
+# 连接规则
+connection_rules:
+  - from: "文本输入"
+    to: "导演引擎"
+    condition: "always"
+  
+  - from: "导演引擎"
+    to: "分镜图生成"
+    condition: "always"
+  
+  - from: "分镜图生成"
+    to: "运动设计"
+    condition: "always"
+  
+  - from: "运动设计"
+    to: "提示词组装"
+    condition: "always"
+  
+  - from: "提示词组装"
+    to: "模型调用"
+    condition: "always"
+  
+  - from: "模型调用"
+    to: "视频输出"
+    condition: "always"
+
+# 约束条件
+constraints:
+  - "必须支持节点式工作流"
+  - "必须支持可视化配置"
+  - "必须支持连接规则"
+  - "必须支持工作流保存和加载"
