@@ -1,0 +1,412 @@
+# 分镜图生成器 (Keyframe Generator)
+# 分镜图驱动 Pipeline 的核心组件
+
+name: "keyframe-generator"
+version: "1.0"
+description: "分镜图生成器，支持精度分级、重做规则、空间/时间分离"
+
+# 核心理念
+philosophy: |
+  分镜图是视频制作的蓝图。
+  不是"写提示词"，是"画分镜图"。
+
+# 精度分级
+keyframe_precision:
+  # 高精度：关键帧完全锁定
+  high:
+    description: "关键帧完全锁定，适合产品广告、品牌视频"
+    use_when:
+      - "产品展示"
+      - "品牌广告"
+      - "需要精确控制的场景"
+    features:
+      - "主体位置锁定"
+      - "光影方向锁定"
+      - "色彩方案锁定"
+      - "构图比例锁定"
+    example: |
+      高精度分镜：
+      帧1：产品居中，占画面 40%，纯白背景，顶光
+      帧2：产品旋转 45°，占画面 50%，渐变背景，侧光
+      帧3：产品特写，占画面 80%，微距细节，环形光
+  
+  # 中精度：核心元素锁定，细节自由
+  medium:
+    description: "核心元素锁定，细节自由，适合叙事视频"
+    use_when:
+      - "叙事短剧"
+      - "音乐视频"
+      - "需要一定自由度的场景"
+    features:
+      - "主体特征锁定"
+      - "场景氛围锁定"
+      - "动作方向锁定"
+      - "细节表现自由"
+    example: |
+      中精度分镜：
+      帧1：主角出场，左侧 1/3 处，面向右，暖色调
+      帧2：主角行走，中间位置，面向镜头，暖色调
+      帧3：主角停下，右侧 1/3 处，面向左，暖色调
+  
+  # 低精度：仅锁定意图，执行自由
+  low:
+    description: "仅锁定意图，执行自由，适合创意探索"
+    use_when:
+      - "创意探索"
+      - "风格实验"
+      - "需要大量创意的场景"
+    features:
+      - "情感意图锁定"
+      - "风格方向锁定"
+      - "节奏框架锁定"
+      - "具体执行自由"
+    example: |
+      低精度分镜：
+      帧1：建立孤独感
+      帧2：引入希望
+      帧3：情感升华
+
+# 空间提示词 (Spatial Prompt)
+spatial_prompt:
+  description: "描述画面的空间构成"
+  components:
+    - name: "主体位置"
+      description: "主体在画面中的位置"
+      options: ["居中", "左侧 1/3", "右侧 1/3", "上方 1/3", "下方 1/3"]
+    
+    - name: "主体大小"
+      description: "主体在画面中的占比"
+      options: ["20%", "40%", "60%", "80%"]
+    
+    - name: "背景构成"
+      description: "背景的构成方式"
+      options: ["纯色", "渐变", "场景", "虚化"]
+    
+    - name: "光影方向"
+      description: "光源的方向"
+      options: ["顶光", "侧光", "逆光", "底光", "环形光"]
+  
+  example: |
+    空间提示词：
+    主体居中，占画面 60%，纯白背景，顶光照射
+
+# 时间提示词 (Temporal Prompt)
+temporal_prompt:
+  description: "描述画面的时间变化"
+  components:
+    - name: "动作描述"
+      description: "主体的动作"
+      options: ["静止", "缓慢移动", "快速移动", "旋转"]
+    
+    - name: "镜头运动"
+      description: "镜头的运动方式"
+      options: ["固定", "推进", "拉远", "横移", "环绕"]
+    
+    - name: "节奏控制"
+      description: "画面的节奏"
+      options: ["缓慢", "中等", "快速", "变速"]
+  
+  example: |
+    时间提示词：
+    主体缓慢旋转，镜头缓慢推进，节奏中等
+
+# 负面提示词 (Negative Prompt)
+negative_prompt:
+  description: "明确排除不需要的元素"
+  categories:
+    - category: "画质问题"
+      prompts: ["模糊", "噪点", "失真", "过曝", "欠曝"]
+    
+    - category: "构图问题"
+      prompts: ["裁切不当", "主体偏移", "背景杂乱"]
+    
+    - category: "风格问题"
+      prompts: ["风格不一致", "色调冲突", "元素冲突"]
+  
+  example: |
+    负面提示词：
+    避免：模糊、噪点、裁切不当、风格不一致
+
+# 约束条件 (Constraints)
+constraints:
+  description: "明确的限制条件"
+  categories:
+    - category: "技术约束"
+      constraints: ["分辨率", "帧率", "时长", "文件大小"]
+    
+    - category: "内容约束"
+      constraints: ["安全内容", "版权合规", "品牌规范"]
+    
+    - category: "风格约束"
+      constraints: ["色彩方案", "构图规则", "光影风格"]
+  
+  example: |
+    约束条件：
+    分辨率：1080p
+    帧率：24fps
+    时长：15秒
+    安全内容：是
+    色彩方案：暖色调
+
+# 戏剧功能 (Dramatic Function)
+dramatic_function:
+  description: "每个镜头在故事中的功能"
+  options:
+    - name: "引入"
+      description: "引入新元素"
+      use_when: "开场、新角色出场、新场景建立"
+    
+    - name: "深化"
+      description: "深化已有元素"
+      use_when: "情感表达、细节展示、关系发展"
+    
+    - name: "转折"
+      description: "创造转折点"
+      use_when: "冲突爆发、情感反转、剧情转折"
+    
+    - name: "收束"
+      description: "收束故事线"
+      use_when: "结局、总结、情感升华"
+  
+  example: |
+    戏剧功能：引入
+    目的：引入主角，建立孤独感
+
+# 情感锚点 (Emotion Anchor)
+emotion_anchor:
+  description: "每个镜头的情感基调"
+  options:
+    - name: "孤独"
+      description: "独自一人，感到寂寞"
+    
+    - name: "希望"
+      description: "看到希望，感到温暖"
+    
+    - name: "紧张"
+      description: "感到紧张，充满悬念"
+    
+    - name: "愤怒"
+      description: "感到愤怒，充满力量"
+    
+    - name: "温柔"
+      description: "感到温柔，充满爱意"
+  
+  example: |
+    情感锚点：孤独
+    表达方式：远景，空旷环境，冷色调
+
+# 角色引用 (Character Refs)
+character_refs:
+  description: "引用素材编号系统中的角色"
+  syntax: "@C[编号]"
+  example: "@C01 主角参考，@C02 配角参考"
+
+# 尾帧描述 (Last Frame Description)
+last_frame_description:
+  description: "记录本镜头最后一帧的画面描述"
+  purpose: "用于与下一镜头的衔接"
+  example: |
+    尾帧描述：
+    主角转身，面向镜头，眼神坚定
+
+# 分镜图生成流程
+generation_workflow:
+  step_1:
+    name: "确定精度等级"
+    description: "根据内容类型选择精度等级"
+    options: ["高精度", "中精度", "低精度"]
+  
+  step_2:
+    name: "设计空间构成"
+    description: "设计每个镜头的空间构成"
+    components: ["主体位置", "主体大小", "背景构成", "光影方向"]
+  
+  step_3:
+    name: "设计时间变化"
+    description: "设计每个镜头的时间变化"
+    components: ["动作描述", "镜头运动", "节奏控制"]
+  
+  step_4:
+    name: "添加负面提示词"
+    description: "明确排除不需要的元素"
+  
+  step_5:
+    name: "添加约束条件"
+    description: "明确限制条件"
+  
+  step_6:
+    name: "确定戏剧功能"
+    description: "确定每个镜头在故事中的功能"
+  
+  step_7:
+    name: "确定情感锚点"
+    description: "确定每个镜头的情感基调"
+  
+  step_8:
+    name: "添加角色引用"
+    description: "引用素材编号系统中的角色"
+  
+  step_9:
+    name: "记录尾帧描述"
+    description: "记录每个镜头最后一帧的画面描述"
+
+# 重做规则
+redo_rules:
+  description: "当分镜图不满意时的重做规则"
+  
+  # 重做触发条件
+  triggers:
+    - trigger: "构图不当"
+      action: "调整主体位置和大小"
+    
+    - trigger: "光影不匹配"
+      action: "调整光影方向和强度"
+    
+    - trigger: "节奏不协调"
+      action: "调整镜头运动和节奏"
+    
+    - trigger: "情感不一致"
+      action: "调整情感锚点和表达方式"
+  
+  # 重做限制
+  limits:
+    - limit: "最多重做 3 次"
+      reason: "避免无限循环"
+    
+    - limit: "每次重做必须改变至少一个变量"
+      reason: "确保改进"
+
+# 11 维公式
+formula_11d:
+  description: "11 维分镜公式"
+  dimensions:
+    - dimension: "镜头编号"
+      description: "唯一标识符"
+    
+    - dimension: "景别"
+      description: "远景/中景/近景/特写"
+    
+    - dimension: "角度"
+      description: "平视/俯视/仰视/斜视"
+    
+    - dimension: "运动"
+      description: "固定/推进/拉远/横移/环绕"
+    
+    - dimension: "主体"
+      description: "主体描述"
+    
+    - dimension: "动作"
+      description: "主体动作"
+    
+    - dimension: "光线"
+      description: "光影描述"
+    
+    - dimension: "声音"
+      description: "声音描述"
+    
+    - dimension: "时长"
+      description: "镜头时长"
+    
+    - dimension: "空间提示词"
+      description: "空间构成描述"
+    
+    - dimension: "时间提示词"
+      description: "时间变化描述"
+  
+  example: |
+    11 维分镜：
+    1. 镜头编号：S01-01
+    2. 景别：远景
+    3. 角度：平视
+    4. 运动：固定
+    5. 主体：孤独的身影
+    6. 动作：站立
+    7. 光线：侧光，暖色调
+    8. 声音：风声，远处的鸟鸣
+    9. 时长：3秒
+    10. 空间提示词：主体居中，占画面 30%，广阔背景
+    11. 时间提示词：主体静止，环境微动
+
+# 使用示例
+usage_examples:
+  # 示例 1：高精度分镜图
+  example_high:
+    description: "产品广告的高精度分镜图"
+    precision: "高精度"
+    keyframes:
+      - frame: 1
+        spatial: "产品居中，占画面 40%，纯白背景，顶光"
+        temporal: "产品静止，镜头缓慢推进"
+        negative: "避免：模糊、噪点、阴影"
+        constraints: "分辨率：1080p，时长：3秒"
+        dramatic_function: "引入"
+        emotion_anchor: "专业"
+        character_refs: "@P01 产品参考"
+        last_frame: "产品特写，细节清晰"
+      
+      - frame: 2
+        spatial: "产品旋转 45°，占画面 50%，渐变背景，侧光"
+        temporal: "产品缓慢旋转，镜头固定"
+        negative: "避免：失真、色差"
+        constraints: "分辨率：1080p，时长：3秒"
+        dramatic_function: "深化"
+        emotion_anchor: "精致"
+        character_refs: "@P01 产品参考"
+        last_frame: "产品侧面，材质清晰"
+      
+      - frame: 3
+        spatial: "产品特写，占画面 80%，微距细节，环形光"
+        temporal: "产品静止，镜头缓慢拉远"
+        negative: "避免：过曝、细节丢失"
+        constraints: "分辨率：1080p，时长：3秒"
+        dramatic_function: "收束"
+        emotion_anchor: "震撼"
+        character_refs: "@P01 产品参考"
+        last_frame: "产品全貌，品牌标识"
+  
+  # 示例 2：中精度分镜图
+  example_medium:
+    description: "叙事短剧的中精度分镜图"
+    precision: "中精度"
+    keyframes:
+      - frame: 1
+        spatial: "主角左侧 1/3 处，面向右，暖色调背景"
+        temporal: "主角缓慢行走，镜头跟随"
+        negative: "避免：面部模糊、动作僵硬"
+        constraints: "时长：3秒"
+        dramatic_function: "引入"
+        emotion_anchor: "孤独"
+        character_refs: "@C01 主角参考"
+        last_frame: "主角停下，面向远方"
+      
+      - frame: 2
+        spatial: "主角中间位置，面向镜头，暖色调"
+        temporal: "主角停下，镜头推进到近景"
+        negative: "避免：表情不自然"
+        constraints: "时长：3秒"
+        dramatic_function: "深化"
+        emotion_anchor: "思考"
+        character_refs: "@C01 主角参考"
+        last_frame: "主角近景，眼神深邃"
+      
+      - frame: 3
+        spatial: "主角右侧 1/3 处，面向左，暖色调"
+        temporal: "主角转身，镜头拉远"
+        negative: "避免：转身不自然"
+        constraints: "时长：3秒"
+        dramatic_function: "收束"
+        emotion_anchor: "坚定"
+        character_refs: "@C01 主角参考"
+        last_frame: "主角背影，走向远方"
+
+# 约束条件
+constraints:
+  - "必须明确精度等级"
+  - "必须分离空间提示词和时间提示词"
+  - "必须包含负面提示词"
+  - "必须包含约束条件"
+  - "必须确定戏剧功能"
+  - "必须确定情感锚点"
+  - "必须引用角色素材"
+  - "必须记录尾帧描述"
+  - "重做最多 3 次"

@@ -51,28 +51,28 @@ weak_words_replacement:
   # 画质类
   quality:
     - weak_word: "4K"
-      replacement: "高清"
-      specific_description: "具体的分辨率"
-      example: "❌ 4K quality → ✅ 高清，细节丰富，色彩准确"
+      replacement: "DELETE"
+      reason: "分辨率由 API 参数 resolution=3840x2160 控制，prompt 中写任何画质词都是噪声"
+      example: "❌ 4K quality → ✅ (删除，由 API 参数控制)"
     
     - weak_word: "8K"
-      replacement: "超高清"
-      specific_description: "极致的清晰度"
-      example: "❌ 8K resolution → ✅ 超高清，细节清晰，无噪点"
+      replacement: "DELETE"
+      reason: "分辨率由 API 参数控制，prompt 中写任何画质词都是噪声"
+      example: "❌ 8K resolution → ✅ (删除，由 API 参数控制)"
     
     - weak_word: "ultra detailed"
-      replacement: "细节丰富"
-      specific_description: "具体的细节描述"
+      replacement: "DELETE"
+      reason: "画质词是废话，应该用具体的技术描述替代"
       example: "❌ ultra detailed → ✅ 特写，皮肤纹理清晰，毛孔可见"
     
     - weak_word: "high quality"
-      replacement: "高品质"
-      specific_description: "具体的品质描述"
+      replacement: "DELETE"
+      reason: "画质词是废话，应该用具体的技术描述替代"
       example: "❌ high quality → ✅ 电影级质感，色彩准确，光影自然"
     
     - weak_word: "masterpiece"
-      replacement: "杰作"
-      specific_description: "具体的艺术价值"
+      replacement: "DELETE"
+      reason: "画质词是废话，应该用具体的技术描述替代"
       example: "❌ masterpiece → ✅ 构图精美，光影戏剧性，情感表达深刻"
   
   # 情感类

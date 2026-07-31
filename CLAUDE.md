@@ -44,7 +44,7 @@
 ## 禁止事项
 
 - ❌ 禁止堆砌形容词（cinematic, beautiful, 4k, ultra detailed）
-- ❌ 禁止使用 JSON 格式
+- ❌ 禁止在提示词中使用 JSON 格式（但允许在代码中使用 JSON 数据结构）
 - ❌ 禁止模糊描述
 - ❌ 禁止缺少意图推导
 

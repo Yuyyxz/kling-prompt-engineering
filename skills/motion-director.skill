@@ -1,0 +1,297 @@
+# 运动导演 (Motion Director)
+# 时间层专属运动指令 + 首尾帧模式
+
+name: "motion-director"
+version: "1.0"
+description: "运动导演，控制视频中的运动指令，支持首尾帧模式"
+
+# 核心理念
+philosophy: |
+  运动是视频的灵魂。
+  不是"写运镜"，是"设计运动轨迹"。
+
+# 首尾帧模式
+first_last_frame_mode:
+  description: "通过首帧和尾帧定义运动轨迹"
+  
+  # 首帧描述
+  first_frame:
+    description: "视频第一帧的画面描述"
+    components:
+      - name: "主体位置"
+        description: "主体在画面中的初始位置"
+      
+      - name: "主体状态"
+        description: "主体的初始状态"
+      
+      - name: "环境状态"
+        description: "环境的初始状态"
+      
+      - name: "光影状态"
+        description: "光影的初始状态"
+    
+    example: |
+      首帧描述：
+      主角站在画面左侧，面向右，夕阳西下，暖色调
+  
+  # 尾帧描述
+  last_frame:
+    description: "视频最后一帧的画面描述"
+    components:
+      - name: "主体位置"
+        description: "主体在画面中的最终位置"
+      
+      - name: "主体状态"
+        description: "主体的最终状态"
+      
+      - name: "环境状态"
+        description: "环境的最终状态"
+      
+      - name: "光影状态"
+        description: "光影的最终状态"
+    
+    example: |
+      尾帧描述：
+      主角走向画面右侧，背影消失，夜幕降临，冷色调
+  
+  # 运动轨迹
+  motion_trajectory:
+    description: "从首帧到尾帧的运动轨迹"
+    calculation: "自动计算中间帧的运动路径"
+    
+    example: |
+      运动轨迹：
+      主角从左侧移动到右侧，镜头跟随，光影从暖色调过渡到冷色调
+
+# 时间层运动指令
+temporal_motion:
+  description: "控制视频中的时间层运动"
+  
+  # 镜头运动
+  camera_motion:
+    - name: "固定"
+      description: "镜头保持静止"
+      use_when: "对话、静物、等待"
+    
+    - name: "推进"
+      description: "镜头向前推进"
+      use_when: "发现、强调、亲密"
+    
+    - name: "拉远"
+      description: "镜头向后拉远"
+      use_when: "揭示环境、分离"
+    
+    - name: "横移"
+      description: "镜头水平移动"
+      use_when: "跟随、展示、扫描"
+    
+    - name: "环绕"
+      description: "镜头围绕主体旋转"
+      use_when: "展示全貌、强调重要性"
+    
+    - name: "升降"
+      description: "镜头垂直移动"
+      use_when: "建立规模、视角变化"
+    
+    - name: "手持"
+      description: "手持拍摄的轻微晃动"
+      use_when: "紧张、真实、临场感"
+    
+    - name: "希区柯克变焦"
+      description: "推拉镜头同时变焦"
+      use_when: "心理混乱、眩晕、震撼"
+  
+  # 主体运动
+  subject_motion:
+    - name: "静止"
+      description: "主体保持静止"
+      use_when: "等待、思考、凝视"
+    
+    - name: "缓慢移动"
+      description: "主体缓慢移动"
+      use_when: "漫步、沉思、优雅"
+    
+    - name: "快速移动"
+      description: "主体快速移动"
+      use_when: "奔跑、追逐、紧急"
+    
+    - name: "旋转"
+      description: "主体旋转"
+      use_when: "展示、舞蹈、变化"
+    
+    - name: "跳跃"
+      description: "主体跳跃"
+      use_when: "活力、庆祝、突破"
+  
+  # 环境运动
+  environment_motion:
+    - name: "静止"
+      description: "环境保持静止"
+      use_when: "室内、平静、稳定"
+    
+    - name: "缓慢变化"
+      description: "环境缓慢变化"
+      use_when: "日出日落、天气变化"
+    
+    - name: "快速变化"
+      description: "环境快速变化"
+      use_when: "风暴、爆炸、时间流逝"
+
+# 运动节奏
+motion_rhythm:
+  description: "控制运动的节奏"
+  
+  # 节奏类型
+  rhythm_types:
+    - name: "缓慢"
+      description: "慢节奏，适合情感表达"
+      bpm: "60-80"
+      use_when: "情感、沉思、优雅"
+    
+    - name: "中等"
+      description: "中等节奏，适合叙事"
+      bpm: "80-120"
+      use_when: "叙事、日常、自然"
+    
+    - name: "快速"
+      description: "快节奏，适合动作"
+      bpm: "120-160"
+      use_when: "动作、紧张、兴奋"
+    
+    - name: "变速"
+      description: "节奏变化，适合强调"
+      bpm: "变化"
+      use_when: "强调、转折、高潮"
+  
+  # 节奏示例
+  rhythm_examples:
+    - example: "缓慢节奏"
+      description: "主角缓慢行走，镜头缓慢跟随，环境缓慢变化"
+    
+    - example: "中等节奏"
+      description: "主角正常行走，镜头正常跟随，环境正常变化"
+    
+    - example: "快速节奏"
+      description: "主角快速奔跑，镜头快速跟随，环境快速变化"
+    
+    - example: "变速节奏"
+      description: "主角从慢走到快跑，镜头从慢推到快推，环境从慢变到快变"
+
+# 运动指令格式
+motion_instruction_format:
+  description: "运动指令的标准格式"
+  
+  format: |
+    【运动指令】
+    镜头运动：[镜头运动类型]
+    主体运动：[主体运动类型]
+    环境运动：[环境运动类型]
+    节奏：[节奏类型]
+    首帧：[首帧描述]
+    尾帧：[尾帧描述]
+  
+  example: |
+    【运动指令】
+    镜头运动：缓慢推进
+    主体运动：缓慢行走
+    环境运动：缓慢变化
+    节奏：缓慢
+    首帧：主角站在画面左侧，面向右，夕阳西下
+    尾帧：主角走向画面右侧，背影消失，夜幕降临
+
+# 运动约束
+motion_constraints:
+  description: "运动的限制条件"
+  
+  # 物理约束
+  physical_constraints:
+    - constraint: "运动速度"
+      description: "运动速度不能超过物理极限"
+      limit: "人体移动速度 ≤ 30km/h"
+    
+    - constraint: "运动轨迹"
+      description: "运动轨迹必须符合物理规律"
+      limit: "不能穿墙、不能悬浮"
+    
+    - constraint: "运动惯性"
+      description: "运动必须有惯性"
+      limit: "启动和停止必须有过渡"
+  
+  # 技术约束
+  technical_constraints:
+    - constraint: "帧率"
+      description: "运动必须符合帧率"
+      limit: "24fps"
+    
+    - constraint: "快门速度"
+      description: "运动必须符合快门速度"
+      limit: "1/48s"
+    
+    - constraint: "运动模糊"
+      description: "快速运动必须有运动模糊"
+      limit: "根据速度自动计算"
+
+# 使用示例
+usage_examples:
+  # 示例 1：情感表达
+  example_emotion:
+    description: "情感表达的运动设计"
+    motion_instruction: |
+      【运动指令】
+      镜头运动：缓慢推进
+      主体运动：静止
+      环境运动：缓慢变化
+      节奏：缓慢
+      首帧：主角站在窗前，面向窗外，夕阳西下
+      尾帧：主角转身，面向镜头，眼神坚定
+    explanation: |
+      运动设计说明：
+      - 镜头缓慢推进：营造亲密感，聚焦情感
+      - 主体静止：强调内心的思考
+      - 环境缓慢变化：暗示时间的流逝
+      - 节奏缓慢：配合情感的深度
+  
+  # 示例 2：动作场景
+  example_action:
+    description: "动作场景的运动设计"
+    motion_instruction: |
+      【运动指令】
+      镜头运动：快速跟随
+      主体运动：快速奔跑
+      环境运动：快速变化
+      节奏：快速
+      首帧：主角站在起点，准备起跑
+      尾帧：主角冲过终点，欢呼庆祝
+    explanation: |
+      运动设计说明：
+      - 镜头快速跟随：营造紧张感，跟随动作
+      - 主体快速奔跑：展示动作的力量
+      - 环境快速变化：强调速度感
+      - 节奏快速：配合动作的紧张
+  
+  # 示例 3：产品展示
+  example_product:
+    description: "产品展示的运动设计"
+    motion_instruction: |
+      【运动指令】
+      镜头运动：环绕
+      主体运动：旋转
+      环境运动：静止
+      节奏：中等
+      首帧：产品正面，展示全貌
+      尾帧：产品背面，展示细节
+    explanation: |
+      运动设计说明：
+      - 镜头环绕：展示产品的全貌
+      - 主体旋转：展示产品的各个角度
+      - 环境静止：突出产品本身
+      - 节奏中等：配合展示的节奏
+
+# 约束条件
+constraints:
+  - "必须明确首帧和尾帧"
+  - "必须符合物理规律"
+  - "必须符合技术约束"
+  - "必须包含运动指令"
+  - "必须明确节奏"
+  - "必须考虑运动惯性"

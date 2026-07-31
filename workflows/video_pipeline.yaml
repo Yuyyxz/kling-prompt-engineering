@@ -1,0 +1,345 @@
+# 视频生产流水线 (Video Production Pipeline)
+# 三阶确认制 6 步流水线
+
+workflow_name: Video-Production-Pipeline
+version: "1.0"
+description: "三阶确认制 6 步流水线，从文本到可渲染素材"
+
+# 核心理念
+philosophy: |
+  三阶确认制：
+  1. 分镜图生成 → 人工确认
+  2. 图生视频 → 人工确认
+  3. 后处理 → 人工确认
+  
+  每个阶段都需要人工确认，确保质量。
+
+# 流水线阶段
+stages:
+  # 第一阶段：分镜图生成
+  stage_1:
+    name: "分镜图生成"
+    description: "从文本生成分镜图"
+    skill_ref: "skills/keyframe-generator.skill"
+    input: "{{user_topic}}"
+    output: "keyframes_json"
+    validation: "Must be valid JSON array"
+    
+    # 子步骤
+    steps:
+      - step: 1
+        name: "导演五问"
+        description: "回答导演五问，确定场景意图"
+        skill_ref: "skills/director-engine.skill"
+        output: "director_answers"
+      
+      - step: 2
+        name: "精度分级"
+        description: "根据内容类型选择精度等级"
+        options: ["高精度", "中精度", "低精度"]
+        output: "precision_level"
+      
+      - step: 3
+        name: "分镜图设计"
+        description: "设计每个镜头的分镜图"
+        components:
+          - "空间提示词"
+          - "时间提示词"
+          - "负面提示词"
+          - "约束条件"
+          - "戏剧功能"
+          - "情感锚点"
+          - "角色引用"
+          - "尾帧描述"
+        output: "keyframes"
+      
+      - step: 4
+        name: "分镜图审核"
+        description: "人工审核分镜图"
+        confirmation_required: true
+        output: "confirmed_keyframes"
+    
+    # 错误处理
+    error_handling:
+      - error: "分镜图不符合要求"
+        action: "重新生成分镜图"
+        max_retries: 3
+    
+    # 确认检查点
+    confirmation_checkpoint:
+      name: "分镜图确认"
+      description: "确认分镜图是否符合预期"
+      options:
+        - "确认，继续下一步"
+        - "修改，重新设计"
+        - "放弃，重新开始"
+
+  # 第二阶段：图生视频
+  stage_2:
+    name: "图生视频"
+    description: "从分镜图生成视频"
+    skill_ref: "skills/motion-director.skill"
+    input: "confirmed_keyframes"
+    output: "video_draft"
+    validation: "Must be valid video file"
+    
+    # 子步骤
+    steps:
+      - step: 1
+        name: "运动设计"
+        description: "为每个镜头设计运动指令"
+        components:
+          - "镜头运动"
+          - "主体运动"
+          - "环境运动"
+          - "节奏"
+          - "首帧描述"
+          - "尾帧描述"
+        output: "motion_instructions"
+      
+      - step: 2
+        name: "素材准备"
+        description: "准备生成视频所需的素材"
+        components:
+          - "角色素材 (@C01, @C02...)"
+          - "场景素材 (@S01, @S02...)"
+          - "道具素材 (@P01, @P02...)"
+        output: "materials"
+      
+      - step: 3
+        name: "提示词组装"
+        description: "组装最终的提示词"
+        format: |
+          [风格描述]，[画幅比例]，[色调]
+          
+          0-3秒画面：[开场描述]
+          3-6秒画面：[主体引入]
+          6-9秒画面：[情节发展]
+          9-12秒画面：[高潮时刻]
+          12-15秒画面：[结尾落版]
+          
+          【声音】[配乐风格] + [音效] + [对白]
+          【参考】[素材引用]
+        output: "final_prompts"
+      
+      - step: 4
+        name: "调用模型生成"
+        description: "调用视频生成模型"
+        tool: "kling_api"
+        input: "final_prompts"
+        params:
+          aspect_ratio: "16:9"
+          mode: "pro"
+        output: "video_urls"
+      
+      - step: 5
+        name: "视频审核"
+        description: "人工审核视频"
+        confirmation_required: true
+        output: "confirmed_videos"
+    
+    # 错误处理
+    error_handling:
+      - error: "视频生成失败"
+        action: "重新生成视频"
+        max_retries: 3
+      - error: "视频质量不佳"
+        action: "调整提示词重新生成"
+        max_retries: 3
+    
+    # 确认检查点
+    confirmation_checkpoint:
+      name: "视频确认"
+      description: "确认视频是否符合预期"
+      options:
+        - "确认，继续下一步"
+        - "修改，重新生成"
+        - "放弃，重新开始"
+
+  # 第三阶段：后处理
+  stage_3:
+    name: "后处理"
+    description: "对视频进行后处理"
+    input: "confirmed_videos"
+    output: "final_videos"
+    validation: "Must be valid video file"
+    
+    # 子步骤
+    steps:
+      - step: 1
+        name: "视频剪辑"
+        description: "对视频进行剪辑"
+        components:
+          - "裁剪不需要的部分"
+          - "调整视频时长"
+          - "添加转场效果"
+        output: "edited_videos"
+      
+      - step: 2
+        name: "音频处理"
+        description: "对音频进行处理"
+        components:
+          - "添加背景音乐"
+          - "添加音效"
+          - "调整音量"
+        output: "processed_audio"
+      
+      - step: 3
+        name: "字幕添加"
+        description: "添加字幕"
+        components:
+          - "生成字幕文件"
+          - "添加字幕到视频"
+        output: "subtitled_videos"
+      
+      - step: 4
+        name: "最终审核"
+        description: "最终审核视频"
+        confirmation_required: true
+        output: "final_approved_videos"
+    
+    # 错误处理
+    error_handling:
+      - error: "后处理失败"
+        action: "重新进行后处理"
+        max_retries: 3
+    
+    # 确认检查点
+    confirmation_checkpoint:
+      name: "最终确认"
+      description: "确认最终视频是否符合预期"
+      options:
+        - "确认，导出最终视频"
+        - "修改，重新处理"
+        - "放弃，重新开始"
+
+  # 第四阶段：多平台输出
+  stage_4:
+    name: "多平台输出"
+    description: "将视频输出为多平台格式"
+    input: "final_approved_videos"
+    output: "multi_platform_videos"
+    
+    # 子步骤
+    steps:
+      - step: 1
+        name: "格式转换"
+        description: "将视频转换为不同平台的格式"
+        platforms:
+          - platform: "抖音/TikTok"
+            format: "9:16 竖屏"
+            resolution: "1080x1920"
+          
+          - platform: "YouTube"
+            format: "16:9 横屏"
+            resolution: "1920x1080"
+          
+          - platform: "Instagram"
+            format: "1:1 正方形"
+            resolution: "1080x1080"
+          
+          - platform: "B站"
+            format: "16:9 横屏"
+            resolution: "1920x1080"
+        
+        output: "formatted_videos"
+      
+      - step: 2
+        name: "平台优化"
+        description: "针对不同平台进行优化"
+        optimizations:
+          - platform: "抖音/TikTok"
+            optimizations:
+              - "添加热门话题标签"
+              - "添加引导关注文字"
+              - "优化前 2 秒钩子"
+          
+          - platform: "YouTube"
+            optimizations:
+              - "添加结尾画面"
+              - "添加订阅引导"
+              - "优化缩略图"
+          
+          - platform: "Instagram"
+            optimizations:
+              - "添加品牌标签"
+              - "添加位置标签"
+              - "优化封面图"
+        
+        output: "optimized_videos"
+      
+      - step: 3
+        name: "导出"
+        description: "导出最终视频"
+        output: "exported_videos"
+    
+    # 确认检查点
+    confirmation_checkpoint:
+      name: "导出确认"
+      description: "确认导出的视频是否符合预期"
+      options:
+        - "确认，完成"
+        - "修改，重新导出"
+
+# 全局配置
+global_config:
+  # 错误处理
+  error_handling:
+    max_retries: 3
+    retry_delay: 5
+    timeout: 300
+  
+  # 质量控制
+  quality_control:
+    min_resolution: "720p"
+    min_fps: 24
+    min_duration: "2s"
+    max_duration: "15s"
+  
+  # 输出配置
+  output_config:
+    format: "mp4"
+    codec: "h264"
+    quality: "high"
+    metadata: true
+
+# 使用示例
+usage_examples:
+  # 示例 1：完整流水线
+  example_full:
+    description: "完整的视频生产流水线"
+    input: "一个孤独的武士在夕阳下行走"
+    workflow:
+      stage_1:
+        - "导演五问：功能=引入，转折=孤独→希望，视角=客观"
+        - "精度分级：中精度"
+        - "分镜图设计：3 个镜头"
+        - "分镜图审核：确认"
+      
+      stage_2:
+        - "运动设计：缓慢推进，缓慢行走"
+        - "素材准备：@C01 武士参考，@S01 夕阳场景"
+        - "提示词组装：时间轴格式"
+        - "调用模型生成：生成视频"
+        - "视频审核：确认"
+      
+      stage_3:
+        - "视频剪辑：裁剪不需要的部分"
+        - "音频处理：添加背景音乐"
+        - "字幕添加：添加字幕"
+        - "最终审核：确认"
+      
+      stage_4:
+        - "格式转换：抖音 9:16，YouTube 16:9"
+        - "平台优化：添加话题标签"
+        - "导出：导出最终视频"
+    
+    output: "多平台格式的视频文件"
+
+# 约束条件
+constraints:
+  - "必须三阶确认"
+  - "每个阶段必须人工确认"
+  - "错误处理最多重试 3 次"
+  - "必须符合质量控制标准"
+  - "必须支持多平台输出"
