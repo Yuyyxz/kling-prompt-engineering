@@ -1,0 +1,231 @@
+# 路由表（智能分流系统）
+# 根据用户输入自动路由到最适合的 Skill
+
+name: "routing-table"
+version: "1.0"
+description: "智能分流系统，根据用户输入自动路由到最适合的 Skill"
+
+# 核心理念
+philosophy: |
+  用户说"我有个模糊想法"→ 走 interview skill
+  用户说"继续这个视频"→ 走 continuation skill
+  用户说"生成失败了"→ 走 troubleshoot skill
+  
+  不要让用户思考"我应该用哪个 Skill"，让系统自动判断。
+
+# 路由规则
+routing_rules:
+  # 意图识别
+  intent_recognition:
+    - intent: "模糊想法"
+      keywords: ["我想做一个视频", "帮我拍", "有个想法", "不知道怎么写"]
+      skill: "interview"
+      description: "用户有模糊的想法，需要引导"
+    
+    - intent: "明确需求"
+      keywords: ["帮我写一个提示词", "生成一个视频", "我要做一个产品广告"]
+      skill: "prompt-generator"
+      description: "用户有明确的需求，直接生成提示词"
+    
+    - intent: "继续制作"
+      keywords: ["继续这个视频", "下一集", "延长", "续写"]
+      skill: "continuation"
+      description: "用户要继续制作，使用视频延长功能"
+    
+    - intent: "失败诊断"
+      keywords: ["生成失败", "效果不好", "不对", "重来"]
+      skill: "troubleshoot"
+      description: "用户遇到问题，需要诊断和修复"
+    
+    - intent: "风格选择"
+      keywords: ["什么风格", "推荐", "哪种好看"]
+      skill: "style-advisor"
+      description: "用户需要风格建议"
+    
+    - intent: "技术问题"
+      keywords: ["怎么用", "如何设置", "参数是什么"]
+      skill: "technical-support"
+      description: "用户有技术问题"
+
+# 路由流程
+routing_workflow:
+  step_1: "识别用户意图"
+  step_2: "根据意图选择 Skill"
+  step_3: "调用对应的 Skill"
+  step_4: "返回结果"
+
+# 意图识别规则
+intent_identification:
+  # 模糊想法
+  vague_idea:
+    patterns:
+      - "我想做一个视频"
+      - "帮我拍一个视频"
+      - "我有个想法"
+      - "不知道怎么写"
+      - "帮我出个主意"
+    response: "好的，我来帮你梳理一下想法。请告诉我：\n1. 你想做什么类型的视频？（电影、广告、动漫等）\n2. 你的目标受众是谁？\n3. 你想传达什么信息或情感？"
+    next_step: "引导用户明确需求"
+  
+  # 明确需求
+  clear_demand:
+    patterns:
+      - "帮我写一个提示词"
+      - "生成一个视频"
+      - "我要做一个产品广告"
+      - "我要做一个电影片段"
+    response: "好的，我来帮你生成提示词。请告诉我：\n1. 视频类型\n2. 主题\n3. 风格\n4. 时长"
+    next_step: "生成提示词"
+  
+  # 继续制作
+  continuation:
+    patterns:
+      - "继续这个视频"
+      - "下一集"
+      - "延长"
+      - "续写"
+    response: "好的，我来帮你继续制作。请提供：\n1. 上一集视频\n2. 你想要的内容"
+    next_step: "使用视频延长功能"
+  
+  # 失败诊断
+  failure_diagnosis:
+    patterns:
+      - "生成失败"
+      - "效果不好"
+      - "不对"
+      - "重来"
+    response: "好的，我来帮你诊断问题。请告诉我：\n1. 什么问题？\n2. 你期望的效果是什么？"
+    next_step: "诊断问题并提供解决方案"
+
+# Skill 路由映射
+skill_routing:
+  # 引导式访谈
+  interview:
+    skill: "interview.skill"
+    description: "引导用户明确需求"
+    workflow:
+      step_1: "询问视频类型"
+      step_2: "询问主题"
+      step_3: "询问风格"
+      step_4: "询问时长"
+      step_5: "生成提示词"
+  
+  # 提示词生成
+  prompt_generator:
+    skill: "prompt-generator.skill"
+    description: "直接生成提示词"
+    workflow:
+      step_1: "解析用户需求"
+      step_2: "选择对应的 Skill"
+      step_3: "生成提示词"
+  
+  # 视频续写
+  continuation:
+    skill: "continuation.skill"
+    description: "继续制作视频"
+    workflow:
+      step_1: "获取上一集视频"
+      step_2: "分析尾帧"
+      step_3: "生成续写提示词"
+  
+  # 故障排除
+  troubleshoot:
+    skill: "troubleshoot.skill"
+    description: "诊断和修复问题"
+    workflow:
+      step_1: "识别问题类型"
+      step_2: "分析原因"
+      step_3: "提供解决方案"
+  
+  # 风格建议
+  style_advisor:
+    skill: "style-advisor.skill"
+    description: "提供风格建议"
+    workflow:
+      step_1: "了解用户需求"
+      step_2: "推荐风格"
+      step_3: "展示示例"
+  
+  # 技术支持
+  technical_support:
+    skill: "technical-support.skill"
+    description: "提供技术支持"
+    workflow:
+      step_1: "识别技术问题"
+      step_2: "提供解决方案"
+      step_3: "验证解决"
+
+# 使用示例
+usage_examples:
+  # 示例 1：模糊想法
+  example_vague:
+    user_input: "我想做一个视频"
+    response: |
+      好的，我来帮你梳理一下想法。请告诉我：
+      1. 你想做什么类型的视频？（电影、广告、动漫等）
+      2. 你的目标受众是谁？
+      3. 你想传达什么信息或情感？
+    next_step: "引导用户明确需求"
+  
+  # 示例 2：明确需求
+  example_clear:
+    user_input: "我要做一个产品广告"
+    response: |
+      好的，我来帮你生成提示词。请告诉我：
+      1. 产品是什么？
+      2. 目标受众是谁？
+      3. 你想传达什么卖点？
+      4. 你喜欢什么风格？
+    next_step: "生成提示词"
+  
+  # 示例 3：继续制作
+  example_continuation:
+    user_input: "继续这个视频"
+    response: |
+      好的，我来帮你继续制作。请提供：
+      1. 上一集视频
+      2. 你想要的内容
+    next_step: "使用视频延长功能"
+  
+  # 示例 4：失败诊断
+  example_failure:
+    user_input: "生成失败了"
+    response: |
+      好的，我来帮你诊断问题。请告诉我：
+      1. 什么问题？
+      2. 你期望的效果是什么？
+    next_step: "诊断问题并提供解决方案"
+
+# 路由决策树
+routing_decision_tree:
+  root: "用户输入"
+  
+  branches:
+    - condition: "包含模糊想法关键词"
+      action: "路由到 interview"
+    
+    - condition: "包含明确需求关键词"
+      action: "路由到 prompt-generator"
+    
+    - condition: "包含继续制作关键词"
+      action: "路由到 continuation"
+    
+    - condition: "包含失败诊断关键词"
+      action: "路由到 troubleshoot"
+    
+    - condition: "包含风格选择关键词"
+      action: "路由到 style-advisor"
+    
+    - condition: "包含技术问题关键词"
+      action: "路由到 technical-support"
+    
+    - condition: "无法识别"
+      action: "询问用户更多信息"
+
+# 约束条件
+constraints:
+  - "必须准确识别用户意图"
+  - "必须路由到最适合的 Skill"
+  - "必须提供清晰的下一步指引"
+  - "必须支持多轮对话"
+  - "必须处理无法识别的情况"

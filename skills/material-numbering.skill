@@ -1,0 +1,273 @@
+# 素材编号系统 (Material Numbering System)
+# 标准化的素材管理规范
+
+name: "material-numbering"
+version: "1.0"
+description: "标准化的素材编号系统，便于管理和引用素材"
+
+# 核心理念
+philosophy: |
+  标准化的素材编号系统，便于管理和引用素材。
+  
+  核心原则：
+  1. 统一命名规范
+  2. 便于引用和管理
+  3. 支持多角度参考
+
+# 素材编号规范
+material_naming:
+  # 角色素材
+  character:
+    prefix: "C"
+    range: "C01-C99"
+    description: "角色（多角度参考图）"
+    naming_format: "[编号] [角色名]·[角度]"
+    angles:
+      - name: "正面全身"
+        description: "角色的正面全身照"
+        use_when: "展示角色全貌"
+      
+      - name: "侧面半身"
+        description: "角色的侧面半身照"
+        use_when: "展示角色侧面特征"
+      
+      - name: "背面全身"
+        description: "角色的背面全身照"
+        use_when: "展示角色背影"
+      
+      - name: "特写面部"
+        description: "角色的面部特写"
+        use_when: "展示角色表情"
+      
+      - name: "动作姿态"
+        description: "角色的特定动作"
+        use_when: "展示角色动作"
+    
+    examples:
+      - "C01 林冲·正面全身"
+      - "C01 林冲·侧面半身"
+      - "C01 林冲·背面全身"
+      - "C01 林冲·特写面部"
+      - "C01 林冲·动作姿态"
+      - "C02 鲁智深·正面全身"
+      - "C02 鲁智深·侧面半身"
+  
+  # 场景素材
+  scene:
+    prefix: "S"
+    range: "S01-S99"
+    description: "场景/地点"
+    naming_format: "[编号] [场景名]·[时间/天气]"
+    time_weather:
+      - name: "日景"
+        description: "白天的场景"
+        use_when: "展示白天场景"
+      
+      - name: "夜景"
+        description: "夜晚的场景"
+        use_when: "展示夜晚场景"
+      
+      - name: "黄昏"
+        description: "黄昏的场景"
+        use_when: "展示黄昏场景"
+      
+      - name: "雪景"
+        description: "下雪的场景"
+        use_when: "展示雪景"
+      
+      - name: "雨景"
+        description: "下雨的场景"
+        use_when: "展示雨景"
+    
+    examples:
+      - "S01 沧州草料场·日景"
+      - "S01 沧州草料场·夜景"
+      - "S01 沧州草料场·雪景"
+      - "S02 山神庙·日景"
+      - "S02 山神庙·夜景"
+  
+  # 道具素材
+  prop:
+    prefix: "P"
+    range: "P01-P99"
+    description: "道具/物品"
+    naming_format: "[编号] [道具名]"
+    examples:
+      - "P01 长枪"
+      - "P02 酒葫芦"
+      - "P03 草料"
+      - "P04 雪花"
+
+# 素材引用语法
+reference_syntax:
+  # 图片引用
+  image_reference:
+    syntax: "@image[N]"
+    max_count: 9
+    usage: "角色参考、场景参考、道具参考"
+    example: "@image1 角色参考，@image2 场景参考"
+  
+  # 视频引用
+  video_reference:
+    syntax: "@video[N]"
+    max_count: 3
+    usage: "动作参考、风格参考、上一集视频"
+    example: "@video1 动作参考"
+  
+  # 音频引用
+  audio_reference:
+    syntax: "@audio[N]"
+    max_count: 3
+    usage: "音乐参考、音效参考、人声参考"
+    example: "@audio1 音乐参考"
+
+# 素材清单模板
+material_list_template:
+  # 基本格式
+  format: |
+    # 素材清单
+    
+    ## 角色素材
+    | 编号 | 角色名 | 角度 | 说明 |
+    |------|--------|------|------|
+    | C01 | 林冲 | 正面全身 | 主角参考 |
+    | C01 | 林冲 | 侧面半身 | 侧面特征 |
+    | C01 | 林冲 | 特写面部 | 表情参考 |
+    | C02 | 鲁智深 | 正面全身 | 配角参考 |
+    
+    ## 场景素材
+    | 编号 | 场景名 | 时间/天气 | 说明 |
+    |------|--------|-----------|------|
+    | S01 | 沧州草料场 | 雪景 | 主场景 |
+    | S02 | 山神庙 | 夜景 | 次场景 |
+    
+    ## 道具素材
+    | 编号 | 道具名 | 说明 |
+    |------|--------|------|
+    | P01 | 长枪 | 武器 |
+    | P02 | 酒葫芦 | 道具 |
+  
+  # 示例
+  example: |
+    # 素材清单 - 林冲风雪山神庙
+    
+    ## 角色素材
+    | 编号 | 角色名 | 角度 | 说明 |
+    |------|--------|------|------|
+    | C01 | 林冲 | 正面全身 | 主角参考 |
+    | C01 | 林冲 | 侧面半身 | 侧面特征 |
+    | C01 | 林冲 | 特写面部 | 表情参考 |
+    | C01 | 林冲 | 动作姿态 | 战斗姿态 |
+    | C02 | 鲁智深 | 正面全身 | 配角参考 |
+    
+    ## 场景素材
+    | 编号 | 场景名 | 时间/天气 | 说明 |
+    |------|--------|-----------|------|
+    | S01 | 沧州草料场 | 雪景 | 主场景 |
+    | S01 | 沧州草料场 | 夜景 | 夜间场景 |
+    | S02 | 山神庙 | 雪景 | 次场景 |
+    
+    ## 道具素材
+    | 编号 | 道具名 | 说明 |
+    |------|--------|------|
+    | P01 | 长枪 | 武器 |
+    | P02 | 酒葫芦 | 道具 |
+    | P03 | 草料 | 场景道具 |
+
+# 素材管理流程
+material_management_workflow:
+  step_1: "设计素材"
+    description: "为每个角色、场景、道具设计素材"
+    output: "素材清单"
+  
+  step_2: "生成素材"
+    description: "使用 AI 生成素材图片"
+    tools: ["GPT-Image-2", "Seedream", "Nana Banana Pro"]
+  
+  step_3: "编号素材"
+    description: "为每个素材分配编号"
+    format: "[编号] [名称]·[角度/时间]"
+  
+  step_4: "引用素材"
+    description: "在提示词中引用素材"
+    syntax: "@image[N] [素材说明]"
+
+# 使用示例
+usage_examples:
+  # 示例 1：角色素材
+  example_character:
+    description: "为林冲设计多角度参考图"
+    material_list: |
+      C01 林冲·正面全身
+      C01 林冲·侧面半身
+      C01 林冲·背面全身
+      C01 林冲·特写面部
+      C01 林冲·动作姿态
+    usage: |
+      【参考】@image1 林冲·正面全身，@image2 林冲·特写面部
+  
+  # 示例 2：场景素材
+  example_scene:
+    description: "为沧州草料场设计不同时间的场景"
+    material_list: |
+      S01 沧州草料场·日景
+      S01 沧州草料场·夜景
+      S01 沧州草料场·雪景
+    usage: |
+      【参考】@image1 沧州草料场·雪景
+  
+  # 示例 3：完整素材清单
+  example_full:
+    description: "为林冲风雪山神庙设计完整素材清单"
+    material_list: |
+      # 素材清单 - 林冲风雪山神庙
+      
+      ## 角色素材
+      C01 林冲·正面全身
+      C01 林冲·侧面半身
+      C01 林冲·特写面部
+      C01 林冲·动作姿态
+      C02 鲁智深·正面全身
+      
+      ## 场景素材
+      S01 沧州草料场·雪景
+      S01 沧州草料场·夜景
+      S02 山神庙·雪景
+      
+      ## 道具素材
+      P01 长枪
+      P02 酒葫芦
+      P03 草料
+    usage: |
+      【参考】@image1 林冲·正面全身，@image2 沧州草料场·雪景，@image3 长枪
+
+# 素材引用最佳实践
+best_practices:
+  # 角色引用
+  character_reference:
+    - "使用清晰的正面照作为主参考"
+    - "为每个角色生成多角度参考图"
+    - "在提示词中明确引用哪个角度"
+    - "保持角色特征的一致性"
+  
+  # 场景引用
+  scene_reference:
+    - "使用具有代表性的场景图"
+    - "为不同时间/天气生成不同场景图"
+    - "在提示词中明确引用哪个场景"
+    - "保持场景风格的一致性"
+  
+  # 道具引用
+  prop_reference:
+    - "使用清晰的道具图"
+    - "为重要道具生成多个角度"
+    - "在提示词中明确引用哪个道具"
+    - "保持道具风格的一致性"
+
+# 约束条件
+constraints:
+  - "必须使用统一的编号规范"
+  - "必须为每个素材分配唯一编号"
+  - "必须在提示词中明确引用素材"
+  - "必须保持素材风格的一致性"
+  - "必须支持多角度参考"

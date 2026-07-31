@@ -54,7 +54,38 @@ Don't ask the model for "cinematic feel" — answer: *what does this shot do to 
 - ✅ 替换：具体的技术描述（景别、角度、运镜、光影、声音）
 
 **详细文档：** [领域垂直 Skill](skills/domain-skills.skill) | [多集连续叙事](skills/multi-episode-narrative.skill) | [Anti-Slop](skills/anti-slop.skill)
-**核心理念：**
+
+### 🆕 v2.3 — Routing & Diagnostics (P2 优先级)
+
+**新增组件：**
+
+| 组件 | 说明 | 文件 |
+|------|------|------|
+| **路由表** | 智能分流系统 | `skills/routing-table.skill` |
+| **失败诊断图谱** | 系统性诊断和修复 | `skills/failure-atlas.skill` |
+| **素材编号系统** | 标准化素材管理 | `skills/material-numbering.skill` |
+
+**智能分流：**
+- 用户说"我有个模糊想法"→ 走 interview skill
+- 用户说"继续这个视频"→ 走 continuation skill
+- 用户说"生成失败了"→ 走 troubleshoot skill
+
+**失败诊断图谱：**
+- 镜头问题：模糊、抖动、角度不当
+- 光影问题：过曝、欠曝、不自然
+- 运动问题：不自然、过快、不连贯
+- 参考角色问题：变形、不一致、识别度低
+- 时长问题：太短、太长、节奏不当
+- 构图问题：不佳、不突出、杂乱
+- 音频问题：不匹配、缺失、质量差
+- 安全问题：敏感词、版权、内容不当
+
+**素材编号系统：**
+- 角色素材：C01-C99（多角度参考图）
+- 场景素材：S01-S99（不同时间/天气）
+- 道具素材：P01-P99
+
+**详细文档：** [路由表](skills/routing-table.skill) | [失败诊断图谱](skills/failure-atlas.skill) | [素材编号系统](skills/material-numbering.skill)**核心理念：**
 - ❌ 旧：堆砌形容词 → "cinematic, beautiful, 4k, ultra detailed"
 - ✅ 新：意图推导 → "这个镜头在做什么？"
 
@@ -313,7 +344,10 @@ kling-prompt-engineering/
 │   ├── timeline-format.skill          # 🆕 Timeline Format (P0)
 │   ├── domain-skills.skill            # 🆕 Domain Skills (P1)
 │   ├── multi-episode-narrative.skill  # 🆕 Multi-Episode Narrative (P1)
-│   └── anti-slop.skill                # 🆕 Anti-Slop (P1)
+│   ├── anti-slop.skill                # 🆕 Anti-Slop (P1)
+│   ├── routing-table.skill            # 🆕 Routing Table (P2)
+│   ├── failure-atlas.skill            # 🆕 Failure Atlas (P2)
+│   └── material-numbering.skill       # 🆕 Material Numbering (P2)
 └── examples/                          # 🆕 Usage examples
     └── model_routing_examples.yaml    # Model routing examples
 ```
