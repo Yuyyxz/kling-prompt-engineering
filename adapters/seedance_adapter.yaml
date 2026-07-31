@@ -1,38 +1,187 @@
 # Seedance 模型适配器
 # 字节跳动视频生成模型专属配置
+# 基于 GitHub 高星仓库最佳实践优化
 
 model_id: "seedance"
-model_name: "Seedance"
+model_name: "Seedance 2.0"
 provider: "ByteDance"
-version: "1.0"
-description: "字节跳动视频生成模型，擅长中文语境和动态场景"
+version: "2.0"
+description: "字节跳动视频生成模型，支持四模态输入（文本+图片+视频+音频），擅长中文语境和动态场景"
 
 # 模型能力配置
 capabilities:
-  max_duration: "10s"
+  max_duration: "15s"
   min_duration: "2s"
   aspect_ratios: ["16:9", "9:16", "1:1"]
-  max_resolution: "1080p"
+  max_resolution: "720p"
   fps: 24
   supports_image_input: true
-  supports_video_input: false
-  supports_audio_input: false
+  max_images: 9
+  supports_video_input: true
+  max_videos: 3
+  max_video_total_duration: "15s"
+  supports_audio_input: true
+  max_audios: 3
+  max_audio_duration: "15s"
+  max_total_files: 12
+  supports_sound_output: true
+
+# 素材引用语法（@ 语法）
+reference_syntax:
+  # 图片引用
+  image_references:
+    - "@image1"
+    - "@image2"
+    - "@image3"
+    - "@image4"
+    - "@image5"
+    - "@image6"
+    - "@image7"
+    - "@image8"
+    - "@image9"
+  
+  # 视频引用
+  video_references:
+    - "@video1"
+    - "@video2"
+    - "@video3"
+  
+  # 音频引用
+  audio_references:
+    - "@audio1"
+    - "@audio2"
+    - "@audio3"
+  
+  # 使用示例
+  usage_example: |
+    【参考】@image1 角色参考，@image2 场景参考，@video1 动作参考
+
+# 素材编号规范
+material_naming:
+  # 角色素材
+  character:
+    prefix: "C"
+    range: "C01-C99"
+    description: "角色（多角度）"
+    example: "C01 林冲·正面全身"
+  
+  # 场景素材
+  scene:
+    prefix: "S"
+    range: "S01-S99"
+    description: "场景/地点"
+    example: "S01 沧州草料场·雪景"
+  
+  # 道具素材
+  prop:
+    prefix: "P"
+    range: "P01-P99"
+    description: "道具/物品"
+    example: "P01 长枪"
+
+# 时间轴格式提示词
+timeline_format:
+  # 时间轴结构
+  structure: |
+    [风格描述]，[画幅比例]，[色调]
+    
+    0-3秒画面：[开场描述]
+    3-6秒画面：[主体引入]
+    6-9秒画面：[情节发展]
+    9-12秒画面：[高潮时刻]
+    12-15秒画面：[结尾落版]
+    
+    【声音】[配乐风格] + [音效] + [对白]
+    【参考】[素材引用]
+  
+  # 时间轴示例
+  example: |
+    水墨武侠风格，9:16竖屏，灰白墨黑色调
+    
+    0-3秒画面：高空俯拍，场景建立
+    3-6秒画面：镜头推进，主体引入
+    6-9秒画面：情节发展，冲突展现
+    9-12秒画面：高潮时刻，情感爆发
+    12-15秒画面：结尾落版，氛围延续
+    
+    【声音】古筝配乐 + 风声 + 脚步声
+    【参考】@image1 角色参考，@image2 场景参考
+
+# 2 秒钩子框架（社交媒体必备）
+hook_framework:
+  description: "前 2 秒必须抓住观众注意力，防止滑动"
+  
+  # 10 种开场模式
+  hook_patterns:
+    - name: "悬念开场"
+      description: "展示一个未完成的动作"
+      example: "一把剑悬在半空，即将落下"
+    
+    - name: "冲突开场"
+      description: "两个对立元素的碰撞"
+      example: "火焰与冰霜相遇"
+    
+    - name: "反转开场"
+      description: "预期与现实的对比"
+      example: "看似平静的湖面，突然巨浪翻涌"
+    
+    - name: "特写开场"
+      description: "极端近景展示细节"
+      example: "眼睛的特写，瞳孔中倒映出火焰"
+    
+    - name: "运动开场"
+      description: "快速移动吸引注意力"
+      example: "一辆赛车从画面左侧冲入"
+    
+    - name: "光影开场"
+      description: "强烈的明暗对比"
+      example: "黑暗中一束光照亮主角"
+    
+    - name: "声音开场"
+      description: "引人注意的音效"
+      example: "尖锐的警报声响起"
+    
+    - name: "文字开场"
+      description: "引人注目的文字"
+      example: "大字幕：'3秒后，一切改变'"
+    
+    - name: "对比开场"
+      description: "大小、快慢、动静的对比"
+      example: "巨大的机器人与渺小的人类"
+    
+    - name: "情感开场"
+      description: "强烈的情感表达"
+      example: "主角流下一滴眼泪"
+  
+  # 钩子模板
+  hook_template: |
+    前2秒：[钩子模式]，[具体描述]
+    目的：让观众停止滑动
 
 # 提示词优化规则
 prompt_optimization:
   # 语言偏好
   language_preference: "zh"
   
-  # 提示词结构
-  structure:
-    - "主体描述"
-    - "动作描述"
-    - "环境描述"
-    - "光影描述"
-    - "画质描述"
+  # 提示词结构（黄金公式）
+  golden_formula: "[镜头语言] + [主体动作与细节] + [环境氛围] + [光影与画质] + [运动轨迹]"
+  
+  # 时间轴格式结构
+  timeline_structure:
+    - "风格描述"
+    - "画幅比例"
+    - "色调"
+    - "0-3秒画面：开场"
+    - "3-6秒画面：主体引入"
+    - "6-9秒画面：情节发展"
+    - "9-12秒画面：高潮"
+    - "12-15秒画面：结尾"
+    - "声音设计"
+    - "素材引用"
   
   # 推荐的提示词长度
-  recommended_length: "50-150 字符"
+  recommended_length: "150-300 字符"
+  max_length: "300 字符"
   
   # 避免的提示词模式
   avoid_patterns:
@@ -40,26 +189,128 @@ prompt_optimization:
     - "复杂的否定句式"
     - "矛盾的指令"
     - "过多的形容词堆砌"
+    - "超过 300 字的复杂提示词"
+
+# 视频延长功能（多集连续）
+video_extension:
+  description: "使用视频延长功能保持多集视频的连续性"
+  
+  # 延长语法
+  extension_syntax: "将@视频1延长15s"
+  
+  # 工作流程
+  workflow: |
+    1. 生成第一集视频
+    2. 从第二集开始，上传上一集视频作为 @视频1
+    3. 在提示词开头添加：将@视频1延长15s
+    4. 这样可以创建各集间的无缝过渡
+  
+  # 延长示例
+  example: |
+    将@视频1延长15s
+    
+    水墨武侠风格，9:16竖屏，灰白墨黑色调
+    
+    0-3秒画面：承接上一集结尾
+    3-6秒画面：新的情节发展
+    6-9秒画面：冲突升级
+    9-12秒画面：高潮时刻
+    12-15秒画面：悬念结尾
+    
+    【声音】延续上一集配乐风格
+    【参考】@视频1 上一集视频
+
+# 运镜关键词库
+camera_movements:
+  # 推拉镜头
+  push_pull:
+    - keyword: "推镜头"
+      description: "镜头向前推进"
+    - keyword: "缓慢推近"
+      description: "缓慢向前推进"
+    - keyword: "急速推进"
+      description: "快速向前推进"
+    - keyword: "拉镜头"
+      description: "镜头向后拉远"
+    - keyword: "逐渐拉远"
+      description: "缓慢向后拉远"
+  
+  # 左右移动
+  pan:
+    - keyword: "左摇"
+      description: "镜头向左旋转"
+    - keyword: "右摇"
+      description: "镜头向右旋转"
+    - keyword: "横移"
+      description: "镜头水平移动"
+  
+  # 跟随镜头
+  tracking:
+    - keyword: "跟随镜头"
+      description: "镜头跟随主体移动"
+    - keyword: "跟拍"
+      description: "持续跟随主体拍摄"
+  
+  # 环绕镜头
+  orbit:
+    - keyword: "环绕镜头"
+      description: "镜头围绕主体旋转"
+    - keyword: "360度旋转"
+      description: "完整环绕主体一圈"
+  
+  # 升降镜头
+  vertical:
+    - keyword: "升镜头"
+      description: "镜头向上移动"
+    - keyword: "降镜头"
+      description: "镜头向下移动"
+    - keyword: "俯冲"
+      description: "镜头快速向下俯冲"
+  
+  # 特殊运镜
+  special:
+    - keyword: "希区柯克变焦"
+      description: "推拉镜头同时变焦，产生眩晕效果"
+    - keyword: "一镜到底"
+      description: "全程无剪辑的连续镜头"
+    - keyword: "手持晃动"
+      description: "手持拍摄的轻微晃动效果"
 
 # 特定领域的优化参数
 domain_optimization:
   # 知识口播优化
   knowledge_avatar:
     prompt_template: |
-      [人物描述]，[动作描述]，[环境描述]，
-      保持面部清晰，眼神自然，口型同步，
-      [光影描述]，[画质描述]
+      [风格描述]，[画幅比例]，[色调]
+      
+      0-3秒画面：人物出场，建立镜头
+      3-6秒画面：人物开始讲话，口型同步
+      6-9秒画面：重点内容展示
+      9-12秒画面：情感表达
+      12-15秒画面：总结落版
+      
+      【声音】清晰人声 + 轻柔背景音乐
+      【参考】@image1 人物参考
     constraints:
       - "面部无遮挡"
       - "双眼间距占画面宽度≥25%"
       - "保持人物正脸朝向镜头"
       - "避免剧烈头部运动"
+      - "口型同步"
 
   # 影视广告优化
   cinematic_ad:
     prompt_template: |
-      [产品描述]，[材质细节]，[光影描述]，
-      [运镜描述]，[环境描述]，[画质描述]
+      [风格描述]，[画幅比例]，[色调]
+      
+      0-3秒画面：产品特写，材质展示
+      3-6秒画面：产品使用场景
+      6-9秒画面：功能亮点展示
+      9-12秒画面：情感共鸣
+      12-15秒画面：品牌落版
+      
+      【声音】品牌音乐 + 产品音效
+      【参考】@image1 产品参考，@image2 场景参考
     constraints:
       - "突出产品细节和质感"
       - "使用电影级光线"
@@ -69,34 +320,237 @@ domain_optimization:
   # 叙事短剧优化
   narrative_story:
     prompt_template: |
-      [角色描述]，[动作描述]，[场景描述]，
-      [情感氛围]，[光影描述]，[画质描述]
+      [风格描述]，[画幅比例]，[色调]
+      
+      0-3秒画面：场景建立，氛围营造
+      3-6秒画面：角色出场，关系建立
+      6-9秒画面：情节发展，冲突展现
+      9-12秒画面：高潮时刻，情感爆发
+      12-15秒画面：悬念结尾，期待下一集
+      
+      【声音】剧情配乐 + 环境音 + 对白
+      【参考】@image1 角色参考，@image2 场景参考
     constraints:
       - "保持角色一致性"
       - "场景转换自然"
       - "情感表达准确"
       - "避免角色变形"
+      - "为下一集留下悬念"
 
-# 运镜优化参数
-camera_movement_optimization:
-  # 支持的运镜类型
-  supported_movements:
-    - "推进 (zoom in)"
-    - "拉远 (zoom out)"
-    - "左移 (pan left)"
-    - "右移 (pan right)"
-    - "上摇 (tilt up)"
-    - "下摇 (tilt down)"
-    - "跟踪 (tracking shot)"
-    - "环绕 (orbit shot)"
-    - "手持 (handheld)"
-    - "稳定器 (gimbal)"
+  # 电商广告优化
+  ecommerce_ad:
+    prompt_template: |
+      [风格描述]，[画幅比例]，[色调]
+      
+      0-3秒画面：2秒钩子，吸引注意力
+      3-6秒画面：产品展示，核心卖点
+      6-9秒画面：使用场景，效果展示
+      9-12秒画面：用户评价，社会证明
+      12-15秒画面：促销信息，行动号召
+      
+      【声音】动感音乐 + 产品音效
+      【参考】@image1 产品参考
+    constraints:
+      - "前2秒必须抓眼球"
+      - "突出产品核心卖点"
+      - "包含促销信息"
+      - "引导购买行为"
 
-  # 运镜速度建议
-  speed_recommendations:
-    slow: "适用于情感表达、细节展示"
-    medium: "适用于常规叙事、产品展示"
-    fast: "适用于动作场景、社交媒体"
+  # 动漫风格优化
+  anime:
+    prompt_template: |
+      [风格描述]，[画幅比例]，[色调]
+      
+      0-3秒画面：角色出场，动态展示
+      3-6秒画面：技能释放，特效展示
+      6-9秒画面：战斗场面，动作流畅
+      9-12秒画面：情感表达，内心独白
+      12-15秒画面：悬念结尾，期待下一集
+      
+      【声音】动漫配乐 + 音效 + 声优配音
+      【参考】@image1 角色参考
+    constraints:
+      - "保持动漫风格一致性"
+      - "动作流畅自然"
+      - "特效华丽但不杂乱"
+      - "情感表达夸张但真实"
+
+  # 音乐视频优化
+  music_video:
+    prompt_template: |
+      [风格描述]，[画幅比例]，[色调]
+      
+      0-3秒画面：开场视觉，建立氛围
+      3-6秒画面：歌手出场，表演开始
+      6-9秒画面：副歌高潮，视觉爆发
+      9-12秒画面：情感表达，故事穿插
+      12-15秒画面：结尾落版，余韵延续
+      
+      【声音】音乐为主，画面配合节奏
+      【参考】@image1 歌手参考，@audio1 音乐参考
+    constraints:
+      - "画面与音乐节奏同步"
+      - "视觉效果配合歌曲情感"
+      - "包含表演镜头和叙事镜头"
+      - "结尾留有余韵"
+
+# 技能分类体系
+skill_categories:
+  # 创意风格
+  creative_styles:
+    - id: "01"
+      name: "电影风格"
+      description: "影视品质 — 戏剧性光影、镜头语言、景深、调色"
+    - id: "02"
+      name: "3D CGI"
+      description: "3D 渲染 — Pixar、虚幻引擎、照片级、等距"
+    - id: "03"
+      name: "卡通动画"
+      description: "2D 动画 — 赛璐璐、手绘、扁平矢量、水彩"
+    - id: "04"
+      name: "漫画转视频"
+      description: "动态漫画 — 漫画、条漫、分镜、连续画面"
+    - id: "05"
+      name: "打斗场景"
+      description: "动作 — 武术、剑战、追逐、超级英雄"
+    - id: "08"
+      name: "动漫"
+      description: "日本动漫 — 少年、青年、机甲、日常、OP"
+  
+  # 商业营销
+  commercial_marketing:
+    - id: "06"
+      name: "动态设计广告"
+      description: "软件/SaaS — 产品发布、功能展示"
+    - id: "07"
+      name: "电商广告"
+      description: "产品广告 — 时尚、美妆、电子、食品"
+    - id: "09"
+      name: "产品 360°"
+      description: "转盘展示 — 多角度、主视觉、材质"
+    - id: "11"
+      name: "社交钩子"
+      description: "病毒内容 — 抖音/TikTok/Reels/Shorts"
+    - id: "12"
+      name: "品牌故事"
+      description: "品牌叙事 — 创业故事、使命、企业文化"
+  
+  # 行业专项
+  industry_specific:
+    - id: "10"
+      name: "音乐视频"
+      description: "节拍同步 — 表演、叙事、可视化"
+    - id: "13"
+      name: "时尚型录"
+      description: "时尚 — 型录、走秀、穿搭、品牌活动"
+    - id: "14"
+      name: "美食饮品"
+      description: "美食 — 餐厅、食谱、ASMR、食欲诱惑"
+    - id: "15"
+      name: "房地产"
+      description: "房产 — 房屋参观、建筑、室内设计"
+
+# 平台优化
+platform_optimization:
+  # 抖音/TikTok
+  douyin_tiktok:
+    aspect_ratio: "9:16"
+    orientation: "竖屏"
+    duration: "15s"
+    hook_importance: "极高"
+    tips:
+      - "前2秒必须抓眼球"
+      - "节奏要快"
+      - "包含热门话题标签"
+      - "引导点赞评论"
+  
+  # Instagram Reels
+  instagram_reels:
+    aspect_ratio: "9:16"
+    orientation: "竖屏"
+    duration: "15s"
+    hook_importance: "高"
+    tips:
+      - "视觉效果要精美"
+      - "包含品牌元素"
+      - "引导分享"
+  
+  # YouTube
+  youtube:
+    aspect_ratio: "16:9"
+    orientation: "横屏"
+    duration: "15s"
+    hook_importance: "中"
+    tips:
+      - "画质要高"
+      - "包含字幕"
+      - "引导订阅"
+  
+  # B站
+  bilibili:
+    aspect_ratio: "16:9"
+    orientation: "横屏"
+    duration: "15s"
+    hook_importance: "中"
+    tips:
+      - "内容要有深度"
+      - "包含弹幕互动点"
+      - "引导三连"
+
+# 重要限制
+limitations:
+  # 输入限制
+  input_limits:
+    - "最多 9 张图片"
+    - "最多 3 个视频（总时长 15 秒）"
+    - "最多 3 个音频（总时长 15 秒）"
+    - "合计最多 12 个文件"
+    - "单个图片 < 30MB"
+    - "单个视频 < 50MB"
+    - "单个音频 < 15MB"
+  
+  # 输出限制
+  output_limits:
+    - "视频时长 4-15 秒"
+    - "分辨率 720p"
+    - "包含声音"
+  
+  # 提示词限制
+  prompt_limits:
+    - "复杂提示词（300+字）可能不一致"
+    - "敏感词可能导致生成失败"
+    - "视频编辑能力有限"
+    - "大多数修改需要重新生成"
+  
+  # 敏感词规避
+  sensitive_words:
+    description: "平台不会明确告知哪个词触发屏蔽"
+    solution: "使用二分法排查：将提示词分段测试，逐步缩小范围"
+    common_sensitive_words:
+      - "江湖人士"
+      - "暴力血腥"
+      - "政治敏感"
+      - "色情暗示"
+
+# 风格一致性策略
+style_consistency:
+  # 统一风格前缀
+  style_prefix_example: "Chinese ink wash painting style mixed with anime cel-shading"
+  
+  # 角色辨识度
+  character_recognition:
+    method: "通过不同的颜色方案和视觉标记区分角色"
+    example: "主角穿红衣，配角穿蓝衣"
+  
+  # 多角度参考图
+  multi_angle_reference:
+    description: "为每个角色生成多张不同角度和状态的参考图"
+    angles:
+      - "正面全身"
+      - "侧面半身"
+      - "背面全身"
+      - "特写面部"
+      - "动作姿态"
 
 # 光影优化参数
 lighting_optimization:
@@ -107,6 +561,10 @@ lighting_optimization:
     - "戏剧性光线 (dramatic lighting)"
     - "柔光 (soft light)"
     - "环境光 (ambient light)"
+    - "逆光 (backlight)"
+    - "侧光 (side lighting)"
+    - "顶光 (top lighting)"
+    - "底光 (bottom lighting)"
 
   # 避免的光影模式
   avoid_lighting:
@@ -120,14 +578,13 @@ quality_optimization:
   # 推荐的画质描述
   recommended_quality:
     - "高清 (high definition)"
-    - "4K (4K resolution)"
+    - "720p"
     - "电影级 (cinematic)"
     - "写实 (photorealistic)"
     - "细节丰富 (highly detailed)"
 
   # 画质增强关键词
   enhancement_keywords:
-    - "超高清 (ultra HD)"
     - "细节清晰 (sharp details)"
     - "色彩准确 (accurate colors)"
     - "无噪点 (noise-free)"
@@ -145,6 +602,12 @@ error_handling:
       solution: "增加场景描述的连贯性，使用过渡描述"
     - error: "光影失真"
       solution: "使用更具体的光影描述，避免抽象词汇"
+    - error: "敏感词触发"
+      solution: "使用二分法排查敏感词，积累敏感词库"
+    - error: "提示词过长"
+      solution: "简化提示词，控制在 300 字以内"
+    - error: "视频延长不连贯"
+      solution: "在提示词中显式添加转场指令"
 
   # 降级策略
   fallback_strategies:
@@ -152,6 +615,7 @@ error_handling:
     - "减少描述细节"
     - "使用更通用的词汇"
     - "降低画质要求"
+    - "缩短视频时长"
 
 # 性能优化
 performance_optimization:
@@ -161,6 +625,7 @@ performance_optimization:
     - "避免复杂的运镜指令"
     - "选择标准分辨率"
     - "使用推荐的时长范围"
+    - "减少素材数量"
 
   # 质量优化
   quality_tips:
@@ -168,6 +633,8 @@ performance_optimization:
     - "使用具体的光影描述"
     - "包含画质关键词"
     - "避免矛盾的描述"
+    - "使用时间轴格式"
+    - "包含 2 秒钩子"
 
 # 集成配置
 integration:
@@ -189,3 +656,59 @@ integration:
   callback_config:
     webhook_url: "${CALLBACK_URL}"
     events: ["generation_started", "generation_completed", "generation_failed"]
+
+# 使用示例
+usage_examples:
+  # 示例 1：电影风格
+  cinematic_example: |
+    电影风格，16:9横屏，冷色调
+    
+    0-3秒画面：远景建立，孤独的城堡在雾中若隐若现
+    3-6秒画面：镜头推进，城堡大门缓缓打开
+    6-9秒画面：主角出场，背光剪影，神秘感
+    9-12秒画面：特写面部，眼神坚定
+    12-15秒画面：主角转身走向城堡深处
+    
+    【声音】史诗配乐 + 风声 + 脚步声
+    【参考】@image1 角色参考，@image2 场景参考
+  
+  # 示例 2：电商广告
+  ecommerce_example: |
+    时尚电商风格，9:16竖屏，明亮色调
+    
+    0-3秒画面：2秒钩子，模特快速换装
+    3-6秒画面：产品特写，材质细节
+    6-9秒画面：使用场景，效果展示
+    9-12秒画面：用户好评，社会证明
+    12-15秒画面：促销信息，行动号召
+    
+    【声音】动感音乐 + 产品音效
+    【参考】@image1 产品参考
+  
+  # 示例 3：动漫风格
+  anime_example: |
+    日本动漫风格，16:9横屏，鲜艳色调
+    
+    0-3秒画面：角色出场，动态展示
+    3-6秒画面：技能释放，特效展示
+    6-9秒画面：战斗场面，动作流畅
+    9-12秒画面：情感表达，内心独白
+    12-15秒画面：悬念结尾，期待下一集
+    
+    【声音】动漫配乐 + 音效 + 声优配音
+    【参考】@image1 角色参考
+
+# 参考资源
+references:
+  - name: "Seedance 2.0 官方手册"
+    description: "官方平台手册，包含参数、交互方式、多模态能力"
+  - name: "Seedance 2.0 实战案例"
+    description: "戏剧制作、电商广告、舞蹈模仿、科学教育、AI MV 等"
+  - name: "GitHub 高星仓库"
+    repositories:
+      - "Emily2040/seedance-2.0 (5.6k stars)"
+      - "dexhunter/seedance2-skill (3.1k stars)"
+      - "songguoxs/seedance-prompt-skill (2.5k stars)"
+      - "ZeroLu/awesome-seedance (2.2k stars)"
+      - "liangdabiao/Seedance2-Storyboard-Generator (2.0k stars)"
+      - "beshuaxian/higgsfield-seedance2-jineng (719 stars)"
