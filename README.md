@@ -119,7 +119,42 @@ Don't ask the model for "cinematic feel" — answer: *what does this shot do to 
 - 移动应用：iOS, Android
 
 **详细文档：** [多语言词汇表](skills/multilingual-vocabulary.skill) | [验证脚本体系](skills/validation-scripts.skill) | [多平台安装兼容](skills/multi-platform.skill)
-- ❌ 旧：堆砌形容词 → "cinematic, beautiful, 4k, ultra detailed"
+
+### 🆕 v2.5 — Production Ready (最终优化)
+
+**新增文件：**
+
+| 文件 | 说明 |
+|------|------|
+| `CLAUDE.md` | 项目规范文件 |
+| `install.sh` | 一键安装脚本 |
+| `scripts/validate_all.py` | 综合验证脚本 |
+| `scripts/validate_yaml.py` | YAML 格式验证 |
+| `scripts/validate_required_fields.py` | 必需字段验证 |
+| `scripts/validate_vocab_coverage.py` | 词汇覆盖验证 |
+| `scripts/validate_naming_convention.py` | 命名规范验证 |
+| `scripts/validate_version.py` | 版本号验证 |
+
+**一键安装：**
+```bash
+# Claude Code
+curl -sL https://raw.githubusercontent.com/Yuyyxz/kling-prompt-engineering/main/install.sh | bash -s claude
+
+# Cursor
+curl -sL https://raw.githubusercontent.com/Yuyyxz/kling-prompt-engineering/main/install.sh | bash -s cursor
+
+# 自定义目录
+curl -sL https://raw.githubusercontent.com/Yuyyxz/kling-prompt-engineering/main/install.sh | bash -s generic -d ~/.custom/skills/
+```
+
+**自动化验证：**
+```bash
+# 验证所有 Skill 文件
+python scripts/validate_all.py skills/
+
+# 验证单个文件
+python scripts/validate_all.py skills/director-engine.skill
+```- ❌ 旧：堆砌形容词 → "cinematic, beautiful, 4k, ultra detailed"
 - ✅ 新：意图推导 → "这个镜头在做什么？"
 
 **黄金公式更新：**
@@ -340,7 +375,9 @@ Each generation has a finite budget. Pick ONE as primary spend:
 ```
 kling-prompt-engineering/
 ├── README.md                          # This file
+├── CLAUDE.md                          # 🆕 Project conventions
 ├── LICENSE                            # MIT License
+├── install.sh                         # 🆕 Installation script
 ├── 01-directing-engine.md             # Director methodology
 ├── 02-shot-language.md                # Camera grammar reference
 ├── 03-t2v-guide.md                    # Text-to-Video guide
@@ -384,6 +421,13 @@ kling-prompt-engineering/
 │   ├── multilingual-vocabulary.skill  # 🆕 Multilingual Vocabulary (P3)
 │   ├── validation-scripts.skill       # 🆕 Validation Scripts (P3)
 │   └── multi-platform.skill           # 🆕 Multi-Platform (P3)
+├── scripts/                           # 🆕 Validation scripts
+│   ├── validate_all.py                # Comprehensive validation
+│   ├── validate_yaml.py               # YAML format validation
+│   ├── validate_required_fields.py    # Required fields validation
+│   ├── validate_vocab_coverage.py     # Vocabulary coverage validation
+│   ├── validate_naming_convention.py  # Naming convention validation
+│   └── validate_version.py            # Version validation
 └── examples/                          # 🆕 Usage examples
     └── model_routing_examples.yaml    # Model routing examples
 ```
