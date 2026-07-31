@@ -1,0 +1,248 @@
+# 提示词翻译器
+# 在不同视频生成模型之间翻译和优化提示词
+
+name: "prompt_translator"
+version: "1.0"
+description: "AI视频提示词翻译器，支持多语言、多模型适配"
+
+# 翻译规则
+translation_rules:
+  # 中文到英文翻译
+  zh_to_en:
+    # 镜头语言翻译
+    camera_movements:
+      "推进": "zoom in"
+      "拉远": "zoom out"
+      "左移": "pan left"
+      "右移": "pan right"
+      "上摇": "tilt up"
+      "下摇": "tilt down"
+      "跟踪": "tracking shot"
+      "环绕": "orbit shot"
+      "手持": "handheld"
+      "稳定器": "gimbal"
+      "快速摇镜": "whip pan"
+      "固定镜头": "static shot"
+      "慢动作": "slow motion"
+      "快动作": "fast motion"
+      "延时摄影": "time-lapse"
+      "升格镜头": "overcranking"
+      "降格镜头": "undercranking"
+
+    # 主体描述翻译
+    subjects:
+      "人物": "person"
+      "男人": "man"
+      "女人": "woman"
+      "孩子": "child"
+      "老人": "elderly person"
+      "动物": "animal"
+      "猫": "cat"
+      "狗": "dog"
+      "风景": "landscape"
+      "城市": "city"
+      "建筑": "building"
+      "产品": "product"
+
+    # 动作描述翻译
+    actions:
+      "行走": "walking"
+      "奔跑": "running"
+      "跳跃": "jumping"
+      "坐下": "sitting"
+      "站立": "standing"
+      "说话": "speaking"
+      "微笑": "smiling"
+      "哭泣": "crying"
+      "转身": "turning around"
+      "拥抱": "hugging"
+      "亲吻": "kissing"
+      "跳舞": "dancing"
+
+    # 环境描述翻译
+    environments:
+      "室内": "indoor"
+      "室外": "outdoor"
+      "森林": "forest"
+      "海边": "seaside"
+      "山脉": "mountains"
+      "城市街道": "city street"
+      "办公室": "office"
+      "客厅": "living room"
+      "卧室": "bedroom"
+      "厨房": "kitchen"
+      "公园": "park"
+      "沙漠": "desert"
+
+    # 光影描述翻译
+    lighting:
+      "自然光": "natural lighting"
+      "人工光": "artificial lighting"
+      "逆光": "backlight"
+      "侧光": "side lighting"
+      "柔光": "soft light"
+      "硬光": "hard light"
+      "环境光": "ambient light"
+      "戏剧性光线": "dramatic lighting"
+      "电影级光线": "cinematic lighting"
+      "暖色调": "warm tones"
+      "冷色调": "cool tones"
+      "金色时光": "golden hour"
+
+    # 画质描述翻译
+    quality:
+      "高清": "high definition"
+      "4K": "4K resolution"
+      "电影级": "cinematic"
+      "写实": "photorealistic"
+      "动漫": "anime style"
+      "3D": "3D render"
+      "超现实": "surreal"
+      "细节丰富": "highly detailed"
+      "色彩准确": "accurate colors"
+      "无噪点": "noise-free"
+
+  # 英文到中文翻译（用于模型不支持英文时）
+  en_to_zh:
+    # 保留英文标签，增加中文解释
+    preserve_tags: true
+    add_chinese_context: true
+
+# 模型特定翻译
+model_specific_translation:
+  # 可灵模型翻译规则
+  kling:
+    language_preference: "zh"
+    translation_strategy: "direct"
+    optimization_rules:
+      - "保留中文描述的意境"
+      - "增加东方美学元素"
+      - "使用结构化分镜描述"
+
+  # Seedance 模型翻译规则
+  seedance:
+    language_preference: "zh"
+    translation_strategy: "direct"
+    optimization_rules:
+      - "强调动态场景描述"
+      - "使用简洁的动词"
+      - "避免复杂的修饰词"
+
+  # Runway 模型翻译规则
+  runway_gen3:
+    language_preference: "en"
+    translation_strategy: "literal"
+    optimization_rules:
+      - "使用精确的物理描述"
+      - "避免抽象词汇"
+      - "使用标签式描述"
+
+  # Sora 模型翻译规则
+  sora:
+    language_preference: "en"
+    translation_strategy: "natural"
+    optimization_rules:
+      - "使用自然语言描述"
+      - "支持复杂逻辑"
+      - "包含情感描述"
+
+  # Pika 模型翻译规则
+  pika:
+    language_preference: "en"
+    translation_strategy: "simplified"
+    optimization_rules:
+      - "使用简短短语"
+      - "避免复杂句子"
+      - "聚焦核心元素"
+
+# 翻译质量优化
+quality_optimization:
+  # 翻译准确性检查
+  accuracy_check:
+    - rule: "确保专业术语准确翻译"
+      example: "'跟踪镜头' → 'tracking shot'"
+    - rule: "保持描述的具体性"
+      example: "'快速移动' → 'sprinting with air resistance'"
+    - rule: "避免歧义翻译"
+      example: "'光线' → 'lighting' 而不是 'light'"
+
+  # 翻译流畅性优化
+  fluency_optimization:
+    - rule: "符合目标语言的表达习惯"
+      example: "中文：'夕阳下的海边' → 英文：'seaside at sunset'"
+    - rule: "保持描述的节奏感"
+      example: "避免过长的从句结构"
+    - rule: "使用常见的搭配"
+      example: "'电影级光线' → 'cinematic lighting'"
+
+# 翻译示例
+translation_examples:
+  - source_zh: "夕阳下的海边，一对情侣在散步，电影级光线"
+    target_en: "A couple walking along the seaside at sunset, cinematic lighting"
+    model: "runway_gen3"
+
+  - source_zh: "一只猫在沙发上睡觉，自然光，细节丰富"
+    target_en: "A cat sleeping on a sofa, natural lighting, highly detailed"
+    model: "kling"
+
+  - source_zh: "城市夜景，霓虹灯，赛博朋克风格"
+    target_en: "City nightscape with neon lights, cyberpunk style"
+    model: "sora"
+
+# 翻译验证
+validation:
+  # 翻译后验证规则
+  post_translation_validation:
+    - rule: "检查关键词是否保留"
+      example: "'tracking shot' 必须包含在翻译中"
+    - rule: "检查描述长度是否适中"
+      example: "英文翻译建议 50-150 个单词"
+    - rule: "检查是否符合目标模型的偏好"
+      example: "Runway 模型偏好标签式描述"
+
+  # 翻译质量评分
+  quality_scoring:
+    criteria:
+      - name: "准确性"
+        weight: 40
+        description: "专业术语和关键描述的准确性"
+      - name: "流畅性"
+        weight: 30
+        description: "符合目标语言的表达习惯"
+      - name: "完整性"
+        weight: 20
+        description: "是否包含所有关键元素"
+      - name: "适应性"
+        weight: 10
+        description: "是否适合目标模型"
+
+# 翻译缓存
+caching:
+  # 缓存策略
+  strategy: "lru"
+  max_size: 1000
+  ttl: 3600  # 秒
+
+  # 缓存键生成
+  key_generation:
+    - "源语言"
+    - "目标语言"
+    - "目标模型"
+    - "提示词哈希"
+
+# 错误处理
+error_handling:
+  # 翻译错误处理
+  translation_errors:
+    - error: "无法识别的术语"
+      solution: "使用通用描述或查询术语库"
+    - error: "翻译超时"
+      solution: "使用简化翻译或缓存结果"
+    - error: "模型不支持的语言"
+      solution: "转换为模型支持的语言"
+
+  # 降级策略
+  fallback_strategies:
+    - "使用通用翻译"
+    - "保留原始提示词"
+    - "使用简化版本"

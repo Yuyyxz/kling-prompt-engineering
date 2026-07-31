@@ -1,0 +1,142 @@
+# 模型适配器基类
+# 所有模型适配器都继承此基类，确保接口一致性
+
+name: "base_adapter"
+description: "视频生成模型适配器基类，定义通用接口和规范"
+
+# 通用接口定义
+interface:
+  # 输入接口
+  input:
+    - name: "prompt"
+      type: "string"
+      required: true
+      description: "视频生成提示词"
+    - name: "aspect_ratio"
+      type: "string"
+      required: false
+      default: "16:9"
+      description: "视频宽高比"
+    - name: "duration"
+      type: "string"
+      required: false
+      default: "5s"
+      description: "视频时长"
+    - name: "style"
+      type: "string"
+      required: false
+      description: "视频风格"
+    - name: "reference_image"
+      type: "string"
+      required: false
+      description: "参考图片URL"
+
+  # 输出接口
+  output:
+    - name: "video_url"
+      type: "string"
+      description: "生成的视频URL"
+    - name: "video_id"
+      type: "string"
+      description: "视频唯一标识符"
+    - name: "generation_time"
+      type: "number"
+      description: "生成耗时（秒）"
+    - name: "metadata"
+      type: "object"
+      description: "视频元数据"
+
+# 通用约束
+constraints:
+  # 提示词约束
+  prompt:
+    max_length: 500
+    min_length: 10
+    language_support: ["zh", "en"]
+    avoid_patterns:
+      - "过于抽象的描述"
+      - "矛盾的指令"
+      - "不安全的內容"
+
+  # 视频约束
+  video:
+    max_duration: "60s"
+    min_duration: "2s"
+    max_resolution: "4K"
+    supported_formats: ["mp4", "mov"]
+
+# 通用优化规则
+optimization:
+  # 提示词优化
+  prompt_optimization:
+    - rule: "使用具体动词代替抽象描述"
+      example: "用'奔跑'代替'快速移动'"
+    - rule: "包含光影和画质描述"
+      example: "'电影级光线，4K分辨率'"
+    - rule: "避免否定句式"
+      example: "用'保持清晰'代替'不要模糊'"
+
+  # 性能优化
+  performance_optimization:
+    - rule: "选择适当的分辨率"
+      reason: "高分辨率增加生成时间"
+    - rule: "控制视频时长"
+      reason: "长视频需要更多计算资源"
+    - rule: "使用标准宽高比"
+      reason: "非标准比例可能影响质量"
+
+# 错误处理
+error_handling:
+  # 通用错误代码
+  error_codes:
+    - code: "INVALID_PROMPT"
+      description: "提示词无效"
+      solution: "检查提示词格式和内容"
+    - code: "GENERATION_FAILED"
+      description: "生成失败"
+      solution: "简化提示词或稍后重试"
+    - code: "TIMEOUT"
+      description: "生成超时"
+      solution: "减少视频时长或降低分辨率"
+    - code: "QUOTA_EXCEEDED"
+      description: "配额超限"
+      solution: "等待配额重置或升级套餐"
+
+  # 重试策略
+  retry_strategy:
+    max_retries: 3
+    retry_delay: 5
+    backoff_factor: 2
+
+# 监控与日志
+monitoring:
+  # 性能指标
+  metrics:
+    - name: "generation_time"
+      description: "视频生成耗时"
+      unit: "seconds"
+    - name: "success_rate"
+      description: "生成成功率"
+      unit: "percentage"
+    - name: "prompt_length"
+      description: "提示词长度"
+      unit: "characters"
+
+  # 日志配置
+  logging:
+    level: "INFO"
+    include_prompt: true
+    include_parameters: true
+    include_errors: true
+
+# 测试用例
+test_cases:
+  - name: "基础测试"
+    prompt: "一只猫在沙发上睡觉"
+    expected: "成功生成视频"
+  - name: "复杂场景测试"
+    prompt: "夕阳下的海边，一对情侣在散步，电影级光线"
+    expected: "生成高质量视频"
+  - name: "边界测试"
+    prompt: "这是一段非常非常长的提示词，包含了大量的描述性语言，用于测试系统的处理能力..."
+    expected: "提示词过长错误"

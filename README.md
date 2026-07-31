@@ -16,9 +16,33 @@ Don't ask the model for "cinematic feel" — answer: *what does this shot do to 
 
 ---
 
-## 🎯 Quick Start — 30 秒入门
+## 🚀 v2.0 — Model Router & Multi-Model Support
 
-### 方式一：导入 Skill（推荐，零门槛）
+**新增功能：** 模型路由层（Model Router）支持多模型适配，包括：
+
+| 模型 | 提供商 | 特点 | 适配器 |
+|------|--------|------|--------|
+| **Kling** | 快手 | 东方意境、电影质感、口型同步 | `adapters/kling_adapter.yaml` |
+| **Seedance** | 字节跳动 | 中文语义、动态场景、快速生成 | `adapters/seedance_adapter.yaml` |
+| **Runway Gen-3** | Runway | 物理规律、运动画笔、相机控制 | `adapters/runway_adapter.yaml` |
+| **Sora** | OpenAI | 长视频连贯、复杂叙事、世界模型 | `adapters/sora_adapter.yaml` |
+| **Pika** | Pika Labs | 快速生成、局部修改、口型同步 | `adapters/pika_adapter.yaml` |
+
+**使用方法：**
+
+```yaml
+# 示例：使用模型路由层生成视频
+1. 选择内容类型（知识口播/影视广告/叙事短剧等）
+2. 路由层自动选择最适合的模型
+3. 提示词翻译器优化提示词
+4. 调用模型生成视频
+```
+
+**详细文档：** [模型路由层使用示例](examples/model_routing_examples.yaml)
+
+---
+
+## 🎯 Quick Start — 30 秒入门
 
 ```
 1. 下载 skills/ 目录下的 .skill 文件
@@ -114,6 +138,14 @@ Constraints: No text, no logos, no extra people.
 | [15-kling-rest-api](15-kling-rest-api.md) | REST API calls: domain, auth, params, multi-shot, voice, Python templates |
 | [16-ai-short-drama-workflow](16-ai-short-drama-workflow.md) | AI Short Drama workflow: script → storyboard → video → editing |
 | [17-prompt-package-template](17-prompt-package-template.md) | Prompt Package template: standard output format, character cards, first-frame rules |
+| [18-troubleshooting-gallery](18-troubleshooting-gallery.md) | Troubleshooting Gallery: 10种常见失败模式 + 修复方法 + 快速诊断表 |
+| [19-cinematography-dictionary](19-cinematography-dictionary.md) | Cinematography Dictionary: 100+项电影摄影术语速查 |
+| [20-style-tags](20-style-tags.md) | Style Tags: 8导演风格 + 8视觉风格 + 6情绪风格 + 组合公式 |
+| [adapters/model_router](adapters/model_router.yaml) | Model Router: 多模型路由层配置 |
+| [adapters/seedance_adapter](adapters/seedance_adapter.yaml) | Seedance Adapter: 字节跳动模型专属配置 |
+| [adapters/kling_adapter](adapters/kling_adapter.yaml) | Kling Adapter: 快手模型专属配置 |
+| [adapters/prompt_translator](adapters/prompt_translator.yaml) | Prompt Translator: 多语言提示词翻译器 |
+| [examples/model_routing_examples](examples/model_routing_examples.yaml) | Model Routing Examples: 5个完整使用示例 |
 
 ---
 
@@ -210,7 +242,24 @@ kling-prompt-engineering/
 ├── 14-model-mechanics.md              # Model mechanics theory
 ├── 15-kling-rest-api.md               # REST API reference
 ├── 16-ai-short-drama-workflow.md      # Short drama production workflow
-└── 17-prompt-package-template.md      # Prompt package format
+├── 17-prompt-package-template.md      # Prompt package format
+├── 18-troubleshooting-gallery.md      # Troubleshooting gallery
+├── 19-cinematography-dictionary.md    # Cinematography dictionary
+├── 20-style-tags.md                   # Style tags system
+├── adapters/                          # 🆕 Model adapters
+│   ├── model_router.yaml              # Model router configuration
+│   ├── base_adapter.yaml              # Base adapter interface
+│   ├── kling_adapter.yaml             # Kling model adapter
+│   ├── seedance_adapter.yaml          # Seedance model adapter
+│   └── prompt_translator.yaml         # Prompt translator
+├── skills/                            # 🆕 Skill files
+│   ├── kling-director.skill           # Director-style prompt generator
+│   ├── kling-screenwriting.skill      # Screenwriting assistant
+│   ├── kling-templates.skill          # Template library
+│   ├── kling-style-tags.skill         # Style tags system
+│   └── kling-storyboard.skill         # Storyboard output
+└── examples/                          # 🆕 Usage examples
+    └── model_routing_examples.yaml    # Model routing examples
 ```
 
 ---

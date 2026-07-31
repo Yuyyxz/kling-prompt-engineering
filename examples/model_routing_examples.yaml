@@ -1,0 +1,240 @@
+# 模型路由层使用示例
+# 展示如何使用模型路由层和适配器生成视频
+
+# 示例 1：知识口播视频生成
+example_1_knowledge_avatar:
+  description: "生成一个知识口播视频，使用可灵模型"
+  
+  # 用户输入
+  user_input:
+    topic: "人工智能的发展历程"
+    style: "专业讲解"
+    duration: "8秒"
+    aspect_ratio: "16:9"
+  
+  # 路由决策
+  routing_decision:
+    content_type: "knowledge_avatar"
+    language: "zh"
+    preferred_models: ["kling", "seedance"]
+    selected_model: "kling"
+    reason: "可灵模型对中文语境理解佳，支持口型同步"
+  
+  # 提示词优化
+  optimized_prompt: |
+    中景镜头，一位专业的科技讲解员站在现代化的办公室背景前，
+    面部清晰，眼神自然，口型同步，正在讲解人工智能的发展历程，
+    保持人物正脸朝向镜头，双眼间距占画面宽度≥25%，
+    自然光线，细节丰富，4K分辨率，镜头缓慢推进
+  
+  # 生成参数
+  generation_params:
+    model: "kling"
+    aspect_ratio: "16:9"
+    duration: "8s"
+    quality: "high"
+  
+  # 预期输出
+  expected_output:
+    video_url: "https://example.com/video_1.mp4"
+    generation_time: "45秒"
+    quality_score: 85
+
+# 示例 2：影视广告视频生成
+example_2_cinematic_ad:
+  description: "生成一个产品广告视频，使用 Runway 模型"
+  
+  # 用户输入
+  user_input:
+    product: "高端护肤品"
+    style: "电影级质感"
+    duration: "10秒"
+    aspect_ratio: "16:9"
+  
+  # 路由决策
+  routing_decision:
+    content_type: "cinematic_ad"
+    language: "en"
+    preferred_models: ["runway_gen3", "kling"]
+    selected_model: "runway_gen3"
+    reason: "Runway 模型对材质细节和电影质感表现力强"
+  
+  # 提示词优化（英文）
+  optimized_prompt: |
+    Close-up shot, a luxurious skincare product on a marble surface,
+    soft ambient lighting with golden hour tones, water droplets
+    on the product surface reflecting light, slow zoom in,
+    cinematic color grading, 4K resolution, highly detailed,
+    camera slowly orbits around the product
+  
+  # 生成参数
+  generation_params:
+    model: "runway_gen3"
+    aspect_ratio: "16:9"
+    duration: "10s"
+    quality: "high"
+  
+  # 预期输出
+  expected_output:
+    video_url: "https://example.com/video_2.mp4"
+    generation_time: "60秒"
+    quality_score: 92
+
+# 示例 3：社交媒体短视频生成
+example_3_social_media:
+  description: "生成一个抖音风格的短视频，使用 Seedance 模型"
+  
+  # 用户输入
+  user_input:
+    content: "美食制作过程"
+    style: "快节奏"
+    duration: "5秒"
+    aspect_ratio: "9:16"
+  
+  # 路由决策
+  routing_decision:
+    content_type: "social_media"
+    language: "zh"
+    preferred_models: ["seedance", "pika"]
+    selected_model: "seedance"
+    reason: "Seedance 模型生成速度快，适合社交媒体内容"
+  
+  # 提示词优化
+  optimized_prompt: |
+    快速剪辑，特写镜头，厨师的手在制作精致的甜点，
+    巧克力酱缓缓淋下，奶油花绽放，食材细节清晰，
+    暖色调光线，高饱和度色彩，前3秒必须抓眼球，
+    快速切换不同角度，节奏感强
+  
+  # 生成参数
+  generation_params:
+    model: "seedance"
+    aspect_ratio: "9:16"
+    duration: "5s"
+    quality: "standard"
+  
+  # 预期输出
+  expected_output:
+    video_url: "https://example.com/video_3.mp4"
+    generation_time: "25秒"
+    quality_score: 78
+
+# 示例 4：叙事短剧视频生成
+example_4_narrative_story:
+  description: "生成一个叙事短剧片段，使用 Sora 模型"
+  
+  # 用户输入
+  user_input:
+    story: "一个关于时间旅行的故事"
+    style: "科幻悬疑"
+    duration: "15秒"
+    aspect_ratio: "16:9"
+  
+  # 路由决策
+  routing_decision:
+    content_type: "narrative_story"
+    language: "en"
+    preferred_models: ["sora", "kling"]
+    selected_model: "sora"
+    reason: "Sora 模型支持长视频连贯性和复杂叙事"
+  
+  # 提示词优化（英文）
+  optimized_prompt: |
+    A scientist in a futuristic lab steps into a time machine,
+    the environment shifts from modern to ancient Rome,
+    dramatic lighting with neon accents, tracking shot following
+    the character through time portals, cinematic color grading,
+    4K resolution, highly detailed, camera follows subject
+    from behind, slight low angle
+  
+  # 生成参数
+  generation_params:
+    model: "sora"
+    aspect_ratio: "16:9"
+    duration: "15s"
+    quality: "high"
+  
+  # 预期输出
+  expected_output:
+    video_url: "https://example.com/video_4.mp4"
+    generation_time: "90秒"
+    quality_score: 95
+
+# 示例 5：风景宣传片生成
+example_5_landscape:
+  description: "生成一个城市宣传片，使用可灵模型"
+  
+  # 用户输入
+  user_input:
+    location: "上海外滩"
+    style: "大气感"
+    duration: "10秒"
+    aspect_ratio: "16:9"
+  
+  # 路由决策
+  routing_decision:
+    content_type: "landscape"
+    language: "zh"
+    preferred_models: ["kling", "sora"]
+    selected_model: "kling"
+    reason: "可灵模型对东方意境理解佳，适合城市宣传"
+  
+  # 提示词优化
+  optimized_prompt: |
+    延时摄影，上海外滩夜景，东方明珠塔灯光璀璨，
+    黄浦江面倒映城市灯光，车流光轨划过画面，
+    电影级光线，冷色调，细节丰富，4K分辨率，
+    镜头从江边缓慢推进，展现城市繁华
+  
+  # 生成参数
+  generation_params:
+    model: "kling"
+    aspect_ratio: "16:9"
+    duration: "10s"
+    quality: "high"
+  
+  # 预期输出
+  expected_output:
+    video_url: "https://example.com/video_5.mp4"
+    generation_time: "55秒"
+    quality_score: 88
+
+# 使用流程总结
+workflow_summary:
+  steps:
+    - step: 1
+      action: "分析用户输入"
+      description: "识别内容类型、语言、时长等关键信息"
+    
+    - step: 2
+      action: "路由决策"
+      description: "根据内容类型和语言选择最适合的模型"
+    
+    - step: 3
+      action: "提示词优化"
+      description: "根据目标模型优化提示词结构和内容"
+    
+    - step: 4
+      action: "生成参数设置"
+      description: "设置宽高比、时长、质量等参数"
+    
+    - step: 5
+      action: "调用模型生成"
+      description: "使用适配器调用目标模型生成视频"
+    
+    - step: 6
+      action: "输出标准化"
+      description: "将输出转换为标准格式"
+
+# 最佳实践
+best_practices:
+  - practice: "明确内容类型"
+    description: "准确识别内容类型，选择最适合的模型"
+  - practice: "优化提示词结构"
+    description: "使用黄金公式：[镜头语言] + [主体动作与细节] + [环境氛围] + [光影与画质] + [运动轨迹]"
+  - practice: "控制视频时长"
+    description: "根据平台要求选择合适的时长，避免过长或过短"
+  - practice: "选择合适分辨率"
+    description: "根据用途选择合适的分辨率，平衡质量和性能"
+  - practice: "测试不同模型"
+    description: "同一内容尝试不同模型，选择最佳效果"

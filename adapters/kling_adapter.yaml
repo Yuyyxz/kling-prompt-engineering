@@ -1,0 +1,225 @@
+# 可灵（Kling）模型适配器
+# 快手视频生成模型专属配置
+
+model_id: "kling"
+model_name: "Kling"
+provider: "Kuaishou"
+version: "1.0"
+description: "快手视频生成模型，东方意境理解佳，电影级质感"
+
+# 模型能力配置
+capabilities:
+  max_duration: "10s"
+  min_duration: "2s"
+  aspect_ratios: ["16:9", "9:16", "1:1"]
+  max_resolution: "1080p"
+  fps: 24
+  supports_image_input: true
+  supports_video_input: false
+  supports_audio_input: false
+  supports_multi_language_lipsync: true
+  supports_smart_storyboard: true
+
+# 提示词优化规则
+prompt_optimization:
+  # 语言偏好
+  language_preference: "zh"
+  
+  # 提示词结构
+  structure:
+    - "镜头语言"
+    - "主体描述"
+    - "动作描述"
+    - "环境描述"
+    - "光影描述"
+    - "画质描述"
+  
+  # 推荐的提示词长度
+  recommended_length: "30-200 字符"
+  
+  # 黄金公式
+  golden_formula: "[镜头语言] + [主体动作与细节] + [环境氛围] + [光影与画质] + [运动轨迹]"
+  
+  # 避免的提示词模式
+  avoid_patterns:
+    - "过于抽象的描述"
+    - "复杂的否定句式"
+    - "矛盾的指令"
+    - "过多的形容词堆砌"
+
+# 特定领域的优化参数
+domain_optimization:
+  # 知识口播优化
+  knowledge_avatar:
+    prompt_template: |
+      [镜头语言]，[人物描述]，[动作描述]，[环境描述]，
+      保持面部清晰，眼神自然，口型同步，
+      [光影描述]，[画质描述]，[运动轨迹]
+    constraints:
+      - "面部无遮挡"
+      - "双眼间距占画面宽度≥25%"
+      - "保持人物正脸朝向镜头"
+      - "避免剧烈头部运动"
+
+  # 影视广告优化
+  cinematic_ad:
+    prompt_template: |
+      [镜头语言]，[产品描述]，[材质细节]，[光影描述]，
+      [运镜描述]，[环境描述]，[画质描述]，[运动轨迹]
+    constraints:
+      - "突出产品细节和质感"
+      - "使用电影级光线"
+      - "避免塑料感材质"
+      - "保持画面稳定性"
+
+  # 叙事短剧优化
+  narrative_story:
+    prompt_template: |
+      [镜头语言]，[角色描述]，[动作描述]，[场景描述]，
+      [情感氛围]，[光影描述]，[画质描述]，[运动轨迹]
+    constraints:
+      - "保持角色一致性"
+      - "场景转换自然"
+      - "情感表达准确"
+      - "避免角色变形"
+
+# 运镜优化参数
+camera_movement_optimization:
+  # 支持的运镜类型
+  supported_movements:
+    - "推进 (zoom in)"
+    - "拉远 (zoom out)"
+    - "左移 (pan left)"
+    - "右移 (pan right)"
+    - "上摇 (tilt up)"
+    - "下摇 (tilt down)"
+    - "跟踪 (tracking shot)"
+    - "环绕 (orbit shot)"
+    - "手持 (handheld)"
+    - "稳定器 (gimbal)"
+    - "whip pan（快速摇镜）"
+
+  # 运镜速度建议
+  speed_recommendations:
+    slow: "适用于情感表达、细节展示"
+    medium: "适用于常规叙事、产品展示"
+    fast: "适用于动作场景、社交媒体"
+
+# 光影优化参数
+lighting_optimization:
+  # 推荐的光影模式
+  recommended_lighting:
+    - "自然光 (natural lighting)"
+    - "电影级光线 (cinematic lighting)"
+    - "戏剧性光线 (dramatic lighting)"
+    - "柔光 (soft light)"
+    - "环境光 (ambient light)"
+    - "琥珀色夕照斜切"
+
+  # 避免的光影模式
+  avoid_lighting:
+    - "过曝 (overexposed)"
+    - "欠曝 (underexposed)"
+    - "强烈的硬光 (harsh hard light)"
+    - "不自然的色彩 (unnatural colors)"
+
+# 画质优化参数
+quality_optimization:
+  # 推荐的画质描述
+  recommended_quality:
+    - "高清 (high definition)"
+    - "4K (4K resolution)"
+    - "电影级 (cinematic)"
+    - "写实 (photorealistic)"
+    - "细节丰富 (highly detailed)"
+
+  # 画质增强关键词
+  enhancement_keywords:
+    - "超高清 (ultra HD)"
+    - "细节清晰 (sharp details)"
+    - "色彩准确 (accurate colors)"
+    - "无噪点 (noise-free)"
+    - "专业级 (professional grade)"
+
+# 风格标签支持
+style_tags:
+  # 导演风格
+  director_styles:
+    - "韦斯·安德森 (Wes Anderson)"
+    - "诺兰 (Christopher Nolan)"
+    - "库布里克 (Stanley Kubrick)"
+    - "王家卫 (Wong Kar-wai)"
+    - "宫崎骏 (Hayao Miyazaki)"
+
+  # 视觉风格
+  visual_styles:
+    - "赛博朋克 (Cyberpunk)"
+    - "蒸汽朋克 (Steampunk)"
+    - "复古胶片 (Vintage Film)"
+    - "黑色电影 (Film Noir)"
+    - "极简主义 (Minimalism)"
+
+  # 情绪风格
+  mood_styles:
+    - "治愈系 (Healing)"
+    - "紧张悬疑 (Suspense)"
+    - "热血燃 (Energetic)"
+    - "文艺忧郁 (Melancholic)"
+    - "浪漫 (Romantic)"
+
+# 错误处理与降级策略
+error_handling:
+  # 常见错误及解决方案
+  common_errors:
+    - error: "面部变形"
+      solution: "增加'保持面部清晰'约束，减少面部区域的运动幅度"
+    - error: "动作不自然"
+      solution: "简化动作描述，使用更具体的动词"
+    - error: "场景突变"
+      solution: "增加场景描述的连贯性，使用过渡描述"
+    - error: "光影失真"
+      solution: "使用更具体的光影描述，避免抽象词汇"
+
+  # 降级策略
+  fallback_strategies:
+    - "简化提示词结构"
+    - "减少描述细节"
+    - "使用更通用的词汇"
+    - "降低画质要求"
+
+# 性能优化
+performance_optimization:
+  # 生成速度优化
+  speed_tips:
+    - "使用简短的提示词"
+    - "避免复杂的运镜指令"
+    - "选择标准分辨率"
+    - "使用推荐的时长范围"
+
+  # 质量优化
+  quality_tips:
+    - "提供详细的主体描述"
+    - "使用具体的光影描述"
+    - "包含画质关键词"
+    - "避免矛盾的描述"
+
+# 集成配置
+integration:
+  # API 配置
+  api_config:
+    endpoint: "https://api.kling.kuaishou.com/v1"
+    authentication: "api_key"
+    rate_limit: "100 requests/hour"
+    timeout: 300
+
+  # 输出配置
+  output_config:
+    format: "mp4"
+    quality: "high"
+    metadata: true
+    download_url: true
+
+  # 回调配置
+  callback_config:
+    webhook_url: "${CALLBACK_URL}"
+    events: ["generation_started", "generation_completed", "generation_failed"]

@@ -1,0 +1,209 @@
+# Model Router Configuration
+# 模型路由层配置 - 将用户需求路由到最适合的视频生成模型
+
+version: "1.0"
+description: "AI 视频生成模型路由层，支持多模型适配和智能路由"
+
+# 模型注册表
+models:
+  seedance:
+    name: "Seedance"
+    provider: "ByteDance"
+    description: "字节跳动视频生成模型，擅长中文语境和动态场景"
+    max_duration: "10s"
+    aspect_ratios: ["16:9", "9:16", "1:1"]
+    special_features:
+      - "中文语义理解"
+      - "动态场景生成"
+      - "人物动作流畅"
+    prompt_style: "中文优先，支持长文本"
+    language_preference: "zh"
+
+  kling:
+    name: "Kling"
+    provider: "Kuaishou"
+    description: "快手视频生成模型，东方意境理解佳"
+    max_duration: "10s"
+    aspect_ratios: ["16:9", "9:16", "1:1"]
+    special_features:
+      - "东方美学"
+      - "电影级质感"
+      - "多语言口型同步"
+    prompt_style: "中英文混合，支持结构化分镜"
+    language_preference: "zh"
+
+  runway_gen3:
+    name: "Runway Gen-3"
+    provider: "Runway"
+    description: "西方主流视频生成模型，物理规律理解强"
+    max_duration: "10s"
+    aspect_ratios: ["16:9", "9:16", "1:1", "4:3"]
+    special_features:
+      - "物理规律准确"
+      - "运动画笔"
+      - "相机控制"
+    prompt_style: "英文标签优先，精简物理描述"
+    language_preference: "en"
+
+  sora:
+    name: "Sora"
+    provider: "OpenAI"
+    description: "OpenAI 视频生成模型，长视频连贯性强"
+    max_duration: "60s"
+    aspect_ratios: ["16:9", "9:16", "1:1", "4:3", "3:4"]
+    special_features:
+      - "长视频连贯"
+      - "复杂叙事"
+      - "世界模型"
+    prompt_style: "英文自然语言，支持复杂逻辑"
+    language_preference: "en"
+
+  pika:
+    name: "Pika"
+    provider: "Pika Labs"
+    description: "轻量级视频生成模型，快速迭代"
+    max_duration: "4s"
+    aspect_ratios: ["16:9", "1:1"]
+    special_features:
+      - "快速生成"
+      - "局部修改"
+      - "口型同步"
+    prompt_style: "英文短标签，简洁指令"
+    language_preference: "en"
+
+# 路由规则
+routing_rules:
+  # 基于语言的路由
+  language_routing:
+    chinese_content:
+      preferred_models: ["kling", "seedance"]
+      fallback: "runway_gen3"
+    english_content:
+      preferred_models: ["runway_gen3", "sora"]
+      fallback: "kling"
+    multilingual:
+      preferred_models: ["kling", "sora"]
+      fallback: "runway_gen3"
+
+  # 基于内容类型的路由
+  content_routing:
+    knowledge_avatar:
+      description: "知识口播、数字人"
+      preferred_models: ["kling", "seedance"]
+      requirements: ["口型同步", "人物稳定性"]
+    cinematic_ad:
+      description: "影视广告、产品宣传"
+      preferred_models: ["runway_gen3", "kling"]
+      requirements: ["电影质感", "材质细节"]
+    narrative_story:
+      description: "叙事短剧、故事"
+      preferred_models: ["sora", "kling"]
+      requirements: ["长视频连贯", "角色一致性"]
+    social_media:
+      description: "社交媒体短视频"
+      preferred_models: ["seedance", "pika"]
+      requirements: ["快速生成", "前3秒抓眼球"]
+    product_demo:
+      description: "产品展示、电商"
+      preferred_models: ["kling", "seedance"]
+      requirements: ["产品细节", "功能演示"]
+    landscape:
+      description: "风景、城市宣传"
+      preferred_models: ["sora", "runway_gen3"]
+      requirements: ["大气感", "长镜头"]
+
+  # 基于时长的路由
+  duration_routing:
+    short:  # < 5秒
+      preferred_models: ["pika", "seedance"]
+    medium:  # 5-15秒
+      preferred_models: ["kling", "runway_gen3"]
+    long:  # > 15秒
+      preferred_models: ["sora", "kling"]
+
+# 提示词翻译规则
+prompt_translation:
+  # 中文到英文的翻译规则
+  zh_to_en:
+    # 镜头语言翻译
+    camera_movements:
+      "推进": "zoom in"
+      "拉远": "zoom out"
+      "左移": "pan left"
+      "右移": "pan right"
+      "上摇": "tilt up"
+      "下摇": "tilt down"
+      "跟踪": "tracking shot"
+      "环绕": "orbit shot"
+      "手持": "handheld"
+      "稳定器": "gimbal"
+
+    # 光影描述翻译
+    lighting:
+      "自然光": "natural lighting"
+      "人工光": "artificial lighting"
+      "逆光": "backlight"
+      "侧光": "side lighting"
+      "柔光": "soft light"
+      "硬光": "hard light"
+      "环境光": "ambient light"
+      "戏剧性光线": "dramatic lighting"
+      "电影级光线": "cinematic lighting"
+
+    # 画质描述翻译
+    quality:
+      "高清": "high definition"
+      "4K": "4K resolution"
+      "电影级": "cinematic"
+      "写实": "photorealistic"
+      "动漫": "anime style"
+      "3D": "3D render"
+      "超现实": "surreal"
+
+  # 英文到中文的翻译规则（用于模型不支持英文时）
+  en_to_zh:
+    # 保留英文标签，增加中文解释
+    preserve_tags: true
+    add_chinese_context: true
+
+# 输出标准化
+output_standardization:
+  # 视频格式标准化
+  video_format:
+    container: "mp4"
+    codec: "h264"
+    fps: 24
+
+  # 分辨率标准化
+  resolution:
+    "16:9": "1920x1080"
+    "9:16": "1080x1920"
+    "1:1": "1080x1080"
+    "4:3": "1440x1080"
+    "3:4": "1080x1440"
+
+  # 元数据标准化
+  metadata:
+    include_prompt: true
+    include_model: true
+    include_parameters: true
+    include_generation_time: true
+
+# 错误处理
+error_handling:
+  # 模型不可用时的降级策略
+  model_fallback:
+    enabled: true
+    max_retries: 2
+    fallback_chain: ["primary", "secondary", "tertiary"]
+
+  # 生成失败时的重试策略
+  generation_retry:
+    enabled: true
+    max_retries: 3
+    retry_delay: 5  # 秒
+
+  # 超时处理
+  timeout:
+    generation_timeout: 300  # 秒
+    polling_interval: 5  # 秒
