@@ -16,7 +16,28 @@ Don't ask the model for "cinematic feel" — answer: *what does this shot do to 
 
 ---
 
-## 🚀 Quick Start — 30 秒入门
+## 🎯 Quick Start — 30 秒入门
+
+### 方式一：导入 Skill（推荐，零门槛）
+
+```
+1. 下载 skills/ 目录下的 .skill 文件
+2. 导入 Claude / GPT / 其他 AI 工具
+3. 直接说话："帮我拍一个产品视频"
+4. AI 自动引导你完成提示词生成
+```
+
+**可用 Skill：**
+
+| Skill | 用途 | 触发词 |
+|-------|------|--------|
+| `kling-director.skill` | 导演式提示词生成 | "帮我拍"、"AI视频"、"可灵" |
+| `kling-screenwriting.skill` | 编剧助手 | "编剧"、"写剧本"、"故事" |
+| `kling-templates.skill` | 即用模板库（30+类型） | "模板"、"给我一个提示词" |
+| `kling-style-tags.skill` | 风格标签系统 | "风格"、"宫崎骏"、"赛博朋克" |
+| `kling-storyboard.skill` | 分镜表输出 | "分镜"、"storyboard" |
+
+### 方式二：读文档（进阶）
 
 ```
 1. What does this shot do to the audience? (one intention)
