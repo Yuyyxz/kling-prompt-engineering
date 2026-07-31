@@ -1,0 +1,511 @@
+# 多语言电影词汇表
+# 6 种语言的原生电影词汇，不是翻译，是原生表达
+
+name: "multilingual-vocabulary"
+version: "1.0"
+description: "多语言电影词汇表，支持 6 种语言的原生电影词汇"
+
+# 核心理念
+philosophy: |
+  不是翻译，是原生表达。
+  
+  每种语言都有自己独特的电影表达方式。
+  中文的"水墨武侠"不能翻译成"ink wash martial arts"，应该保留原生表达。
+
+# 支持的语言
+supported_languages:
+  - code: "zh"
+    name: "中文"
+    description: "简体中文"
+  
+  - code: "en"
+    name: "English"
+    description: "英语"
+  
+  - code: "ja"
+    name: "日本語"
+    description: "日语"
+  
+  - code: "ko"
+    name: "한국어"
+    description: "韩语"
+  
+  - code: "es"
+    name: "Español"
+    description: "西班牙语"
+  
+  - code: "ru"
+    name: "Русский"
+    description: "俄语"
+
+# 中文电影词汇
+chinese_vocabulary:
+  # 视觉风格
+  visual_styles:
+    - term: "水墨武侠"
+      description: "中国传统的水墨画风格与武侠元素结合"
+      keywords: ["水墨", "武侠", "江湖", "侠客"]
+    
+    - term: "国风动漫"
+      description: "中国风格的动漫"
+      keywords: ["国风", "古风", "仙侠", "玄幻"]
+    
+    - term: "赛博朋克"
+      description: "未来科技与黑暗风格结合"
+      keywords: ["赛博", "朋克", "霓虹", "未来"]
+    
+    - term: "复古胶片"
+      description: "怀旧的胶片质感"
+      keywords: ["复古", "胶片", "怀旧", "颗粒感"]
+  
+  # 镜头语言
+  camera_language:
+    - term: "远景"
+      description: "展示环境，建立规模"
+    
+    - term: "中景"
+      description: "展示人物上半身"
+    
+    - term: "近景"
+      description: "聚焦面部"
+    
+    - term: "特写"
+      description: "聚焦细节"
+    
+    - term: "推镜头"
+      description: "镜头向前推进"
+    
+    - term: "拉镜头"
+      description: "镜头向后拉远"
+    
+    - term: "环绕镜头"
+      description: "镜头围绕主体旋转"
+  
+  # 光影描述
+  lighting:
+    - term: "自然光"
+      description: "真实、自然的光线"
+    
+    - term: "电影级光线"
+      description: "戏剧性、层次感的光线"
+    
+    - term: "逆光"
+      description: "从主体背后照射的光线"
+    
+    - term: "侧光"
+      description: "从侧面照射的光线"
+  
+  # 情感表达
+  emotions:
+    - term: "孤独"
+      description: "独自一人，感到寂寞"
+    
+    - term: "坚定"
+      description: "意志坚强，不动摇"
+    
+    - term: "温柔"
+      description: "温和、体贴"
+    
+    - term: "愤怒"
+      description: "强烈的不满和敌意"
+
+# 英文电影词汇
+english_vocabulary:
+  # 视觉风格
+  visual_styles:
+    - term: "Cinematic"
+      description: "影视品质，戏剧性光影"
+    
+    - term: "Film Noir"
+      description: "黑色电影风格"
+    
+    - term: "Cyberpunk"
+      description: "赛博朋克风格"
+    
+    - term: "Vintage Film"
+      description: "复古胶片风格"
+  
+  # 镜头语言
+  camera_language:
+    - term: "Wide Shot"
+      description: "远景"
+    
+    - term: "Medium Shot"
+      description: "中景"
+    
+    - term: "Close-up"
+      description: "近景"
+    
+    - term: "Extreme Close-up"
+      description: "特写"
+    
+    - term: "Push In"
+      description: "推镜头"
+    
+    - term: "Pull Out"
+      description: "拉镜头"
+    
+    - term: "Orbit Shot"
+      description: "环绕镜头"
+  
+  # 光影描述
+  lighting:
+    - term: "Natural Lighting"
+      description: "自然光"
+    
+    - term: "Cinematic Lighting"
+      description: "电影级光线"
+    
+    - term: "Backlight"
+      description: "逆光"
+    
+    - term: "Side Lighting"
+      description: "侧光"
+  
+  # 情感表达
+  emotions:
+    - term: "Lonely"
+      description: "孤独"
+    
+    - term: "Determined"
+      description: "坚定"
+    
+    - term: "Gentle"
+      description: "温柔"
+    
+    - term: "Angry"
+      description: "愤怒"
+
+# 日语电影词汇
+japanese_vocabulary:
+  # 视觉风格
+  visual_styles:
+    - term: "アニメ"
+      description: "动漫风格"
+    
+    - term: "水墨画"
+      description: "水墨画风格"
+    
+    - term: "和風"
+      description: "日本传统风格"
+    
+    - term: "サイバーパンク"
+      description: "赛博朋克风格"
+  
+  # 镜头语言
+  camera_language:
+    - term: "ロングショット"
+      description: "远景"
+    
+    - term: "ミディアムショット"
+      description: "中景"
+    
+    - term: "クローズアップ"
+      description: "近景"
+    
+    - term: "エクストリームクローズアップ"
+      description: "特写"
+    
+    - term: "プッシュイン"
+      description: "推镜头"
+    
+    - term: "プルアウト"
+      description: "拉镜头"
+    
+    - term: "オービットショット"
+      description: "环绕镜头"
+  
+  # 光影描述
+  lighting:
+    - term: "自然光"
+      description: "自然光"
+    
+    - term: "シネマティックライティング"
+      description: "电影级光线"
+    
+    - term: "逆光"
+      description: "逆光"
+    
+    - term: "サイドライティング"
+      description: "侧光"
+  
+  # 情感表达
+  emotions:
+    - term: "孤独"
+      description: "孤独"
+    
+    - term: "決意"
+      description: "坚定"
+    
+    - term: "優しい"
+      description: "温柔"
+    
+    - term: "怒り"
+      description: "愤怒"
+
+# 韩语电影词汇
+korean_vocabulary:
+  # 视觉风格
+  visual_styles:
+    - term: "한국 애니메이션"
+      description: "韩国动漫风格"
+    
+    - term: "사이버펑크"
+      description: "赛博朋克风格"
+    
+    - term: "빈티지 필름"
+      description: "复古胶片风格"
+  
+  # 镜头语言
+  camera_language:
+    - term: "와이드 샷"
+      description: "远景"
+    
+    - term: "미디엄 샷"
+      description: "中景"
+    
+    - term: "클로즈업"
+      description: "近景"
+    
+    - term: "익스트림 클로즈업"
+      description: "特写"
+    
+    - term: "푸시 인"
+      description: "推镜头"
+    
+    - term: "풀 아웃"
+      description: "拉镜头"
+    
+    - term: "오빗 샷"
+      description: "环绕镜头"
+  
+  # 光影描述
+  lighting:
+    - term: "자연광"
+      description: "自然光"
+    
+    - term: "시네마틱 라이팅"
+      description: "电影级光线"
+    
+    - term: "백라이트"
+      description: "逆光"
+    
+    - term: "사이드 라이팅"
+      description: "侧光"
+  
+  # 情感表达
+  emotions:
+    - term: "외로움"
+      description: "孤独"
+    
+    - term: "결단력"
+      description: "坚定"
+    
+    - term: "부드러움"
+      description: "温柔"
+    
+    - term: "분노"
+      description: "愤怒"
+
+# 西班牙语电影词汇
+spanish_vocabulary:
+  # 视觉风格
+  visual_styles:
+    - term: "Cinematográfico"
+      description: "电影风格"
+    
+    - term: "Cine Negro"
+      description: "黑色电影风格"
+    
+    - term: "Cyberpunk"
+      description: "赛博朋克风格"
+    
+    - term: "Película Vintage"
+      description: "复古胶片风格"
+  
+  # 镜头语言
+  camera_language:
+    - term: "Plano General"
+      description: "远景"
+    
+    - term: "Plano Medio"
+      description: "中景"
+    
+    - term: "Primer Plano"
+      description: "近景"
+    
+    - term: "Primerísimo Primer Plano"
+      description: "特写"
+    
+    - term: "Avance"
+      description: "推镜头"
+    
+    - term: "Retroceso"
+      description: "拉镜头"
+    
+    - term: "Plano Orbital"
+      description: "环绕镜头"
+  
+  # 光影描述
+  lighting:
+    - term: "Luz Natural"
+      description: "自然光"
+    
+    - term: "Iluminación Cinematográfica"
+      description: "电影级光线"
+    
+    - term: "Contraluz"
+      description: "逆光"
+    
+    - term: "Lateral"
+      description: "侧光"
+  
+  # 情感表达
+  emotions:
+    - term: "Soledad"
+      description: "孤独"
+    
+    - term: "Determinación"
+      description: "坚定"
+    
+    - term: "Gentileza"
+      description: "温柔"
+    
+    - term: "Ira"
+      description: "愤怒"
+
+# 俄语电影词汇
+russian_vocabulary:
+  # 视觉风格
+  visual_styles:
+    - term: "Кинематографический"
+      description: "电影风格"
+    
+    - term: "Фильм Нуар"
+      description: "黑色电影风格"
+    
+    - term: "Киберпанк"
+      description: "赛博朋克风格"
+    
+    - term: "Винтажная Плёнка"
+      description: "复古胶片风格"
+  
+  # 镜头语言
+  camera_language:
+    - term: "Общий План"
+      description: "远景"
+    
+    - term: "Средний План"
+      description: "中景"
+    
+    - term: "Крупный План"
+      description: "近景"
+    
+    - term: "Крупный План (Экстремальный)"
+      description: "特写"
+    
+    - term: "Наложение"
+      description: "推镜头"
+    
+    - term: "Отдаление"
+      description: "拉镜头"
+    
+    - term: "Орбитальный План"
+      description: "环绕镜头"
+  
+  # 光影描述
+  lighting:
+    - term: "Естественный Свет"
+      description: "自然光"
+    
+    - term: "Кинематографическое Освещение"
+      description: "电影级光线"
+    
+    - term: "Контровой Свет"
+      description: "逆光"
+    
+    - term: "Боковой Свет"
+      description: "侧光"
+  
+  # 情感表达
+  emotions:
+    - term: "Одиночество"
+      description: "孤独"
+    
+    - term: "Решимость"
+      description: "坚定"
+    
+    - term: "Нежность"
+      description: "温柔"
+    
+    - term: "Гнев"
+      description: "愤怒"
+
+# 多语言翻译规则
+translation_rules:
+  # 保留原生表达
+  preserve_native: |
+    某些术语应该保留原生表达，不要翻译：
+    - 中文：水墨武侠、国风动漫、江湖、侠客
+    - 日语：アニメ、和風、侍、忍者
+    - 韩语：한국 애니메이션、한류
+    - 西班牙语：Cine Negro
+    - 俄语：Фильм Нуар
+  
+  # 翻译映射
+  translation_mapping:
+    - source: "zh"
+      target: "en"
+      mappings:
+        "水墨武侠": "Chinese Ink Wash Martial Arts"
+        "国风动漫": "Chinese Style Anime"
+        "赛博朋克": "Cyberpunk"
+        "复古胶片": "Vintage Film"
+    
+    - source: "zh"
+      target: "ja"
+      mappings:
+        "水墨武侠": "水墨武術"
+        "国风动漫": "中国風アニメ"
+        "赛博朋克": "サイバーパンク"
+        "复古胶片": "ビンテージフィルム"
+
+# 使用示例
+usage_examples:
+  # 示例 1：中文提示词
+  example_chinese:
+    language: "zh"
+    prompt: |
+      水墨武侠风格，9:16竖屏，灰白墨黑色调
+      
+      0-3秒画面：远景，广阔的江湖，大雪纷飞
+      3-6秒画面：镜头推进，主角出场，背光剪影
+      6-9秒画面：拔剑起舞，剑光闪烁
+      9-12秒画面：与敌人对峙，剑拔弩张
+      12-15秒画面：收剑入鞘，转身离去
+      
+      【声音】古筝配乐 + 风声 + 剑鸣
+      【参考】@image1 角色参考，@image2 场景参考
+  
+  # 示例 2：英文提示词
+  example_english:
+    language: "en"
+    prompt: |
+      Chinese Ink Wash Martial Arts style, 9:16 vertical, gray and black tones
+      
+      0-3s: Wide shot, vast martial arts world, heavy snow
+      3-6s: Push in, protagonist appears, backlight silhouette
+      6-9s: Sword dance, sword light flickers
+      9-12s: Confrontation with enemy, tension rises
+      12-15s: Sheathe sword, turn and leave
+      
+      【Sound】Guqin music + wind + sword sounds
+      【Reference】@image1 character reference, @image2 scene reference
+
+# 约束条件
+constraints:
+  - "必须使用原生表达，不要翻译"
+  - "必须支持 6 种语言"
+  - "必须包含完整的词汇表"
+  - "必须提供翻译映射"
+  - "必须提供使用示例"

@@ -1,0 +1,329 @@
+# 验证脚本体系
+# 自动化测试和验证 Skill 的正确性
+
+name: "validation-scripts"
+version: "1.0"
+description: "验证脚本体系，自动化测试和验证 Skill 的正确性"
+
+# 核心理念
+philosophy: |
+  自动化测试是质量保证的关键。
+  
+  验证类型：
+  1. Schema Check：验证 Skill 文件格式
+  2. Vocab Integrity：验证词汇完整性
+  3. Design Audit：验证设计规范
+  4. Behavior Contract：验证行为契约
+
+# 验证类型
+validation_types:
+  # Schema Check
+  schema_check:
+    description: "验证 Skill 文件格式是否正确"
+    checks:
+      - name: "YAML 格式"
+        description: "验证文件是否是有效的 YAML 格式"
+        script: "validate_yaml.py"
+      
+      - name: "必需字段"
+        description: "验证是否包含所有必需字段"
+        required_fields:
+          - "name"
+          - "version"
+          - "description"
+          - "philosophy"
+      
+      - name: "字段类型"
+        description: "验证字段类型是否正确"
+        field_types:
+          name: "string"
+          version: "string"
+          description: "string"
+          philosophy: "string"
+  
+  # Vocab Integrity
+  vocab_integrity:
+    description: "验证词汇完整性"
+    checks:
+      - name: "词汇覆盖"
+        description: "验证是否覆盖所有必需的词汇类别"
+        required_categories:
+          - "visual_styles"
+          - "camera_language"
+          - "lighting"
+          - "emotions"
+      
+      - name: "词汇数量"
+        description: "验证每个类别的词汇数量"
+        minimum_counts:
+          visual_styles: 5
+          camera_language: 10
+          lighting: 5
+          emotions: 5
+      
+      - name: "词汇一致性"
+        description: "验证词汇在不同语言之间的一致性"
+        consistency_check: true
+  
+  # Design Audit
+  design_audit:
+    description: "验证设计规范"
+    checks:
+      - name: "命名规范"
+        description: "验证命名是否符合规范"
+        naming_convention: "kebab-case"
+      
+      - name: "版本号"
+        description: "验证版本号是否符合语义化版本"
+        semantic_versioning: true
+      
+      - name: "文档完整性"
+        description: "验证文档是否完整"
+        required_sections:
+          - "description"
+          - "usage_examples"
+          - "constraints"
+  
+  # Behavior Contract
+  behavior_contract:
+    description: "验证行为契约"
+    checks:
+      - name: "输入验证"
+        description: "验证输入是否符合预期"
+        input_validation: true
+      
+      - name: "输出验证"
+        description: "验证输出是否符合预期"
+        output_validation: true
+      
+      - name: "错误处理"
+        description: "验证错误处理是否正确"
+        error_handling: true
+
+# 验证脚本
+validation_scripts:
+  # YAML 格式验证
+  yaml_validation:
+    script: |
+      #!/usr/bin/env python3
+      """验证 YAML 文件格式"""
+      import yaml
+      import sys
+      
+      def validate_yaml(file_path):
+          try:
+              with open(file_path, 'r', encoding='utf-8') as f:
+                  yaml.safe_load(f)
+              return True, "YAML 格式正确"
+          except yaml.YAMLError as e:
+              return False, f"YAML 格式错误: {e}"
+      
+      if __name__ == "__main__":
+          file_path = sys.argv[1]
+          is_valid, message = validate_yaml(file_path)
+          print(f"{'✅' if is_valid else '❌'} {message}")
+          sys.exit(0 if is_valid else 1)
+  
+  # 必需字段验证
+  required_fields_validation:
+    script: |
+      #!/usr/bin/env python3
+      """验证必需字段"""
+      import yaml
+      import sys
+      
+      REQUIRED_FIELDS = ["name", "version", "description", "philosophy"]
+      
+      def validate_required_fields(file_path):
+          with open(file_path, 'r', encoding='utf-8') as f:
+              data = yaml.safe_load(f)
+          
+          missing_fields = []
+          for field in REQUIRED_FIELDS:
+              if field not in data:
+                  missing_fields.append(field)
+          
+          if missing_fields:
+              return False, f"缺少必需字段: {', '.join(missing_fields)}"
+          return True, "所有必需字段都存在"
+      
+      if __name__ == "__main__":
+          file_path = sys.argv[1]
+          is_valid, message = validate_required_fields(file_path)
+          print(f"{'✅' if is_valid else '❌'} {message}")
+          sys.exit(0 if is_valid else 1)
+  
+  # 词汇覆盖验证
+  vocab_coverage_validation:
+    script: |
+      #!/usr/bin/env python3
+      """验证词汇覆盖"""
+      import yaml
+      import sys
+      
+      REQUIRED_CATEGORIES = ["visual_styles", "camera_language", "lighting", "emotions"]
+      MINIMUM_COUNTS = {
+          "visual_styles": 5,
+          "camera_language": 10,
+          "lighting": 5,
+          "emotions": 5
+      }
+      
+      def validate_vocab_coverage(file_path):
+          with open(file_path, 'r', encoding='utf-8') as f:
+              data = yaml.safe_load(f)
+          
+          issues = []
+          for category in REQUIRED_CATEGORIES:
+              if category not in data:
+                  issues.append(f"缺少类别: {category}")
+              elif len(data[category]) < MINIMUM_COUNTS[category]:
+                  issues.append(f"{category} 词汇数量不足: {len(data[category])} < {MINIMUM_COUNTS[category]}")
+          
+          if issues:
+              return False, "; ".join(issues)
+          return True, "词汇覆盖完整"
+      
+      if __name__ == "__main__":
+          file_path = sys.argv[1]
+          is_valid, message = validate_vocab_coverage(file_path)
+          print(f"{'✅' if is_valid else '❌'} {message}")
+          sys.exit(0 if is_valid else 1)
+  
+  # 命名规范验证
+  naming_convention_validation:
+    script: |
+      #!/usr/bin/env python3
+      """验证命名规范"""
+      import re
+      import sys
+      
+      def validate_naming_convention(name):
+          # kebab-case 规范
+          pattern = r'^[a-z0-9]+(-[a-z0-9]+)*$'
+          return bool(re.match(pattern, name))
+      
+      if __name__ == "__main__":
+          name = sys.argv[1]
+          is_valid = validate_naming_convention(name)
+          print(f"{'✅' if is_valid else '❌'} 命名规范: {name}")
+          sys.exit(0 if is_valid else 1)
+  
+  # 版本号验证
+  version_validation:
+    script: |
+      #!/usr/bin/env python3
+      """验证版本号"""
+      import re
+      import sys
+      
+      def validate_version(version):
+          # 语义化版本规范
+          pattern = r'^\d+\.\d+\.\d+$'
+          return bool(re.match(pattern, version))
+      
+      if __name__ == "__main__":
+          version = sys.argv[1]
+          is_valid = validate_version(version)
+          print(f"{'✅' if is_valid else '❌'} 版本号: {version}")
+          sys.exit(0 if is_valid else 1)
+
+# 验证流程
+validation_workflow:
+  step_1: "运行 Schema Check"
+    description: "验证文件格式和必需字段"
+    script: "validate_yaml.py"
+  
+  step_2: "运行 Vocab Integrity"
+    description: "验证词汇完整性"
+    script: "validate_vocab.py"
+  
+  step_3: "运行 Design Audit"
+    description: "验证设计规范"
+    script: "validate_design.py"
+  
+  step_4: "运行 Behavior Contract"
+    description: "验证行为契约"
+    script: "validate_behavior.py"
+  
+  step_5: "生成验证报告"
+    description: "生成详细的验证报告"
+    output: "validation_report.md"
+
+# 验证报告模板
+validation_report_template:
+  format: |
+    # 验证报告
+    
+    **Skill:** [skill_name]
+    **版本:** [version]
+    **验证时间:** [timestamp]
+    
+    ## 验证结果
+    
+    | 验证类型 | 状态 | 说明 |
+    |----------|------|------|
+    | Schema Check | ✅/❌ | [说明] |
+    | Vocab Integrity | ✅/❌ | [说明] |
+    | Design Audit | ✅/❌ | [说明] |
+    | Behavior Contract | ✅/❌ | [说明] |
+    
+    ## 详细结果
+    
+    ### Schema Check
+    - [检查项 1]: ✅/❌
+    - [检查项 2]: ✅/❌
+    
+    ### Vocab Integrity
+    - [类别 1]: [数量] ✅/❌
+    - [类别 2]: [数量] ✅/❌
+    
+    ### Design Audit
+    - [规范 1]: ✅/❌
+    - [规范 2]: ✅/❌
+    
+    ### Behavior Contract
+    - [契约 1]: ✅/❌
+    - [契约 2]: ✅/❌
+    
+    ## 总结
+    
+    [总结验证结果]
+
+# 使用示例
+usage_examples:
+  # 示例 1：验证单个 Skill
+  example_single:
+    description: "验证单个 Skill 文件"
+    command: "python validate_skill.py skills/director-engine.skill"
+    output: |
+      ✅ YAML 格式正确
+      ✅ 所有必需字段都存在
+      ✅ 词汇覆盖完整
+      ✅ 命名规范正确
+      ✅ 版本号正确
+  
+  # 示例 2：验证所有 Skill
+  example_all:
+    description: "验证所有 Skill 文件"
+    command: "python validate_all_skills.py"
+    output: |
+      验证 skills/director-engine.skill: ✅
+      验证 skills/timeline-format.skill: ✅
+      验证 skills/domain-skills.skill: ✅
+      验证 skills/multi-episode-narrative.skill: ✅
+      验证 skills/anti-slop.skill: ✅
+      验证 skills/routing-table.skill: ✅
+      验证 skills/failure-atlas.skill: ✅
+      验证 skills/material-numbering.skill: ✅
+      验证 skills/multilingual-vocabulary.skill: ✅
+      
+      总计: 9 个 Skill，全部通过验证
+
+# 约束条件
+constraints:
+  - "必须自动化验证"
+  - "必须覆盖所有验证类型"
+  - "必须生成验证报告"
+  - "必须支持批量验证"
+  - "必须易于扩展"

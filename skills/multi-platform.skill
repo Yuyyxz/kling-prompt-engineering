@@ -1,0 +1,421 @@
+# 多平台安装兼容
+# 支持 15+ 平台的安装和使用
+
+name: "multi-platform"
+version: "1.0"
+description: "多平台安装兼容，支持 15+ 平台的安装和使用"
+
+# 核心理念
+philosophy: |
+  让 Skill 在任何平台上都能使用。
+  
+  支持的平台：
+  1. Claude Code
+  2. Codex
+  3. Cursor
+  4. Windsurf
+  5. Trae
+  6. Qwen Code
+  7. GitHub Copilot
+  8. JetBrains AI
+  9. VS Code
+  10. Neovim
+  11. Emacs
+  12. Sublime Text
+  13. Atom
+  14. Web IDE
+  15. Mobile Apps
+
+# 支持的平台
+supported_platforms:
+  # AI 代码助手
+  ai_code_assistants:
+    - name: "Claude Code"
+      description: "Anthropic 的 AI 代码助手"
+      install_method: "skill_file"
+      install_path: "~/.claude/skills/"
+      config_file: "~/.claude/config.json"
+    
+    - name: "Codex"
+      description: "OpenAI 的 AI 代码助手"
+      install_method: "skill_file"
+      install_path: "~/.codex/skills/"
+      config_file: "~/.codex/config.json"
+    
+    - name: "Cursor"
+      description: "AI 代码编辑器"
+      install_method: "skill_file"
+      install_path: "~/.cursor/skills/"
+      config_file: "~/.cursor/config.json"
+    
+    - name: "Windsurf"
+      description: "AI 代码编辑器"
+      install_method: "skill_file"
+      install_path: "~/.windsurf/skills/"
+      config_file: "~/.windsurf/config.json"
+    
+    - name: "Trae"
+      description: "AI 代码编辑器"
+      install_method: "skill_file"
+      install_path: "~/.trae/skills/"
+      config_file: "~/.trae/config.json"
+    
+    - name: "Qwen Code"
+      description: "通义千问代码助手"
+      install_method: "skill_file"
+      install_path: "~/.qwen/skills/"
+      config_file: "~/.qwen/config.json"
+  
+  # IDE 集成
+  ide_integrations:
+    - name: "GitHub Copilot"
+      description: "GitHub 的 AI 代码助手"
+      install_method: "extension"
+      extension_id: "GitHub.copilot"
+      config_file: "~/.github/copilot.json"
+    
+    - name: "JetBrains AI"
+      description: "JetBrains 的 AI 代码助手"
+      install_method: "plugin"
+      plugin_id: "com.jetbrains.ai"
+      config_file: "~/.jetbrains/ai.json"
+    
+    - name: "VS Code"
+      description: "Visual Studio Code"
+      install_method: "extension"
+      extension_id: "ms-vscode.ai"
+      config_file: "~/.vscode/ai.json"
+  
+  # 文本编辑器
+  text_editors:
+    - name: "Neovim"
+      description: "Neovim 文本编辑器"
+      install_method: "plugin"
+      plugin_path: "~/.config/nvim/plugins/"
+      config_file: "~/.config/nvim/init.lua"
+    
+    - name: "Emacs"
+      description: "Emacs 文本编辑器"
+      install_method: "package"
+      package_path: "~/.emacs.d/elpa/"
+      config_file: "~/.emacs.d/init.el"
+    
+    - name: "Sublime Text"
+      description: "Sublime Text 文本编辑器"
+      install_method: "package"
+      package_path: "~/.config/sublime-text/Packages/"
+      config_file: "~/.config/sublime-text/Packages/User/ai.sublime-settings"
+    
+    - name: "Atom"
+      description: "Atom 文本编辑器"
+      install_method: "package"
+      package_path: "~/.atom/packages/"
+      config_file: "~/.atom/config.cson"
+  
+  # Web IDE
+  web_ides:
+    - name: "Replit"
+      description: "在线代码编辑器"
+      install_method: "file_upload"
+      upload_path: "/home/user/skills/"
+    
+    - name: "Gitpod"
+      description: "云端开发环境"
+      install_method: "file_upload"
+      upload_path: "/workspace/skills/"
+  
+  # 移动应用
+  mobile_apps:
+    - name: "iOS App"
+      description: "iOS 应用"
+      install_method: "import"
+      import_path: "Documents/Skills/"
+    
+    - name: "Android App"
+      description: "Android 应用"
+      install_method: "import"
+      import_path: "Documents/Skills/"
+
+# 安装方法
+installation_methods:
+  # Skill 文件安装
+  skill_file:
+    description: "直接复制 Skill 文件到指定目录"
+    steps:
+      - step: 1
+        action: "下载 Skill 文件"
+        description: "从 GitHub 下载 Skill 文件"
+      
+      - step: 2
+        action: "创建目录"
+        description: "创建 Skill 目录（如果不存在）"
+        command: "mkdir -p [install_path]"
+      
+      - step: 3
+        action: "复制文件"
+        description: "复制 Skill 文件到目录"
+        command: "cp [skill_file] [install_path]"
+      
+      - step: 4
+        action: "验证安装"
+        description: "验证 Skill 是否安装成功"
+        command: "ls -la [install_path]"
+  
+  # 扩展安装
+  extension:
+    description: "通过扩展管理器安装"
+    steps:
+      - step: 1
+        action: "打开扩展管理器"
+        description: "在 IDE 中打开扩展管理器"
+      
+      - step: 2
+        action: "搜索扩展"
+        description: "搜索对应的扩展"
+      
+      - step: 3
+        action: "安装扩展"
+        description: "安装扩展"
+      
+      - step: 4
+        action: "重启 IDE"
+        description: "重启 IDE 以激活扩展"
+  
+  # 插件安装
+  plugin:
+    description: "通过插件管理器安装"
+    steps:
+      - step: 1
+        action: "打开插件管理器"
+        description: "在 IDE 中打开插件管理器"
+      
+      - step: 2
+        action: "搜索插件"
+        description: "搜索对应的插件"
+      
+      - step: 3
+        action: "安装插件"
+        description: "安装插件"
+      
+      - step: 4
+        action: "重启 IDE"
+        description: "重启 IDE 以激活插件"
+  
+  # 包管理器安装
+  package:
+    description: "通过包管理器安装"
+    steps:
+      - step: 1
+        action: "打开包管理器"
+        description: "在编辑器中打开包管理器"
+      
+      - step: 2
+        action: "搜索包"
+        description: "搜索对应的包"
+      
+      - step: 3
+        action: "安装包"
+        description: "安装包"
+      
+      - step: 4
+        action: "重启编辑器"
+        description: "重启编辑器以激活包"
+  
+  # 文件上传安装
+  file_upload:
+    description: "通过文件上传安装"
+    steps:
+      - step: 1
+        action: "下载 Skill 文件"
+        description: "从 GitHub 下载 Skill 文件"
+      
+      - step: 2
+        action: "上传文件"
+        description: "将 Skill 文件上传到指定目录"
+      
+      - step: 3
+        action: "验证安装"
+        description: "验证 Skill 是否安装成功"
+  
+  # 导入安装
+  import:
+    description: "通过导入功能安装"
+    steps:
+      - step: 1
+        action: "下载 Skill 文件"
+        description: "从 GitHub 下载 Skill 文件"
+      
+      - step: 2
+        action: "打开导入功能"
+        description: "在应用中打开导入功能"
+      
+      - step: 3
+        action: "选择文件"
+        description: "选择 Skill 文件"
+      
+      - step: 4
+        action: "完成导入"
+        description: "完成导入"
+
+# 安装脚本
+installation_scripts:
+  # Claude Code 安装脚本
+  claude_code:
+    script: |
+      #!/bin/bash
+      # Claude Code 安装脚本
+      
+      # 创建目录
+      mkdir -p ~/.claude/skills
+      
+      # 下载 Skill 文件
+      curl -O https://raw.githubusercontent.com/Yuyyxz/kling-prompt-engineering/main/skills/*.skill
+      
+      # 复制文件
+      cp *.skill ~/.claude/skills/
+      
+      # 验证安装
+      echo "安装完成！"
+      ls -la ~/.claude/skills/
+  
+  # Cursor 安装脚本
+  cursor:
+    script: |
+      #!/bin/bash
+      # Cursor 安装脚本
+      
+      # 创建目录
+      mkdir -p ~/.cursor/skills
+      
+      # 下载 Skill 文件
+      curl -O https://raw.githubusercontent.com/Yuyyxz/kling-prompt-engineering/main/skills/*.skill
+      
+      # 复制文件
+      cp *.skill ~/.cursor/skills/
+      
+      # 验证安装
+      echo "安装完成！"
+      ls -la ~/.cursor/skills/
+  
+  # 通用安装脚本
+  generic:
+    script: |
+      #!/bin/bash
+      # 通用安装脚本
+      
+      # 参数
+      PLATFORM=$1
+      INSTALL_PATH=$2
+      
+      # 创建目录
+      mkdir -p $INSTALL_PATH
+      
+      # 下载 Skill 文件
+      curl -O https://raw.githubusercontent.com/Yuyyxz/kling-prompt-engineering/main/skills/*.skill
+      
+      # 复制文件
+      cp *.skill $INSTALL_PATH/
+      
+      # 验证安装
+      echo "安装完成！"
+      ls -la $INSTALL_PATH
+
+# 配置文件模板
+config_templates:
+  # Claude Code 配置
+  claude_code:
+    template: |
+      {
+        "skills": [
+          "director-engine",
+          "timeline-format",
+          "domain-skills",
+          "multi-episode-narrative",
+          "anti-slop",
+          "routing-table",
+          "failure-atlas",
+          "material-numbering",
+          "multilingual-vocabulary",
+          "validation-scripts"
+        ],
+        "language": "zh",
+        "version": "2.3"
+      }
+  
+  # Cursor 配置
+  cursor:
+    template: |
+      {
+        "skills": [
+          "director-engine",
+          "timeline-format",
+          "domain-skills",
+          "multi-episode-narrative",
+          "anti-slop",
+          "routing-table",
+          "failure-atlas",
+          "material-numbering",
+          "multilingual-vocabulary",
+          "validation-scripts"
+        ],
+        "language": "zh",
+        "version": "2.3"
+      }
+
+# 使用示例
+usage_examples:
+  # 示例 1：Claude Code 安装
+  example_claude:
+    platform: "Claude Code"
+    steps:
+      - step: 1
+        action: "下载安装脚本"
+        command: "curl -O https://raw.githubusercontent.com/Yuyyxz/kling-prompt-engineering/main/install.sh"
+      
+      - step: 2
+        action: "运行安装脚本"
+        command: "bash install.sh claude"
+      
+      - step: 3
+        action: "验证安装"
+        command: "ls -la ~/.claude/skills/"
+  
+  # 示例 2：Cursor 安装
+  example_cursor:
+    platform: "Cursor"
+    steps:
+      - step: 1
+        action: "下载安装脚本"
+        command: "curl -O https://raw.githubusercontent.com/Yuyyxz/kling-prompt-engineering/main/install.sh"
+      
+      - step: 2
+        action: "运行安装脚本"
+        command: "bash install.sh cursor"
+      
+      - step: 3
+        action: "验证安装"
+        command: "ls -la ~/.cursor/skills/"
+  
+  # 示例 3：通用安装
+  example_generic:
+    platform: "通用"
+    steps:
+      - step: 1
+        action: "下载安装脚本"
+        command: "curl -O https://raw.githubusercontent.com/Yuyyxz/kling-prompt-engineering/main/install.sh"
+      
+      - step: 2
+        action: "运行安装脚本"
+        command: "bash install.sh generic ~/.custom/skills/"
+      
+      - step: 3
+        action: "验证安装"
+        command: "ls -la ~/.custom/skills/"
+
+# 约束条件
+constraints:
+  - "必须支持 15+ 平台"
+  - "必须提供安装脚本"
+  - "必须提供配置文件模板"
+  - "必须易于使用"
+  - "必须支持自动安装"

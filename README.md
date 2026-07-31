@@ -86,6 +86,39 @@ Don't ask the model for "cinematic feel" — answer: *what does this shot do to 
 - 道具素材：P01-P99
 
 **详细文档：** [路由表](skills/routing-table.skill) | [失败诊断图谱](skills/failure-atlas.skill) | [素材编号系统](skills/material-numbering.skill)**核心理念：**
+
+### 🆕 v2.4 — Multilingual & Validation (P3 优先级)
+
+**新增组件：**
+
+| 组件 | 说明 | 文件 |
+|------|------|------|
+| **多语言词汇表** | 6 种语言的原生电影词汇 | `skills/multilingual-vocabulary.skill` |
+| **验证脚本体系** | 自动化测试和验证 | `skills/validation-scripts.skill` |
+| **多平台安装兼容** | 支持 15+ 平台 | `skills/multi-platform.skill` |
+
+**多语言支持：**
+- 中文（zh）：水墨武侠、国风动漫、江湖、侠客
+- English（en）：Cinematic, Film Noir, Cyberpunk, Vintage Film
+- 日本語（ja）：アニメ、和風、サイバーパンク
+- 한국어（ko）：한국 애니메이션、사이버펑크
+- Español（es）：Cinematográfico, Cine Negro
+- Русский（ru）：Кинематографический, Фильм Нуар
+
+**验证脚本体系：**
+- Schema Check：验证文件格式
+- Vocab Integrity：验证词汇完整性
+- Design Audit：验证设计规范
+- Behavior Contract：验证行为契约
+
+**多平台安装兼容：**
+- AI 代码助手：Claude Code, Codex, Cursor, Windsurf, Trae, Qwen Code
+- IDE 集成：GitHub Copilot, JetBrains AI, VS Code
+- 文本编辑器：Neovim, Emacs, Sublime Text, Atom
+- Web IDE：Replit, Gitpod
+- 移动应用：iOS, Android
+
+**详细文档：** [多语言词汇表](skills/multilingual-vocabulary.skill) | [验证脚本体系](skills/validation-scripts.skill) | [多平台安装兼容](skills/multi-platform.skill)
 - ❌ 旧：堆砌形容词 → "cinematic, beautiful, 4k, ultra detailed"
 - ✅ 新：意图推导 → "这个镜头在做什么？"
 
@@ -347,7 +380,10 @@ kling-prompt-engineering/
 │   ├── anti-slop.skill                # 🆕 Anti-Slop (P1)
 │   ├── routing-table.skill            # 🆕 Routing Table (P2)
 │   ├── failure-atlas.skill            # 🆕 Failure Atlas (P2)
-│   └── material-numbering.skill       # 🆕 Material Numbering (P2)
+│   ├── material-numbering.skill       # 🆕 Material Numbering (P2)
+│   ├── multilingual-vocabulary.skill  # 🆕 Multilingual Vocabulary (P3)
+│   ├── validation-scripts.skill       # 🆕 Validation Scripts (P3)
+│   └── multi-platform.skill           # 🆕 Multi-Platform (P3)
 └── examples/                          # 🆕 Usage examples
     └── model_routing_examples.yaml    # Model routing examples
 ```
