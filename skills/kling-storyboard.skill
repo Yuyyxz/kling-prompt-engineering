@@ -1,132 +1,404 @@
-# 分镜表输出规范
+# 分镜表输出规范 (Storyboard Output Specification)
+# 11 维格式 + spatial/temporal 分离
 
-> 可灵AI分镜表输出模板，用于从剧本自动生成可执行的分镜表。
+name: "kling-storyboard"
+version: "2.0"
+description: "11 维分镜表输出规范，支持 spatial/temporal 分离、负面提示词、约束条件"
 
----
+# 核心理念
+philosophy: |
+  分镜表是视频制作的蓝图。
+  不是"写提示词"，是"画分镜图"。
 
-## 九列分镜表格式
-
-| 列名 | 说明 | 示例 |
-|------|------|------|
-| **镜头编号** | 场景-镜头号 | S1-01 |
-| **景别** | 极远景/远景/中景/中近景/近景/极近景/微距 | 中近景 |
-| **角度** | 平视/低角度/高角度/俯拍/侧面/过肩 | 平视 |
-| **运动** | 锁定/推进/后退/横移/环绕/跟拍/手持/无人机 | 缓慢推进 |
-| **主体** | 画面中的主要元素 | 角色A坐在桌前 |
-| **动作** | 主体的可见动作 | 低头看手机 |
-| **光线** | 光源/方向/色温 | 侧光，暖色调 |
-| **声音** | 环境音/对话/音乐 | 键盘声、空调声 |
-| **时长** | 建议秒数 | 5s |
-| **提示词** | 完整的可灵提示词 | [完整提示词] |
-
----
-
-## 输出示例
-
-### 产品广告（15秒）
-
-| 镜头 | 景别 | 角度 | 运动 | 主体 | 动作 | 光线 | 声音 | 时长 | 提示词 |
-|------|------|------|------|------|------|------|------|------|--------|
-| S1-01 | 近景 | 平视 | 锁定 | 产品放在桌面 | 冷凝水珠滑落 | 侧光，冷色调 | 水滴声 | 3s | 产品放在大理石桌面上，冷凝水珠缓缓滑落。镜头：近景，锁定。光线：侧光，冷色调。声音：水滴声。约束：无文字、保持logo不变。 |
-| S1-02 | 微距 | 俯拍 | 缓慢推进 | 产品logo | 光线扫过logo | 顶部光，暖色 | 无 | 3s | 产品logo特写，光线缓缓扫过。镜头：微距，俯拍，缓慢推进。光线：顶部光，暖色调。约束：保持logo完全不变。 |
-| S1-03 | 中景 | 平视 | 环绕 | 产品全貌 | 蒸汽升起 | 侧光，暖色 | 蒸汽声 | 4s | 产品全貌，蒸汽缓缓升起。镜头：中景，缓慢环绕。光线：侧光，暖色调。声音：蒸汽声。约束：无文字。 |
-| S1-04 | 近景 | 平视 | 锁定 | 产品+背景 | 品牌logo出现 | 逆光 | 品牌音效 | 5s | 产品在逆光中，品牌logo出现。镜头：近景，锁定。光线：逆光。约束：保持logo不变。 |
-
----
-
-## 分镜表生成流程
-
-### 从剧本到分镜表
-
-```
-剧本 → 场景拆解 → 镜头设计 → 提示词生成 → 分镜表
-```
-
-1. **场景拆解**：把剧本按场景分割
-2. **镜头设计**：每个场景拆成2-5个镜头
-3. **提示词生成**：每个镜头生成完整提示词
-4. **分镜表输出**：整理成九列表格
-
-### 镜头设计原则
-
-1. **一个镜头 = 一个变化**——不要在一个镜头里塞太多动作
-2. **开头用Hook**——第一个镜头必须吸引注意力
-3. **结尾用收束**——最后一个镜头要有明确的结束感
-4. **中间有节奏**——快慢交替，动静结合
-
----
-
-## Python 生成脚本
-
-```python
-import json
-
-def generate_storyboard(scenes):
-    """从场景列表生成分镜表"""
-    storyboard = []
-    shot_num = 1
+# 11 维分镜表格式
+storyboard_format:
+  dimensions:
+    - dimension: "镜头编号"
+      description: "唯一标识符"
+      format: "S[场景]-[镜头]"
+      example: "S01-01"
     
-    for scene in scenes:
-        scene_id = scene['id']
-        for shot in scene['shots']:
-            storyboard.append({
-                'shot_id': f'S{scene_id}-{shot_num:02d}',
-                'shot_size': shot['size'],
-                'angle': shot['angle'],
-                'movement': shot['movement'],
-                'subject': shot['subject'],
-                'action': shot['action'],
-                'lighting': shot['lighting'],
-                'sound': shot['sound'],
-                'duration': shot['duration'],
-                'prompt': shot['prompt']
-            })
-            shot_num += 1
+    - dimension: "景别"
+      description: "镜头的远近"
+      options: ["极远景", "远景", "中景", "中近景", "近景", "极近景", "微距"]
     
-    return storyboard
+    - dimension: "角度"
+      description: "镜头的角度"
+      options: ["平视", "低角度", "高角度", "俯拍", "侧面", "过肩"]
+    
+    - dimension: "运动"
+      description: "镜头的运动"
+      options: ["锁定", "推进", "后退", "横移", "环绕", "跟拍", "手持", "无人机"]
+    
+    - dimension: "主体"
+      description: "画面中的主要元素"
+      format: "具体描述"
+    
+    - dimension: "动作"
+      description: "主体的可见动作"
+      format: "具体动词"
+    
+    - dimension: "光线"
+      description: "光源/方向/色温"
+      format: "光源，方向，色温"
+    
+    - dimension: "声音"
+      description: "环境音/对话/音乐"
+      format: "具体声音"
+    
+    - dimension: "时长"
+      description: "建议秒数"
+      format: "数字+s"
+    
+    - dimension: "空间提示词"
+      description: "画面的空间构成"
+      components:
+        - "主体位置"
+        - "主体大小"
+        - "背景构成"
+        - "光影方向"
+      format: "空间描述，无运动"
+    
+    - dimension: "时间提示词"
+      description: "画面的时间变化"
+      components:
+        - "动作描述"
+        - "镜头运动"
+        - "节奏控制"
+      format: "运动描述，无画面"
 
-def export_to_csv(storyboard, filename):
-    """导出为CSV"""
-    import csv
-    with open(filename, 'w', newline='', encoding='utf-8') as f:
-        writer = csv.DictWriter(f, fieldnames=[
-            'shot_id', 'shot_size', 'angle', 'movement',
-            'subject', 'action', 'lighting', 'sound',
-            'duration', 'prompt'
-        ])
-        writer.writeheader()
-        writer.writerows(storyboard)
+# 负面提示词字段
+negative_prompt:
+  description: "明确排除不需要的元素"
+  format: "避免：[元素1]、[元素2]..."
+  example: "避免：模糊、噪点、裁切不当、风格不一致"
 
-# 示例
-scenes = [
-    {
-        'id': 1,
-        'shots': [
-            {
-                'size': '近景',
-                'angle': '平视',
-                'movement': '锁定',
-                'subject': '产品放在桌面',
-                'action': '冷凝水珠滑落',
-                'lighting': '侧光，冷色调',
-                'sound': '水滴声',
-                'duration': '3s',
-                'prompt': '产品放在大理石桌面上，冷凝水珠缓缓滑落。镜头：近景，锁定。光线：侧光，冷色调。声音：水滴声。约束：无文字、保持logo不变。'
-            }
-        ]
-    }
-]
+# 约束条件字段
+constraints:
+  description: "明确的限制条件"
+  format: "约束：[条件1]、[条件2]..."
+  example: "约束：无文字、无水印、保持logo不变"
 
-storyboard = generate_storyboard(scenes)
-export_to_csv(storyboard, 'storyboard.csv')
-```
+# 精度等级字段
+keyframe_precision:
+  description: "分镜图的精度等级"
+  options:
+    - "high": "高精度，关键帧完全锁定"
+    - "medium": "中精度，核心元素锁定，细节自由"
+    - "low": "低精度，仅锁定意图，执行自由"
 
----
+# 戏剧功能字段
+dramatic_function:
+  description: "每个镜头在故事中的功能"
+  options:
+    - "引入": "引入新元素"
+    - "深化": "深化已有元素"
+    - "转折": "创造转折点"
+    - "收束": "收束故事线"
 
-## 注意事项
+# 情感锚点字段
+emotion_anchor:
+  description: "每个镜头的情感基调"
+  options:
+    - "孤独": "独自一人，感到寂寞"
+    - "希望": "看到希望，感到温暖"
+    - "紧张": "感到紧张，充满悬念"
+    - "愤怒": "感到愤怒，充满力量"
+    - "温柔": "感到温柔，充满爱意"
 
-1. **提示词必须完整**——每个镜头的提示词可以直接复制到可灵使用
-2. **脆弱锚点必须声明**——面部、logo、文字、手部
-3. **时长要合理**——5s只能有一个动作，15s可以有3个节拍
-4. **声音要标注**——可灵支持原生音频，声音是重要组成部分
-5. **约束要明确**——无文字、无水印、保持XX不变
+# 角色引用字段
+character_refs:
+  description: "引用素材编号系统中的角色"
+  syntax: "@C[编号]"
+  example: "@C01 主角参考，@C02 配角参考"
+
+# 尾帧描述字段
+last_frame_description:
+  description: "记录本镜头最后一帧的画面描述"
+  purpose: "用于与下一镜头的衔接"
+  format: "画面描述，情感状态，悬念设置"
+
+# 输出示例
+output_examples:
+  # 示例 1：产品广告
+  product_ad:
+    description: "产品广告的 11 维分镜表"
+    storyboard:
+      - shot_id: "S01-01"
+        shot_size: "近景"
+        angle: "平视"
+        movement: "锁定"
+        subject: "产品放在桌面"
+        action: "冷凝水珠滑落"
+        lighting: "侧光，冷色调"
+        sound: "水滴声"
+        duration: "3s"
+        spatial_prompt: "产品居中，占画面 40%，大理石桌面，侧光照射"
+        temporal_prompt: "水珠缓慢滑落，镜头锁定"
+        negative_prompt: "避免：模糊、噪点、文字、水印"
+        constraints: "约束：无文字、保持logo不变"
+        keyframe_precision: "high"
+        dramatic_function: "引入"
+        emotion_anchor: "精致"
+        character_refs: "@P01 产品参考"
+        last_frame: "水珠滑落，产品清晰"
+      
+      - shot_id: "S01-02"
+        shot_size: "微距"
+        angle: "俯拍"
+        movement: "缓慢推进"
+        subject: "产品logo"
+        action: "光线扫过logo"
+        lighting: "顶部光，暖色"
+        sound: "无"
+        duration: "3s"
+        spatial_prompt: "logo居中，占画面 80%，纯白背景，顶部光"
+        temporal_prompt: "光线缓慢扫过，镜头缓慢推进"
+        negative_prompt: "避免：失真、色差"
+        constraints: "约束：保持logo完全不变"
+        keyframe_precision: "high"
+        dramatic_function: "深化"
+        emotion_anchor: "专业"
+        character_refs: "@P01 产品参考"
+        last_frame: "logo清晰，光线柔和"
+  
+  # 示例 2：叙事短剧
+  narrative:
+    description: "叙事短剧的 11 维分镜表"
+    storyboard:
+      - shot_id: "S01-01"
+        shot_size: "远景"
+        angle: "平视"
+        movement: "固定"
+        subject: "孤独的身影"
+        action: "站立"
+        lighting: "侧光，暖色调"
+        sound: "风声，远处的鸟鸣"
+        duration: "3s"
+        spatial_prompt: "主角居中，占画面 30%，广阔背景，侧光"
+        temporal_prompt: "主角静止，环境微动"
+        negative_prompt: "避免：模糊、噪点"
+        constraints: "约束：无文字"
+        keyframe_precision: "medium"
+        dramatic_function: "引入"
+        emotion_anchor: "孤独"
+        character_refs: "@C01 主角参考"
+        last_frame: "主角站立，面向远方"
+
+# 分镜表生成流程
+generation_workflow:
+  step_1:
+    name: "确定精度等级"
+    description: "根据内容类型选择精度等级"
+    options: ["high", "medium", "low"]
+  
+  step_2:
+    name: "设计空间构成"
+    description: "设计每个镜头的空间构成"
+    components: ["主体位置", "主体大小", "背景构成", "光影方向"]
+    output: "spatial_prompt"
+  
+  step_3:
+    name: "设计时间变化"
+    description: "设计每个镜头的时间变化"
+    components: ["动作描述", "镜头运动", "节奏控制"]
+    output: "temporal_prompt"
+  
+  step_4:
+    name: "添加负面提示词"
+    description: "明确排除不需要的元素"
+    output: "negative_prompt"
+  
+  step_5:
+    name: "添加约束条件"
+    description: "明确限制条件"
+    output: "constraints"
+  
+  step_6:
+    name: "确定戏剧功能"
+    description: "确定每个镜头在故事中的功能"
+    output: "dramatic_function"
+  
+  step_7:
+    name: "确定情感锚点"
+    description: "确定每个镜头的情感基调"
+    output: "emotion_anchor"
+  
+  step_8:
+    name: "添加角色引用"
+    description: "引用素材编号系统中的角色"
+    output: "character_refs"
+  
+  step_9:
+    name: "记录尾帧描述"
+    description: "记录每个镜头最后一帧的画面描述"
+    output: "last_frame_description"
+
+# Python 生成脚本
+python_script: |
+  import json
+  
+  def generate_storyboard(scenes, precision="medium"):
+      """从场景列表生成 11 维分镜表"""
+      storyboard = []
+      shot_num = 1
+      
+      for scene in scenes:
+          scene_id = scene['id']
+          for shot in scene['shots']:
+              storyboard.append({
+                  'shot_id': f'S{scene_id}-{shot_num:02d}',
+                  'shot_size': shot['size'],
+                  'angle': shot['angle'],
+                  'movement': shot['movement'],
+                  'subject': shot['subject'],
+                  'action': shot['action'],
+                  'lighting': shot['lighting'],
+                  'sound': shot['sound'],
+                  'duration': shot['duration'],
+                  'spatial_prompt': shot['spatial_prompt'],
+                  'temporal_prompt': shot['temporal_prompt'],
+                  'negative_prompt': shot.get('negative_prompt', ''),
+                  'constraints': shot.get('constraints', ''),
+                  'keyframe_precision': precision,
+                  'dramatic_function': shot.get('dramatic_function', '引入'),
+                  'emotion_anchor': shot.get('emotion_anchor', ''),
+                  'character_refs': shot.get('character_refs', ''),
+                  'last_frame': shot.get('last_frame', '')
+              })
+              shot_num += 1
+      
+      return storyboard
+  
+  def export_to_json(storyboard, filename):
+      """导出为 JSON"""
+      with open(filename, 'w', encoding='utf-8') as f:
+          json.dump(storyboard, f, ensure_ascii=False, indent=2)
+  
+  # 示例
+  scenes = [
+      {
+          'id': 1,
+          'shots': [
+              {
+                  'size': '近景',
+                  'angle': '平视',
+                  'movement': '锁定',
+                  'subject': '产品放在桌面',
+                  'action': '冷凝水珠滑落',
+                  'lighting': '侧光，冷色调',
+                  'sound': '水滴声',
+                  'duration': '3s',
+                  'spatial_prompt': '产品居中，占画面 40%，大理石桌面，侧光照射',
+                  'temporal_prompt': '水珠缓慢滑落，镜头锁定',
+                  'negative_prompt': '避免：模糊、噪点、文字、水印',
+                  'constraints': '约束：无文字、保持logo不变',
+                  'dramatic_function': '引入',
+                  'emotion_anchor': '精致',
+                  'character_refs': '@P01 产品参考',
+                  'last_frame': '水珠滑落，产品清晰'
+              }
+          ]
+      }
+  ]
+  
+  storyboard = generate_storyboard(scenes, precision="high")
+  export_to_json(storyboard, 'storyboard.json')
+
+# 与 keyframe-generator 的集成
+integration_with_keyframe_generator:
+  description: "kling-storyboard 的输出是 keyframe-generator 的输入"
+  output_schema:
+    - field: "shot_id"
+      type: "string"
+      required: true
+    
+    - field: "shot_size"
+      type: "string"
+      required: true
+    
+    - field: "angle"
+      type: "string"
+      required: true
+    
+    - field: "movement"
+      type: "string"
+      required: true
+    
+    - field: "subject"
+      type: "string"
+      required: true
+    
+    - field: "action"
+      type: "string"
+      required: true
+    
+    - field: "lighting"
+      type: "string"
+      required: true
+    
+    - field: "sound"
+      type: "string"
+      required: true
+    
+    - field: "duration"
+      type: "string"
+      required: true
+    
+    - field: "spatial_prompt"
+      type: "string"
+      required: true
+      description: "空间提示词，无运动描述"
+    
+    - field: "temporal_prompt"
+      type: "string"
+      required: true
+      description: "时间提示词，无画面描述"
+    
+    - field: "negative_prompt"
+      type: "string"
+      required: false
+      description: "负面提示词"
+    
+    - field: "constraints"
+      type: "string"
+      required: false
+      description: "约束条件"
+    
+    - field: "keyframe_precision"
+      type: "string"
+      required: true
+      options: ["high", "medium", "low"]
+    
+    - field: "dramatic_function"
+      type: "string"
+      required: false
+      options: ["引入", "深化", "转折", "收束"]
+    
+    - field: "emotion_anchor"
+      type: "string"
+      required: false
+    
+    - field: "character_refs"
+      type: "string"
+      required: false
+      description: "角色引用，格式：@C01, @C02"
+    
+    - field: "last_frame"
+      type: "string"
+      required: false
+      description: "尾帧描述"
+
+# 约束条件
+constraints:
+  - "必须包含 11 个维度"
+  - "必须分离 spatial_prompt 和 temporal_prompt"
+  - "必须包含 negative_prompt"
+  - "必须包含 constraints"
+  - "必须包含 keyframe_precision"
+  - "必须包含 dramatic_function"
+  - "必须包含 emotion_anchor"
+  - "必须包含 character_refs"
+  - "必须包含 last_frame_description"
+  - "spatial_prompt 不能包含运动描述"
+  - "temporal_prompt 不能包含画面描述"

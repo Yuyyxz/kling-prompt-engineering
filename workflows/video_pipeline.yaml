@@ -1,18 +1,74 @@
 # 视频生产流水线 (Video Production Pipeline)
-# 三阶确认制 6 步流水线
+# 条件触发确认制 6 步流水线
 
 workflow_name: Video-Production-Pipeline
-version: "1.0"
-description: "三阶确认制 6 步流水线，从文本到可渲染素材"
+version: "2.0"
+description: "条件触发确认制 6 步流水线，从文本到可渲染素材"
 
 # 核心理念
 philosophy: |
-  三阶确认制：
-  1. 分镜图生成 → 人工确认
-  2. 图生视频 → 人工确认
-  3. 后处理 → 人工确认
+  条件触发确认制：
+  1. 低精度/无角色 → 自动通过
+  2. 高精度/有角色 → 人工确认
+  3. 后处理基本自动通过
   
-  每个阶段都需要人工确认，确保质量。
+  减少人工确认次数，提高生产效率。
+
+# 确认规则
+review_rules:
+  # 分镜图确认规则
+  keyframe_review:
+    auto_pass:
+      - condition: "keyframe_precision == low"
+        reason: "低精度不需要人工确认"
+      
+      - condition: "keyframe_precision == medium AND no_face_detected"
+        reason: "中精度且无人脸不需要人工确认"
+      
+      - condition: "keyframe_precision == medium AND character_refs.length == 0"
+        reason: "中精度且无角色引用不需要人工确认"
+    
+    require_human:
+      - condition: "keyframe_precision == high"
+        reason: "高精度需要人工确认"
+      
+      - condition: "character_refs.length > 0"
+        reason: "有角色引用需要人工确认"
+      
+      - condition: "dramatic_function == '转折'"
+        reason: "转折镜头需要人工确认"
+  
+  # 视频确认规则
+  video_review:
+    auto_pass:
+      - condition: "duration_sec <= 3 AND no_character"
+        reason: "短视频且无角色不需要人工确认"
+      
+      - condition: "keyframe_precision == low"
+        reason: "低精度不需要人工确认"
+    
+    require_human:
+      - condition: "duration_sec > 5"
+        reason: "长视频需要人工确认"
+      
+      - condition: "character_refs.length > 0"
+        reason: "有角色需要人工确认"
+      
+      - condition: "keyframe_precision == high"
+        reason: "高精度需要人工确认"
+  
+  # 后处理确认规则
+  postprocess_review:
+    auto_pass:
+      - condition: "true"
+        reason: "后处理基本不需要确认"
+    
+    require_human:
+      - condition: "target_platform == 'youtube' AND duration > 120"
+        reason: "YouTube 长视频需要人工确认"
+      
+      - condition: "target_platform == 'tiktok' AND has_text"
+        reason: "TikTok 有文字需要人工确认"
 
 # 流水线阶段
 stages:
@@ -36,7 +92,7 @@ stages:
       - step: 2
         name: "精度分级"
         description: "根据内容类型选择精度等级"
-        options: ["高精度", "中精度", "低精度"]
+        options: ["high", "medium", "low"]
         output: "precision_level"
       
       - step: 3
@@ -54,9 +110,9 @@ stages:
         output: "keyframes"
       
       - step: 4
-        name: "分镜图审核"
-        description: "人工审核分镜图"
-        confirmation_required: true
+        name: "条件确认"
+        description: "根据确认规则决定是否需要人工确认"
+        review_rules: "keyframe_review"
         output: "confirmed_keyframes"
     
     # 错误处理
@@ -64,15 +120,6 @@ stages:
       - error: "分镜图不符合要求"
         action: "重新生成分镜图"
         max_retries: 3
-    
-    # 确认检查点
-    confirmation_checkpoint:
-      name: "分镜图确认"
-      description: "确认分镜图是否符合预期"
-      options:
-        - "确认，继续下一步"
-        - "修改，重新设计"
-        - "放弃，重新开始"
 
   # 第二阶段：图生视频
   stage_2:
@@ -133,9 +180,9 @@ stages:
         output: "video_urls"
       
       - step: 5
-        name: "视频审核"
-        description: "人工审核视频"
-        confirmation_required: true
+        name: "条件确认"
+        description: "根据确认规则决定是否需要人工确认"
+        review_rules: "video_review"
         output: "confirmed_videos"
     
     # 错误处理
@@ -146,15 +193,6 @@ stages:
       - error: "视频质量不佳"
         action: "调整提示词重新生成"
         max_retries: 3
-    
-    # 确认检查点
-    confirmation_checkpoint:
-      name: "视频确认"
-      description: "确认视频是否符合预期"
-      options:
-        - "确认，继续下一步"
-        - "修改，重新生成"
-        - "放弃，重新开始"
 
   # 第三阶段：后处理
   stage_3:
@@ -193,9 +231,9 @@ stages:
         output: "subtitled_videos"
       
       - step: 4
-        name: "最终审核"
-        description: "最终审核视频"
-        confirmation_required: true
+        name: "条件确认"
+        description: "根据确认规则决定是否需要人工确认"
+        review_rules: "postprocess_review"
         output: "final_approved_videos"
     
     # 错误处理
@@ -203,15 +241,6 @@ stages:
       - error: "后处理失败"
         action: "重新进行后处理"
         max_retries: 3
-    
-    # 确认检查点
-    confirmation_checkpoint:
-      name: "最终确认"
-      description: "确认最终视频是否符合预期"
-      options:
-        - "确认，导出最终视频"
-        - "修改，重新处理"
-        - "放弃，重新开始"
 
   # 第四阶段：多平台输出
   stage_4:
@@ -272,14 +301,6 @@ stages:
         name: "导出"
         description: "导出最终视频"
         output: "exported_videos"
-    
-    # 确认检查点
-    confirmation_checkpoint:
-      name: "导出确认"
-      description: "确认导出的视频是否符合预期"
-      options:
-        - "确认，完成"
-        - "修改，重新导出"
 
 # 全局配置
 global_config:
@@ -305,29 +326,61 @@ global_config:
 
 # 使用示例
 usage_examples:
-  # 示例 1：完整流水线
-  example_full:
-    description: "完整的视频生产流水线"
-    input: "一个孤独的武士在夕阳下行走"
+  # 示例 1：低精度视频（自动通过）
+  example_low:
+    description: "低精度视频，自动通过所有确认"
+    input: "一个简单的风景视频"
     workflow:
       stage_1:
-        - "导演五问：功能=引入，转折=孤独→希望，视角=客观"
-        - "精度分级：中精度"
-        - "分镜图设计：3 个镜头"
-        - "分镜图审核：确认"
+        - "导演五问：功能=引入"
+        - "精度分级：low"
+        - "分镜图设计：1 个镜头"
+        - "条件确认：自动通过（low精度）"
       
       stage_2:
-        - "运动设计：缓慢推进，缓慢行走"
-        - "素材准备：@C01 武士参考，@S01 夕阳场景"
+        - "运动设计：固定镜头"
+        - "素材准备：无角色"
         - "提示词组装：时间轴格式"
         - "调用模型生成：生成视频"
-        - "视频审核：确认"
+        - "条件确认：自动通过（无角色）"
+      
+      stage_3:
+        - "视频剪辑：裁剪不需要的部分"
+        - "音频处理：添加背景音乐"
+        - "字幕添加：无"
+        - "条件确认：自动通过"
+      
+      stage_4:
+        - "格式转换：抖音 9:16"
+        - "平台优化：添加话题标签"
+        - "导出：导出最终视频"
+    
+    output: "多平台格式的视频文件"
+    human_confirmations: 0
+  
+  # 示例 2：高精度视频（需要人工确认）
+  example_high:
+    description: "高精度视频，需要人工确认"
+    input: "一个产品广告，主角是一个穿白衬衫的女生"
+    workflow:
+      stage_1:
+        - "导演五问：功能=引入，转折=无，视角=客观"
+        - "精度分级：high"
+        - "分镜图设计：4 个镜头"
+        - "条件确认：需要人工确认（high精度）"
+      
+      stage_2:
+        - "运动设计：缓慢推进"
+        - "素材准备：@C01 女生参考，@P01 产品参考"
+        - "提示词组装：时间轴格式"
+        - "调用模型生成：生成视频"
+        - "条件确认：需要人工确认（有角色）"
       
       stage_3:
         - "视频剪辑：裁剪不需要的部分"
         - "音频处理：添加背景音乐"
         - "字幕添加：添加字幕"
-        - "最终审核：确认"
+        - "条件确认：自动通过"
       
       stage_4:
         - "格式转换：抖音 9:16，YouTube 16:9"
@@ -335,11 +388,15 @@ usage_examples:
         - "导出：导出最终视频"
     
     output: "多平台格式的视频文件"
+    human_confirmations: 2
 
 # 约束条件
 constraints:
-  - "必须三阶确认"
-  - "每个阶段必须人工确认"
+  - "必须根据确认规则决定是否需要人工确认"
+  - "低精度视频自动通过"
+  - "高精度视频必须人工确认"
+  - "有角色引用必须人工确认"
+  - "后处理基本自动通过"
   - "错误处理最多重试 3 次"
   - "必须符合质量控制标准"
   - "必须支持多平台输出"
