@@ -1,0 +1,337 @@
+# 导演引擎 (Director Engine)
+# 核心理念：教 AI 怎么当导演，而不是怎么写提示词
+
+name: "director-engine"
+version: "1.0"
+description: "从意图推导到技术执行的导演式视频生成引擎"
+
+# 核心理念
+philosophy: |
+  不要教用户"怎么写提示词"，要教 AI "怎么当导演"。
+  
+  旧模式：堆砌形容词 → "cinematic, beautiful, 4k, ultra detailed"
+  新模式：意图推导 → "这个镜头在做什么？"
+
+# 导演五问（每次生成前必须回答）
+director_questions:
+  - question: "功能 (Function)"
+    description: "这个场景在故事中做什么？"
+    options:
+      - "引入 (Introduce)"
+      - "深化 (Deepen)"
+      - "转折 (Turn)"
+      - "收束 (Close)"
+  
+  - question: "转折 (Turn)"
+    description: "价值反转是什么？"
+    options:
+      - "安全→威胁"
+      - - "陌生人→盟友"
+      - "控制→无力"
+      - "孤独→连接"
+  
+  - question: "视角 (Perspective)"
+    description: "我们在谁的体验里？"
+    options:
+      - "主角视角"
+      - "配角视角"
+      - "全知视角"
+      - "客观视角"
+  
+  - question: "权力 (Power)"
+    description: "谁持有权力，如何流动？"
+    options:
+      - "主角主导"
+      - "配角主导"
+      - "权力转移"
+      - "权力平衡"
+  
+  - question: "潜台词 (Subtext)"
+    description: "什么是真实但未说出的？"
+    examples:
+      - "表面平静，内心波澜"
+      - "看似拒绝，实则渴望"
+      - "言语威胁，实则恐惧"
+
+# 意图推导流程
+intent_derivation:
+  step_1: "回答导演五问，确定场景意图"
+  step_2: "根据意图选择镜头语言"
+  step_3: "根据意图设计光影"
+  step_4: "根据意图规划运动"
+  step_5: "根据意图选择声音"
+
+# 意图到技术的映射
+intent_to_technique:
+  # 功能映射
+  function_mapping:
+    introduce:
+      shot: "远景或中景，建立环境"
+      camera: "缓慢推进或固定"
+      lighting: "自然光，营造氛围"
+      sound: "环境音为主"
+    
+    deepen:
+      shot: "中景或近景，聚焦细节"
+      camera: "缓慢推进或跟随"
+      lighting: "侧光或逆光，增加层次"
+      sound: "细节音效突出"
+    
+    turn:
+      shot: "近景或特写，捕捉反应"
+      camera: "快速推进或突然停止"
+      lighting: "光影突变，戏剧性"
+      sound: "音效突变或静默"
+    
+    close:
+      shot: "远景或特写，取决于收束方式"
+      camera: "缓慢拉远或固定"
+      lighting: "回归平静或保持戏剧性"
+      sound: "音乐渐弱或静默"
+  
+  # 转折映射
+  turn_mapping:
+    safe_to_threat:
+      visual: "环境从明亮变暗，出现阴影"
+      camera: "从稳定变手持，增加不安感"
+      sound: "从平静变紧张，加入低频音"
+    
+    stranger_to_ally:
+      visual: "从对峙变并肩，距离缩短"
+      camera: "从对切变双人镜头"
+      sound: "从紧张变缓和"
+    
+    control_to_powerless:
+      visual: "从居高临下变仰视"
+      camera: "从稳定变晃动"
+      sound: "从主导变被动"
+    
+    lonely_to_connection:
+      visual: "从独处变共处，画面填满"
+      camera: "从远景变中景"
+      sound: "从寂静变有声"
+
+# 镜头语言映射
+shot_language:
+  # 景别
+  shot_sizes:
+    extreme_wide:
+      intent: "展示环境，建立规模"
+      use_when: "开场、展示地点、强调孤独/渺小"
+    
+    wide:
+      intent: "展示人物与环境关系"
+      use_when: "场景建立、动作展示"
+    
+    medium:
+      intent: "展示人物上半身，适合对话"
+      use_when: "对话、日常互动"
+    
+    close_up:
+      intent: "聚焦面部，展示情感"
+      use_when: "情感表达、反应捕捉"
+    
+    extreme_close_up:
+      intent: "聚焦细节，强调重要性"
+      use_when: "关键物品、眼神、微表情"
+  
+  # 角度
+  angles:
+    eye_level:
+      intent: "平等、客观"
+      use_when: "常规叙事、中性场景"
+    
+    low_angle:
+      intent: "赋权、强大、威胁"
+      use_when: "展示力量、权威、压迫"
+    
+    high_angle:
+      intent: "削弱、脆弱、渺小"
+      use_when: "展示无助、被支配、孤独"
+    
+    dutch_angle:
+      intent: "不安、失衡、疯狂"
+      use_when: "心理混乱、紧张、悬疑"
+  
+  # 运动
+  movements:
+    push_in:
+      intent: "发现、强调、亲密"
+      use_when: "揭示细节、情感靠近"
+    
+    pull_out:
+      intent: "揭示环境、分离"
+      use_when: "展示全貌、情感疏远"
+    
+    tracking:
+      intent: "跟随、陪伴"
+      use_when: "人物移动、动作展示"
+    
+    orbit:
+      intent: "环绕、审视"
+      use_when: "展示全貌、强调重要性"
+    
+    static:
+      intent: "稳定、观察"
+      use_when: "对话、等待、紧张"
+
+# 光影意图映射
+lighting_intent:
+  # 光源类型
+  light_sources:
+    natural:
+      intent: "真实、自然"
+      use_when: "日常场景、写实风格"
+    
+    artificial:
+      intent: "控制、设计"
+      use_when: "室内、舞台、科幻"
+    
+    practical:
+      intent: "环境内光源"
+      use_when: "增强真实感"
+  
+  # 光线质量
+  light_quality:
+    soft:
+      intent: "温柔、安全、浪漫"
+      use_when: "亲密场景、回忆、梦幻"
+    
+    hard:
+      intent: "紧张、戏剧、冲突"
+      use_when: "冲突场景、悬疑、恐怖"
+  
+  # 光线方向
+  light_direction:
+    front:
+      intent: "清晰、直接"
+      use_when: "展示细节、中性场景"
+    
+    side:
+      intent: "神秘、层次"
+      use_when: "悬疑、复杂情感"
+    
+    back:
+      intent: "轮廓、戏剧"
+      use_when: "剪影、神秘、英雄出场"
+    
+    top:
+      intent: "审判、压迫"
+      use_when: "审讯、压力、宗教感"
+    
+    bottom:
+      intent: "恐怖、不安"
+      use_when: "恐怖场景、反派出场"
+
+# 声音意图映射
+sound_intent:
+  # 声音类型
+  sound_types:
+    dialogue:
+      intent: "直接表达"
+      use_when: "推进剧情、揭示信息"
+    
+    ambient:
+      intent: "环境氛围"
+      use_when: "建立场景、营造氛围"
+    
+    foley:
+      intent: "动作细节"
+      use_when: "增强真实感、强调动作"
+    
+    music:
+      intent: "情感引导"
+      use_when: "情感表达、节奏控制"
+    
+    silence:
+      intent: "强调、紧张"
+      use_when: "关键时刻、情感爆发前"
+
+# 场景意图示例
+intent_examples:
+  # 示例 1：引入场景
+  example_introduce:
+    intent: "引入主角，建立孤独感"
+    director_answer:
+      function: "引入"
+      turn: "无（开场）"
+      perspective: "客观视角"
+      power: "主角被动"
+      subtext: "表面平静，内心孤独"
+    
+    prompt: |
+      远景，低角度。一个孤独的身影站在海边悬崖上，
+      夕阳将他的影子拉得很长。海浪拍打着岩石，
+      风吹动他的衣角。缓慢推进，直到中景。
+      
+      自然光，金色时刻，柔和的侧光。
+      海浪声、风声、远处的海鸥叫声。
+  
+  # 示例 2：转折场景
+  example_turn:
+    intent: "从安全到威胁的转折"
+    director_answer:
+      function: "转折"
+      turn: "安全→威胁"
+      perspective: "主角视角"
+      power: "权力转移"
+      subtext: "表面镇定，内心恐惧"
+    
+    prompt: |
+      中景，眼平角度。主角坐在咖啡馆里，微笑着
+      看着窗外。突然，一个黑影从窗外掠过。
+      主角的笑容凝固，眼神变得警惕。
+      快速推进到特写，捕捉眼神变化。
+      
+      从温暖的室内光，突然变暗。
+      从轻松的咖啡馆环境音，突然静默。
+  
+  # 示例 3：深化场景
+  example_deepen:
+    intent: "深化角色关系，展示亲密"
+    director_answer:
+      function: "深化"
+      turn: "陌生人→盟友"
+      perspective: "双人视角"
+      power: "权力平衡"
+      subtext: "表面疏远，内心靠近"
+    
+    prompt: |
+      中景，眼平角度。两个人坐在公园长椅上，
+      保持着距离。一个人分享了一个秘密，
+      另一个人靠近了一点。缓慢推进到双人近景。
+      
+      自然光，柔和的侧光。
+      环境音渐弱，对话声渐强。
+
+# 与黄金公式的关系
+golden_formula_update:
+  old_formula: "[镜头语言] + [主体动作] + [环境氛围] + [光影画质] + [运动轨迹]"
+  
+  new_formula: "[场景意图/戏剧功能] + [一个可见节拍] + [一个镜头运动] + [真实光源] + [参考角色绑定]"
+  
+  explanation: |
+    旧公式是"填槽"，缺少"意图推导"层。
+    新公式先回答"这个镜头在做什么"，再推导技术执行。
+    
+    示例对比：
+    ❌ 旧：Tracking shot, a woman running in the forest, cinematic lighting, 4k
+    ✅ 新：Medium close-up, eye-level; she lowers the letter and her hands go still 
+         as a slow push-in arrives; soft window light behind her keeps her face plain
+
+# 使用流程
+workflow:
+  step_1: "用户输入主题或故事"
+  step_2: "AI 回答导演五问"
+  step_3: "根据意图推导技术参数"
+  step_4: "生成时间轴格式提示词"
+  step_5: "输出可直接使用的提示词"
+
+# 约束条件
+constraints:
+  - "必须先回答导演五问，再写提示词"
+  - "每个镜头必须有明确的意图"
+  - "禁止堆砌形容词（cinematic, beautiful, 4k）"
+  - "必须使用具体的技术描述"
+  - "必须包含真实光源"
+  - "必须说明镜头在故事中的功能"

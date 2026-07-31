@@ -1,0 +1,349 @@
+# 时间轴格式提示词 (Timeline Format Prompt)
+# 核心理念：用时间轴替代 JSON，更贴合视频模型的底层逻辑
+
+name: "timeline-format"
+version: "1.0"
+description: "时间轴格式提示词生成器，用于 Seedance 2.0 和可灵等视频生成模型"
+
+# 核心理念
+philosophy: |
+  时间轴格式比 JSON 更贴合视频模型的底层逻辑。
+  
+  视频是时间的艺术，不是空间的结构。
+  JSON 格式是"填槽"，时间轴格式是"讲故事"。
+
+# 时间轴格式规范
+timeline_spec:
+  # 基本结构
+  structure: |
+    [风格描述]，[画幅比例]，[色调]
+    
+    0-3秒画面：[开场描述]
+    3-6秒画面：[主体引入]
+    6-9秒画面：[情节发展]
+    9-12秒画面：[高潮时刻]
+    12-15秒画面：[结尾落版]
+    
+    【声音】[配乐风格] + [音效] + [对白]
+    【参考】[素材引用]
+  
+  # 时间段划分
+  time_segments:
+    - segment: "0-3秒"
+      name: "开场"
+      purpose: "抓住注意力，建立场景"
+      tips:
+        - "使用 2 秒钩子"
+        - "展示环境或主体"
+        - "建立氛围"
+    
+    - segment: "3-6秒"
+      name: "主体引入"
+      purpose: "引入主要元素"
+      tips:
+        - "展示主体"
+        - "建立关系"
+        - "开始叙事"
+    
+    - segment: "6-9秒"
+      name: "情节发展"
+      purpose: "推进故事"
+      tips:
+        - "增加冲突"
+        - "展示变化"
+        - "制造悬念"
+    
+    - segment: "9-12秒"
+      name: "高潮时刻"
+      purpose: "情感爆发"
+      tips:
+        - "最强的视觉冲击"
+        - "最深的情感表达"
+        - "最关键的转折"
+    
+    - segment: "12-15秒"
+      name: "结尾落版"
+      purpose: "收束故事，留下余韵"
+      tips:
+        - "总结主题"
+        - "留下悬念"
+        - "引导行动"
+
+# 风格描述规范
+style_description:
+  # 视觉风格
+  visual_styles:
+    - name: "水墨武侠"
+      description: "Chinese ink wash painting style"
+      keywords: ["灰白墨黑色调", "水墨渲染", "留白"]
+    
+    - name: "赛博朋克"
+      description: "Cyberpunk style"
+      keywords: ["霓虹灯", "冷色调", "未来感"]
+    
+    - name: "复古胶片"
+      description: "Vintage film style"
+      keywords: ["颗粒感", "暖色调", "褪色"]
+    
+    - name: "日系动漫"
+      description: "Japanese anime style"
+      keywords: ["赛璐璐", "鲜艳色彩", "夸张表情"]
+    
+    - name: "电影写实"
+      description: "Cinematic realistic style"
+      keywords: ["电影级质感", "自然光影", "真实细节"]
+  
+  # 画幅比例
+  aspect_ratios:
+    - ratio: "16:9"
+      orientation: "横屏"
+      platforms: ["YouTube", "B站", "电视"]
+    
+    - ratio: "9:16"
+      orientation: "竖屏"
+      platforms: ["抖音", "TikTok", "Instagram Reels"]
+    
+    - ratio: "1:1"
+      orientation: "正方形"
+      platforms: ["Instagram 帖子", "Facebook"]
+  
+  # 色调
+  color_tones:
+    - name: "冷色调"
+      description: "蓝、青、紫为主"
+      mood: "科技、冷静、神秘"
+    
+    - name: "暖色调"
+      description: "红、橙、黄为主"
+      mood: "温馨、热情、活力"
+    
+    - name: "灰白调"
+      description: "黑、白、灰为主"
+      mood: "怀旧、文艺、沉重"
+    
+    - name: "鲜艳色调"
+      description: "高饱和度色彩"
+      mood: "活力、年轻、欢快"
+
+# 画面描述规范
+scene_description:
+  # 景别描述
+  shot_descriptions:
+    - shot: "远景"
+      description: "展示环境，建立规模"
+      example: "远景，广阔的草原上，一个孤独的身影"
+    
+    - shot: "中景"
+      description: "展示人物上半身"
+      example: "中景，人物坐在桌前，专注地工作"
+    
+    - shot: "近景"
+      description: "聚焦面部"
+      example: "近景，人物的眼神中透露出坚定"
+    
+    - shot: "特写"
+      description: "聚焦细节"
+      example: "特写，手指轻轻敲击桌面"
+  
+  # 动作描述
+  action_descriptions:
+    - action: "静态"
+      description: "人物保持静止"
+      example: "静静地站着，凝视远方"
+    
+    - action: "缓慢"
+      description: "慢动作"
+      example: "缓缓地转过身，眼神中带着惊讶"
+    
+    - action: "快速"
+      description: "快动作"
+      example: "猛地站起来，冲向门口"
+    
+    - action: "连续"
+      description: "连续动作"
+      example: "从坐下到拿起杯子，再到喝水"
+
+# 声音设计规范
+sound_design:
+  # 声音类型
+  sound_types:
+    - type: "配乐"
+      description: "背景音乐"
+      examples: ["古筝配乐", "电子音乐", "交响乐"]
+    
+    - type: "音效"
+      description: "环境音或动作音"
+      examples: ["风声", "脚步声", "门响"]
+    
+    - type: "对白"
+      description: "人物说话"
+      examples: ["独白", "对话", "旁白"]
+    
+    - type: "静默"
+      description: "无声"
+      examples: ["关键时刻的静默", "情感爆发前的寂静"]
+
+# 素材引用规范
+reference_material:
+  # 图片引用
+  image_reference:
+    syntax: "@image[N]"
+    max_count: 9
+    usage: "角色参考、场景参考、道具参考"
+    example: "@image1 角色参考，@image2 场景参考"
+  
+  # 视频引用
+  video_reference:
+    syntax: "@video[N]"
+    max_count: 3
+    usage: "动作参考、风格参考、上一集视频"
+    example: "@video1 动作参考"
+  
+  # 音频引用
+  audio_reference:
+    syntax: "@audio[N]"
+    max_count: 3
+    usage: "音乐参考、音效参考、人声参考"
+    example: "@audio1 音乐参考"
+
+# 时间轴格式示例
+timeline_examples:
+  # 示例 1：水墨武侠
+  example_1:
+    style: "水墨武侠风格，9:16竖屏，灰白墨黑色调"
+    timeline: |
+      0-3秒画面：高空俯拍，场景建立，广阔的江湖
+      3-6秒画面：镜头推进，主角出场，背光剪影
+      6-9秒画面：拔剑起舞，剑光闪烁
+      9-12秒画面：与敌人对峙，剑拔弩张
+      12-15秒画面：收剑入鞘，转身离去
+      
+      【声音】古筝配乐 + 风声 + 剑鸣
+      【参考】@image1 角色参考，@image2 场景参考
+  
+  # 示例 2：赛博朋克
+  example_2:
+    style: "赛博朋克风格，16:9横屏，霓虹冷色调"
+    timeline: |
+      0-3秒画面：城市远景，霓虹灯闪烁
+      3-6秒画面：镜头推进到街道，主角出场
+      6-9秒画面：与黑客对峙，全息投影
+      9-12秒画面：战斗开始，激光闪烁
+      12-15秒画面：胜利，主角消失在人群中
+      
+      【声音】电子音乐 + 城市噪音 + 机械音
+      【参考】@image1 角色参考，@image2 场景参考
+  
+  # 示例 3：电商广告
+  example_3:
+    style: "时尚电商风格，9:16竖屏，明亮色调"
+    timeline: |
+      0-3秒画面：2秒钩子，模特快速换装
+      3-6秒画面：产品特写，材质细节
+      6-9秒画面：使用场景，效果展示
+      9-12秒画面：用户好评，社会证明
+      12-15秒画面：促销信息，行动号召
+      
+      【声音】动感音乐 + 产品音效
+      【参考】@image1 产品参考
+  
+  # 示例 4：知识口播
+  example_4:
+    style: "专业讲解风格，16:9横屏，明亮色调"
+    timeline: |
+      0-3秒画面：人物出场，建立镜头
+      3-6秒画面：开始讲话，口型同步
+      6-9秒画面：重点内容展示，图表弹出
+      9-12秒画面：案例说明
+      12-15秒画面：总结要点，引导关注
+      
+      【声音】清晰人声 + 轻柔背景音乐
+      【参考】@image1 人物参考
+
+# 视频延长格式
+video_extension:
+  # 延长语法
+  syntax: "将@视频1延长15s"
+  
+  # 延长示例
+  example: |
+    将@视频1延长15s
+    
+    水墨武侠风格，9:16竖屏，灰白墨黑色调
+    
+    0-3秒画面：承接上一集结尾，主角转身
+    3-6秒画面：新的场景建立，敌人出现
+    6-9秒画面：战斗开始
+    9-12秒画面：高潮对决
+    12-15秒画面：悬念结尾，下一集预告
+    
+    【声音】延续上一集配乐风格
+    【参考】@视频1 上一集视频
+
+# 多集连续叙事
+multi_episode:
+  # 四幕结构
+  four_act_structure:
+    act_1:
+      name: "起（Setup）"
+      purpose: "建立世界观、角色、冲突"
+      episodes: "第 1-2 集"
+    
+    act_2:
+      name: "承（Confrontation）"
+      purpose: "发展冲突、增加复杂度"
+      episodes: "第 3-4 集"
+    
+    act_3:
+      name: "转（Climax）"
+      purpose: "冲突达到顶点"
+      episodes: "第 5-6 集"
+    
+    act_4:
+      name: "合（Resolution）"
+      purpose: "解决冲突、收束故事"
+      episodes: "第 7-8 集"
+  
+  # 尾帧衔接
+  tail_frame:
+    description: "每集结尾记录最后一帧画面描述"
+    usage: "下一集开头用'将@视频1延长15s'实现无缝过渡"
+    example: |
+      第一集结尾：
+      "主角转身离去，背影消失在夕阳中"
+      
+      第二集开头：
+      "将@视频1延长15s
+      
+      0-3秒画面：承接上一集结尾，主角背影
+      3-6秒画面：新的场景建立..."
+
+# 与导演引擎的关系
+relationship_with_director_engine:
+  description: |
+    时间轴格式是导演引擎的输出格式。
+    导演回答五问 → 推导意图 → 生成时间轴格式提示词。
+  
+  workflow: |
+    1. 用户输入主题
+    2. 导演引擎回答五问
+    3. 根据意图设计时间轴
+    4. 生成时间轴格式提示词
+    5. 输出可直接使用的提示词
+
+# 使用流程
+workflow:
+  step_1: "确定风格、画幅、色调"
+  step_2: "设计 5 个时间段的画面"
+  step_3: "设计声音"
+  step_4: "添加素材引用"
+  step_5: "输出完整的时间轴格式提示词"
+
+# 约束条件
+constraints:
+  - "必须使用时间轴格式，不要使用 JSON"
+  - "每个时间段必须有明确的画面描述"
+  - "必须包含声音设计"
+  - "必须包含素材引用（如果有）"
+  - "风格描述必须具体，不要抽象"
+  - "画面描述必须可执行，不要模糊"

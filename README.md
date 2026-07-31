@@ -20,6 +20,32 @@ Don't ask the model for "cinematic feel" — answer: *what does this shot do to 
 
 **新增功能：** 模型路由层（Model Router）支持多模型适配，包括：
 
+### 🆕 v2.1 — Director Engine & Timeline Format (P0 优先级)
+
+**核心升级：** 从"提示词词典"升级为"Skill OS"
+
+| 组件 | 说明 | 文件 |
+|------|------|------|
+| **导演引擎** | 从意图推导到技术执行 | `skills/director-engine.skill` |
+| **时间轴格式** | 用时间轴替代 JSON | `skills/timeline-format.skill` |
+
+**核心理念：**
+- ❌ 旧：堆砌形容词 → "cinematic, beautiful, 4k, ultra detailed"
+- ✅ 新：意图推导 → "这个镜头在做什么？"
+
+**黄金公式更新：**
+- 旧公式：[镜头语言] + [主体动作] + [环境氛围] + [光影画质] + [运动轨迹]
+- 新公式：[场景意图/戏剧功能] + [一个可见节拍] + [一个镜头运动] + [真实光源] + [参考角色绑定]
+
+**导演五问：**
+1. 功能 (Function): 这个场景在故事中做什么？
+2. 转折 (Turn): 价值反转是什么？
+3. 视角 (Perspective): 我们在谁的体验里？
+4. 权力 (Power): 谁持有权力，如何流动？
+5. 潜台词 (Subtext): 什么是真实但未说出的？
+
+**详细文档：** [导演引擎](skills/director-engine.skill) | [时间轴格式](skills/timeline-format.skill)
+
 | 模型 | 提供商 | 特点 | 适配器 |
 |------|--------|------|--------|
 | **Kling** | 快手 | 东方意境、电影质感、口型同步 | `adapters/kling_adapter.yaml` |
@@ -257,7 +283,9 @@ kling-prompt-engineering/
 │   ├── kling-screenwriting.skill      # Screenwriting assistant
 │   ├── kling-templates.skill          # Template library
 │   ├── kling-style-tags.skill         # Style tags system
-│   └── kling-storyboard.skill         # Storyboard output
+│   ├── kling-storyboard.skill         # Storyboard output
+│   ├── director-engine.skill          # 🆕 Director Engine (P0)
+│   └── timeline-format.skill          # 🆕 Timeline Format (P0)
 └── examples/                          # 🆕 Usage examples
     └── model_routing_examples.yaml    # Model routing examples
 ```

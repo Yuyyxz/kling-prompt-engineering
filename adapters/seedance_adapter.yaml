@@ -2,6 +2,42 @@
 # 字节跳动视频生成模型专属配置
 # 基于 GitHub 高星仓库最佳实践优化
 
+# 导演引擎集成（P0 优先级）
+director_engine:
+  enabled: true
+  skill_ref: "skills/director-engine.skill"
+  description: "从意图推导到技术执行的导演式视频生成引擎"
+  
+  # 导演五问（每次生成前必须回答）
+  director_questions:
+    - "功能 (Function): 这个场景在故事中做什么？"
+    - "转折 (Turn): 价值反转是什么？"
+    - "视角 (Perspective): 我们在谁的体验里？"
+    - "权力 (Power): 谁持有权力，如何流动？"
+    - "潜台词 (Subtext): 什么是真实但未说出的？"
+  
+  # 黄金公式更新
+  golden_formula: "[场景意图/戏剧功能] + [一个可见节拍] + [一个镜头运动] + [真实光源] + [参考角色绑定]"
+
+# 时间轴格式集成（P0 优先级）
+timeline_format:
+  enabled: true
+  skill_ref: "skills/timeline-format.skill"
+  description: "时间轴格式提示词生成器"
+  
+  # 时间轴结构
+  structure: |
+    [风格描述]，[画幅比例]，[色调]
+    
+    0-3秒画面：[开场描述]
+    3-6秒画面：[主体引入]
+    6-9秒画面：[情节发展]
+    9-12秒画面：[高潮时刻]
+    12-15秒画面：[结尾落版]
+    
+    【声音】[配乐风格] + [音效] + [对白]
+    【参考】[素材引用]
+
 model_id: "seedance"
 model_name: "Seedance 2.0"
 provider: "ByteDance"
