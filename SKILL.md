@@ -113,6 +113,20 @@ tags: [kling, seedance, video, prompt-engineering, director]
 每个素材分配一个主要角色：identity / first-frame / motion / environment / style / product。
 声明每个素材"不得转移"的维度。一个维度只能有一个 owner。
 
+**Seedance 的素材引用语法不同于可灵。** 如果目标是 Seedance，用 `@素材名` 自然语言标注：
+
+```
+@图片1 作为首帧，@视频1 参考镜头语言和动作节奏，@音频1 用于配乐。
+保持角色面部和服装与@图片1完全一致。
+```
+
+Seedance 规则：
+- 多模态组合（图+视频+音频）必须走"全能参考"入口，不是"首尾帧"入口
+- 延长视频时，生成时长 = 新增部分时长（延长 5s → 选 5s），不是总时长
+- 写实人脸素材会被平台拦截（合规）。用非写实风格或 AI 生成的虚构人脸绕过
+- 素材多时，每个 @对象必须标清楚角色，别让模型猜
+- 详细写法参考 [ref:references/seedance-prompt-guide]
+
 ### 6. Prompt Build（提示词构建）
 
 输出时间轴格式：
