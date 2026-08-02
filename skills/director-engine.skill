@@ -2,7 +2,7 @@
 # 核心理念：教 AI 怎么当导演，而不是怎么写提示词
 
 name: "director-engine"
-version: "1.0"
+version: "1.0.0"
 description: "从意图推导到技术执行的导演式视频生成引擎"
 
 # 核心理念
@@ -26,7 +26,7 @@ director_questions:
     description: "价值反转是什么？"
     options:
       - "安全→威胁"
-      - - "陌生人→盟友"
+      - "陌生人→盟友"
       - "控制→无力"
       - "孤独→连接"
   

@@ -2,7 +2,7 @@
 # 11 维格式 + spatial/temporal 分离
 
 name: "kling-storyboard"
-version: "2.0"
+version: "2.0.0"
 description: "11 维分镜表输出规范，支持 spatial/temporal 分离、负面提示词、约束条件"
 
 # 核心理念

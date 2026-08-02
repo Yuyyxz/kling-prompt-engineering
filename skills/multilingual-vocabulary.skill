@@ -2,7 +2,7 @@
 # 6 种语言的原生电影词汇，不是翻译，是原生表达
 
 name: "multilingual-vocabulary"
-version: "1.0"
+version: "1.0.0"
 description: "多语言电影词汇表，支持 6 种语言的原生电影词汇"
 
 # 核心理念

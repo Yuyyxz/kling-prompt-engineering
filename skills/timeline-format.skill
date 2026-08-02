@@ -2,7 +2,7 @@
 # 核心理念：用时间轴替代 JSON，更贴合视频模型的底层逻辑
 
 name: "timeline-format"
-version: "1.0"
+version: "1.0.0"
 description: "时间轴格式提示词生成器，用于 Seedance 2.0 和可灵等视频生成模型"
 
 # 核心理念

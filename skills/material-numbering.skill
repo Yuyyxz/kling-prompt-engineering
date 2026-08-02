@@ -2,7 +2,7 @@
 # 标准化的素材管理规范
 
 name: "material-numbering"
-version: "1.0"
+version: "1.0.0"
 description: "标准化的素材编号系统，便于管理和引用素材"
 
 # 核心理念
@@ -176,19 +176,23 @@ material_list_template:
 
 # 素材管理流程
 material_management_workflow:
-  step_1: "设计素材"
+  step_1:
+    name: "设计素材"
     description: "为每个角色、场景、道具设计素材"
     output: "素材清单"
   
-  step_2: "生成素材"
+  step_2:
+    name: "生成素材"
     description: "使用 AI 生成素材图片"
     tools: ["GPT-Image-2", "Seedream", "Nana Banana Pro"]
   
-  step_3: "编号素材"
+  step_3:
+    name: "编号素材"
     description: "为每个素材分配编号"
     format: "[编号] [名称]·[角度/时间]"
   
-  step_4: "引用素材"
+  step_4:
+    name: "引用素材"
     description: "在提示词中引用素材"
     syntax: "@image[N] [素材说明]"
 

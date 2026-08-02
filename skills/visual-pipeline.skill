@@ -2,7 +2,7 @@
 # 借鉴 ComfyUI 的节点式工作流
 
 name: "visual-pipeline"
-version: "1.0"
+version: "1.0.0"
 description: "可视化 Pipeline，支持节点式工作流"
 
 # 核心理念

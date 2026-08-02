@@ -1,0 +1,38 @@
+[
+  {
+    "id": "skincare-ad",
+    "input": "帮我拍一个护肤品广告，15秒",
+    "expected_mode": "t2v",
+    "expected_duration": "15s"
+  },
+  {
+    "id": "wuxia-opening",
+    "input": "我想做一个武侠短剧的开场",
+    "expected_mode": "t2v",
+    "expected_duration": "5s"
+  },
+  {
+    "id": "coffee-food",
+    "input": "拍一个咖啡制作过程的美食视频",
+    "expected_mode": "t2v",
+    "expected_duration": "10s"
+  },
+  {
+    "id": "scifi-planet",
+    "input": "做一个科幻飞船接近星球的镜头",
+    "expected_mode": "t2v",
+    "expected_duration": "5s"
+  },
+  {
+    "id": "woodworker-doc",
+    "input": "拍一个老人做木工的纪录片风格肖像",
+    "expected_mode": "t2v",
+    "expected_duration": "10s"
+  },
+  {
+    "id": "horror-twist",
+    "input": "帮我做一个恐怖短剧的转折场景",
+    "expected_mode": "t2v",
+    "expected_duration": "5s"
+  }
+]

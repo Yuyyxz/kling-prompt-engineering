@@ -1,5 +1,6 @@
 # Model Router Configuration
 # 模型路由层配置 - 将用户需求路由到最适合的视频生成模型
+# NOTE: runway_gen3, sora, and pika adapters are planned but not yet implemented.
 
 version: "1.0"
 description: "AI 视频生成模型路由层，支持多模型适配和智能路由"
@@ -18,6 +19,7 @@ models:
       - "人物动作流畅"
     prompt_style: "中文优先，支持长文本"
     language_preference: "zh"
+    status: "active"
 
   kling:
     name: "Kling"
@@ -31,6 +33,7 @@ models:
       - "多语言口型同步"
     prompt_style: "中英文混合，支持结构化分镜"
     language_preference: "zh"
+    status: "active"
 
   runway_gen3:
     name: "Runway Gen-3"
@@ -44,6 +47,7 @@ models:
       - "相机控制"
     prompt_style: "英文标签优先，精简物理描述"
     language_preference: "en"
+    status: "planned"
 
   sora:
     name: "Sora"
@@ -57,6 +61,7 @@ models:
       - "世界模型"
     prompt_style: "英文自然语言，支持复杂逻辑"
     language_preference: "en"
+    status: "planned"
 
   pika:
     name: "Pika"
@@ -70,6 +75,7 @@ models:
       - "口型同步"
     prompt_style: "英文短标签，简洁指令"
     language_preference: "en"
+    status: "planned"
 
 # 路由规则
 routing_rules:

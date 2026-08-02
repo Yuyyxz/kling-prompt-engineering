@@ -2,7 +2,7 @@
 # 质量治理：把抽象形容词替换为具体的技术描述
 
 name: "anti-slop"
-version: "1.0"
+version: "1.0.0"
 description: "Anti-Slop 弱词替换表，把抽象形容词替换为具体的技术描述"
 
 # 核心理念

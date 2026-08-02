@@ -2,7 +2,7 @@
 # 支持 15+ 平台的安装和使用
 
 name: "multi-platform"
-version: "1.0"
+version: "1.0.0"
 description: "多平台安装兼容，支持 15+ 平台的安装和使用"
 
 # 核心理念

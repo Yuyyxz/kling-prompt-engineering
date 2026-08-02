@@ -1,4 +1,4 @@
-# 🎬 Kling AI Prompt Engineering — Director-Grade Video Generation Guide
+# 🎬 Kling AI Prompt Engineering — Director-Grade Video Generation
 
 > **可灵 AI 提示词工程 — 导演式视频生成指南**
 
@@ -7,135 +7,17 @@
 
 **Core Idea: Direct the model, don't tweak pixels.**
 
-Don't ask the model for "cinematic feel" — answer: *what does this shot do to the audience?*
-
-核心理念：导演模型，而非微调画面。不要向模型要"电影感"，要回答：这个镜头对观众做了什么？
+不要向模型要"电影感"——回答：*这个镜头对观众做了什么？*
 
 **Compatible Models:** Kling v3 / v2.5-turbo / v2-1-master / video-o1
 **Modes:** Text-to-Video · Image-to-Video · Multi-Image Omni · Video Extension · Motion Transfer · Lip Sync
 
 ---
 
-## 🚀 v2.0 — Model Router & Multi-Model Support
+## 🚀 Quick Start — 30 秒入门
 
-**新增功能：** 模型路由层（Model Router）支持多模型适配，包括：
+**方式一：装 Skill（推荐）**
 
-### 🆕 v2.1 — Director Engine & Timeline Format (P0 优先级)
-
-**核心升级：** 从"提示词词典"升级为"Skill OS"
-
-| 组件 | 说明 | 文件 |
-|------|------|------|
-| **导演引擎** | 从意图推导到技术执行 | `skills/director-engine.skill` |
-| **时间轴格式** | 用时间轴替代 JSON | `skills/timeline-format.skill` |
-
-### 🆕 v2.2 — Domain Skills & Quality Governance (P1 优先级)
-
-**新增组件：**
-
-| 组件 | 说明 | 文件 |
-|------|------|------|
-| **领域垂直 Skill** | 15 个行业专业 Skill 模板 | `skills/domain-skills.skill` |
-| **多集连续叙事** | 尾帧衔接 + 视频延长 | `skills/multi-episode-narrative.skill` |
-| **Anti-Slop** | 弱词替换表 | `skills/anti-slop.skill` |
-
-**15 个领域覆盖：**
-- **创意风格：** 电影风格、3D CGI、卡通动画、漫画转视频、打斗场景、动漫
-- **商业营销：** 动态设计广告、电商广告、产品 360°、社交钩子、品牌故事
-- **行业专项：** 音乐视频、时尚型录、美食饮品、房地产
-
-**多集连续叙事：**
-- 尾帧衔接：每集结尾记录最后一帧画面描述
-- 视频延长：用"将@视频1延长15s"实现无缝过渡
-- 四幕结构：起承转合 → 自动拆分为多集
-
-**Anti-Slop 弱词替换：**
-- ❌ 禁止：cinematic, beautiful, 4k, ultra detailed, masterpiece
-- ✅ 替换：具体的技术描述（景别、角度、运镜、光影、声音）
-
-**详细文档：** [领域垂直 Skill](skills/domain-skills.skill) | [多集连续叙事](skills/multi-episode-narrative.skill) | [Anti-Slop](skills/anti-slop.skill)
-
-### 🆕 v2.3 — Routing & Diagnostics (P2 优先级)
-
-**新增组件：**
-
-| 组件 | 说明 | 文件 |
-|------|------|------|
-| **路由表** | 智能分流系统 | `skills/routing-table.skill` |
-| **失败诊断图谱** | 系统性诊断和修复 | `skills/failure-atlas.skill` |
-| **素材编号系统** | 标准化素材管理 | `skills/material-numbering.skill` |
-
-**智能分流：**
-- 用户说"我有个模糊想法"→ 走 interview skill
-- 用户说"继续这个视频"→ 走 continuation skill
-- 用户说"生成失败了"→ 走 troubleshoot skill
-
-**失败诊断图谱：**
-- 镜头问题：模糊、抖动、角度不当
-- 光影问题：过曝、欠曝、不自然
-- 运动问题：不自然、过快、不连贯
-- 参考角色问题：变形、不一致、识别度低
-- 时长问题：太短、太长、节奏不当
-- 构图问题：不佳、不突出、杂乱
-- 音频问题：不匹配、缺失、质量差
-- 安全问题：敏感词、版权、内容不当
-
-**素材编号系统：**
-- 角色素材：C01-C99（多角度参考图）
-- 场景素材：S01-S99（不同时间/天气）
-- 道具素材：P01-P99
-
-**详细文档：** [路由表](skills/routing-table.skill) | [失败诊断图谱](skills/failure-atlas.skill) | [素材编号系统](skills/material-numbering.skill)**核心理念：**
-
-### 🆕 v2.4 — Multilingual & Validation (P3 优先级)
-
-**新增组件：**
-
-| 组件 | 说明 | 文件 |
-|------|------|------|
-| **多语言词汇表** | 6 种语言的原生电影词汇 | `skills/multilingual-vocabulary.skill` |
-| **验证脚本体系** | 自动化测试和验证 | `skills/validation-scripts.skill` |
-| **多平台安装兼容** | 支持 15+ 平台 | `skills/multi-platform.skill` |
-
-**多语言支持：**
-- 中文（zh）：水墨武侠、国风动漫、江湖、侠客
-- English（en）：Cinematic, Film Noir, Cyberpunk, Vintage Film
-- 日本語（ja）：アニメ、和風、サイバーパンク
-- 한국어（ko）：한국 애니메이션、사이버펑크
-- Español（es）：Cinematográfico, Cine Negro
-- Русский（ru）：Кинематографический, Фильм Нуар
-
-**验证脚本体系：**
-- Schema Check：验证文件格式
-- Vocab Integrity：验证词汇完整性
-- Design Audit：验证设计规范
-- Behavior Contract：验证行为契约
-
-**多平台安装兼容：**
-- AI 代码助手：Claude Code, Codex, Cursor, Windsurf, Trae, Qwen Code
-- IDE 集成：GitHub Copilot, JetBrains AI, VS Code
-- 文本编辑器：Neovim, Emacs, Sublime Text, Atom
-- Web IDE：Replit, Gitpod
-- 移动应用：iOS, Android
-
-**详细文档：** [多语言词汇表](skills/multilingual-vocabulary.skill) | [验证脚本体系](skills/validation-scripts.skill) | [多平台安装兼容](skills/multi-platform.skill)
-
-### 🆕 v2.5 — Production Ready (最终优化)
-
-**新增文件：**
-
-| 文件 | 说明 |
-|------|------|
-| `CLAUDE.md` | 项目规范文件 |
-| `install.sh` | 一键安装脚本 |
-| `scripts/validate_all.py` | 综合验证脚本 |
-| `scripts/validate_yaml.py` | YAML 格式验证 |
-| `scripts/validate_required_fields.py` | 必需字段验证 |
-| `scripts/validate_vocab_coverage.py` | 词汇覆盖验证 |
-| `scripts/validate_naming_convention.py` | 命名规范验证 |
-| `scripts/validate_version.py` | 版本号验证 |
-
-**一键安装：**
 ```bash
 # Claude Code
 curl -sL https://raw.githubusercontent.com/Yuyyxz/kling-prompt-engineering/main/install.sh | bash -s claude
@@ -147,83 +29,72 @@ curl -sL https://raw.githubusercontent.com/Yuyyxz/kling-prompt-engineering/main/
 curl -sL https://raw.githubusercontent.com/Yuyyxz/kling-prompt-engineering/main/install.sh | bash -s generic -d ~/.custom/skills/
 ```
 
-**自动化验证：**
-```bash
-# 验证所有 Skill 文件
-python scripts/validate_all.py skills/
+装完后直接对 AI 说："帮我拍一个产品视频"——它会自动引导你完成提示词生成。
 
-# 验证单个文件
-python scripts/validate_all.py skills/director-engine.skill
-```- ❌ 旧：堆砌形容词 → "cinematic, beautiful, 4k, ultra detailed"
-- ✅ 新：意图推导 → "这个镜头在做什么？"
+**方式二：读文档（进阶）**
 
-**黄金公式更新：**
-- 旧公式：[镜头语言] + [主体动作] + [环境氛围] + [光影画质] + [运动轨迹]
-- 新公式：[场景意图/戏剧功能] + [一个可见节拍] + [一个镜头运动] + [真实光源] + [参考角色绑定]
-
-**导演五问：**
-1. 功能 (Function): 这个场景在故事中做什么？
-2. 转折 (Turn): 价值反转是什么？
-3. 视角 (Perspective): 我们在谁的体验里？
-4. 权力 (Power): 谁持有权力，如何流动？
-5. 潜台词 (Subtext): 什么是真实但未说出的？
-
-**详细文档：** [导演引擎](skills/director-engine.skill) | [时间轴格式](skills/timeline-format.skill)
-
-| 模型 | 提供商 | 特点 | 适配器 |
-|------|--------|------|--------|
-| **Kling** | 快手 | 东方意境、电影质感、口型同步 | `adapters/kling_adapter.yaml` |
-| **Seedance** | 字节跳动 | 中文语义、动态场景、快速生成 | `adapters/seedance_adapter.yaml` |
-| **Runway Gen-3** | Runway | 物理规律、运动画笔、相机控制 | `adapters/runway_adapter.yaml` |
-| **Sora** | OpenAI | 长视频连贯、复杂叙事、世界模型 | `adapters/sora_adapter.yaml` |
-| **Pika** | Pika Labs | 快速生成、局部修改、口型同步 | `adapters/pika_adapter.yaml` |
-
-**使用方法：**
-
-```yaml
-# 示例：使用模型路由层生成视频
-1. 选择内容类型（知识口播/影视广告/叙事短剧等）
-2. 路由层自动选择最适合的模型
-3. 提示词翻译器优化提示词
-4. 调用模型生成视频
+```
+1. 这个镜头对观众做了什么？（一个意图）
+2. 景别 + 角度 + 运镜 = 镜头设置
+3. 光源 + 声音 + 约束 = 氛围
+4. 一句话 = 一个节拍，一个片段 = 一个变化
 ```
 
-**详细文档：** [模型路由层使用示例](examples/model_routing_examples.yaml)
+**方式三：一页纸速查**
+
+直接看 [cheatsheet.md](cheatsheet.md)——公式、五问、替换表、示例全在一页。
 
 ---
 
-## 🎯 Quick Start — 30 秒入门
+## 🧠 Root SKILL.md — 导演引擎入口
 
-```
-1. 下载 skills/ 目录下的 .skill 文件
-2. 导入 Claude / GPT / 其他 AI 工具
-3. 直接说话："帮我拍一个产品视频"
-4. AI 自动引导你完成提示词生成
+项目根目录的 [`SKILL.md`](SKILL.md) 是标准 Claude Code / Cursor skill 入口，实现了：
+
+- **Fast Lane**：简单请求直接出提示词，不跑完整流程
+- **Operating Loop**：复杂请求走 9 个 Gate（导演五问 → 模式选择 → 能力检查 → 素材权威 → 构建 → 质量检查 → 诊断 → 安全）
+- **Authority Order**：规则冲突时的 9 级优先级裁决
+
+标准格式子 Skill 位于 `skills/*/SKILL.md` 目录（兼容 Claude Code 原生加载）。
+
+---
+
+## 🔧 Tools
+
+```bash
+# 提示词质量检查（Anti-Slop 可执行版）
+python scripts/prompt_lint.py "你的提示词"
+
+# 自动化评测（LLM-judge 打分）
+python evals/run_evals.py
+
+# 格式验证
+python scripts/validate_all.py skills/
 ```
 
-**可用 Skill：**
+---
+
+## 📦 Available Skills
 
 | Skill | 用途 | 触发词 |
 |-------|------|--------|
-| `kling-director.skill` | 导演式提示词生成 | "帮我拍"、"AI视频"、"可灵" |
+| `director-engine.skill` | 导演引擎：意图→技术执行 | "帮我拍"、"AI视频"、"可灵" |
 | `kling-screenwriting.skill` | 编剧助手 | "编剧"、"写剧本"、"故事" |
 | `kling-templates.skill` | 即用模板库（30+类型） | "模板"、"给我一个提示词" |
 | `kling-style-tags.skill` | 风格标签系统 | "风格"、"宫崎骏"、"赛博朋克" |
 | `kling-storyboard.skill` | 分镜表输出 | "分镜"、"storyboard" |
+| `timeline-format.skill` | 时间轴格式提示词 | "时间轴"、"timeline" |
+| `domain-skills.skill` | 15个行业垂直模板 | "电商"、"美食"、"房地产" |
+| `failure-atlas.skill` | 失败诊断与修复 | "生成失败"、"效果不好" |
+| `anti-slop.skill` | 弱词替换 | "提示词太虚"、"不具体" |
 
-### 方式二：读文档（进阶）
+完整列表见 [`skills/`](skills/) 目录。
+
+---
+
+## ⚡ Prompt Formula
 
 ```
-1. What does this shot do to the audience? (one intention)
-2. Shot size + angle + camera movement = shot setup
-3. Lighting + sound + constraints = atmosphere
-4. One sentence = one beat, one clip = one change
-```
-
-### Prompt Formula
-
-```
-[Subject + Action] + [Shot Setup] + [Lighting Change] + [Sound] + [Constraints]
+[主体 + 动作] + [镜头设置] + [光线变化] + [声音] + [约束]
 ```
 
 **Example:**
@@ -236,120 +107,15 @@ Sound: Rain on steel, breathing, gate motor hum.
 Constraints: No text, no logos, no extra people.
 ```
 
----
+**导演五问（写提示词前先回答）：**
 
-## 📚 Documentation Index
+1. **功能** — 这个场景在故事中做什么？（引入/深化/转折/收束）
+2. **转折** — 价值反转是什么？（安全→威胁 / 陌生人→盟友）
+3. **视角** — 我们在谁的体验里？
+4. **权力** — 谁持有权力，如何流动？
+5. **潜台词** — 什么是真实但未说出的？
 
-### 🆕 v1.2 — Deep Optimization (GitHub Research)
-
-| Feature | Source | Added to |
-|---------|--------|----------|
-| Magic Prefix System (魔法前缀) | ai-shortfilm-prompts (241⭐) | 01-directing-engine.md § 魔法前缀系统 |
-| Guided Construction Mode (引导式构建) | seedance-skills | 01-directing-engine.md § 引导式构建模式 |
-| FPV/Drone Scenarios (FPV/无人机) | ai9app | 02-shot-language.md § FPV/无人机场景 |
-| Genre Expansion 8→15 (类型扩展) | ai-shortfilm-prompts | 11-genre-guides.md (新增9种类型) |
-| Troubleshooting Gallery (故障排除案例库) | ai-shortfilm-prompts | 18-troubleshooting-gallery.md |
-| Cinematography Dictionary (电影摄影术语) | AI-Cinematic-Prompt-Director | 19-cinematography-dictionary.md |
-
-### 🆕 v1.1 — New Additions
-
-| Feature | Source | Added to |
-|---------|--------|----------|
-| Beat Direction (节拍编排) | HyperFrames | 01-directing-engine.md § Step 7 |
-| Composition Density (构图密度) | HyperFrames | 09-anti-slop.md § 构图密度规则 |
-| Multi-Modal Reference Formula | Seedance 2.0 | 05-multi-image-omni.md § 多模态引用公式 |
-| Video Editing Operations | Seedance 2.0 | 06-video-extension.md § 视频编辑操作 |
-| Video Extension Formulas | Seedance 2.0 | 06-video-extension.md § 视频续写公式 |
-| Portrait Consistency Strategy | Seedance Studio | 04-i2v-guide.md § 人物一致性策略 |
-
-| Doc | Content |
-|-----|---------|
-| [01-directing-engine](01-directing-engine.md) | Director Engine: 导演五问 → 风格 → 节拍编排 → 引导式构建 → 魔法前缀 |
-| [02-shot-language](02-shot-language.md) | Shot Language: 景别、角度、运动、支撑、FPV/无人机 |
-| [03-t2v-guide](03-t2v-guide.md) | Text-to-Video: prompt structure, multi-shot syntax, duration control |
-| [04-i2v-guide](04-i2v-guide.md) | Image-to-Video: hold vs change mode, character/product protection |
-| [05-multi-image-omni](05-multi-image-omni.md) | Multi-Image Reference: character lock, motion ref, camera ref |
-| [06-video-extension](06-video-extension.md) | Video Extension: continuation, drift repair, sequence state |
-| [07-motion-transfer](07-motion-transfer.md) | Motion Transfer: reference video → character image → action graft |
-| [08-audio-guide](08-audio-guide.md) | Audio: native audio, dialogue, lip sync, audio-visual relationship |
-| [09-anti-slop](09-anti-slop.md) | Anti-Slop Lexicon: 6 categories of empty words + replacement table |
-| [10-allocation-model](10-allocation-model.md) | Budget Allocation: identity fidelity vs action amplitude vs scene density |
-| [11-genre-guides](11-genre-guides.md) | Genre Guides: 15种类型（产品/短剧/动作/动画/节拍/美食/风景/VFX/科幻/恐怖/纪录片/MV/时尚/教育/体育/旅行/开箱） |
-| [12-kling-capability-map](12-kling-capability-map.md) | Kling Capability Map: what it can do, how to use it, workarounds |
-| [13-templates](13-templates.md) | Ready-to-Use Templates: prompt skeletons for every mode and scenario |
-| [14-model-mechanics](14-model-mechanics.md) | Model Mechanics: understanding why the generator works this way |
-| [18-troubleshooting-gallery](18-troubleshooting-gallery.md) | Troubleshooting Gallery: 10种常见失败模式 + 修复方法 + 快速诊断表 |
-| [19-cinematography-dictionary](19-cinematography-dictionary.md) | Cinematography Dictionary: 100+项电影摄影术语速查（景别/角度/运动/光线/色彩/音频/VFX/构图） |
-
-### 🔧 Advanced References (for Hermes Agent integration)
-
-| Doc | Content |
-|-----|---------|
-| [15-kling-rest-api](15-kling-rest-api.md) | REST API calls: domain, auth, params, multi-shot, voice, Python templates |
-| [16-ai-short-drama-workflow](16-ai-short-drama-workflow.md) | AI Short Drama workflow: script → storyboard → video → editing |
-| [17-prompt-package-template](17-prompt-package-template.md) | Prompt Package template: standard output format, character cards, first-frame rules |
-| [18-troubleshooting-gallery](18-troubleshooting-gallery.md) | Troubleshooting Gallery: 10种常见失败模式 + 修复方法 + 快速诊断表 |
-| [19-cinematography-dictionary](19-cinematography-dictionary.md) | Cinematography Dictionary: 100+项电影摄影术语速查 |
-| [20-style-tags](20-style-tags.md) | Style Tags: 8导演风格 + 8视觉风格 + 6情绪风格 + 组合公式 |
-| [adapters/model_router](adapters/model_router.yaml) | Model Router: 多模型路由层配置 |
-| [adapters/seedance_adapter](adapters/seedance_adapter.yaml) | Seedance Adapter: 字节跳动模型专属配置 |
-| [adapters/kling_adapter](adapters/kling_adapter.yaml) | Kling Adapter: 快手模型专属配置 |
-| [adapters/prompt_translator](adapters/prompt_translator.yaml) | Prompt Translator: 多语言提示词翻译器 |
-| [examples/model_routing_examples](examples/model_routing_examples.yaml) | Model Routing Examples: 5个完整使用示例 |
-
----
-
-## 🎯 Cross-Reference: "I want to..."
-
-| Goal | Go to |
-|------|-------|
-| Don't know how to analyze a scene | 01-directing-engine · Step 1 |
-| Prompt is too vague, no specific shots | 02-shot-language |
-| All my words are "cinematic" / "epic" | 09-anti-slop |
-| One image → video, don't know what to write | 04-i2v-guide |
-| Multi-image reference, character assignment unclear | 05-multi-image-omni |
-| Video extension won't connect | 06-video-extension |
-| Character motion transfer | 07-motion-transfer |
-| Add dialogue / lip sync | 08-audio-guide |
-| Character face melting / product logo warped | 10-allocation-model |
-| Don't know what Kling can do | 12-kling-capability-map |
-| Want ready-made templates to edit | 13-templates |
-
----
-
-## ⚡ Core Methodology: Director Engine
-
-### Step 1 — Five Director Questions
-
-Before writing a prompt, answer:
-
-1. **Function:** What does this scene do in the story? (introduce / deepen / turn / close)
-2. **Turn:** What's the value reversal? (safe→threat / stranger→ally / control→powerless)
-3. **Perspective:** Whose experience are we in?
-4. **Power:** Who holds power, and how does it move?
-5. **Subtext:** What's true but unsaid?
-
-### Step 2 — Consistency Principle
-
-**One intention — all technical elements play the same note.**
-
-| Technical Element | How to Express Intention |
-|-------------------|------------------------|
-| Shot Size | Close-up = inner world; Wide = scale / isolation |
-| Angle | Low = empowerment; High = weakening; Eye-level = equality |
-| Camera Move | Push = discovery; Pull = reveal; Static = held breath |
-| Lighting | Soft = safe; Side = mystery; Backlight = drama |
-| Sound | Intimate = thinner; Threat = thicker |
-
-### Step 3 — Budget Allocation
-
-Each generation has a finite budget. Pick ONE as primary spend:
-
-| Primary Spend | Secondary | Save |
-|---------------|-----------|------|
-| Product identity (ref anchor) | Material motion | Scene density |
-| Action amplitude (motion ref) | Identity (character image) | Face close-ups |
-| Scene density / atmosphere | Camera movement | Character identity |
+详见 [01-directing-engine.md](01-directing-engine.md)。
 
 ---
 
@@ -366,7 +132,76 @@ Each generation has a finite budget. Pick ONE as primary spend:
 | Moody / Atmospheric | Light source + color temp + ambient sound |
 | Premium / Luxurious | Material + whitespace + controlled lighting |
 
-**Negation Rule:** "No blur" → "Hands resting still on the table." Only use negation in the constraints slot.
+**Negation Rule:** "No blur" → "Hands resting still on the table." 否定句只放在约束槽。
+
+详见 [09-anti-slop.md](09-anti-slop.md)。
+
+---
+
+## 📚 Documentation Index
+
+| Doc | Content |
+|-----|---------|
+| [01-directing-engine](01-directing-engine.md) | 导演引擎：导演五问 → 一致性原则 → 节拍编排 → 引导式构建 → 魔法前缀 |
+| [02-shot-language](02-shot-language.md) | 镜头语言：景别、角度、运动、支撑、FPV/无人机 |
+| [03-t2v-guide](03-t2v-guide.md) | 文生视频：提示词结构、多镜头语法、时长控制 |
+| [04-i2v-guide](04-i2v-guide.md) | 图生视频：保持 vs 变化模式、角色/产品保护 |
+| [05-multi-image-omni](05-multi-image-omni.md) | 多图参考：角色锁定、运动参考、相机参考 |
+| [06-video-extension](06-video-extension.md) | 视频延长：续写、漂移修复、序列状态 |
+| [07-motion-transfer](07-motion-transfer.md) | 运动迁移：参考视频 → 角色图 → 动作嫁接 |
+| [08-audio-guide](08-audio-guide.md) | 音频：原生音频、对白、口型同步、视听关系 |
+| [09-anti-slop](09-anti-slop.md) | Anti-Slop 词典：6 类空话 + 替换表 |
+| [10-allocation-model](10-allocation-model.md) | 预算分配：身份保真 vs 动作幅度 vs 场景密度 |
+| [11-genre-guides](11-genre-guides.md) | 类型指南：15 种类型（产品/短剧/动作/动画/美食/风景/VFX/科幻/恐怖/纪录片/MV/时尚/教育/体育/旅行） |
+| [12-kling-capability-map](12-kling-capability-map.md) | 可灵能力图：能做什么、怎么用、绕过限制 |
+| [13-templates](13-templates.md) | 即用模板：每种模式和场景的提示词骨架 |
+| [14-model-mechanics](14-model-mechanics.md) | 模型机制：理解生成器为什么这样工作 |
+| [18-troubleshooting-gallery](18-troubleshooting-gallery.md) | 故障排除：10 种常见失败模式 + 修复方法 |
+| [19-cinematography-dictionary](19-cinematography-dictionary.md) | 电影摄影词典：100+ 项术语速查 |
+| [20-style-tags](20-style-tags.md) | 风格标签：8 导演风格 + 8 视觉风格 + 6 情绪风格 + 组合公式 |
+
+### Advanced References
+
+| Doc | Content |
+|-----|---------|
+| [adapters/model_router.yaml](adapters/model_router.yaml) | 模型路由层配置（Kling / Seedance 已实现，Runway / Sora / Pika 规划中） |
+| [adapters/kling_adapter.yaml](adapters/kling_adapter.yaml) | Kling 模型专属配置 |
+| [adapters/seedance_adapter.yaml](adapters/seedance_adapter.yaml) | Seedance 模型专属配置 |
+| [adapters/prompt_translator.yaml](adapters/prompt_translator.yaml) | 多语言提示词翻译器 |
+| [examples/model_routing_examples.yaml](examples/model_routing_examples.yaml) | 5 个完整路由使用示例 |
+| [workflows/video_pipeline.yaml](workflows/video_pipeline.yaml) | 条件触发确认制 6 步生产流水线 |
+
+---
+
+## 🎯 Cross-Reference: "I want to..."
+
+| Goal | Go to |
+|------|-------|
+| 不知道怎么分析场景 | [01-directing-engine](01-directing-engine.md) · Step 1 |
+| 提示词太虚，没有具体镜头 | [02-shot-language](02-shot-language.md) |
+| 全是 "cinematic" / "epic" | [09-anti-slop](09-anti-slop.md) |
+| 一张图 → 视频，不知道写什么 | [04-i2v-guide](04-i2v-guide.md) |
+| 多图参考，角色分配不清 | [05-multi-image-omni](05-multi-image-omni.md) |
+| 视频延长接不上 | [06-video-extension](06-video-extension.md) |
+| 角色动作迁移 | [07-motion-transfer](07-motion-transfer.md) |
+| 加对白 / 口型同步 | [08-audio-guide](08-audio-guide.md) |
+| 角色脸融了 / 产品 logo 变形 | [10-allocation-model](10-allocation-model.md) |
+| 不知道可灵能做什么 | [12-kling-capability-map](12-kling-capability-map.md) |
+| 想要现成模板改一改 | [13-templates](13-templates.md) |
+| 生成失败了怎么修 | [18-troubleshooting-gallery](18-troubleshooting-gallery.md) |
+
+---
+
+## ⚠️ Common Pitfalls
+
+1. **写 "cinematic" 等抽象词。** 模型无法处理抽象评价，用物理描述替代。
+2. **一个镜头塞太多动作。** 一镜 = 一拍 = 一变。多动作拆成多段。
+3. **用否定句当质量保险。** "No blur, no distortion" 反而会召唤这些概念。描述你要的。
+4. **重复描述参考图已有的信息。** I2V 只写图片无法展示的：运动、光变、声音。首行写 "Keep X unchanged"。
+5. **对白太长。** 15 秒口型预算：中文 = 一个短分句，英文 = 5-10 词。
+6. **用输出当续写参考。** 永远用原始参考图重新锚定。
+7. **不声明排除参考角色外貌。** 运动参考会携带外貌，必须写 "Do not copy performer's appearance"。
+8. **期望文字/logo 渲染。** 文字放后期。Logo：锁相机 + 微光动。
 
 ---
 
@@ -374,88 +209,94 @@ Each generation has a finite budget. Pick ONE as primary spend:
 
 ```
 kling-prompt-engineering/
-├── README.md                          # This file
-├── CLAUDE.md                          # 🆕 Project conventions
+├── README.md                          # 本文件
+├── CHANGELOG.md                       # 版本历史
+├── CLAUDE.md                          # 项目规范（AI 消费）
 ├── LICENSE                            # MIT License
-├── install.sh                         # 🆕 Installation script
-├── 01-directing-engine.md             # Director methodology
-├── 02-shot-language.md                # Camera grammar reference
-├── 03-t2v-guide.md                    # Text-to-Video guide
-├── 04-i2v-guide.md                    # Image-to-Video guide
-├── 05-multi-image-omni.md             # Multi-image reference
-├── 06-video-extension.md              # Video continuation
-├── 07-motion-transfer.md              # Motion transfer
-├── 08-audio-guide.md                  # Audio & lip sync
-├── 09-anti-slop.md                    # Anti-slop dictionary
-├── 10-allocation-model.md             # Budget allocation model
-├── 11-genre-guides.md                 # Genre-specific guides
-├── 12-kling-capability-map.md         # Kling capabilities & limits
-├── 13-templates.md                    # Ready-to-use prompt templates
-├── 14-model-mechanics.md              # Model mechanics theory
-├── 15-kling-rest-api.md               # REST API reference
-├── 16-ai-short-drama-workflow.md      # Short drama production workflow
-├── 17-prompt-package-template.md      # Prompt package format
-├── 18-troubleshooting-gallery.md      # Troubleshooting gallery
-├── 19-cinematography-dictionary.md    # Cinematography dictionary
-├── 20-style-tags.md                   # Style tags system
-├── adapters/                          # 🆕 Model adapters
-│   ├── model_router.yaml              # Model router configuration
-│   ├── base_adapter.yaml              # Base adapter interface
-│   ├── kling_adapter.yaml             # Kling model adapter
-│   ├── seedance_adapter.yaml          # Seedance model adapter
-│   └── prompt_translator.yaml         # Prompt translator
-├── skills/                            # 🆕 Skill files
-│   ├── kling-director.skill           # Director-style prompt generator
-│   ├── kling-screenwriting.skill      # Screenwriting assistant
-│   ├── kling-templates.skill          # Template library
-│   ├── kling-style-tags.skill         # Style tags system
-│   ├── kling-storyboard.skill         # Storyboard output
-│   ├── director-engine.skill          # 🆕 Director Engine (P0)
-│   ├── timeline-format.skill          # 🆕 Timeline Format (P0)
-│   ├── domain-skills.skill            # 🆕 Domain Skills (P1)
-│   ├── multi-episode-narrative.skill  # 🆕 Multi-Episode Narrative (P1)
-│   ├── anti-slop.skill                # 🆕 Anti-Slop (P1)
-│   ├── routing-table.skill            # 🆕 Routing Table (P2)
-│   ├── failure-atlas.skill            # 🆕 Failure Atlas (P2)
-│   ├── material-numbering.skill       # 🆕 Material Numbering (P2)
-│   ├── multilingual-vocabulary.skill  # 🆕 Multilingual Vocabulary (P3)
-│   ├── validation-scripts.skill       # 🆕 Validation Scripts (P3)
-│   └── multi-platform.skill           # 🆕 Multi-Platform (P3)
-├── scripts/                           # 🆕 Validation scripts
-│   ├── validate_all.py                # Comprehensive validation
-│   ├── validate_yaml.py               # YAML format validation
-│   ├── validate_required_fields.py    # Required fields validation
-│   ├── validate_vocab_coverage.py     # Vocabulary coverage validation
-│   ├── validate_naming_convention.py  # Naming convention validation
-│   └── validate_version.py            # Version validation
-└── examples/                          # 🆕 Usage examples
-    └── model_routing_examples.yaml    # Model routing examples
+├── install.sh                         # 一键安装脚本
+├── requirements.txt                   # Python 依赖
+├── 01-directing-engine.md             # 导演方法论
+├── 02-shot-language.md                # 镜头语法参考
+├── 03-t2v-guide.md                    # 文生视频指南
+├── 04-i2v-guide.md                    # 图生视频指南
+├── 05-multi-image-omni.md             # 多图参考
+├── 06-video-extension.md              # 视频延长
+├── 07-motion-transfer.md              # 运动迁移
+├── 08-audio-guide.md                  # 音频与口型同步
+├── 09-anti-slop.md                    # Anti-Slop 词典
+├── 10-allocation-model.md             # 预算分配模型
+├── 11-genre-guides.md                 # 类型指南
+├── 12-kling-capability-map.md         # 可灵能力与限制
+├── 13-templates.md                    # 即用提示词模板
+├── 14-model-mechanics.md              # 模型机制理论
+├── 18-troubleshooting-gallery.md      # 故障排除案例库
+├── 19-cinematography-dictionary.md    # 电影摄影词典
+├── 20-style-tags.md                   # 风格标签系统
+├── adapters/                          # 模型适配器
+│   ├── model_router.yaml              # 模型路由配置
+│   ├── base_adapter.yaml              # 基础适配器接口
+│   ├── kling_adapter.yaml             # Kling 适配器
+│   ├── seedance_adapter.yaml          # Seedance 适配器
+│   └── prompt_translator.yaml         # 提示词翻译器
+├── skills/                            # Skill 文件（AI 工具消费）
+│   ├── director-engine.skill          # 导演引擎 (P0)
+│   ├── timeline-format.skill          # 时间轴格式 (P0)
+│   ├── domain-skills.skill            # 领域垂直 (P1)
+│   ├── multi-episode-narrative.skill  # 多集叙事 (P1)
+│   ├── anti-slop.skill                # Anti-Slop (P1)
+│   ├── routing-table.skill            # 路由表 (P2)
+│   ├── failure-atlas.skill            # 失败诊断 (P2)
+│   ├── material-numbering.skill       # 素材编号 (P2)
+│   ├── multilingual-vocabulary.skill  # 多语言词汇 (P3)
+│   ├── validation-scripts.skill       # 验证脚本 (P3)
+│   ├── multi-platform.skill           # 多平台兼容 (P3)
+│   └── ...                            # 更多 Skill
+├── scripts/                           # 工具脚本
+│   ├── validate_all.py                # 综合验证
+│   ├── validate_yaml.py               # YAML 格式验证
+│   ├── validate_required_fields.py    # 必需字段验证
+│   ├── validate_vocab_coverage.py     # 词汇覆盖验证
+│   ├── validate_naming_convention.py  # 命名规范验证
+│   ├── validate_version.py            # 版本号验证
+│   └── generate_docx.py              # 文档导出（一次性工具）
+├── examples/                          # 使用示例
+│   └── model_routing_examples.yaml    # 模型路由示例
+├── workflows/                         # 生产流水线
+│   └── video_pipeline.yaml            # 6 步条件触发流水线
+├── references/                        # 参考资料
+│   ├── anti_slop_lexicon.md           # 弱词词典
+│   ├── failure_atlas.md               # 失败图谱
+│   └── negative_prompt_library.md     # 负面提示词库
+└── research/                          # 调研文档
+    └── GitHub竞品调研报告.md           # 竞品分析
 ```
 
 ---
 
-## ⚠️ Common Pitfalls
+## 🔧 Validation
 
-1. **Writing "cinematic" etc.** The model can't process abstract evaluations. Use physical descriptions.
-2. **Too many actions in one shot.** One shot = one beat = one change. Split multi-action into segments.
-3. **Negation as quality insurance.** "No blur, no distortion" actually summons those concepts. Describe what IS there.
-4. **Re-describing reference image info.** For I2V, only write what the image CAN'T show: motion, light change, sound. First line: "Keep X unchanged."
-5. **Dialogue sentences too long.** 15-second lip sync budget: Chinese = one short clause, English = 5-10 words.
-6. **Using output as reference for continuation.** Always re-anchor with the original reference image.
-7. **Not declaring exclusions for reference characters.** Motion reference carries appearance. Must write: "Do not copy performer's appearance."
-8. **Expecting text/logo rendering.** Put text in post-production. Logo: lock camera + light motion.
+```bash
+# 安装依赖
+pip install -r requirements.txt
+
+# 验证所有 Skill 文件
+python scripts/validate_all.py skills/
+
+# 验证单个文件
+python scripts/validate_all.py skills/director-engine.skill
+```
 
 ---
 
 ## 🤝 Contributing
 
-Issues and PRs welcome. If you have Kling prompt tips that work consistently, share them!
+Issues and PRs welcome. 如果你有经过验证的可灵提示词技巧，欢迎分享。
+
+提交前请运行 `python scripts/validate_all.py skills/` 确保验证通过。
 
 ## 📄 License
 
 MIT — use freely, credit appreciated.
-
----
 
 ## 🙏 Credits
 

@@ -2,7 +2,7 @@
 # 借鉴 Emily2040/seedance-2.0 的重拍机制
 
 name: "retake-protocol"
-version: "1.0"
+version: "1.0.0"
 description: "重拍协议，支持单变量重拍、尝试预算、评判标准"
 
 # 核心理念

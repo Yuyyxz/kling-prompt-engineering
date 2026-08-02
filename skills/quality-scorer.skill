@@ -2,7 +2,7 @@
 # 自动评估视频质量
 
 name: "quality-scorer"
-version: "1.0"
+version: "1.0.0"
 description: "质量评分器，自动评估视频质量"
 
 # 核心理念

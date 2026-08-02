@@ -1,188 +1,176 @@
-# ⚠️ DEPRECATED - 请使用新版 skill 文件
-# 旧版文件保留用于参考，但不再维护
-
----
 name: kling-style-tags
 description: 可灵AI风格标签系统。用户说"宫崎骏风"、"赛博朋克"、"诺兰悬疑"，自动映射到具体的镜头/色调/运动/光线参数。支持风格组合（导演+视觉+情绪）。触发词：风格、style、宫崎骏、赛博朋克、韦斯安德森、诺兰、王家卫、库布里克。
----
+version: "1.0.0"
+philosophy: |
+  风格不是形容词，是具体的镜头语言参数映射。
+content: |
+  # 可灵 AI 风格标签系统
 
-# 可灵 AI 风格标签系统
+  用户说一个风格标签，你自动映射到具体的镜头语言参数。
 
-用户说一个风格标签，你自动映射到具体的镜头语言参数。
+  ## 工作流程
 
-## 工作流程
+  1. 用户输入风格标签（如"赛博朋克风"）
+  2. 查找对应的参数映射
+  3. 如果用户输入多个标签，按组合规则合并
+  4. 输出完整的提示词
 
-1. 用户输入风格标签（如"赛博朋克风"）
-2. 查找对应的参数映射
-3. 如果用户输入多个标签，按组合规则合并
-4. 输出完整的提示词
+  ## 风格标签速查
 
-## 风格标签速查
+  ### 导演风格
 
-### 导演风格
+  #### 韦斯·安德森
+  构图：对称居中 | 色调：粉彩低饱和 | 运动：平稳横移+whip pan | 光线：均匀柔和
+  提示词关键词：symmetric composition, pastel colors, centered subject, smooth lateral track, whip pan
 
-#### 韦斯·安德森
-构图：对称居中 | 色调：粉彩低饱和 | 运动：平稳横移+whip pan | 光线：均匀柔和
-提示词关键词：symmetric composition, pastel colors, centered subject, smooth lateral track, whip pan
+  #### 诺兰
+  构图：不对称+前景遮挡 | 色调：冷色高对比 | 运动：快速剪辑+IMAX大画幅 | 光线：自然光低调
+  提示词关键词：IMAX feel, wide angle, cold tones, high contrast, large format photography
 
-#### 诺兰
-构图：不对称+前景遮挡 | 色调：冷色高对比 | 运动：快速剪辑+IMAX大画幅 | 光线：自然光低调
-提示词关键词：IMAX feel, wide angle, cold tones, high contrast, large format photography
+  #### 库布里克
+  构图：单点透视+对称+低角度仰视 | 色调：冷色高饱和 | 运动：缓慢推进+轨道跟踪 | 光线：低调光强对比
+  提示词关键词：one-point perspective, slow tracking shot, low angle looking up, cold tones, low-key lighting, symmetrical
 
-#### 库布里克
-构图：单点透视+对称+低角度仰视 | 色调：冷色高饱和 | 运动：缓慢推进+轨道跟踪 | 光线：低调光强对比
-提示词关键词：one-point perspective, slow tracking shot, low angle looking up, cold tones, low-key lighting, symmetrical
+  #### 王家卫
+  构图：框中框+前景遮挡 | 色调：高饱和霓虹+暖色 | 运动：手持慢快门抽帧 | 光线：霓虹混合色温
+  提示词关键词：high saturation, neon + warm tones, handheld, slow shutter, frame skipping
 
-#### 王家卫
-构图：框中框+前景遮挡 | 色调：高饱和霓虹+暖色 | 运动：手持慢快门抽帧 | 光线：霓虹混合色温
-提示词关键词：high saturation, neon + warm tones, handheld, slow shutter, frame skipping
+  #### 宫崎骏
+  构图：平视自然 | 色调：暖色柔和色板 | 运动：缓慢横移+云风水+日常细节 | 光线：自然光黄金时刻
+  提示词关键词：warm tones, soft palette, natural light, gentle movement, wind in hair, flowing water, drifting clouds, everyday details
 
-#### 宫崎骏
-构图：平视自然 | 色调：暖色柔和色板 | 运动：缓慢横移+云风水+日常细节 | 光线：自然光黄金时刻
-提示词关键词：warm tones, soft palette, natural light, gentle movement, wind in hair, flowing water, drifting clouds, everyday details
+  #### 是枝裕和
+  构图：平视自然 | 色调：暖色低对比 | 运动：固定机位静态 | 光线：自然光柔和
+  提示词关键词：natural light, low contrast, fixed camera, everyday feel, warm tones
 
-#### 是枝裕和
-构图：平视自然 | 色调：暖色低对比 | 运动：固定机位静态 | 光线：自然光柔和
-提示词关键词：natural light, low contrast, fixed camera, everyday feel, warm tones
+  #### 大卫·芬奇
+  构图：精确构图 | 色调：暗绿暗蓝低饱和 | 运动：平稳推进横移 | 光线：低调光精确控制
+  提示词关键词：dark green/blue tones, desaturated, precise camera movement, controlled lighting
 
-#### 大卫·芬奇
-构图：精确构图 | 色调：暗绿暗蓝低饱和 | 运动：平稳推进横移 | 光线：低调光精确控制
-提示词关键词：dark green/blue tones, desaturated, precise camera movement, controlled lighting
+  #### 塔可夫斯基
+  构图：长镜头诗意 | 色调：暖色胶片质感 | 运动：极慢长镜头+水元素 | 光线：自然光柔和
+  提示词关键词：long take, wide angle, poetic composition, film grain, warm tones, very slow movement, water/rain/mist
 
-#### 塔可夫斯基
-构图：长镜头诗意 | 色调：暖色胶片质感 | 运动：极慢长镜头+水元素 | 光线：自然光柔和
-提示词关键词：long take, wide angle, poetic composition, film grain, warm tones, very slow movement, water/rain/mist
+  ### 视觉风格
 
----
+  #### 赛博朋克
+  色调：冷蓝+霓虹粉紫 | 光线：霓虹灯混合色温 | 环境：雨天街道高楼全息
+  提示词关键词：neon lights, cyberpunk city, rain, holographic ads, cold blue + neon pink
 
-### 视觉风格
+  #### 蒸汽朋克
+  色调：暖铜棕色 | 光线：暖色侧光烟雾 | 环境：齿轮管道蒸汽
+  提示词关键词：steampunk, copper/bronze tones, gears, pipes, steam, warm side lighting
 
-#### 赛博朋克
-色调：冷蓝+霓虹粉紫 | 光线：霓虹灯混合色温 | 环境：雨天街道高楼全息
-提示词关键词：neon lights, cyberpunk city, rain, holographic ads, cold blue + neon pink
+  #### 复古胶片
+  色调：暖色低饱和 | 光线：自然光柔和 | 环境：70-80年代风格
+  提示词关键词：film grain, warm tones, desaturated, 70s aesthetic, vintage look
 
-#### 蒸汽朋克
-色调：暖铜棕色 | 光线：暖色侧光烟雾 | 环境：齿轮管道蒸汽
-提示词关键词：steampunk, copper/bronze tones, gears, pipes, steam, warm side lighting
+  #### 黑色电影
+  色调：黑白低饱和 | 光线：高对比侧光百叶窗 | 环境：城市夜景雨天
+  提示词关键词：film noir, high contrast, venetian blind shadows, black and white, low angle
 
-#### 复古胶片
-色调：暖色低饱和 | 光线：自然光柔和 | 环境：70-80年代风格
-提示词关键词：film grain, warm tones, desaturated, 70s aesthetic, vintage look
+  #### 极简主义
+  色调：中性黑白 | 光线：均匀柔和 | 环境：干净背景少元素
+  提示词关键词：minimalist, clean background, neutral colors, simple composition, slow movement
 
-#### 黑色电影
-色调：黑白低饱和 | 光线：高对比侧光百叶窗 | 环境：城市夜景雨天
-提示词关键词：film noir, high contrast, venetian blind shadows, black and white, low angle
+  #### 超现实
+  色调：高饱和对比色 | 光线：非自然光线 | 环境：梦境场景
+  提示词关键词：surreal, dreamlike, high saturation, unnatural lighting, floating/dreamy motion
 
-#### 极简主义
-色调：中性黑白 | 光线：均匀柔和 | 环境：干净背景少元素
-提示词关键词：minimalist, clean background, neutral colors, simple composition, slow movement
+  #### 日系清新
+  色调：暖白淡蓝高亮度 | 光线：自然光柔和 | 环境：日式街道室内
+  提示词关键词：Japanese aesthetic, soft warm tones, natural light, clean, fresh, airy
 
-#### 超现实
-色调：高饱和对比色 | 光线：非自然光线 | 环境：梦境场景
-提示词关键词：surreal, dreamlike, high saturation, unnatural lighting, floating/dreamy motion
+  #### 暗黑哥特
+  色调：暗紫暗红低饱和 | 光线：低调光烛光 | 环境：哥特建筑教堂
+  提示词关键词：gothic, dark purple/red, low-key lighting, candlelight, gothic architecture
 
-#### 日系清新
-色调：暖白淡蓝高亮度 | 光线：自然光柔和 | 环境：日式街道室内
-提示词关键词：Japanese aesthetic, soft warm tones, natural light, clean, fresh, airy
+  ### 情绪风格
 
-#### 暗黑哥特
-色调：暗紫暗红低饱和 | 光线：低调光烛光 | 环境：哥特建筑教堂
-提示词关键词：gothic, dark purple/red, low-key lighting, candlelight, gothic architecture
+  #### 治愈系
+  色调：暖色柔和 | 光线：黄金时刻 | 运动：缓慢横移云风水 | 节奏：慢放松
+  提示词关键词：healing, warm tones, golden hour, gentle breeze, slow movement, relaxing
 
----
+  #### 紧张悬疑
+  色调：冷色高对比 | 光线：低调光阴影 | 运动：快速剪辑手持 | 节奏：快紧张
+  提示词关键词：suspense, cold tones, high contrast, low-key lighting, quick cuts, tension
 
-### 情绪风格
+  #### 热血燃
+  色调：高饱和暖色 | 光线：强光逆光 | 运动：快速跟拍手持 | 节奏：快爆发
+  提示词关键词：hype, high saturation, fast cuts, backlight, energetic, explosive
 
-#### 治愈系
-色调：暖色柔和 | 光线：黄金时刻 | 运动：缓慢横移云风水 | 节奏：慢放松
-提示词关键词：healing, warm tones, golden hour, gentle breeze, slow movement, relaxing
+  #### 文艺忧郁
+  色调：低饱和冷灰 | 光线：阴天柔和 | 运动：缓慢静态 | 节奏：慢沉思
+  提示词关键词：melancholy, desaturated, grey tones, overcast, slow movement, contemplative
 
-#### 紧张悬疑
-色调：冷色高对比 | 光线：低调光阴影 | 运动：快速剪辑手持 | 节奏：快紧张
-提示词关键词：suspense, cold tones, high contrast, low-key lighting, quick cuts, tension
+  #### 浪漫
+  色调：暖粉暖橙 | 光线：黄金时刻逆光 | 运动：缓慢推进环绕 | 节奏：慢温柔
+  提示词关键词：romantic, warm pink/orange, golden hour, backlit, gentle movement
 
-#### 热血燃
-色调：高饱和暖色 | 光线：强光逆光 | 运动：快速跟拍手持 | 节奏：快爆发
-提示词关键词：hype, high saturation, fast cuts, backlight, energetic, explosive
+  #### 史诗感
+  色调：冷色高对比 | 光线：强光体积光 | 运动：无人机摇臂上升 | 节奏：慢→快宏大
+  提示词关键词：epic, cold tones, volumetric lighting, drone shot, crane up, grand scale
 
-#### 文艺忧郁
-色调：低饱和冷灰 | 光线：阴天柔和 | 运动：缓慢静态 | 节奏：慢沉思
-提示词关键词：melancholy, desaturated, grey tones, overcast, slow movement, contemplative
+  ## 组合规则
 
-#### 浪漫
-色调：暖粉暖橙 | 光线：黄金时刻逆光 | 运动：缓慢推进环绕 | 节奏：慢温柔
-提示词关键词：romantic, warm pink/orange, golden hour, backlit, gentle movement
+  ### 公式
+  [导演风格] + [视觉风格] + [情绪风格] = 最终风格
 
-#### 史诗感
-色调：冷色高对比 | 光线：强光体积光 | 运动：无人机摇臂上升 | 节奏：慢→快宏大
-提示词关键词：epic, cold tones, volumetric lighting, drone shot, crane up, grand scale
+  ### 常用组合
 
----
+  | 组合 | 效果 | 提示词关键词 |
+  |------|------|------------|
+  | 韦斯·安德森 + 极简 + 治愈 | 对称粉彩柔和治愈 | symmetric, pastel, clean, warm, gentle |
+  | 诺兰 + 赛博朋克 + 紧张 | IMAX霓虹快速紧张 | IMAX, neon, cold, fast cuts, tension |
+  | 宫崎骏 + 日系清新 + 治愈 | 自然光暖色缓慢治愈 | natural light, warm, soft, gentle, healing |
+  | 王家卫 + 复古胶片 + 文艺 | 手持胶片慢快门忧郁 | handheld, film grain, slow shutter, melancholy |
+  | 库布里克 + 暗黑哥特 + 紧张 | 对称低调光缓慢压迫 | symmetrical, low-key, slow zoom, gothic, tension |
 
-## 组合规则
+  ### 冲突组合（需要手动调整）
+  - 极简 + 赛博朋克（元素多少冲突）
+  - 治愈 + 暗黑哥特（情绪相反）
+  - 热血燃 + 文艺忧郁（节奏相反）
 
-### 公式
-[导演风格] + [视觉风格] + [情绪风格] = 最终风格
+  ## 输出格式
 
-### 常用组合
+  当用户输入风格标签时：
 
-| 组合 | 效果 | 提示词关键词 |
-|------|------|------------|
-| 韦斯·安德森 + 极简 + 治愈 | 对称粉彩柔和治愈 | symmetric, pastel, clean, warm, gentle |
-| 诺兰 + 赛博朋克 + 紧张 | IMAX霓虹快速紧张 | IMAX, neon, cold, fast cuts, tension |
-| 宫崎骏 + 日系清新 + 治愈 | 自然光暖色缓慢治愈 | natural light, warm, soft, gentle, healing |
-| 王家卫 + 复古胶片 + 文艺 | 手持胶片慢快门忧郁 | handheld, film grain, slow shutter, melancholy |
-| 库布里克 + 暗黑哥特 + 紧张 | 对称低调光缓慢压迫 | symmetrical, low-key, slow zoom, gothic, tension |
+  ```
+  【风格组合】
+  导演：[导演风格]
+  视觉：[视觉风格]
+  情绪：[情绪风格]
 
-### 冲突组合（需要手动调整）
-- 极简 + 赛博朋克（元素多少冲突）
-- 治愈 + 暗黑哥特（情绪相反）
-- 热血燃 + 文艺忧郁（节奏相反）
+  【镜头参数】
+  构图：[构图方式]
+  色调：[色调描述]
+  光线：[光线设置]
+  运动：[镜头运动]
+  节奏：[节奏描述]
 
----
+  【提示词】
+  [完整提示词，包含风格关键词]
+  ```
 
-## 输出格式
+  ## 使用示例
 
-当用户输入风格标签时：
+  **用户：** "帮我拍一个产品视频，赛博朋克风"
 
-```
-【风格组合】
-导演：[导演风格]
-视觉：[视觉风格]
-情绪：[情绪风格]
+  **输出：**
+  ```
+  【风格组合】
+  视觉：赛博朋克
+  情绪：紧张
 
-【镜头参数】
-构图：[构图方式]
-色调：[色调描述]
-光线：[光线设置]
-运动：[镜头运动]
-节奏：[节奏描述]
+  【镜头参数】
+  构图：低角度，框中框
+  色调：冷蓝+霓虹粉紫
+  光线：霓虹灯，混合色温
+  运动：手持，快速剪辑
+  节奏：快，紧张感
 
-【提示词】
-[完整提示词，包含风格关键词]
-```
-
----
-
-## 使用示例
-
-**用户：** "帮我拍一个产品视频，赛博朋克风"
-
-**输出：**
-```
-【风格组合】
-视觉：赛博朋克
-情绪：紧张
-
-【镜头参数】
-构图：低角度，框中框
-色调：冷蓝+霓虹粉紫
-光线：霓虹灯，混合色温
-运动：手持，快速剪辑
-节奏：快，紧张感
-
-【提示词】
-产品在霓虹灯光下缓缓旋转，冷蓝色烟雾升起。
-镜头：低角度，缓慢环绕。光线：霓虹灯，冷蓝+粉紫色混合。
-声音：电子音乐，低频嗡鸣。约束：无文字、保持产品logo不变。
-```
+  【提示词】
+  产品在霓虹灯光下缓缓旋转，冷蓝色烟雾升起。
+  镜头：低角度，缓慢环绕。光线：霓虹灯，冷蓝+粉紫色混合。
+  声音：电子音乐，低频嗡鸣。约束：无文字、保持产品logo不变。
+  ```

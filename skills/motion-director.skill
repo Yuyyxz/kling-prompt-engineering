@@ -2,7 +2,7 @@
 # 时间层专属运动指令 + 首尾帧模式
 
 name: "motion-director"
-version: "1.0"
+version: "1.0.0"
 description: "运动导演，控制视频中的运动指令，支持首尾帧模式"
 
 # 核心理念

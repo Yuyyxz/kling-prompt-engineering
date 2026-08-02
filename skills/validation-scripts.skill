@@ -2,7 +2,7 @@
 # 自动化测试和验证 Skill 的正确性
 
 name: "validation-scripts"
-version: "1.0"
+version: "1.0.0"
 description: "验证脚本体系，自动化测试和验证 Skill 的正确性"
 
 # 核心理念
@@ -230,23 +230,28 @@ validation_scripts:
 
 # 验证流程
 validation_workflow:
-  step_1: "运行 Schema Check"
+  step_1:
+    name: "运行 Schema Check"
     description: "验证文件格式和必需字段"
     script: "validate_yaml.py"
   
-  step_2: "运行 Vocab Integrity"
+  step_2:
+    name: "运行 Vocab Integrity"
     description: "验证词汇完整性"
     script: "validate_vocab.py"
   
-  step_3: "运行 Design Audit"
+  step_3:
+    name: "运行 Design Audit"
     description: "验证设计规范"
     script: "validate_design.py"
   
-  step_4: "运行 Behavior Contract"
+  step_4:
+    name: "运行 Behavior Contract"
     description: "验证行为契约"
     script: "validate_behavior.py"
   
-  step_5: "生成验证报告"
+  step_5:
+    name: "生成验证报告"
     description: "生成详细的验证报告"
     output: "validation_report.md"
 

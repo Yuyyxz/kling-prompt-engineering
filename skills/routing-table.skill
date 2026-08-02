@@ -2,7 +2,7 @@
 # 根据用户输入自动路由到最适合的 Skill
 
 name: "routing-table"
-version: "1.0"
+version: "1.0.0"
 description: "智能分流系统，根据用户输入自动路由到最适合的 Skill"
 
 # 核心理念

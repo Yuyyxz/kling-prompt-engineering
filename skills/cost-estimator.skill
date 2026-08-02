@@ -2,7 +2,7 @@
 # 估算视频生成的成本
 
 name: "cost-estimator"
-version: "1.0"
+version: "1.0.0"
 description: "成本估算器，估算视频生成的成本"
 
 # 核心理念

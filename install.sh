@@ -63,24 +63,91 @@ check_dependencies() {
     fi
 }
 
+# Skill 文件清单（硬编码，确保 curl | bash 场景可用）
+REPO_RAW="https://raw.githubusercontent.com/Yuyyxz/kling-prompt-engineering/main"
+SKILL_FILES=(
+    "anti-slop.skill"
+    "cost-estimator.skill"
+    "director-engine.skill"
+    "domain-skills.skill"
+    "failure-atlas.skill"
+    "keyframe-generator.skill"
+    "kling-director.skill"
+    "kling-screenwriting.skill"
+    "kling-storyboard.skill"
+    "kling-style-tags.skill"
+    "kling-templates.skill"
+    "material-numbering.skill"
+    "motion-director.skill"
+    "multi-episode-narrative.skill"
+    "multi-platform.skill"
+    "multilingual-vocabulary.skill"
+    "quality-scorer.skill"
+    "retake-protocol.skill"
+    "routing-table.skill"
+    "timeline-format.skill"
+    "validation-scripts.skill"
+    "visual-pipeline.skill"
+)
+
+# 标准 SKILL.md 目录（Claude Code / Cursor 原生格式）
+SKILL_DIRS=(
+    "kling-templates"
+    "kling-style-tags"
+    "kling-storyboard"
+)
+
 # 下载 Skill 文件
 download_skills() {
     local install_dir=$1
+    local success_count=0
+    local fail_count=0
     
     print_info "正在下载 Skill 文件..."
     
     # 创建目录
     mkdir -p "$install_dir"
     
-    # 下载所有 .skill 文件
-    for skill_file in skills/*.skill; do
-        if [ -f "$skill_file" ]; then
-            filename=$(basename "$skill_file")
-            print_info "下载 $filename..."
-            curl -sL "https://raw.githubusercontent.com/Yuyyxz/kling-prompt-engineering/main/$skill_file" -o "$install_dir/$filename"
-            print_success "下载完成: $filename"
+    # 1. 下载根 SKILL.md（导演引擎入口）
+    print_info "下载根 SKILL.md（导演引擎入口）..."
+    if curl -sfL "${REPO_RAW}/SKILL.md" -o "$install_dir/SKILL.md"; then
+        print_success "  SKILL.md (root)"
+        ((success_count++))
+    else
+        print_warning "  下载失败: SKILL.md (跳过)"
+        ((fail_count++))
+    fi
+    
+    # 2. 下载标准 SKILL.md 子目录
+    for dir_name in "${SKILL_DIRS[@]}"; do
+        mkdir -p "$install_dir/$dir_name"
+        if curl -sfL "${REPO_RAW}/skills/${dir_name}/SKILL.md" -o "$install_dir/$dir_name/SKILL.md"; then
+            print_success "  $dir_name/SKILL.md"
+            ((success_count++))
+        else
+            print_warning "  下载失败: $dir_name/SKILL.md (跳过)"
+            ((fail_count++))
         fi
     done
+    
+    # 3. 下载 .skill 数据文件（向后兼容）
+    for filename in "${SKILL_FILES[@]}"; do
+        local url="${REPO_RAW}/skills/${filename}"
+        if curl -sfL "$url" -o "$install_dir/$filename"; then
+            print_success "  $filename"
+            ((success_count++))
+        else
+            print_warning "  下载失败: $filename (跳过)"
+            ((fail_count++))
+        fi
+    done
+    
+    echo ""
+    print_info "下载完成: ${success_count} 成功, ${fail_count} 失败"
+    
+    if [ "$fail_count" -gt 0 ]; then
+        print_warning "部分文件下载失败，请检查网络连接后重试"
+    fi
 }
 
 # 安装到 Claude Code

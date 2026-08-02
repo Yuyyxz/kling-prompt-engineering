@@ -2,7 +2,7 @@
 # 解决从"单镜头"到"多集连续剧"的工程化问题
 
 name: "multi-episode-narrative"
-version: "1.0"
+version: "1.0.0"
 description: "尾帧衔接与多集连续叙事系统，实现无缝过渡的多集视频制作"
 
 # 核心理念

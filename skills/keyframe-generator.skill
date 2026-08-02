@@ -2,7 +2,7 @@
 # 分镜图驱动 Pipeline 的核心组件
 
 name: "keyframe-generator"
-version: "1.0"
+version: "1.0.0"
 description: "分镜图生成器，支持精度分级、重做规则、空间/时间分离"
 
 # 核心理念

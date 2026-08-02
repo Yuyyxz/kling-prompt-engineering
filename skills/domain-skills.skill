@@ -2,8 +2,11 @@
 # 15 个行业专业 Skill，覆盖主流视频类型
 
 name: "domain-skills"
-version: "1.0"
+version: "1.0.0"
 description: "15 个行业垂直 Skill 模板，每个领域都有专属的提示词结构和优化参数"
+philosophy: |
+  每个视频类型有自己的视觉语法和观众期待。
+  通用提示词无法替代领域知识——电商要干净、恐怖要压迫、美食要触感。
 
 # 技能分类
 categories:

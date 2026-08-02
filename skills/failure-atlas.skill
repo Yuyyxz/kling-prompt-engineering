@@ -2,7 +2,7 @@
 # 系统性诊断和修复视频生成失败
 
 name: "failure-atlas"
-version: "1.0"
+version: "1.0.0"
 description: "失败诊断图谱，系统性诊断和修复视频生成失败"
 
 # 核心理念
@@ -231,19 +231,23 @@ failure_atlas:
 
 # 诊断流程
 diagnosis_workflow:
-  step_1: "识别问题类型"
+  step_1:
+    name: "识别问题类型"
     description: "根据用户描述，识别问题属于哪个类别"
     categories: ["镜头", "光影", "运动", "参考角色", "时长", "构图", "音频", "安全"]
   
-  step_2: "分析具体原因"
+  step_2:
+    name: "分析具体原因"
     description: "在该类别下，分析具体原因"
     method: "查看症状，匹配原因"
   
-  step_3: "提供解决方案"
+  step_3:
+    name: "提供解决方案"
     description: "根据原因，提供具体的解决方案"
     format: "问题 → 原因 → 解决方案"
   
-  step_4: "验证解决"
+  step_4:
+    name: "验证解决"
     description: "验证解决方案是否有效"
     method: "重新生成，检查效果"
 
