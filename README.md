@@ -10,8 +10,9 @@
 
 核心主张只有一句话：**别跟模型要"电影感"，告诉它这个镜头对观众做了什么。** "Cinematic, beautiful, 4k" 是愿望，不是方向。模型需要的是：谁在画面里、做什么动作、摄影机怎么动、光从哪来、观众听到什么。这些答出来，"电影感"是副产品。
 
-**支持模型：** Kling v3 / v2.5-turbo / v2-1-master · Seedance 2.0
-**支持模式：** 文生视频 · 图生视频 · 多图参考 · 视频延长 · 运动迁移 · 口型同步
+**支持模型：** Kling 3.0 / 3.0 Omni / O1 / 2.6 / 2.5 Turbo · Seedance 2.5 / 2.0
+**支持模式：** 文生视频 · 图生视频 · 多图参考 · 视频延长 · 运动迁移 · 口型同步 · 多镜头叙事
+**最高规格：** 4K / 15s（可灵 3.0）· 30s（Seedance 2.5）· 原生音频 · 智能分镜
 
 两个模型的脾气不同：可灵对东方美学和口型同步理解更好，Seedance 对中文长文本和动态场景更流畅。本项目的 Skill 会根据你的内容自动建议用哪个。
 
@@ -86,18 +87,21 @@ python scripts/validate_all.py skills/
 ## 提示词公式
 
 ```
-[主体 + 动作] + [镜头设置] + [光线变化] + [声音] + [约束]
+[风格锚：真实相机+镜头] + [主体+一个动作] + [镜头运动] + [光源] + [声音] + [约束]
 ```
 
-**Example:**
+**实战验证的写法（自然语言流，不用标签）：**
 
 ```
-On a rainy night, a courier crosses a slippery overpass as a metal gate slowly closes.
-Camera: Low-angle side tracking shot, left to right, stopping on the courier's hand grabbing the gate.
-Lighting: Amber work lights in thin mist, moonlight tracing cold outlines on wet metal.
-Sound: Rain on steel, breathing, gate motor hum.
-Constraints: No text, no logos, no extra people.
+Anamorphic widescreen. Simulated ARRI Alexa 35 with Panavision Ultra Speed MKII lens, 24mm, T1.9.
+雨夜工业天桥，巨型锈蚀金属闸门从画面两侧缓缓合拢。闸门占满画面上方三分之二，
+底部最后一道缝隙中，一个渺小的黑色风衣人影正侧身通过。
+琥珀色工作灯在薄雾中散射出锥形光束，月光在湿金属表面拉出冷蓝色高光。
+低角度仰拍，广角畸变强化钢铁的压迫感。手持呼吸感微晃。
+雨滴打在钢铁上的回响，闸门电机低频嗡鸣渐强，最后一丝光消失。
 ```
+
+注意：没有 "Camera:" "Lighting:" 这些标签。模型要的是自然语言，不是填表。标签是给你自己规划用的，不是给模型看的。
 
 **导演五问（写提示词前先回答）：**
 
@@ -156,7 +160,9 @@ Constraints: No text, no logos, no extra people.
 
 | Doc | Content |
 |-----|---------|
-| [adapters/model_router.yaml](adapters/model_router.yaml) | 模型路由层配置（Kling / Seedance 已实现，Runway / Sora / Pika 规划中） |
+| [references/seedance-prompt-guide.md](references/seedance-prompt-guide.md) | Seedance 提示词实战指南（@引用语法、平台限制、场景模板） |
+| [examples/before_after.md](examples/before_after.md) | 5 组 before/after 提示词对比（附"为什么有效"） |
+| [adapters/model_router.yaml](adapters/model_router.yaml) | 模型路由层配置（Kling 5 模型 + Seedance 2 版本） |
 | [adapters/kling_adapter.yaml](adapters/kling_adapter.yaml) | Kling 模型专属配置 |
 | [adapters/seedance_adapter.yaml](adapters/seedance_adapter.yaml) | Seedance 模型专属配置 |
 | [adapters/prompt_translator.yaml](adapters/prompt_translator.yaml) | 多语言提示词翻译器 |
@@ -193,7 +199,24 @@ Constraints: No text, no logos, no extra people.
 5. **对白太长。** 15 秒口型预算：中文 = 一个短分句，英文 = 5-10 词。
 6. **用输出当续写参考。** 永远用原始参考图重新锚定。
 7. **不声明排除参考角色外貌。** 运动参考会携带外貌，必须写 "Do not copy performer's appearance"。
-8. **期望文字/logo 渲染。** 文字放后期。Logo：锁相机 + 微光动。
+8. **期望文字/logo 渲染。** 可灵 3.0 已支持原生文字渲染，但长段落/小字号仍建议后期。
+9. **用标签格式喂模型。** "Camera: ... Lighting: ..." 是规划格式，不是提示词格式。模型要自然语言流。
+10. **没有风格锚。** 不写真实相机/镜头型号，模型只能猜"电影感"是什么。写 "Shot on ARRI Alexa 35, Panavision 24mm T1.9" 比写 "cinematic" 有效一百倍。
+
+---
+
+## 实战验证
+
+以下提示词全部通过 `prompt_lint.py` 检查（0 Error, 94/100），并用可灵官方 API 实际生成：
+
+| 场景 | 镜头 | 画幅 | 分辨率 | 时长 | 积分 | prompt_lint |
+|------|------|------|--------|------|------|-------------|
+| 工业闸门（压迫） | 24mm 广角仰拍 | 16:9 | 3840×2160 | 5s | 15 | 94/100 |
+| 人像（亲密） | 85mm T1.5 浅景深 | 16:9 | 1920×1080 | 5s | 6 | 94/100 |
+| 巨物佛像（敬畏） | 14mm 超广竖摇 | 9:16 | 2160×3840 | 10s | 30 | 94/100 |
+| 诺兰三镜预告 | IMAX 65mm 多焦段 | 16:9 | 1920×1080 | 10s | 12 | 94/100 |
+
+API 格式：`POST api-beijing.klingai.com/text-to-video/kling-3.0`，参数在 `settings` 对象下。详见 [12-kling-capability-map.md](12-kling-capability-map.md)。
 
 ---
 
@@ -202,11 +225,16 @@ Constraints: No text, no logos, no extra people.
 ```
 kling-prompt-engineering/
 ├── README.md                          # 本文件
+├── SKILL.md                           # 导演引擎入口（Claude Code / Cursor 原生格式）
 ├── CHANGELOG.md                       # 版本历史
-├── CLAUDE.md                          # 项目规范（AI 消费）
+├── CLAUDE.md                          # 项目规范（给 AI 助手看的编辑规则）
+├── SKILL_SCHEMA.md                    # .skill 文件格式规范
+├── cheatsheet.md                      # 一页纸速查（A4 可打印）
 ├── LICENSE                            # MIT License
 ├── install.sh                         # 一键安装脚本
 ├── requirements.txt                   # Python 依赖
+├── assets/
+│   └── og-cover.png                   # GitHub 社交预览图
 ├── 01-directing-engine.md             # 导演方法论
 ├── 02-shot-language.md                # 镜头语法参考
 ├── 03-t2v-guide.md                    # 文生视频指南
@@ -218,47 +246,44 @@ kling-prompt-engineering/
 ├── 09-anti-slop.md                    # Anti-Slop 词典
 ├── 10-allocation-model.md             # 预算分配模型
 ├── 11-genre-guides.md                 # 类型指南
-├── 12-kling-capability-map.md         # 可灵能力与限制
+├── 12-kling-capability-map.md         # 可灵能力与限制（含官方 API 文档）
 ├── 13-templates.md                    # 即用提示词模板
 ├── 14-model-mechanics.md              # 模型机制理论
 ├── 18-troubleshooting-gallery.md      # 故障排除案例库
 ├── 19-cinematography-dictionary.md    # 电影摄影词典
 ├── 20-style-tags.md                   # 风格标签系统
 ├── adapters/                          # 模型适配器
-│   ├── model_router.yaml              # 模型路由配置
+│   ├── model_router.yaml              # 模型路由配置（Kling 5模型 + Seedance 2版本）
 │   ├── base_adapter.yaml              # 基础适配器接口
 │   ├── kling_adapter.yaml             # Kling 适配器
 │   ├── seedance_adapter.yaml          # Seedance 适配器
 │   └── prompt_translator.yaml         # 提示词翻译器
-├── skills/                            # Skill 文件（AI 工具消费）
-│   ├── director-engine.skill          # 导演引擎 (P0)
-│   ├── timeline-format.skill          # 时间轴格式 (P0)
-│   ├── domain-skills.skill            # 领域垂直 (P1)
-│   ├── multi-episode-narrative.skill  # 多集叙事 (P1)
-│   ├── anti-slop.skill                # Anti-Slop (P1)
-│   ├── routing-table.skill            # 路由表 (P2)
-│   ├── failure-atlas.skill            # 失败诊断 (P2)
-│   ├── material-numbering.skill       # 素材编号 (P2)
-│   ├── multilingual-vocabulary.skill  # 多语言词汇 (P3)
-│   ├── validation-scripts.skill       # 验证脚本 (P3)
-│   ├── multi-platform.skill           # 多平台兼容 (P3)
-│   └── ...                            # 更多 Skill
+├── skills/                            # Skill 文件
+│   ├── README.md                      # 格式说明（SKILL.md vs .skill）
+│   ├── kling-templates/SKILL.md       # 模板库（标准格式）
+│   ├── kling-style-tags/SKILL.md      # 风格标签（标准格式）
+│   ├── kling-storyboard/SKILL.md      # 分镜表（标准格式）
+│   ├── director-engine.skill          # 导演引擎数据（legacy）
+│   ├── domain-skills.skill            # 领域垂直数据（legacy）
+│   └── ...                            # 更多 .skill 数据文件
 ├── scripts/                           # 工具脚本
-│   ├── validate_all.py                # 综合验证
-│   ├── validate_yaml.py               # YAML 格式验证
-│   ├── validate_required_fields.py    # 必需字段验证
-│   ├── validate_vocab_coverage.py     # 词汇覆盖验证
-│   ├── validate_naming_convention.py  # 命名规范验证
-│   ├── validate_version.py            # 版本号验证
-│   └── generate_docx.py              # 文档导出（一次性工具）
+│   ├── prompt_lint.py                 # 提示词质量检查（Anti-Slop 可执行版）
+│   ├── validate_all.py                # Skill 格式综合验证
+│   └── ...                            # 其他验证脚本
+├── evals/                             # 自动评测
+│   ├── cases.json                     # 6 个测试用例
+│   ├── rubric.md                      # 10 条评分标准
+│   └── run_evals.py                   # LLM-judge 评测脚本
 ├── examples/                          # 使用示例
+│   ├── before_after.md                # 5 组 before/after 对比
 │   └── model_routing_examples.yaml    # 模型路由示例
-├── workflows/                         # 生产流水线
-│   └── video_pipeline.yaml            # 6 步条件触发流水线
 ├── references/                        # 参考资料
+│   ├── seedance-prompt-guide.md       # Seedance 提示词实战指南（官方手册）
 │   ├── anti_slop_lexicon.md           # 弱词词典
 │   ├── failure_atlas.md               # 失败图谱
 │   └── negative_prompt_library.md     # 负面提示词库
+├── workflows/                         # 生产流水线
+│   └── video_pipeline.yaml            # 6 步条件触发流水线
 └── research/                          # 调研文档
     └── GitHub竞品调研报告.md           # 竞品分析
 ```
