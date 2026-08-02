@@ -10,15 +10,54 @@ models:
   seedance:
     name: "Seedance"
     provider: "ByteDance"
-    description: "字节跳动视频生成模型，擅长中文语境和动态场景"
-    max_duration: "10s"
-    aspect_ratios: ["16:9", "9:16", "1:1"]
+    description: "字节跳动视频生成模型，2.5(30s长叙事+精确参考) / 2.0(音视频联合生成)"
+    max_duration: "30s"
+    aspect_ratios: ["16:9", "9:16", "1:1", "4:3", "3:4"]
+    models:
+      seedance_2_5:
+        id: "seedance-2.5"
+        resolution: "1080p"
+        duration: "5-30s"
+        status: "available_via_jimeng"
+        features:
+          - "30秒单次生成"
+          - "30图+10视频+10音频参考输入"
+          - "时间戳分段控制"
+          - "Clay Render 3D代理参考"
+          - "绿幕替换/视角编辑"
+          - "数分钟连续叙事稳定"
+          - "减少油腻感，纹理/面部/光影精修"
+      seedance_2_0:
+        id: "seedance-2.0-text-to-video"
+        resolution: "1080p"
+        duration: "5-10s"
+        status: "active"
+        features:
+          - "音视频联合生成"
+          - "文本/图片/音频/视频四模态输入"
+          - "中文语义理解强"
+          - "动态场景流畅"
+          - "音频作为时钟（精确音画同步）"
     special_features:
-      - "中文语义理解"
-      - "动态场景生成"
-      - "人物动作流畅"
-    prompt_style: "中文优先，支持长文本"
+      - "30s 长镜头（2.5）"
+      - "海量参考输入（2.5：30图+10视频+10音频）"
+      - "时间戳编辑（2.5）"
+      - "3D 代理参考 / Clay Render（2.5）"
+      - "中文长文本语义连贯"
+      - "动态场景流畅度最高"
+      - "ACES 色彩管线"
+      - "音频作为时钟字段"
+    limitations:
+      - "严格屏蔽 IP/品牌名"
+      - "API 2.5 尚未正式开放（火山方舟即将上线）"
+      - "复杂物理运动和拥挤多主体仍有局限"
+    prompt_style: "中文优先，支持长文本，自然语言描述"
     language_preference: "zh"
+    access:
+      jimeng: "即梦 AI（2.5 可用）"
+      doubao: "豆包专业版（2.5 可用）"
+      api_2_0: "第三方 API（seedance2api.app 等）"
+      api_2_5: "火山方舟 / BytePlus ModelArk（即将上线）"
     status: "active"
 
   kling:
