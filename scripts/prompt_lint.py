@@ -42,8 +42,13 @@ SLOP_TABLE = {
 LIGHT_KW = [
     "sun", "window", "lamp", "neon", "candle", "spotlight", "backlight",
     "rim light", "golden hour", "overcast", "fluorescent", "fire", "moon",
-    "street light", "太阳", "自然光", "侧光", "逆光", "窗光", "霓虹",
+    "street light", "glow", "beam", "ray", "shaft", "bloom", "flare",
+    "practical", "ambient light", "key light", "fill", "sunlight", "daylight",
+    "太阳", "自然光", "侧光", "逆光", "窗光", "霓虹",
     "烛光", "台灯", "月光", "路灯", "光线", "光源", "light",
+    "天光", "微光", "光柱", "光斑", "光束", "光晕", "散射",
+    "冷光", "暖光", "日光", "晨光", "夕光", "火光", "灯光",
+    "反光", "高光", "荧光", "磷光", "光",
 ]
 CAMERA_KW = [
     "push in", "pull out", "pull back", "tracking", "pan", "tilt", "orbit",
@@ -53,8 +58,14 @@ CAMERA_KW = [
 ]
 SOUND_KW = [
     "sound", "audio", "music", "silence", "silent", "quiet", "score",
+    "drone", "hum", "echo", "rumble", "roar", "tick", "drip", "whistle",
+    "howl", "creak", "splash", "thunder", "rain", "breathing", "footstep",
+    "ambient", "noise", "ringing", "buzz", "crackle", "rustle", "clank",
     "音效", "配乐", "声音", "音乐", "静默", "环境音", "无音乐",
     "production audio", "no music", "no score",
+    "回响", "嗡鸣", "风声", "水滴", "鹰啸", "滴答", "呼吸声", "脚步声",
+    "轰鸣", "咆哮", "鸟鸣", "蝉鸣", "雷声", "雨声", "浪声", "潮汐",
+    "引擎", "电机", "嗡", "鸣", "啸", "响", "声",
 ]
 NEGATION_PATTERNS = [
     r"no blur", r"no distortion", r"no artifacts", r"no extra fingers",
@@ -101,26 +112,60 @@ def find_negations_outside_constraints(text: str) -> list[str]:
     return hits
 
 
+def detect_multi_shot(text: str) -> list[str]:
+    """Detect multi-shot/timeline format and split into shot segments.
+    Returns list of shot text segments. Empty list = not multi-shot."""
+    # Pattern: "0-3秒画面：" or "3-7秒画面：" or "0-3s：" etc.
+    timeline_pat = r"\d+\s*[-–~到]\s*\d+\s*秒(画面|镜头)?[：:]"
+    # Pattern: "Shot 1:" or "镜头1：" or "S1:"
+    shot_pat = r"(?:Shot\s*\d+|镜头\s*\d+|S\d+)\s*[：:]"
+    
+    if re.search(timeline_pat, text):
+        # Split by timeline markers
+        parts = re.split(timeline_pat, text)
+        # First part is the header/style description, rest are shots
+        shots = [p.strip() for p in parts[1:] if p.strip()]
+        return shots if len(shots) >= 2 else []
+    elif re.search(shot_pat, text, re.IGNORECASE):
+        parts = re.split(shot_pat, text, flags=re.IGNORECASE)
+        shots = [p.strip() for p in parts[1:] if p.strip()]
+        return shots if len(shots) >= 2 else []
+    return []
+
+
 def count_action_sentences(text: str) -> int:
-    """Rough heuristic: count sentences with action/motion verbs."""
+    """Count action sentences. For multi-shot prompts, return max per shot."""
     action_verbs = (
         r"(walk|run|turn|reach|grab|lift|drop|push|pull|throw|catch|open|close|"
         r"rise|fall|spin|slide|roll|jump|stand|sit|enter|exit|cross|pass|"
         r"走|跑|转|拿|放|推|拉|扔|接|打开|关|升|降|旋转|滑|滚|跳|站|坐|进|出|穿|过|"
-        r"涌|冲|飘|飞|落|涌|冲|扑|挥|踢|打|舞|摇|摆|伸|缩|抬|低|仰|俯)"
+        r"涌|冲|飘|飞|落|涌|冲|扑|挥|踢|打|舞|摇|摆|伸|缩|抬|低|仰|俯|"
+        r"停|抬头|低头|转身|回头|迈步|跨|攀|爬|蹲|跪|躺|靠)"
     )
-    sentences = re.split(r"[。.！!？?\n]", text)
-    count = 0
-    for s in sentences:
-        s = s.strip()
-        if len(s) < 4:
-            continue
-        # skip camera/sound/constraint lines
-        if re.search(r"(镜头|声音|约束|camera|sound|constraint|light|光线)", s, re.IGNORECASE):
-            continue
-        if re.search(action_verbs, s):
-            count += 1
-    return count
+    
+    def _count_in_segment(segment: str) -> int:
+        sentences = re.split(r"[。.！!？?\n]", segment)
+        count = 0
+        for s in sentences:
+            s = s.strip()
+            if len(s) < 4:
+                continue
+            # skip camera/sound/constraint/style lines
+            if re.search(r"(镜头|声音|约束|camera|sound|constraint|light|光线|配乐|音效|Shot on|Simulated)", s, re.IGNORECASE):
+                continue
+            if re.search(action_verbs, s):
+                count += 1
+        return count
+    
+    # Check if multi-shot
+    shots = detect_multi_shot(text)
+    if shots:
+        # Return the MAX actions in any single shot (each shot should be ≤3)
+        per_shot = [_count_in_segment(s) for s in shots]
+        return max(per_shot) if per_shot else 0
+    
+    # Single shot: return total
+    return _count_in_segment(text)
 
 
 def word_count(text: str) -> int:
