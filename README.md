@@ -1,22 +1,21 @@
-# 🎬 Kling AI Prompt Engineering — Director-Grade Video Generation
-
-> **可灵 AI 提示词工程 — 导演式视频生成指南**
+# Kling & Seedance Prompt Engineering
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Kling AI](https://img.shields.io/badge/AI%20Video-Kling%20v3-purple)](https://klingai.com)
 
-**Core Idea: Direct the model, don't tweak pixels.**
+写给用可灵和 Seedance 做视频的人。不是提示词词典——是一套导演工作方法。
 
-不要向模型要"电影感"——回答：*这个镜头对观众做了什么？*
+核心主张只有一句话：**别跟模型要"电影感"，告诉它这个镜头对观众做了什么。** "Cinematic, beautiful, 4k" 是愿望，不是方向。模型需要的是：谁在画面里、做什么动作、摄影机怎么动、光从哪来、观众听到什么。这些答出来，"电影感"是副产品。
 
-**Compatible Models:** Kling v3 / v2.5-turbo / v2-1-master / video-o1
-**Modes:** Text-to-Video · Image-to-Video · Multi-Image Omni · Video Extension · Motion Transfer · Lip Sync
+**支持模型：** Kling v3 / v2.5-turbo / v2-1-master · Seedance 2.0
+**支持模式：** 文生视频 · 图生视频 · 多图参考 · 视频延长 · 运动迁移 · 口型同步
+
+两个模型的脾气不同：可灵对东方美学和口型同步理解更好，Seedance 对中文长文本和动态场景更流畅。本项目的 Skill 会根据你的内容自动建议用哪个。
 
 ---
 
-## 🚀 Quick Start — 30 秒入门
+## 30 秒上手
 
-**方式一：装 Skill（推荐）**
+**装 Skill，然后说话就行：**
 
 ```bash
 # Claude Code
@@ -29,45 +28,34 @@ curl -sL https://raw.githubusercontent.com/Yuyyxz/kling-prompt-engineering/main/
 curl -sL https://raw.githubusercontent.com/Yuyyxz/kling-prompt-engineering/main/install.sh | bash -s generic -d ~/.custom/skills/
 ```
 
-装完后直接对 AI 说："帮我拍一个产品视频"——它会自动引导你完成提示词生成。
+装完对 AI 说"帮我拍一个产品视频"。它会问你两三个问题，然后给你一个可以直接粘进可灵或 Seedance 的提示词。不需要背公式。
 
-**方式二：读文档（进阶）**
-
-```
-1. 这个镜头对观众做了什么？（一个意图）
-2. 景别 + 角度 + 运镜 = 镜头设置
-3. 光源 + 声音 + 约束 = 氛围
-4. 一句话 = 一个节拍，一个片段 = 一个变化
-```
-
-**方式三：一页纸速查**
-
-直接看 [cheatsheet.md](cheatsheet.md)——公式、五问、替换表、示例全在一页。
+**不想装东西？** 看 [cheatsheet.md](cheatsheet.md)，一页纸，打完印贴墙上。
 
 ---
 
-## 🧠 Root SKILL.md — 导演引擎入口
+## 它怎么工作
 
-项目根目录的 [`SKILL.md`](SKILL.md) 是标准 Claude Code / Cursor skill 入口，实现了：
+根目录的 [`SKILL.md`](SKILL.md) 是入口（标准 Claude Code / Cursor 格式）。逻辑很简单：
 
-- **Fast Lane**：简单请求直接出提示词，不跑完整流程
-- **Operating Loop**：复杂请求走 9 个 Gate（导演五问 → 模式选择 → 能力检查 → 素材权威 → 构建 → 质量检查 → 诊断 → 安全）
-- **Authority Order**：规则冲突时的 9 级优先级裁决
+你说一句话 → 它判断够不够 → 够就直接出词，不够就问最多两个问题 → 出词之前过一遍质量检查（有没有空话、有没有光源、是不是一个镜头塞了三个动作）。
 
-标准格式子 Skill 位于 `skills/*/SKILL.md` 目录（兼容 Claude Code 原生加载）。
+复杂需求（多集叙事、IP 风险、失败诊断）走完整流程，9 个环节逐步确认。简单需求不会被迫走完整流程——这是对用户时间的尊重。
+
+子 Skill 在 `skills/*/SKILL.md`，各有分工：模板库、风格标签、分镜表。
 
 ---
 
-## 🔧 Tools
+## 工具
 
 ```bash
-# 提示词质量检查（Anti-Slop 可执行版）
+# 检查你的提示词有没有空话（cinematic/beautiful/4k 这类）
 python scripts/prompt_lint.py "你的提示词"
 
-# 自动化评测（LLM-judge 打分）
+# 自动评测（需要 claude CLI 或 API key）
 python evals/run_evals.py
 
-# 格式验证
+# 验证 skill 文件格式
 python scripts/validate_all.py skills/
 ```
 
@@ -91,7 +79,7 @@ python scripts/validate_all.py skills/
 
 ---
 
-## ⚡ Prompt Formula
+## 提示词公式
 
 ```
 [主体 + 动作] + [镜头设置] + [光线变化] + [声音] + [约束]
@@ -192,7 +180,7 @@ Constraints: No text, no logos, no extra people.
 
 ---
 
-## ⚠️ Common Pitfalls
+## 常见坑
 
 1. **写 "cinematic" 等抽象词。** 模型无法处理抽象评价，用物理描述替代。
 2. **一个镜头塞太多动作。** 一镜 = 一拍 = 一变。多动作拆成多段。
