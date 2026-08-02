@@ -1,109 +1,55 @@
-# CLAUDE.md — 项目规范
+# CLAUDE.md — 项目规范（给 AI 助手看的）
 
-## 项目概述
+你正在一个 AI 视频提示词工程项目里工作。方法论和 Skill 逻辑全在根目录 `SKILL.md`，别在这里重复它。这个文件只管"怎么编辑这个项目"。
 
-这是一个 AI 视频生产操作系统，从"提示词词典"进化为"导演意图引擎 + 领域垂直 Skill 矩阵 + 状态化多集叙事 + 质量治理闭环"。
+## 项目是什么
 
-## 核心理念
+给可灵和 Seedance 用户准备的导演式提示词工具集。不是词典，是工作方法。用户说一句话想法，AI 给出可以直接粘进生成器的提示词。
 
-**不要教用户"怎么写提示词"，要教 AI "怎么当导演"。**
+## 编辑规则
 
-## 黄金公式
+- 改方法论/流程 → 改 `SKILL.md`，这里是 single source of truth
+- 改模型参数/能力 → 改 `12-kling-capability-map.md`，数据必须来自官方文档，别凭记忆写
+- 改 Skill → 改 `skills/*/SKILL.md`（标准格式），别改 `.skill` 文件（legacy）
+- 改提示词模板 → 改 `skills/kling-templates/SKILL.md` 或 `13-templates.md`
+- 加新文档 → 编号递增，放根目录，更新 README 文档索引
 
-**旧公式：** [镜头语言] + [主体动作] + [环境氛围] + [光影画质] + [运动轨迹]
+## 写作风格
 
-**新公式：** [场景意图/戏剧功能] + [一个可见节拍] + [一个镜头运动] + [真实光源] + [参考角色绑定]
+- 像一个每天用可灵出片的人在写笔记，不像产品经理在写规格书
+- 不用 emoji 做标题
+- 不用"核心理念"、"赋能"、"系统性"、"全方位"这类词
+- 有观点就说，不确定就标"未验证"
+- 中文为主，技术术语保留英文（T2V、I2V、Anti-Slop）
 
-## 导演五问
+## 验证
 
-每次生成视频前，必须回答以下五个问题：
-
-1. **功能 (Function):** 这个场景在故事中做什么？（引入/深化/转折/收束）
-2. **转折 (Turn):** 价值反转是什么？（安全→威胁/陌生人→盟友/控制→无力/孤独→连接）
-3. **视角 (Perspective):** 我们在谁的体验里？（主角/配角/全知/客观）
-4. **权力 (Power):** 谁持有权力，如何流动？（主角主导/配角主导/权力转移/权力平衡）
-5. **潜台词 (Subtext):** 什么是真实但未说出的？
-
-## 时间轴格式
-
-**必须使用时间轴格式，不要使用 JSON：**
-
-```markdown
-[风格描述]，[画幅比例]，[色调]
-
-0-3秒画面：[开场描述]
-3-6秒画面：[主体引入]
-6-9秒画面：[情节发展]
-9-12秒画面：[高潮时刻]
-12-15秒画面：[结尾落版]
-
-【声音】[配乐风格] + [音效] + [对白]
-【参考】[素材引用]
+改完跑：
+```bash
+python scripts/validate_all.py skills/
+python scripts/prompt_lint.py "你写的示例提示词"
 ```
 
-## 禁止事项
+## 禁止
 
-- ❌ 禁止堆砌形容词（cinematic, beautiful, 4k, ultra detailed）
-- ❌ 禁止在提示词中使用 JSON 格式（但允许在代码中使用 JSON 数据结构）
-- ❌ 禁止模糊描述
-- ❌ 禁止缺少意图推导
+- 不要在提示词示例里用 cinematic / beautiful / 4k / epic / masterpiece
+- 不要在文档里写未经验证的模型参数
+- 不要新增 `.skill` 格式文件
+- 不要在没有数据来源的情况下写"支持 XX 功能"
 
-## JSON 使用规则（无歧义版）
+## 文件地图
 
-| 场景 | 是否允许 JSON | 示例 |
-|------|---------------|------|
-| 给视频模型的 prompt | ❌ 禁止 | "一位女性站在窗前" ✅ |
-| 给视频模型的 prompt | ❌ 禁止 | {"subject": "女性"} ❌ |
-| Skill 内部的 Schema 定义 | ✅ 允许 | JSON Schema 文档 |
-| Python 验证脚本 | ✅ 允许 | json.loads() |
-| Pipeline YAML 中的参数 | ✅ 允许 | params: {duration: 5} |
-| 分镜脚本的结构化输出 | ✅ 允许 | 但必须同时提供自然语言版本 |
-## 必需事项
-
-- ✅ 必须先回答导演五问
-- ✅ 必须使用时间轴格式
-- ✅ 必须使用具体的技术描述
-- ✅ 必须包含真实光源
-- ✅ 必须说明镜头在故事中的功能
-
-## Skill 优先级
-
-- **P0:** 导演引擎、时间轴格式
-- **P1:** 领域垂直 Skill、多集连续叙事、Anti-Slop
-- **P2:** 路由表、失败诊断图谱、素材编号系统
-- **P3:** 多语言词汇表、验证脚本体系、多平台安装兼容
-
-## 素材编号规范
-
-- **角色素材：** C01-C99（多角度参考图）
-- **场景素材：** S01-S99（不同时间/天气）
-- **道具素材：** P01-P99
-
-## 多语言支持
-
-- 中文（zh）：水墨武侠、国风动漫、江湖、侠客
-- English（en）：Cinematic, Film Noir, Cyberpunk, Vintage Film
-- 日本語（ja）：アニメ、和風、サイバーパンク
-- 한국어（ko）：한국 애니메이션、사이버펑크
-- Español（es）：Cinematográfico, Cine Negro
-- Русский（ru）：Кинематографический, Фильм Нуар
-
-## 验证流程
-
-1. 运行 Schema Check：验证文件格式
-2. 运行 Vocab Integrity：验证词汇完整性
-3. 运行 Design Audit：验证设计规范
-4. 运行 Behavior Contract：验证行为契约
-
-## 使用流程
-
-1. 用户输入主题
-2. AI 回答导演五问
-3. 根据意图推导技术参数
-4. 生成时间轴格式提示词
-5. 输出可直接使用的提示词
-
-## 参考资源
-
-- GitHub 高星仓库：Emily2040/seedance-2.0, dexhunter/seedance2-skill, liangdabiao/Seedance2-Storyboard-Generator
-- 官方文档：Seedance 2.0 User Manual, Seedance 2.0 Real-world Cases
+| 要找什么 | 去哪 |
+|---------|------|
+| 方法论/流程/路由 | `SKILL.md` |
+| 模型参数/能力 | `12-kling-capability-map.md` |
+| Seedance 提示词写法 | `references/seedance-prompt-guide.md` |
+| Anti-Slop 替换表 | `09-anti-slop.md` |
+| 模板库 | `skills/kling-templates/SKILL.md` |
+| 风格标签 | `skills/kling-style-tags/SKILL.md` |
+| 分镜表格式 | `skills/kling-storyboard/SKILL.md` |
+| 验证脚本 | `scripts/validate_all.py` |
+| 提示词检查 | `scripts/prompt_lint.py` |
+| 评测 | `evals/run_evals.py` |
+| 版本历史 | `CHANGELOG.md` |
+| 贡献指南 | `CONTRIBUTING.md` |

@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/og-cover.png" alt="Kling & Seedance Prompt Engineering" width="100%">
+</p>
+
 # Kling & Seedance Prompt Engineering
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
