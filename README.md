@@ -61,7 +61,7 @@ python scripts/validate_all.py skills/
 
 ---
 
-## 📦 Available Skills
+## Skills
 
 | Skill | 用途 | 触发词 |
 |-------|------|--------|
@@ -107,7 +107,7 @@ Constraints: No text, no logos, no extra people.
 
 ---
 
-## 🚫 Anti-Slop Rules
+## Anti-Slop：空话替换
 
 > If a word can't be detected by a camera, microphone, light meter, or stopwatch — rewrite it.
 
@@ -126,7 +126,7 @@ Constraints: No text, no logos, no extra people.
 
 ---
 
-## 📚 Documentation Index
+## 文档索引
 
 | Doc | Content |
 |-----|---------|
@@ -161,7 +161,7 @@ Constraints: No text, no logos, no extra people.
 
 ---
 
-## 🎯 Cross-Reference: "I want to..."
+## 我想做……去哪找？
 
 | Goal | Go to |
 |------|-------|
@@ -193,7 +193,7 @@ Constraints: No text, no logos, no extra people.
 
 ---
 
-## 🏗️ Project Structure
+## 项目结构
 
 ```
 kling-prompt-engineering/
@@ -261,7 +261,7 @@ kling-prompt-engineering/
 
 ---
 
-## 🔧 Validation
+## 验证
 
 ```bash
 # 安装依赖
@@ -276,17 +276,17 @@ python scripts/validate_all.py skills/director-engine.skill
 
 ---
 
-## 🤝 Contributing
+## 参与贡献
 
 Issues and PRs welcome. 如果你有经过验证的可灵提示词技巧，欢迎分享。
 
 提交前请运行 `python scripts/validate_all.py skills/` 确保验证通过。
 
-## 📄 License
+## License
 
 MIT — use freely, credit appreciated.
 
-## 🙏 Credits
+## Credits
 
 Methodology ported from [seedance-2.0 Skill OS](https://github.com/Emily2040/seedance-2.0) director engine, adapted and expanded for Kling AI's specific capabilities and constraints.
 
