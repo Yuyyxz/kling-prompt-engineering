@@ -24,14 +24,44 @@ models:
   kling:
     name: "Kling"
     provider: "Kuaishou"
-    description: "快手视频生成模型，东方意境理解佳"
-    max_duration: "10s"
-    aspect_ratios: ["16:9", "9:16", "1:1"]
+    description: "快手视频生成模型，2026 阵容：3.0(4K旗舰) / 3.0 Omni(一致性) / O1(多模态) / 2.6(音频+运动)"
+    max_duration: "15s"
+    aspect_ratios: ["16:9", "9:16", "1:1", "4:3", "3:4", "3:2", "2:3", "21:9"]
+    models:
+      kling_3_0:
+        id: "v3-0"
+        resolution: "4K"
+        duration: "3-15s"
+        features: ["AI智能分镜", "原生文字渲染", "主体参考(1-7图)", "多语混说(中英日韩西)", "同步音频"]
+      kling_3_0_omni:
+        id: "v3-0-omni"
+        resolution: "1080p"
+        duration: "3-15s"
+        features: ["视频角色提取(3-8s)", "自定义分镜", "音色绑定", "强主体一致性"]
+      kling_o1:
+        id: "kling-video-o1"
+        resolution: "1080p"
+        duration: "3-10s"
+        features: ["参考生成", "风格化", "变换", "修复", "关键帧插值", "多主体一致性", "视觉特效"]
+      kling_2_6_pro:
+        id: "kling-v2.6-pro"
+        resolution: "1080p"
+        duration: "5-10s"
+        features: ["原生音频(中英)", "运动路径控制", "Avatar数字人"]
+      kling_2_5_turbo:
+        id: "kling-v2.5-turbo"
+        resolution: "1080p"
+        duration: "5-10s"
+        features: ["最快速度", "最低成本"]
     special_features:
-      - "东方美学"
-      - "电影级质感"
-      - "多语言口型同步"
-    prompt_style: "中英文混合，支持结构化分镜"
+      - "4K 输出（3.0）"
+      - "原生文字渲染（3.0）"
+      - "五语口型混说（3.0）"
+      - "运动路径控制（2.6）"
+      - "视频角色提取（3.0 Omni）"
+      - "多模态统一工作流（O1）"
+      - "视频延长最长 3 分钟"
+    prompt_style: "中英文混合，支持结构化分镜，相机预设内置"
     language_preference: "zh"
     status: "active"
 
