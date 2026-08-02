@@ -1,6 +1,6 @@
 # 12 — 可灵能力图
 
-> 最后更新：2026-08-02 · 数据来源：klingapi.com/zh/models + 官方文档
+> 最后更新：2026-08-02 · 数据来源：可灵官方文档（klingai.com/document-api）
 
 别猜模型能做什么。查这里，然后设计进优势、绕过限制。
 
@@ -145,16 +145,44 @@ Seedance 2.5 于 2026-07-31 发布，目前通过即梦 AI / 豆包专业版可�
 ## API 快速参考
 
 ```
-Base URL: https://api.klingapi.com
-Auth: Bearer <API_KEY>
+Base URL: https://api-beijing.klingai.com     # 官方域名
+Auth:     Authorization: Bearer <API_KEY>
 
-POST /v1/videos/text2video      # 文生视频
-POST /v1/videos/image2video     # 图生视频
-POST /v1/videos/extend          # 视频延长
-POST /v1/videos/lip-sync        # 口型同步
-GET  /v1/videos/{task_id}       # 轮询结果
-
-SDK: pip install kling-api | npm install @kling-api/sdk
+# 新格式：模型写在路径里，不是 body 里
+POST /text-to-video/kling-3.0                 # 文生视频
+POST /text-to-video/kling-3.0-turbo           # 换模型 = 换路径
+POST /text-to-video/kling-2.6                 # 同理
+POST /image-to-video/kling-3.0                # 图生视频
+GET  /tasks?task_ids=xxx,yyy                  # 查任务（逗号分隔可批量）
+POST /tasks                                   # 游标查询（start_time/end_time/cursor/limit + 过滤）
 ```
 
-生成是异步的：请求返回 `task_id`，然后轮询状态直到完成。
+请求体：
+
+```json
+{
+  "prompt": "...",
+  "settings": {
+    "resolution": "720p|1080p|4k",
+    "aspect_ratio": "16:9|9:16|1:1",
+    "duration": 5,
+    "audio": "native|off",
+    "multi_shot": true
+  },
+  "options": {
+    "callback_url": "https://...",
+    "external_task_id": "custom-id",
+    "watermark_info": {"enabled": false}
+  }
+}
+```
+
+要点：
+
+- **一律用新格式。** 旧的 `/v1/videos/text2video` 还能跑，但会静默忽略不支持的参数——错了都不报错。别用。
+- **Prompt 上限 3072 字符**，建议 ≤2500。
+- **分镜**：`multi_shot: true`，prompt 最多 6 个镜头，每段 ≤512 字符，各镜头时长之和 = `duration`。
+- **任务生命周期**：`submitted → processing → succeeded / failed`。生成异步，轮询 `GET /tasks` 或用 `callback_url` 回调。
+- **输出**：视频在 `data[].outputs[].url`，带防盗链，30 天后清理——拿到就下载，别直接外链。
+- **计费**：4K 5s = 15 units，明细在 `data[].billing[]`。
+- 文档索引：https://klingai.com/document-api/llms.txt
