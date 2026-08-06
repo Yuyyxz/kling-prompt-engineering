@@ -2217,6 +2217,63 @@ f/1.4 = 奶油般背景虚化，只有眼睛清晰。f/16 = 从前景到地平�
 相机：85mm, f/5.6
 ```
 
+### 33. 砼核（Concretecore / 巨构混凝土）
+
+> 网络 -core 美学(2022 至今)。不是粗野主义建筑风格,是**情绪**:荒芜无人的巨构混凝土建筑 + 阈限空间 + "巨人的沉默"。核心不是"这建筑怎么设计",是"这建筑让我感到什么"。
+
+```
+触发词：brutalist megastructure + liminal space（两个固定 token 锁定风格）
+关键词：brutalist architecture, concrete megastructure, monumental scale,
+       vast empty hall, endless corridor, liminal space, underground chamber,
+       board-formed concrete, béton brut, weathered concrete, water stains,
+       moss on concrete, rust stains, exposed rebar, overcast sky,
+       diffused ambient light, foggy atmosphere, shaft of light from above,
+       cold fluorescent lighting, tiny figure for scale, desolate, silent,
+       one-point perspective, symmetrical composition, desaturated grey tones
+负面词（风格防跑偏）：cyberpunk, neon lights, hologram, sci-fi, fantasy,
+       dreamy, pastel, vaporwave, collapsed ruins, luxury, cozy warm home,
+       glass curtain wall, polished concrete, people, crowded, HDR
+色彩：混凝土灰 #B0A99F 主调、铁锈棕 #8B5E3C 点缀、苔藓绿 #5A6E4A 点缀；
+      全局低饱和冷灰，暖色只作为光线点缀
+光线：阴天漫射（最核心）、雾光、天窗缝隙光、荧光灯冷光；
+      避免霓虹/黄金时刻高饱和/HDR
+景深：深景深，建筑整体清晰；人物作渺小尺度参照（1-2 人远景剪影）
+适用：巨构建筑、阈限空间、后人类氛围、竞赛视频首帧/分镜
+不适用（会滑向）：赛博朋克（加霓虹）、梦核（加粉彩柔光）、
+       纯废墟（加坍塌）、建筑摄影（加完美几何）
+相机：24mm 广角仰拍（压迫感）/ 极远景俯拍（巨物感）/ 对称单点透视（无限感）
+```
+
+**和 13 号粗野主义的区别**：13 号是建筑风格（设计语言、功能、几何体量）；33 号是情绪美学（无人、荒芜、风化痕迹、渺小感）。粗野主义可有人的活动，砼核必须无人或仅尺度参照。
+
+**示例 prompt（巨构雾中仰视，完整版带景别+相机锚定）：**
+```
+极远景，低角度仰拍（worm's-eye view）。一座巨大的粗野主义混凝土巨塔直插灰白天空，
+三点透视强化它的高度，塔的上半部分消失在雾里。外立面是风化混凝土，
+竖向水渍条纹沿着墙面流下，底部有钢筋锈蚀渗出的锈痕。
+建筑中段有几只鸟在盘旋——用它们的渺小反衬巨塔的真实尺度。
+光线：阴天均匀漫射光，冷灰低饱和调。地面有积水，倒映着巨塔。
+氛围：压倒性的渺小感，巨人的沉默，工业衰败但结构完好、没有坍塌。
+镜头：Sony Venice 拍摄，24mm f/8，深景深，全画面清晰。
+负面：无霓虹灯，无赛博朋克，无人物特写，无梦幻柔光，无坍塌废墟。
+```
+
+英文版（可直接粘贴）：
+```
+extreme wide shot, worm's-eye view, looking up at colossal brutalist tower from ground level,
+three-point perspective emphasizing impossible height,
+fog shrouding the upper floors, building disappearing into grey sky,
+weathered concrete facade with vertical water streaks,
+rust bleeding from exposed rebar near the base,
+tiny birds circling at mid-height revealing the true scale,
+overcast muted light, cold desaturated palette,
+overwhelming sense of insignificance, the silence of giants,
+industrial decay without collapse, standing water at the base,
+Sony Venice, 24mm, f/8, deep depth of field
+```
+
+**完整方法论 → 参考 research/concretecore-style-guide.md（风格全要素/场景清单/相邻美学边界/30+ 关键词分类）**
+
 ---
 
 ## 交叉引用
@@ -2240,3 +2297,4 @@ f/1.4 = 奶油般背景虚化，只有眼睛清晰。f/16 = 从前景到地平�
 | 完整布光体系（25种布光+光质+决策树） | 本章「完整布光体系」 |
 | 类型专项指南（8种图片类型模板） | 本章「类型专项指南」 |
 | 风格标签速查（20+扩展风格库） | 本章「风格标签速查：20+ 扩展风格库」 |
+| 砼核/Concretecore 巨构风格全要素 | 本章「33. 砼核」+ [research/concretecore-style-guide.md](research/concretecore-style-guide.md) |
