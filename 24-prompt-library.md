@@ -405,6 +405,16 @@
 - **示例**:青花瓷, 白瓷钴蓝, 缠枝莲纹, 明代风格, 釉面光泽, 开片纹理, 器形典雅, 柔光下的瓷面反光, 素净高雅
 - **适配**:→Kolors 中文最优;→Qwen 展开纹样细节;→Seedream 要素齐全
 
+### A37. 极简 Zine 海报（Minimal Zine Poster）
+- **触发词**:minimal zine poster, editorial zine, quiet paper poster
+- **关键词**:tall vertical 3:5 paper canvas, huge negative space, old paper texture, tiny visual anchor, sparse typography, one high-chroma color anchor, risograph grain, xerox softness, halftone, scanned-paper look, flat orthographic, matte paper, ink bleed, aged paper mottling, serif/typewriter microtext
+- **负面词**:full-bleed scene, commercial headline, product ad, logo, glossy mockup, clean UI white, cinematic lighting, 3D render, neon, cute cartoon, dense scrapbook, too many colors, long clean text blocks, hard shadow, depth of field
+- **光线**:均匀漫射,平扫光感,无硬影,无景深
+- **色彩**:纸色+灰黑基底,支撑**一个**高饱和色锚(钴蓝/群青/柠檬黄/翠绿,占画面 0.8-2.5%,缩略图可见),主色锚不降饱和
+- **构图**:70-90% 留白;一个视觉簇占 8-25%,居中/中上/中下/左下/右上,不贴边
+- **示例**:tall vertical 3:5 paper poster, full-frame aged paper, 80 percent empty negative space, a small visual cluster occupying 15 percent placed lower-left, flat front-facing composition; a torn-paper clipping of a rainy old bookstore as the anchor, xerox softness, halftone grain, ink bleed at the torn edge; tiny serif type pressing against the image edge, one fully saturated cobalt-blue ink block behind the text, risograph misregistration, aged paper mottling; flat orthographic scanned-paper view, diffuse light, no shadow, no 3D, no neon, no commercial headline
+- **适配**:→Kolors 压缩为中文描述(留白+色锚);→Qwen 展开四段式细节(画布/锚点/字体/纹理);→Seedream 要素齐全(构图比例写清楚)
+
 ---
 
 ## B. 电影/导演风格
