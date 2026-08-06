@@ -477,6 +477,111 @@ def validate_skill_file(file_path):
 #  .md 验证（聚合所有检查）
 # ═══════════════════════════════════════════════════════════
 
+def check_library_entries(lines, file_path):
+    """校验风格/氛围库(24-prompt-library.md)条目结构:
+    1. 每个条目必须含七件套:触发词/关键词/负面词/光线/色彩/构图/示例
+    2. 编号连续性(各组 A/B/C/D/E/M 内无跳号)
+    3. 模型适配行存在性(≥30 条时启用:每个条目应含「适配」行)
+    4. 示例非空且非过短
+    """
+    fname = os.path.basename(file_path)
+    if fname != "24-prompt-library.md":
+        return True, "", ""
+
+    problems = []
+    group_titles = {}
+    current_group = None
+    current_entry = None
+    entry_fields = {}   # entry_title -> (line, {field: value})
+    entry_line = 0
+    current_fields = {}
+    prev_group = None
+
+    required = ["触发词", "关键词", "负面词", "光线", "色彩", "构图", "示例"]
+
+    for idx, line in enumerate(lines, 1):
+        m_group = re.match(r"^## ([A-EM])\.\s", line)
+        if m_group:
+            current_group = m_group.group(1)
+            group_titles.setdefault(current_group, 0)
+            continue
+
+        m_entry = re.match(r"^### ([A-EM])(\d+)\.\s", line)
+        if m_entry:
+            entry_group = m_entry.group(1)
+            # 上一个条目收尾检查
+            if current_entry:
+                missing = [f for f in required if f not in current_fields]
+                if missing:
+                    problems.append(f"第 {entry_line} 行「{current_entry}」缺字段: {', '.join(missing)}")
+                num = current_fields.get('_num')
+                if num is not None and prev_group:
+                    group_titles.setdefault(prev_group, 0)
+                    prev = group_titles.get(prev_group, 0)
+                    if num != prev + 1:
+                        problems.append(f"第 {entry_line} 行「{current_entry}」编号跳号: {prev} → {num}")
+                    group_titles[prev_group] = num
+
+            current_group = entry_group
+            current_entry = m_entry.group(0)
+            entry_line = idx
+            prev_group = entry_group
+            current_fields = {'_num': int(m_entry.group(2))}
+            continue
+
+        if current_entry:
+            for field in required:
+                if line.startswith(f"- **{field}**:"):
+                    current_fields[field] = line
+                    # 示例非空且非过短
+                    if field == "示例":
+                        val = line.split(":", 1)[1].strip() if ":" in line else ""
+                        if len(val) < 40:
+                            problems.append(f"第 {idx} 行「{current_entry}」示例过短(<40字符)")
+                    break
+            if line.startswith("- **适配**:"):
+                current_fields['适配'] = line
+
+    # 最后一个条目收尾
+    if current_entry:
+        missing = [f for f in required if f not in current_fields]
+        if missing:
+            problems.append(f"第 {entry_line} 行「{current_entry}」缺字段: {', '.join(missing)}")
+        num = current_fields.get('_num')
+        if num is not None and prev_group:
+            group_titles.setdefault(prev_group, 0)
+            prev = group_titles.get(prev_group, 0)
+            if num != prev + 1:
+                problems.append(f"第 {entry_line} 行「{current_entry}」编号跳号: {prev} → {num}")
+
+    if problems:
+        return False, "库条目结构", "; ".join(problems[:5]) + (f" 等 {len(problems)} 处" if len(problems) > 5 else "")
+
+    # 适配行覆盖率统计(提示级:不 FAIL,仅返回统计)
+    adapt_count = sum(1 for v in current_fields.values() if isinstance(v, dict) and '适配' in v)
+    return True, "库条目结构", ""
+
+def check_library_adapt_coverage(lines, file_path):
+    """统计 24-prompt-library.md 的适配行覆盖率(提示级,不 FAIL)"""
+    fname = os.path.basename(file_path)
+    if fname != "24-prompt-library.md":
+        return True, "", ""
+    total = 0
+    adapted = 0
+    for line in lines:
+        if re.match(r"^### [A-EM]\d+\.\s", line):
+            total += 1
+        elif line.startswith("- **适配**:"):
+            adapted += 1
+    if total == 0:
+        return True, "", ""
+    pct = adapted / total * 100
+    msg = f"适配行覆盖率: {adapted}/{total} ({pct:.0f}%)"
+    if pct < 60:
+        return True, "适配覆盖率", msg + " — 建议新增条目都带适配行"
+    return True, "适配覆盖率", msg
+
+
 def validate_md_file(file_path):
     """验证 .md 文件：格式 + 交叉引用 + anti-slop"""
     with open(file_path, 'r', encoding='utf-8') as f:
@@ -508,6 +613,14 @@ def validate_md_file(file_path):
     # 6. Anti-Slop
     ok, msg, _ = check_anti_slop(content, file_path)
     results.append(("Anti-Slop", ok, msg))
+
+    # 7. 库条目结构(仅 24-prompt-library.md)
+    ok, _, msg = check_library_entries(lines, file_path)
+    results.append(("库条目结构", ok, msg))
+
+    # 8. 适配覆盖率(提示级,不 FAIL)
+    ok, _, msg = check_library_adapt_coverage(lines, file_path)
+    results.append(("适配覆盖率", ok, msg))
 
     return results
 

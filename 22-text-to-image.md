@@ -2298,4 +2298,4 @@ Sony Venice, 24mm, f/8, deep depth of field
 | 类型专项指南（8种图片类型模板） | 本章「类型专项指南」 |
 | 风格标签速查（20+扩展风格库） | 本章「风格标签速查：20+ 扩展风格库」 |
 | 砼核/Concretecore 巨构风格全要素 | 本章「33. 砼核」+ [research/concretecore-style-guide.md](research/concretecore-style-guide.md) |
-| 风格与氛围 prompt 大全（72 条完整配方） | [24-prompt-library.md](24-prompt-library.md) |
+| 风格与氛围 prompt 大全（155 条完整配方 + 模型适配层） | [24-prompt-library.md](24-prompt-library.md) |
