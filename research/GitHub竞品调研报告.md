@@ -113,7 +113,7 @@ Lighting: Volumetric Lighting, Chiaroscuro, Golden Hour...
 VFX: Anamorphic lens flare, Film grain, Lens whacking...
 ```
 
-**可灵改进：** 创建 "17-cinematography-dictionary.md"——可灵可用的电影摄影术语速查表。
+**可灵改进：** 创建 "19-cinematography-dictionary.md"——可灵可用的电影摄影术语速查表。
 
 ---
 
@@ -125,7 +125,7 @@ VFX: Anamorphic lens flare, Film grain, Lens whacking...
 | **P0** | 类型模板扩展(6→15) | ai-shortfilm-prompts | 中 | 高 | 11-genre-guides.md 扩展 |
 | **P0** | 引导式构建模式 | seedance-skills | 低 | 高 | 01-directing-engine.md 新增§ |
 | **P1** | 失败→修复案例库 | ai-shortfilm-prompts | 中 | 极高 | 新建 troubleshooting-gallery.md |
-| **P1** | 电影摄影术语词典 | AI-Cinematic-Prompt-Director | 中 | 高 | 新建 17-cinematography-dictionary.md |
+| **P1** | 电影摄影术语词典 | AI-Cinematic-Prompt-Director | 中 | 高 | 新建 19-cinematography-dictionary.md |
 | **P1** | FPV/无人机场景 | ai9app | 低 | 中 | 02-shot-language.md 新增§ |
 | **P2** | 提示词迭代模板 | get-shit-done | 低 | 中 | 13-templates.md 新增§ |
 | **P2** | 参考图工作流强化 | codeywood | 中 | 中 | 04-i2v-guide.md 强化 |
@@ -145,7 +145,7 @@ VFX: Anamorphic lens flare, Film grain, Lens whacking...
 ## 五、建议下一步
 
 1. 创建 troubleshooting-gallery.md（失败→修复案例库）
-2. 创建 17-cinematography-dictionary.md（电影摄影术语词典）
+2. 创建 19-cinematography-dictionary.md（电影摄影术语词典）
 3. 在01-directing-engine.md里加"魔法前缀"系统
 
 ---

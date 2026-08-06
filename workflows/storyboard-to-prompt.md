@@ -344,6 +344,6 @@ ARRI Alexa Mini 拍摄，Cooke S7/i 系列，低饱和，混凝土灰+天空灰�
 | [23-first-last-frame.md](../23-first-last-frame.md) | 首帧/尾帧生成流程 |
 | [15-timeline-syntax.md](../15-timeline-syntax.md) | 时间轴三层模型（状态/运动/节奏） |
 | [08-audio-guide.md](../08-audio-guide.md) | 音画配对完整指南 |
-| [adapters/t2i_adapter.yaml](t2i_adapter.yaml) | 文生图多模型适配 |
-| [adapters/kling_adapter.yaml](kling_adapter.yaml) | 可灵视频模型适配 |
-| [adapters/seedance_adapter.yaml](seedance_adapter.yaml) | Seedance 视频模型适配 |
+| [adapters/t2i_adapter.yaml](../adapters/t2i_adapter.yaml) | 文生图多模型适配 |
+| [adapters/kling_adapter.yaml](../adapters/kling_adapter.yaml) | 可灵视频模型适配 |
+| [adapters/seedance_adapter.yaml](../adapters/seedance_adapter.yaml) | Seedance 视频模型适配 |
