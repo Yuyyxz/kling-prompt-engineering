@@ -4,7 +4,7 @@
 
 这是一个给 AI 视频生成写的提示词手册，以快手可灵（Kling）为主。不是论文，不是术语词典——是实战中总结出来的"怎么写 prompt 才能出片"。
 
-22 个文件，从"我从来没写过"到"我要精确控制第 3 秒的音效对齐"，全覆盖。
+25 个文件，从"我从来没写过"到"我要精确控制第 3 秒的音效对齐"，全覆盖。
 
 **兼容模型：** Kling v3 / v2.5-turbo / v2-1-master / video-o1
 **支持模式：** 文生视频 · 图生视频 · 多图参考 · 视频续写 · 动作迁移 · 口型同步
@@ -109,6 +109,13 @@
 | [20-style-tags.md](20-style-tags.md) | 风格标签：8 导演风格 + 8 视觉风格 + 6 情绪风格 + 组合公式 |
 | [21-retake-protocol.md](21-retake-protocol.md) | 重试协议：5 个判定、单变量规则、重试预算、拍摄日志、诚实退出 |
 | [22-text-to-image.md](22-text-to-image.md) | 文生图完整指南：多模型适配（Kolors/Qwen/Seedream）、相机锚定、景深控制（光圈-视觉对照+虚化形状）、曝光控制（剪影/双重曝光/漏光/HDR）、色彩与影调（色温/互补色/7种电影调色）、完整布光体系（25种布光+光质+决策树）、光线词汇、情绪外化、类型专项指南（8种：人文街拍/广告/海报6模板/编辑杂志/建筑/角色概念艺术/中国风）、景观专项（9要素+6类型）、32种风格体系（12核心+20+扩展）、负面提示词策略、角色一致性、反塑料感、效果提升 |
+| [23-first-last-frame.md](23-first-last-frame.md) | 首帧/尾帧完整指南：状态插值逻辑、好首帧5标准、好尾帧4标准、配对原则、T2I生成首帧6步流程、多镜头帧链式串联、常见翻车修复、3个实战案例（角色转身/产品变化/场景过渡） |
+
+### 工作流
+
+| 文件 | 干什么用的 |
+|------|-----------|
+| [workflows/storyboard-to-prompt.md](workflows/storyboard-to-prompt.md) | 分镜转 Prompt 工作流：Beat Board 输入格式、逐字段翻译规则、角色卡复用、风格 token 统一、3镜头翻译示例、质量检查清单 |
 
 ### 参考资料
 
@@ -185,6 +192,7 @@ kling-prompt-engineering/
 ├── 20-style-tags.md                   # 风格标签
 ├── 21-retake-protocol.md              # 重试协议
 ├── 22-text-to-image.md                # 文生图
+├── 23-first-last-frame.md             # 首帧/尾帧指南
 ├── references/                        # 参考资料
 │   ├── anti_slop_lexicon.md
 │   ├── failure_atlas.md
@@ -198,7 +206,11 @@ kling-prompt-engineering/
 ├── adapters/                          # 模型适配器
 │   ├── kling_adapter.yaml
 │   ├── seedance_adapter.yaml
-│   └── prompt_translator.yaml
+│   ├── t2i_adapter.yaml               # 文生图多模型适配
+│   ├── prompt_translator.yaml
+│   └── model_router.yaml
+├── workflows/                         # 工作流
+│   └── storyboard-to-prompt.md        # 分镜转 Prompt
 ├── skills/                            # Skill 文件
 │   └── *.skill
 └── scripts/                           # 验证脚本
