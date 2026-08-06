@@ -74,6 +74,26 @@ NEGATION_PATTERNS = [
 ]
 CONSTRAINT_MARKERS = ["约束", "constraint", "constraints", "无文字", "无水印"]
 
+# ── T2I 特有关键词 ───────────────────────────────────────────
+# 景别/角度骨架（图片 prompt 基本结构）
+SHOT_KW = [
+    "特写", "近景", "中景", "远景", "极远景", "微距", "全景",
+    "仰拍", "俯拍", "平视", "侧面", "正面", "背面", "四分之三",
+    "close-up", "close up", "macro", "wide shot", "low angle",
+    "high angle", "eye level", "over-the-shoulder", "profile",
+    "景别", "角度", "构图",
+]
+# 相机锚定（真实相机型号 + 镜头参数）
+CAMERA_MODEL_KW = [
+    "arri", "alexa", "sony", "venice", "canon", "fujifilm", "leica",
+    "kodak", "nikon", "hasselblad", "phase one", "red camera",
+    "panavision", "cinema camera", "dslr", "mirrorless",
+    "35mm", "50mm", "85mm", "135mm", "24mm", "28mm", "105mm",
+    "f/1.4", "f/1.8", "f/2.8", "f/4", "f/8", "f/11", "f/16",
+    "光圈", "焦段", "mm 镜头", "胶片", "portra", "ektar", "velvia",
+    "xtrans", "cmos", "full frame", "aps-c",
+]
+
 # ── Helpers ──────────────────────────────────────────────────
 def find_slop(text: str) -> list[tuple[str, str]]:
     """Return list of (slop_word, replacement) found in text."""
@@ -176,10 +196,11 @@ def word_count(text: str) -> int:
 
 
 # ── Main lint ────────────────────────────────────────────────
-def lint(prompt: str) -> int:
+def lint(prompt: str, mode: str = "t2v") -> int:
     errors = warnings = infos = 0
+    mode_label = "文生图 T2I" if mode == "t2i" else "文生视频 T2V"
     print(f"\n{CYN}{'='*60}")
-    print(f"  Prompt Lint — Anti-Slop 提示词质量检查")
+    print(f"  Prompt Lint — Anti-Slop 提示词质量检查 ({mode_label})")
     print(f"{'='*60}{RST}\n")
 
     # 1. Slop words (ERROR)
@@ -200,21 +221,57 @@ def lint(prompt: str) -> int:
         print(f"{YEL}⚠️  [WARN] 缺少光源 Missing light source{RST}")
         print(f"   {DIM}添加具体光源：太阳/窗光/台灯/霓虹/烛光… (add a concrete light source){RST}")
 
-    # 3. Missing camera movement (WARNING)
-    if has_keyword(prompt, CAMERA_KW):
-        print(f"{GRN}✅ [PASS] 镜头运动已声明 Camera movement declared{RST}")
-    else:
-        warnings += 1
-        print(f"{YEL}⚠️  [WARN] 缺少镜头运动 Missing camera movement{RST}")
-        print(f"   {DIM}添加镜头运动：推进/环绕/固定/手持… (add camera motion or 'static/锁定'){RST}")
+    if mode == "t2i":
+        # ── T2I 模式：图片特有检查 ──
+        # 3a. 景别/角度骨架 (WARNING)
+        if has_keyword(prompt, SHOT_KW):
+            print(f"{GRN}✅ [PASS] 景别/角度已声明 Shot framing declared{RST}")
+        else:
+            warnings += 1
+            print(f"{YEL}⚠️  [WARN] 缺少景别/角度 Missing shot framing{RST}")
+            print(f"   {DIM}图片 prompt 基本骨架：特写/中景/远景 + 仰拍/俯拍/平视 (shot size + angle){RST}")
 
-    # 4. Missing sound (WARNING)
-    if has_keyword(prompt, SOUND_KW):
-        print(f"{GRN}✅ [PASS] 声音已声明 Sound declared{RST}")
+        # 4a. 相机锚定 (WARNING)
+        if has_keyword(prompt, CAMERA_MODEL_KW):
+            print(f"{GRN}✅ [PASS] 相机锚定已声明 Camera anchor declared{RST}")
+        else:
+            warnings += 1
+            print(f"{YEL}⚠️  [WARN] 缺少相机锚定 Missing camera anchor{RST}")
+            print(f"   {DIM}真实相机型号比\"电影感\"有效 10 倍：Sony Venice + 85mm f/1.2 (real camera model){RST}")
+
+        # 5a. 负面提示词 (INFO)
+        if has_keyword(prompt, ["negative", "负面", "避免", "不要"]):
+            print(f"{GRN}✅ [PASS] 负面提示词已考虑 Negative prompt considered{RST}")
+        else:
+            infos += 1
+            print(f"{CYN}ℹ️  [INFO] 未提及负面提示词 Negative prompt not mentioned{RST}")
+            print(f"   {DIM}写实人像建议加负面：塑料感/畸变/多余手指 (plastic skin, distortion){RST}")
     else:
-        warnings += 1
-        print(f"{YEL}⚠️  [WARN] 缺少声音设计 Missing sound design{RST}")
-        print(f"   {DIM}添加声音：环境音/音效/配乐/静默… (add sound: ambient/SFX/music/silence){RST}")
+        # ── T2V 模式：视频特有检查 ──
+        # 3. Missing camera movement (WARNING)
+        if has_keyword(prompt, CAMERA_KW):
+            print(f"{GRN}✅ [PASS] 镜头运动已声明 Camera movement declared{RST}")
+        else:
+            warnings += 1
+            print(f"{YEL}⚠️  [WARN] 缺少镜头运动 Missing camera movement{RST}")
+            print(f"   {DIM}添加镜头运动：推进/环绕/固定/手持… (add camera motion or 'static/锁定'){RST}")
+
+        # 4. Missing sound (WARNING)
+        if has_keyword(prompt, SOUND_KW):
+            print(f"{GRN}✅ [PASS] 声音已声明 Sound declared{RST}")
+        else:
+            warnings += 1
+            print(f"{YEL}⚠️  [WARN] 缺少声音设计 Missing sound design{RST}")
+            print(f"   {DIM}添加声音：环境音/音效/配乐/静默… (add sound: ambient/SFX/music/silence){RST}")
+
+        # 6. Too many actions (WARNING)
+        actions = count_action_sentences(prompt)
+        if actions > 3:
+            warnings += 1
+            print(f"{YEL}⚠️  [WARN] 动作过多 Too many actions ({actions} sentences){RST}")
+            print(f"   {DIM}一镜一拍：一个镜头 = 一个节拍 = 一个变化 (one shot = one beat = one change){RST}")
+        else:
+            print(f"{GRN}✅ [PASS] 动作密度合理 Action density OK ({actions} action sentences){RST}")
 
     # 5. Negation outside constraints (WARNING)
     negs = find_negations_outside_constraints(prompt)
@@ -226,21 +283,18 @@ def lint(prompt: str) -> int:
     else:
         print(f"{GRN}✅ [PASS] 否定词使用正确 Negation usage OK{RST}")
 
-    # 6. Too many actions (WARNING)
-    actions = count_action_sentences(prompt)
-    if actions > 3:
-        warnings += 1
-        print(f"{YEL}⚠️  [WARN] 动作过多 Too many actions ({actions} sentences){RST}")
-        print(f"   {DIM}一镜一拍：一个镜头 = 一个节拍 = 一个变化 (one shot = one beat = one change){RST}")
-    else:
-        print(f"{GRN}✅ [PASS] 动作密度合理 Action density OK ({actions} action sentences){RST}")
-
     # 7. Prompt length (INFO)
     wc = word_count(prompt)
-    if wc > 150:
+    if mode == "t2i":
+        limit = 150
+        opt = "80-150 词（中文 120-200 字）"
+    else:
+        limit = 150
+        opt = "≤150 词；单片段建议拆分"
+    if wc > limit:
         infos += 1
-        print(f"{CYN}ℹ️  [INFO] 提示词较长 Prompt length: {wc} words (>150){RST}")
-        print(f"   {DIM}单片段建议 ≤150 词；考虑拆分 (consider splitting for a single clip){RST}")
+        print(f"{CYN}ℹ️  [INFO] 提示词较长 Prompt length: {wc} words (>{limit}){RST}")
+        print(f"   {DIM}{opt}{RST}")
     else:
         print(f"{GRN}✅ [PASS] 提示词长度 Prompt length: {wc} words{RST}")
 
@@ -268,6 +322,10 @@ def main():
     )
     parser.add_argument("prompt", nargs="?", help="Prompt text to check")
     parser.add_argument("--file", "-f", help="Read prompt from a file")
+    parser.add_argument(
+        "--mode", "-m", choices=["t2v", "t2i"], default="t2v",
+        help="检查模式：t2v=文生视频（默认） t2i=文生图"
+    )
     args = parser.parse_args()
 
     if args.file:
@@ -287,7 +345,7 @@ def main():
         print(f"{RED}Error: empty prompt{RST}", file=sys.stderr)
         sys.exit(2)
 
-    sys.exit(lint(prompt))
+    sys.exit(lint(prompt, mode=args.mode))
 
 
 if __name__ == "__main__":

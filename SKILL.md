@@ -1,7 +1,7 @@
 ---
 name: video-director
 description: "导演式 AI 视频提示词引擎，支持可灵和 Seedance。用户说一句话想法，你给出可以直接粘进生成器的提示词。覆盖文生视频、图生视频、多图参考、视频延长、运动迁移、口型同步。触发词：可灵、kling、seedance、帮我拍、AI视频、视频提示词、导演式、分镜。不适用于 Sora、Runway、Veo。"
-version: "3.1.0"
+version: "3.1.3"
 license: MIT
 tags: [kling, seedance, video, prompt-engineering, director]
 ---

@@ -226,21 +226,69 @@ def _is_slop_teaching_context(lines, line_idx, word):
 
     # ── 当前行检查 ──
 
-    # 否定指令：别写/不要/禁止/避免/勿 + slop 词
-    if re.search(r'(?:别写|不要|禁止|避免|勿|不用|别用|拒绝|少用|慎用|莫用)$', pre):
+    # 引用块：> 开头（作者在引用/复述观点，不是推荐写法）
+    if line.strip().startswith('>'):
+        return True
+
+    # 示例标记：❌/✅ 开头的行（反面/正面示例）
+    if re.match(r'^\s*[❌✅]', line):
+        return True
+
+    # 自检清单：- [ ] 行（检查自己有没有用空话）
+    if re.match(r'^\s*-\s*\[[ xX]\]', line):
+        return True
+
+    # 否定/批评指令（词前，允许中间隔引号或"的"）
+    if re.search(
+        r'(?:别写|别用|别堆|别信|别加|别向|不要|禁止|避免|勿|不用|拒绝|少用|慎用|莫用|'
+        r'不能用|不能写|没写|没有|不是|不写|不堆|不靠|不依赖|不追求|不堆砌|'
+        r'为什么不用|为何不用|删掉|删除|去掉|改掉|最先删|该删|要删|空话|空洞|愿望)',
+        pre
+    ):
+        return True
+
+    # 词后否定/批评：「X 不是 Y」「X 都没用」「X 是空洞的」
+    if re.search(r'(?:不是|都不是|是空洞|没有用|没用|别用|删掉|删除|去掉)', post):
+        return True
+
+    # 比较句：「比 X 有效/好/强/管用」
+    if re.search(r'比[^。\n]{0,24}' + re.escape(word), line, re.IGNORECASE):
+        return True
+
+    # 讨论句：「X 是什么?模型不知道」/「而不是 X」/「X 之类的空话」
+    if re.search(r'(?:是什么|为什么|模型不知道|而不是|并非|不等于|之类的空话|这种词)', post, re.IGNORECASE):
+        return True
+
+    # 括号注释：词在 () 或 （） 内，属于解释性说明
+    m = re.search(r'[\(\uff08]([^\)\uff09]*)[\)\uff09]', line)
+    if m and word_lower in m.group(1).lower():
+        return True
+
+    # 专业术语搭配：cinematic color grading / cinematic lighting 等是术语不是空话
+    if word_lower == 'cinematic' and re.search(
+        r'cinematic\s+(?:color grading|lighting|look|grade|composition|camera)', line, re.IGNORECASE
+    ):
+        return True
+
+    # 能力/优势描述：行内含「模型」+「最强/最强项/优势」等（在讨论模型能力，不是风格词）
+    if re.search(r'模型', line) and re.search(r'(?:最强|最|优势|擅长|能力)', line):
+        return True
+
+    # 引用来源：「来自 XXX 项目名」（引用他人作品，词在项目名里）
+    if re.search(r'来自|引用|参考自', pre):
+        return True
+
+    # 加粗短语：**...X...** 包裹（标题/术语强调）
+    if re.search(r'\*\*[^*]*' + re.escape(word) + r'[^*]*\*\*', line, re.IGNORECASE):
         return True
 
     # 替换箭头：slop 词 → 正确写法
     if re.search(re.escape(word) + r'.*(?:→|=>|改为|替换为|换成)', line, re.IGNORECASE):
         return True
 
-    # 判断句："X 不是 Y" / "X 是 Y 不是 Z"
-    if re.search(r'^(?:不是|是.*?不是)', post):
-        return True
-
-    # 引号包裹：在讨论这个词本身
+    # 引号包裹：在讨论这个词本身（含中文弯引号 ""）
     if re.search(
-        r'["""\'\u2018\u2019\u300a\u300b]' + re.escape(word),
+        r'["""\'\u2018\u2019\u201c\u201d\u300a\u300b]' + re.escape(word),
         pre[-3:] if len(pre) >= 3 else pre,
         re.IGNORECASE
     ):
@@ -254,8 +302,8 @@ def _is_slop_teaching_context(lines, line_idx, word):
     if re.match(r'^#+\s', line):
         return True
 
-    # 冒号引入：「空话：电影感」这种
-    if re.search(r'[:：]\s*$|[:：]\s*' + re.escape(word), pre, re.IGNORECASE):
+    # 教学分析：「各部分作用」「的评价」「空话词」
+    if re.search(r'(?:各部分作用|的作用|的评价|评价词|空话词|教学|反面|正面示例)', line):
         return True
 
     # ── 宽窗口检查（前后 3 行）──
@@ -268,14 +316,54 @@ def _is_slop_teaching_context(lines, line_idx, word):
     if re.search(r'空话.*替换|替换.*空话', window):
         return True
 
+    # 反面示例块标记：❌ Before / 别这么写 / 大多数人写的 / 错误示例
+    if re.search(r'❌\s*Before|别这么写|大多数人写的|错误示例|坏例子|反面示例|不要这样写', window):
+        return True
+
     # 附近有否定指令
     for j in range(start, end):
         if j == line_idx:
             continue
         nearby = lines[j]
-        if re.search(r'(?:别写|不要写|禁止使用|避免使用)', nearby):
+        if re.search(
+            r'(?:别写|不要写|禁止使用|避免使用|不能用|不能写|别这么写|大多数人写的|为什么不用|不要这样写)',
+            nearby
+        ):
             return True
 
+    return False
+
+
+def _code_block_regions(lines):
+    """返回代码块范围 [(start_idx, end_idx)]，start/end 为 ``` 行下标。"""
+    regions = []
+    in_block = False
+    start = 0
+    for i, line in enumerate(lines):
+        if line.strip().startswith('```'):
+            if not in_block:
+                in_block = True
+                start = i
+            else:
+                in_block = False
+                regions.append((start, i))
+    return regions
+
+
+def _is_teaching_code_block(lines, region):
+    """代码块内容是否教学/反面示例（❌ ✅ Before 别这么写 等标记）。
+    也检查代码块上方紧邻标题（### Before / ### 反面 / ### 错误示例）。"""
+    block = '\n'.join(lines[region[0]:region[1] + 1])
+    if re.search(
+        r'❌|✅|Before|别这么写|大多数人写的|反面|坏例子|错误示例|别这样|不要这样',
+        block
+    ):
+        return True
+    # 上方紧邻标题：### Before / ### After / ### 反面示例
+    for j in range(max(0, region[0] - 3), region[0]):
+        prev = lines[j].strip()
+        if re.match(r'^#{1,6}\s+(?:Before|After|反面|错误示例|别这么写)', prev):
+            return True
     return False
 
 
@@ -292,7 +380,15 @@ def check_anti_slop(content, file_path):
     if basename in ('09-anti-slop.md', 'anti_slop_lexicon.md'):
         return True, "", []
 
+    # 预计算教学代码块（反面示例块），这些块内的 slop 词跳过
+    teaching_code_lines = set()
+    for region in _code_block_regions(lines):
+        if _is_teaching_code_block(lines, region):
+            teaching_code_lines.update(range(region[0], region[1] + 1))
+
     for i, line in enumerate(lines):
+        if i in teaching_code_lines:
+            continue
         for word in SLOP_WORDS:
             if word.lower() not in line.lower():
                 continue
