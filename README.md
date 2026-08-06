@@ -4,7 +4,7 @@
 
 这是一个给 AI 视频生成写的提示词手册，以快手可灵（Kling）为主。不是论文，不是术语词典——是实战中总结出来的"怎么写 prompt 才能出片"。
 
-25 个文件，从"我从来没写过"到"我要精确控制第 3 秒的音效对齐"，全覆盖。
+26 个文件，从"我从来没写过"到"我要精确控制第 3 秒的音效对齐"，全覆盖。
 
 **兼容模型：** Kling v3 / v2.5-turbo / v2-1-master / video-o1
 **支持模式：** 文生视频 · 图生视频 · 多图参考 · 视频续写 · 动作迁移 · 口型同步
@@ -124,6 +124,7 @@
 | [references/anti_slop_lexicon.md](references/anti_slop_lexicon.md) | Anti-Slop 完整词库 |
 | [references/failure_atlas.md](references/failure_atlas.md) | 失败诊断图谱速查表（一行一个问题，快速定位改哪句） |
 | [references/negative_prompt_library.md](references/negative_prompt_library.md) | 反向检查清单（生成后对照排查，不是 prompt 模板） |
+| [references/seedance-prompt-guide.md](references/seedance-prompt-guide.md) | Seedance prompt 编写指南（上游方法论来源） |
 | [QUICK-REF.md](QUICK-REF.md) | 一页纸速查（贴在显示器边上那张） |
 | [CHECKLIST.md](CHECKLIST.md) | 提交前检查清单 |
 | [examples/](examples/) | 5 个完整实战案例 |
@@ -135,13 +136,13 @@
 
 你的场景该用哪种结构？选一个骨架，填入具体内容：
 
-| 模式 | 公式 | 什么时候用 | 默认镜头 |
-|------|------|-----------|---------|
-| **定锚式** | 主体不动 + 单一动作 + 固定机位 | 产品、肖像、建筑 | 锁定 |
-| **递进式** | 远景 → 中景 → 特写 | 故事、品牌、旅行 | 推 → 跟 → 锁定 |
-| **对比式** | A 状态 —过渡→ B 状态 | 变身、季节、改造 | 锁定远景 |
-| **揭示式** | 遮挡/模糊 → 清晰/全貌 | 悬念、揭幕、出场 | 缓推 |
-| **跟随式** | 主体运动 + 镜头同速跟随 | 奔跑、骑行、追逐 | 稳定器跟拍 |
+| 模式 | 一句话 | 什么时候用 | 默认镜头 |
+|------|--------|-----------|---------|
+| **定锚式** | 主体不动，画面稳 | 产品、肖像、建筑 | 锁定 |
+| **递进式** | 从远到近，层层深入 | 故事、品牌、旅行 | 推 → 跟 → 锁定 |
+| **对比式** | A 变 B，过程可见 | 变身、季节、改造 | 锁定远景 |
+| **揭示式** | 先藏后露，制造期待 | 悬念、揭幕、出场 | 缓推 |
+| **跟随式** | 镜头跟着主体走 | 奔跑、骑行、追逐 | 稳定器同速跟拍 |
 
 完整结构公式 + 实战 prompt + 常见误用 → [13-templates.md](13-templates.md)「Prompt 组合模式库」
 
@@ -196,7 +197,8 @@ kling-prompt-engineering/
 ├── references/                        # 参考资料
 │   ├── anti_slop_lexicon.md
 │   ├── failure_atlas.md
-│   └── negative_prompt_library.md
+│   ├── negative_prompt_library.md
+│   └── seedance-prompt-guide.md
 ├── examples/                          # 实战案例
 │   ├── 01-emotion-closeup.md
 │   ├── 02-product-showcase.md
@@ -204,13 +206,15 @@ kling-prompt-engineering/
 │   ├── 04-food-closeup.md
 │   └── 05-action-scene.md
 ├── adapters/                          # 模型适配器
+│   ├── base_adapter.yaml
 │   ├── kling_adapter.yaml
 │   ├── seedance_adapter.yaml
 │   ├── t2i_adapter.yaml               # 文生图多模型适配
 │   ├── prompt_translator.yaml
 │   └── model_router.yaml
 ├── workflows/                         # 工作流
-│   └── storyboard-to-prompt.md        # 分镜转 Prompt
+│   ├── storyboard-to-prompt.md        # 分镜转 Prompt
+│   └── video_pipeline.yaml
 ├── skills/                            # Skill 文件
 │   └── *.skill
 └── scripts/                           # 验证脚本
