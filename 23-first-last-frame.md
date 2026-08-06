@@ -526,9 +526,9 @@ I2V prompt：
 |-------------|--------|
 | I2V 整体方法论（保持/变化模式、源素材承载规则） | 04-i2v-guide.md |
 | 文生图 prompt 怎么写（相机锚定、光线、景深） | 22-text-to-image.md |
-| 角色一致性策略（角色卡、多段 I2V） | 22-text-to-image.md「角色一致性策略」 |
-| 分镜图的标准写法（Beat Board 格式） | 22-text-to-image.md「分镜图的标准写法」 |
-| 为 I2V 构图（留白、势能感） | 22-text-to-image.md「为 I2V 构图」 |
+| 角色一致性策略（角色卡、多段 I2V） | 22d-type-specials.md「角色一致性策略」 |
+| 分镜图的标准写法（Beat Board 格式） | 22d-type-specials.md「分镜图的标准写法」 |
+| 为 I2V 构图（留白、势能感） | 22d-type-specials.md「为 I2V 构图」 |
 | 时间轴三层模型（状态/运动/节奏） | 15-timeline-syntax.md |
 | 重试协议（首尾帧生成失败怎么办） | 21-retake-protocol.md |
 | 故障诊断（通用 I2V 问题） | 18-troubleshooting-gallery.md |

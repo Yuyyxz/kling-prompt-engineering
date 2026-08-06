@@ -1,38 +1,24 @@
 [
-  {
-    "id": "skincare-ad",
-    "input": "帮我拍一个护肤品广告，15秒",
-    "expected_mode": "t2v",
-    "expected_duration": "15s"
-  },
-  {
-    "id": "wuxia-opening",
-    "input": "我想做一个武侠短剧的开场",
-    "expected_mode": "t2v",
-    "expected_duration": "5s"
-  },
-  {
-    "id": "coffee-food",
-    "input": "拍一个咖啡制作过程的美食视频",
-    "expected_mode": "t2v",
-    "expected_duration": "10s"
-  },
-  {
-    "id": "scifi-planet",
-    "input": "做一个科幻飞船接近星球的镜头",
-    "expected_mode": "t2v",
-    "expected_duration": "5s"
-  },
-  {
-    "id": "woodworker-doc",
-    "input": "拍一个老人做木工的纪录片风格肖像",
-    "expected_mode": "t2v",
-    "expected_duration": "10s"
-  },
-  {
-    "id": "horror-twist",
-    "input": "帮我做一个恐怖短剧的转折场景",
-    "expected_mode": "t2v",
-    "expected_duration": "5s"
-  }
+  {"id": "skincare-ad", "input": "帮我拍一个护肤品广告，15秒", "expected_mode": "t2v", "expected_duration": "15s", "chapter": "13-templates", "rule": "一镜一拍；主体+动作放最前"},
+  {"id": "wuxia-opening", "input": "我想做一个武侠短剧的开场", "expected_mode": "t2v", "expected_duration": "5s", "chapter": "13-templates", "rule": "短剧开场要有功能：引入/深化/转折/收束"},
+  {"id": "product-turning", "input": "产品360度展示，酒瓶在转台上旋转", "expected_mode": "t2v", "expected_duration": "8s", "chapter": "13-templates", "rule": "定锚式：主体不动画面稳"},
+  {"id": "season-change", "input": "同一棵树的四季变化", "expected_mode": "t2v", "expected_duration": "10s", "chapter": "13-templates", "rule": "对比式：A变B过程可见"},
+  {"id": "i2v-walk", "input": "角色从图里走向镜头", "expected_mode": "i2v", "expected_duration": "5s", "chapter": "04-i2v-guide", "rule": "图承载身份文字承载变化"},
+  {"id": "i2v-rain", "input": "把一张晴天街道图变成雨天", "expected_mode": "i2v", "expected_duration": "6s", "chapter": "04-i2v-guide", "rule": "只写图片无法展示的：运动/镜头/光线变化"},
+  {"id": "first-frame-morning", "input": "生成一个清晨咖啡馆的首帧", "expected_mode": "t2i", "expected_duration": null, "chapter": "23-first-last-frame", "rule": "好首帧5标准：主体清晰/姿态在动作中途/光线方向明确"},
+  {"id": "last-frame-night", "input": "深夜城市阳台的尾帧", "expected_mode": "t2i", "expected_duration": null, "chapter": "23-first-last-frame", "rule": "好尾帧4标准：状态变化/物理路径/身份一致/情绪落地"},
+  {"id": "anti-slop-vague", "input": "拍一个很美的视频，要有电影感", "expected_mode": "t2v", "expected_duration": "5s", "chapter": "09-anti-slop", "rule": "空话检测：电影感/唯美/氛围感要替换为具体描述"},
+  {"id": "anti-slop-8k", "input": "8K超高清杰作级画面", "expected_mode": "t2v", "expected_duration": "5s", "chapter": "09-anti-slop", "rule": "8K/4K/杰作必须删除"},
+  {"id": "camera-pushin", "input": "一个角色从远处走近，镜头缓缓推进", "expected_mode": "t2v", "expected_duration": "8s", "chapter": "02-shot-language", "rule": "运镜要写向量：push-in/pan/tracking 而非推进"},
+  {"id": "camera-dutch", "input": "表现主角内心失衡的镜头", "expected_mode": "t2v", "expected_duration": "5s", "chapter": "02-shot-language", "rule": "Dutch angle 幅度15°以内"},
+  {"id": "lighting-split", "input": "角色内心冲突，一半光明一半黑暗", "expected_mode": "t2v", "expected_duration": "6s", "chapter": "22a-camera-lighting", "rule": "冷暖分裂光：对抗/选择/内心冲突"},
+  {"id": "lighting-rim", "input": "黄昏时刻的剪影", "expected_mode": "t2v", "expected_duration": "5s", "chapter": "22a-camera-lighting", "rule": "逆光/轮廓光：孤立/神圣/告别"},
+  {"id": "color-teal", "input": "商业广告的冷色调", "expected_mode": "t2i", "expected_duration": null, "chapter": "22b-color-negative", "rule": "青橙=商业调色"},
+  {"id": "color-muted", "input": "压抑的灰色调画面", "expected_mode": "t2i", "expected_duration": null, "chapter": "22b-color-negative", "rule": "低饱和灰绿=压抑"},
+  {"id": "char-consistency", "input": "同一个角色在三个场景中出现，保持长相一致", "expected_mode": "t2i", "expected_duration": null, "chapter": "22d-type-specials", "rule": "规范描述卡：跨图保持同一角色"},
+  {"id": "sound-design", "input": "深夜厨房的场景，要设计声音", "expected_mode": "t2v", "expected_duration": "6s", "chapter": "08-audio-guide", "rule": "环境音必写，动作音效按时间锚点对齐"},
+  {"id": "style-zine", "input": "用极简Zine海报风格做一张雨天旧书店的图", "expected_mode": "t2i", "expected_duration": null, "chapter": "24-prompt-library", "rule": "留白70-90% + 单色锚 + 纸质感"},
+  {"id": "style-hunhe", "input": "砼核风格，巨构混凝土建筑", "expected_mode": "t2i", "expected_duration": null, "chapter": "24-prompt-library", "rule": "砼核：荒芜无人巨构+阈限空间+风化"},
+  {"id": "multimodal-ref", "input": "参考图片1的身份，参考视频1的动作", "expected_mode": "multi", "expected_duration": "8s", "chapter": "05-multi-image-omni", "rule": "每个参考声明控制什么不控制什么"},
+  {"id": "retake-rule", "input": "生成失败重试的策略", "expected_mode": "t2v", "expected_duration": "5s", "chapter": "21-retake-protocol", "rule": "单变量规则：一次只改一个变量"}
 ]

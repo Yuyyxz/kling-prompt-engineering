@@ -108,7 +108,7 @@
 | [19-cinematography-dictionary.md](19-cinematography-dictionary.md) | 摄影术语词典：100+ 项（景别/角度/运动/光线/色彩/音频/VFX/构图） |
 | [20-style-tags.md](20-style-tags.md) | 风格标签：8 导演风格 + 8 视觉风格 + 6 情绪风格 + 组合公式 |
 | [21-retake-protocol.md](21-retake-protocol.md) | 重试协议：5 个判定、单变量规则、重试预算、拍摄日志、诚实退出 |
-| [22-text-to-image.md](22-text-to-image.md) | 文生图完整指南：多模型适配（Kolors/Qwen/Seedream）、相机锚定、景深控制（光圈-视觉对照+虚化形状）、曝光控制（剪影/双重曝光/漏光/HDR）、色彩与影调（色温/互补色/7种电影调色）、完整布光体系（25种布光+光质+决策树）、光线词汇、情绪外化、类型专项指南（8种：人文街拍/广告/海报6模板/编辑杂志/建筑/角色概念艺术/中国风）、景观专项（9要素+6类型）、32种风格体系（12核心+20+扩展）、负面提示词策略、角色一致性、反塑料感、效果提升 |
+| [22-text-to-image.md](22-text-to-image.md) | 文生图主入口：基本结构、多模型适配（Kolors/Qwen/Seedream）、交叉引用。已拆分为 4 个子文件：[22a 相机光线](22a-camera-lighting.md) / [22b 色彩负面](22b-color-negative.md) / [22c 风格体系](22c-style-system.md) / [22d 类型专项](22d-type-specials.md) |
 | [23-first-last-frame.md](23-first-last-frame.md) | 首帧/尾帧完整指南：状态插值逻辑、好首帧5标准、好尾帧4标准、配对原则、T2I生成首帧6步流程、多镜头帧链式串联、常见翻车修复、3个实战案例（角色转身/产品变化/场景过渡） |
 | [24-prompt-library.md](24-prompt-library.md) | 风格与氛围 prompt 库：106 种风格（经典艺术37/电影导演18/建筑空间18/网络美学-core系16/摄影17）+ 50 种氛围 = 156 条完整配方，**每条都带模型适配行**（Kolors/Qwen/Seedream），附模型适配层（三模型转换规则+示范） |
 
@@ -193,7 +193,11 @@ kling-prompt-engineering/
 ├── 19-cinematography-dictionary.md    # 摄影术语词典
 ├── 20-style-tags.md                   # 风格标签
 ├── 21-retake-protocol.md              # 重试协议
-├── 22-text-to-image.md                # 文生图
+├── 22-text-to-image.md                # 文生图主入口
+├── 22a-camera-lighting.md             # 相机与光线
+├── 22b-color-negative.md              # 色彩与负面提示词
+├── 22c-style-system.md                # 风格体系
+├── 22d-type-specials.md               # 类型专项
 ├── 23-first-last-frame.md             # 首帧/尾帧指南
 ├── 24-prompt-library.md               # 风格与氛围 prompt 库
 ├── references/                        # 参考资料
@@ -216,7 +220,16 @@ kling-prompt-engineering/
 │   └── model_router.yaml
 ├── workflows/                         # 工作流
 │   ├── storyboard-to-prompt.md        # 分镜转 Prompt
-│   └── video_pipeline.yaml
+│   ├── video_pipeline.yaml
+│   └── text-to-video.sh               # 文本→视频可执行流水线
+├── evals/                             # 评估
+│   ├── cases.json                     # 22 个评估用例（覆盖 12 章节）
+│   ├── rubric.md
+│   └── run_evals.py
+├── research/                          # 调研
+│   ├── GitHub竞品调研报告.md
+│   ├── 中文社区竞品调研.md
+│   └── concretecore-style-guide.md
 ├── skills/                            # Skill 文件
 │   └── *.skill
 └── scripts/                           # 验证脚本

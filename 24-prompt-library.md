@@ -53,7 +53,7 @@
 - **构图**:极远景仰视压迫 / 极远景俯视巨物 / 对称单点透视无限感
 - **示例**:extreme wide shot, worm's-eye view, looking up at colossal brutalist tower from ground level, three-point perspective emphasizing impossible height, fog shrouding the upper floors, weathered concrete facade with vertical water streaks, rust bleeding from exposed rebar near the base, tiny birds circling at mid-height revealing the true scale, overcast muted light, cold desaturated palette, the silence of giants, industrial decay without collapse, Sony Venice, 24mm, f/8
 - **适配**:→Kolors 压缩为中文描述;→Qwen 展开画面细节;→Seedream 补齐七要素
-- **详见**:research/concretecore-style-guide.md + 22-text-to-image.md「33. 砼核」
+- **详见**:research/concretecore-style-guide.md + 22c-style-system.md「33. 砼核」
 
 ### A2. 水墨国风（Chinese Ink Wash）
 - **触发词**:Chinese ink painting style
