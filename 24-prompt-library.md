@@ -27,7 +27,7 @@
 - **光线**:留白即光,雾霭层次
 - **色彩**:墨色浓淡(焦浓重淡清),宣纸白,极少量朱砂/花青点缀
 - **构图**:S 形构图,留白 > 实景,远山淡影
-- **示例**:traditional Chinese landscape painting, ink wash rendering, layered mountains in different ink densities, pine trees on cliff edges, a small pavilion half-hidden in clouds, negative space, rice paper texture
+- **示例**:traditional Chinese landscape painting, ink wash rendering, layered mountains in different ink densities, pine trees on cliff edges, a small pavilion half-hidden in clouds, negative space, rice paper texture, soft morning mist light, pale sky glow
 
 ### A3. 油画古典（Classical Oil Painting）
 - **触发词**:classical oil painting
@@ -45,7 +45,7 @@
 - **光线**:平面化,无真实光影
 - **色彩**:普鲁士蓝/朱红/山吹黄,高饱和平面色
 - **构图**:大胆对角线,装饰性边框
-- **示例**:ukiyo-e woodblock print, great wave style, bold blue outlines, flat color planes, Hokusai influence, Edo period aesthetic, grain texture
+- **示例**:ukiyo-e woodblock print, great wave style, bold blue outlines, flat color planes, Hokusai influence, Edo period aesthetic, grain texture, even flat light with no shadows, high-contrast outline against pale sky
 
 ### A5. 赛博朋克（Cyberpunk）※砼核反义词,谨慎混用
 - **触发词**:cyberpunk, neon noir
@@ -99,7 +99,7 @@
 - **光线**:平面光,无真实感
 - **色彩**:原色对撞,高饱和
 - **构图**:重复网格,单主体放大
-- **示例**:pop art portrait, bold primary colors, halftone dots, thick black outlines, Andy Warhol style, flat color planes, consumer culture aesthetic
+- **示例**:pop art portrait, bold primary colors, halftone dots, thick black outlines, Andy Warhol style, flat color planes, consumer culture aesthetic, hard studio flash lighting, graphic contrast
 
 ### A11. 哥特式（Gothic）
 - **触发词**:gothic architecture
@@ -118,6 +118,42 @@
 - **色彩**:米黄/粉彩/褪色,低饱和
 - **构图**:日常场景错位,熟悉又陌生
 - **示例**:中式梦核, 千禧年旧小区的楼道, 老式防盗门, 斑驳的米黄墙面, 夕阳从窗户斜照进来, 地面有拖把的水痕, VHS质感, 怀旧而微微不安
+
+### A13. 印象派（Impressionism）
+- **触发词**:impressionist painting
+- **关键词**:visible brushstrokes, loose texture, light and color study, Monet, Renoir, soft edges, plein air, atmospheric color, dappled light, pastel dabs
+- **负面词**:photorealistic, sharp edges, dark chiaroscuro, digital airbrush
+- **光线**:户外自然光,光斑,薄雾感
+- **色彩**:高亮低对比,补色并置(蓝橙/紫黄)
+- **构图**:随意截取,非中心构图
+- **示例**:impressionist oil painting, Monet style water lilies, visible brushstrokes, dappled light on water, soft edges, plein air color study, pastel dabs of blue and pink, glow of low morning sun, no hard lines, wide landscape view, even natural light
+
+### A14. 新艺术运动（Art Nouveau）
+- **触发词**:art nouveau
+- **关键词**:flowing organic lines, floral motifs, whiplash curves, stained glass, Mucha, decorative borders, gilded details, elegant female figure
+- **负面词**:geometric, brutalist, minimal, industrial
+- **光线**:平面装饰光,柔和
+- **色彩**:金/祖母绿/赭红,装饰性高饱和
+- **构图**:对称装饰框,曲线主导
+- **示例**:art nouveau poster, Mucha style, flowing organic lines, floral motifs, whiplash curves, elegant female figure with flowing hair, decorative gold border, emerald and ochre palette, stained glass background, soft diffused backlight glow
+
+### A15. 巴洛克（Baroque）
+- **触发词**:baroque style
+- **关键词**:dramatic chiaroscuro, opulent detail, Caravaggio, rich drapery, gilded frames, intense emotion, heavenly light, grand composition
+- **负面词**:minimal, flat lighting, modern, austere
+- **光线**:强明暗对照,天光穿透
+- **色彩**:深褐/鎏金/宝蓝/绯红
+- **构图**:对角线动势,强舞台感
+- **示例**:baroque painting, Caravaggio style, dramatic chiaroscuro, a figure in rich crimson drapery caught in heavenly light from above, gilded details, intense emotional expression, opulent dark background, grand diagonal composition
+
+### A16. 国潮插画（Chinese Trendy Illustration）
+- **触发词**:国潮, Chinese trendy illustration
+- **关键词**:traditional motifs modernized, red and gold, dragon and phoenix, ink lines with flat color, chinoiserie, festive, graphic design, bold shapes
+- **负面词**:western style, minimal, muted, realistic photography
+- **光线**:平面光,装饰性
+- **色彩**:中国红/鎏金/墨黑/青花蓝,高饱和
+- **构图**:对称,纹样满铺,中心主体
+- **示例**:国潮插画, 中国传统纹样现代化, 龙与凤, 朱红与鎏金配色, 墨线勾勒配平面色块, 装饰性构图, 对称排列, 喜庆而时尚, 平面设计感, 均匀平光无阴影, 无西方写实感
 
 ---
 
@@ -157,7 +193,7 @@
 - **光线**:自然光,雾,潮湿感
 - **色彩**:土黄/灰绿/暗褐,低饱和
 - **构图**:缓慢横移,人物渺小于自然
-- **示例**:tarkovsky style, vast misty landscape with a lone figure, wet earth and rain, muted earth tones, slow meditative composition, ruined wooden structure, natural elemental atmosphere
+- **示例**:tarkovsky style, vast misty landscape with a lone figure, extreme wide shot, wet earth and rain, muted earth tones, slow meditative composition, ruined wooden structure, natural elemental atmosphere, low overcast light
 
 ### B5. 宫崎骏（Hayao Miyazaki）
 - **触发词**:ghibli style, miyazaki style
@@ -176,6 +212,24 @@
 - **色彩**:高饱和蓝天,黄昏橙紫渐变
 - **构图**:天空占 2/3,人物小,远景大
 - **示例**:shinkai style, hyper-detailed cumulus clouds, vivid blue sky with light rays, lens flare, distant cityscape, small figure on hill, romantic longing mood, bokeh
+
+### B7. 昆汀（Quentin Tarantino）
+- **触发词**:tarantino style
+- **关键词**:bold saturated colors, trunk shot, retro cars, diner neon, 70s grain, close-up on eyes, pop culture props, stylized violence, dialogue tension
+- **负面词**:muted, realistic boring, modern clean, desaturated
+- **光线**:霓虹+钨丝混合,硬光
+- **色彩**:高饱和红黄,复古暖调
+- **构图**:低角度仰视,特写循环,车内/餐桌场景
+- **示例**:tarantino style, retro 70s diner interior, bold saturated red and yellow, neon sign glow, trunk shot angle, close-up on eyes, vintage car outside, film grain, stylized tension, pop culture props
+
+### B8. 是枝裕和（Hirokazu Kore-eda）
+- **触发词**:kore-eda style, 是枝裕和
+- **关键词**:natural everyday, warm family moments, soft window light, handheld gentle, shallow depth, quiet observation, domestic details, muted warm tones
+- **负面词**:dramatic, stylized, high contrast, action
+- **光线**:窗边自然柔光,黄昏暖光
+- **色彩**:低饱和暖调,米白/木褐
+- **构图**:固定机位长镜,日常局部特写
+- **示例**:kore-eda style, family dinner scene in small apartment, soft window light, gentle handheld, shallow depth of field, quiet observation of everyday gesture, warm muted tones, domestic details, tender stillness
 
 ---
 
@@ -197,7 +251,7 @@
 - **光线**:扬尘昏黄,破云光柱,烟霾
 - **色彩**:土黄/锈棕/灰绿,低饱和
 - **构图**:废墟中渺小人物,引导线
-- **示例**:post-apocalyptic wasteland, overgrown abandoned city ruins, rusted vehicles half-buried in dust, collapsed skyscrapers, nature reclaiming concrete, dusty haze, muted brown-grey tones, lone survivor walking the highway
+- **示例**:post-apocalyptic wasteland, extreme wide shot, overgrown abandoned city ruins, rusted vehicles half-buried in dust, collapsed skyscrapers, nature reclaiming concrete, dusty haze, muted brown-grey tones, lone survivor walking the highway, harsh noon light through dust
 
 ### C3. 阈限空间（Liminal Space）※砼核的空间版
 - **触发词**:liminal space, liminalcore
@@ -235,6 +289,24 @@
 - **构图**:柱列透视,仰视断柱
 - **示例**:ruined ancient temple, crumbling marble columns, broken statue half-covered in moss, dappled sunlight through trees, overgrown stone blocks, sacred decay, eternal silence, warm gold light on grey stone
 
+### C7. 太空港（Spaceport）
+- **触发词**:spaceport, space station
+- **关键词**:massive docking bay, spacecraft, industrial corridors, panoramic space view, launch towers, engineering scale, cold metal and glass, orbital station
+- **负面词**:cyberpunk neon, fantasy, steam, medieval
+- **光线**:舷窗硬光,空间站冷白照明
+- **色彩**:金属灰/深空黑+舷窗蓝
+- **构图**:巨构对比小人,对称轴线
+- **示例**:spaceport interior, massive docking bay with a spacecraft, industrial catwalks, panoramic window showing planet below, launch tower, engineering scale, tiny technicians for scale, cold metal and glass, hard window light, symmetrical axis
+
+### C8. 江南水乡（Jiangnan Water Town）
+- **触发词**:江南水乡, Jiangnan water town
+- **关键词**:whitewashed walls, black tiles, stone bridge, canal, gondola, willows, misty morning, lanterns, water reflection, rain
+- **负面词**:modern skyscraper, desert, neon, western
+- **光线**:晨雾柔光,黄昏灯笼暖光,雨幕
+- **色彩**:黛瓦白墙/青灰水面/红灯笼点缀
+- **构图**:河道透视,拱桥框架,倒影对称
+- **示例**:江南水乡, 白墙黛瓦沿河而建, 石拱桥跨过河道, 乌篷船停靠, 晨雾弥漫, 水面倒影, 柳枝垂落, 几点红灯笼, 青灰调, 宁静诗意, 雨后湿润感
+
 ---
 
 ## D. 网络美学（-core 系）
@@ -255,7 +327,7 @@
 - **光线**:过曝/欠曝,不自然光
 - **色彩**:褪色/灰绿/局部鲜艳
 - **构图**:失衡,拼贴感,违和元素
-- **示例**:weirdcore image, low quality analog photo, glitch distortion, a bedroom with a tree growing through the floor, cryptic handwritten text, uncanny unsettling mood, faded colors, distorted perspective
+- **示例**:weirdcore image, low quality analog photo, glitch distortion, a bedroom with a tree growing through the floor, cryptic handwritten text, uncanny unsettling mood, faded colors, distorted perspective, harsh unnatural flash lighting
 
 ### D3. 雨核（Raincore）
 - **触发词**:raincore
@@ -264,7 +336,7 @@
 - **光线**:阴雨漫射,室内暖灯
 - **色彩**:冷灰蓝+室内暖光
 - **构图**:窗内看外,雨中街道,水洼倒影
-- **示例**:raincore, heavy rain on window glass, blurred city outside, a warm lamp glowing inside the room, water droplets running down, moody grey-blue tones, cozy contrast with cold rain, wet reflections
+- **示例**:raincore, heavy rain on window glass, blurred city outside, a warm lamp glowing inside the room, water droplets running down, cold grey-blue tones with warm indoor light, wet reflections, close-up through window, shallow depth of field
 
 ### D4. 池核（Poolcore）
 - **触发词**:poolcore
@@ -292,6 +364,24 @@
 - **色彩**:米黄/粉彩/褪色,低饱和
 - **构图**:日常场景错位,熟悉又陌生
 - **示例**:中式梦核, 千禧年旧小区的楼道, 老式防盗门, 斑驳的米黄墙面, 夕阳从窗户斜照进来, 地面有拖把的水痕, VHS质感, 怀旧而微微不安
+
+### D7. 旧核（Oldcore / 复古核）
+- **触发词**:oldcore, retro core
+- **关键词**:1950s-80s nostalgia, old photographs, CRT TV, wood paneling, vintage tech, family album, retro kitchen, warm decay, forgotten era
+- **负面词**:modern clean, futuristic, sharp digital, neon cyberpunk
+- **光线**:旧照片泛黄光,CRT 荧幕光
+- **色彩**:棕褐/米黄/褪色红,暖旧调
+- **构图**:家庭旧物堆叠,电视/收音机时代道具
+- **示例**:oldcore aesthetic, 1980s family living room, wood paneling walls, CRT television glowing, retro kitchen appliances, faded family photos on shelf, warm decay, forgotten era, vintage texture, brown and beige tones
+
+### D8. 云核（Cloudcore）
+- **触发词**:cloudcore
+- **关键词**:floating islands, clouds below, soft dreamy sky, surreal altitude, lone structure on cloud, gentle pastel, weightless, ethereal
+- **负面词**:dark, stormy, grounded, gritty, neon
+- **光线**:高空柔光,云海反照
+- **色彩**:云白/天空蓝/淡金
+- **构图**:云海为地平,悬浮主体,留白
+- **示例**:cloudcore, a small white chapel floating on a cloud sea, wide shot, soft dreamy sky, pastel blue and gold, ethereal weightless atmosphere, clouds below as horizon, gentle surrealism, lone structure, airy composition, high-altitude soft light
 
 ---
 
@@ -351,6 +441,24 @@
 - **构图**:人形/山形轮廓+内部风景
 - **示例**:double exposure, silhouette of a woman's profile filled with a pine forest and misty mountains, ghostly transparency, layered film effect, warm light through trees, poetic
 
+### E7. 黑白街拍（Monochrome Street）
+- **触发词**:monochrome street photography
+- **关键词**:black and white, high contrast, decisive moment, shadow play, urban geometry, candid, grain, Leica, documentary
+- **负面词**:color, soft pastel, studio, posed
+- **光线**:硬光强影,侧逆光
+- **色彩**:纯黑白,灰阶丰富
+- **构图**:抓拍瞬间,光影切割,几何框
+- **示例**:monochrome street photography, Leica look, high contrast black and white, decisive moment, shadow slicing across alley, candid pedestrian, film grain, urban geometry, documentary feel
+
+### E8. 红外摄影（Infrared）
+- **触发词**:infrared photography
+- **关键词**:false color, foliage glowing white-pink, surreal sky, dark water, eerie vegetation, dreamlike landscape, IR filter
+- **负面词**:natural colors, normal green foliage, realistic skin tone
+- **光线**:强日光(红外需要光)
+- **色彩**:叶白/天深蓝/水近黑
+- **构图**:树木剪影,水面反射,超现实场景
+- **示例**:infrared photography, trees glowing white and pink, deep blue sky, water nearly black, surreal dreamlike landscape, eerie vegetation glow, strong sunlight, IR false color, otherworldly mood
+
 ---
 
 ## 第二部分 · 氛围系
@@ -398,7 +506,7 @@
 - **光线**:阴天/雾,无阳光
 - **色彩**:灰绿/棕褐,低饱和
 - **构图**:无人巨构,植被入侵
-- **示例**:post-human city, overgrown silent streets, moss covered buildings, vines on skyscrapers, no humans no vehicles, frozen time, grey-green tones, nature reclaiming civilization, silent echo
+- **示例**:post-human city, extreme wide aerial view, overgrown silent streets, moss covered buildings, vines on skyscrapers, no humans no vehicles, frozen time, grey-green tones, nature reclaiming civilization, silent echo, flat overcast light
 
 ### M6. 温暖治愈（Cozy Warmth）
 - **触发词**:cozy, hygge
@@ -506,7 +614,7 @@
 - **光线**:均匀但偏色,无自然感
 - **色彩**:褪色+偏绿/偏蓝
 - **构图**:正常构图但细节违和
-- **示例**:uncanny scene, a perfect suburban street but the houses have no doors, wrong subtle details, muted eerie light, empty space that feels watched, familiar space altered, quiet dread, faded greenish tones
+- **示例**:uncanny scene, an immaculate suburban street but the houses have no doors, wrong subtle details, muted eerie light, empty space that feels watched, familiar space altered, quiet dread, faded greenish tones, medium shot at eye level, normal daylight but slightly off
 
 ### M18. 冬季寂寥（Winter Stillness）
 - **触发词**:winter stillness, snow quiet
@@ -515,7 +623,7 @@
 - **光线**:阴天雪光,低角度冷阳
 - **色彩**:雪白+冰蓝+枯灰
 - **构图**:留白雪地,孤树/孤屋
-- **示例**:winter stillness, fresh snow on frozen lake, bare trees, silent white landscape, cold blue shadows, a solitary cabin with smoke, muted tones, breath fog implied, absolute quiet
+- **示例**:winter stillness, wide shot, fresh snow on frozen lake, bare trees, silent white landscape, cold blue shadows, a solitary cabin with smoke, muted tones, breath fog implied, absolute quiet, low winter sun
 
 ### M19. 都市疏离（Urban Alienation）
 - **触发词**:urban alienation, city isolation
@@ -524,7 +632,7 @@
 - **光线**:阴天城市光,玻璃反光
 - **色彩**:冷灰蓝,低饱和
 - **构图**:人群中的孤立个体,反射构图
-- **示例**:urban alienation, crowded city sidewalk but everyone isolated, anonymous figures with umbrellas, cold glass reflections, rain, grey-blue tones, no eye contact, loneliness in the mass, modern architecture looming
+- **示例**:urban alienation, crowded city sidewalk but everyone isolated, anonymous figures with umbrellas, cold glass reflections, rain, grey-blue tones, no eye contact, loneliness in the mass, modern architecture looming, overcast diffused daylight
 
 ### M20. 沙漠孤旅（Desert Solitude）
 - **触发词**:desert solitude
@@ -533,7 +641,43 @@
 - **光线**:正午顶光/黄昏长影
 - **色彩**:沙金/焦赭/天蓝
 - **构图**:沙丘引导线,人物渺小
-- **示例**:desert solitude, endless golden dunes, a lone traveler walking a ridge line, heat haze, wind ripples on sand, vast silence, minimal shadow at noon, slow time, gold and sand tones with deep blue sky
+- **示例**:desert solitude, extreme wide shot, endless golden dunes, a lone traveler walking a ridge line, heat haze, wind ripples on sand, vast silence, minimal shadow at noon, slow time, gold and sand tones with deep blue sky, harsh high sun
+
+### M21. 极光秘境（Aurora Dream）
+- **触发词**:aurora, northern lights
+- **关键词**:green and violet sky curtains, snowfield glow, star field, reflected in frozen lake, silent polar night, shimmering light, cold clean air
+- **负面词**:daylight, warm tropical, crowded, city lights
+- **光线**:极光为主光源,月光辅
+- **色彩**:极光绿/紫+雪地蓝白
+- **构图**:极光穹顶,水面倒影,前景剪影
+- **示例**:aurora dream, green and violet aurora curtains over snowfield, stars visible, aurora reflected in frozen lake, silent polar night, shimmering light, cold clean air, lone cabin silhouette, blue-white snow glow
+
+### M22. 幽暗森林（Dark Forest）
+- **触发词**:dark forest, woods at dusk
+- **关键词**:dense trees, filtered dim light, fog between trunks, moss ground, mysterious path, muted green-brown, quiet dread, ancient woods
+- **负面词**:bright sunny, cheerful park, urban, colorful
+- **光线**:树冠滤光,暮色
+- **色彩**:墨绿/深棕/雾灰
+- **构图**:树列透视,小径引导,光线缝隙
+- **示例**:dark forest, dense ancient trees, dim light filtering through canopy, fog drifting between trunks, moss-covered ground, a faint path disappearing into shadow, muted green and brown, quiet dread, mysterious stillness
+
+### M23. 樱花春日（Cherry Blossom Spring）
+- **触发词**:cherry blossom, spring
+- **关键词**:pink petals falling, soft sunlight, sakura trees in bloom, gentle breeze, pastel sky, petals on water, dreamy brightness, renewal
+- **负面词**:autumn, dead branches, harsh contrast, winter
+- **光线**:晨光透花,柔和逆光
+- **色彩**:樱粉/天蓝/嫩绿
+- **构图**:花瓣前景散景,树下人影,河道花瓣
+- **示例**:cherry blossom spring, sakura trees in full bloom, pink petals falling in gentle breeze, soft morning sunlight through petals, pastel blue sky, petals floating on stream, dreamy brightness, sense of renewal, shallow depth of field
+
+### M24. 老城烟火（Old Town Life）
+- **触发词**:old town, historic street
+- **关键词**:narrow alley, worn stone walls, hanging laundry, evening lamps, old shops, resident life, warm windows, layered architecture, timeless
+- **负面词**:modern glass, empty, new, commercial
+- **光线**:黄昏街灯,窗口暖光,天色余晖
+- **色彩**:暖黄灯光+青灰墙面+褪色招牌
+- **构图**:巷道纵深,门框取景,生活细节
+- **示例**:old town evening, narrow stone alley, hanging laundry between buildings, warm lamps glowing, old shop signs, resident silhouettes in windows, layered historic architecture, timeless atmosphere, golden streetlight on worn walls
 
 ---
 
