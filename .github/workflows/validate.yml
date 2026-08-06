@@ -20,3 +20,11 @@ jobs:
 
       - name: Validate all skills
         run: python scripts/validate_all.py skills/
+
+      - name: Show environment (diagnostics)
+        if: always()
+        run: |
+          echo "runner: $(uname -a)"
+          echo "python: $(python --version)"
+          echo "node: $(node --version 2>/dev/null || echo 'no node')"
+          echo "timeout_sec: 300"
