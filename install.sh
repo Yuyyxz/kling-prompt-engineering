@@ -41,12 +41,14 @@ show_help() {
     echo "  generic     安装到自定义目录"
     echo ""
     echo "选项:"
-    echo "  -h, --help  显示帮助信息"
-    echo "  -d, --dir   指定安装目录"
+    echo "  -h, --help            显示帮助信息"
+    echo "  -d, --dir             指定安装目录"
+    echo "  --skip-validation     跳过验证脚本安装（默认安装）"
+    echo "                        验证脚本用于 prompt 质量检查，普通用户可跳过"
     echo ""
     echo "示例:"
     echo "  $0 claude"
-    echo "  $0 cursor"
+    echo "  $0 cursor --skip-validation"
     echo "  $0 generic -d ~/.custom/skills/"
 }
 
@@ -63,90 +65,61 @@ check_dependencies() {
     fi
 }
 
-# Skill 文件清单（硬编码，确保 curl | bash 场景可用）
-REPO_RAW="https://raw.githubusercontent.com/Yuyyxz/kling-prompt-engineering/main"
-SKILL_FILES=(
-    "anti-slop.skill"
-    "cost-estimator.skill"
-    "director-engine.skill"
-    "domain-skills.skill"
-    "failure-atlas.skill"
-    "keyframe-generator.skill"
-    "kling-director.skill"
-    "kling-screenwriting.skill"
-    "kling-storyboard.skill"
-    "kling-style-tags.skill"
-    "kling-templates.skill"
-    "material-numbering.skill"
-    "motion-director.skill"
-    "multi-episode-narrative.skill"
-    "multi-platform.skill"
-    "multilingual-vocabulary.skill"
-    "quality-scorer.skill"
-    "retake-protocol.skill"
-    "routing-table.skill"
-    "timeline-format.skill"
-    "validation-scripts.skill"
-    "visual-pipeline.skill"
-)
-
-# 标准 SKILL.md 目录（Claude Code / Cursor 原生格式）
-SKILL_DIRS=(
-    "kling-templates"
-    "kling-style-tags"
-    "kling-storyboard"
-)
-
 # 下载 Skill 文件
 download_skills() {
     local install_dir=$1
-    local success_count=0
-    local fail_count=0
     
     print_info "正在下载 Skill 文件..."
     
     # 创建目录
     mkdir -p "$install_dir"
     
-    # 1. 下载根 SKILL.md（导演引擎入口）
-    print_info "下载根 SKILL.md（导演引擎入口）..."
-    if curl -sfL "${REPO_RAW}/SKILL.md" -o "$install_dir/SKILL.md"; then
-        print_success "  SKILL.md (root)"
-        ((success_count++))
-    else
-        print_warning "  下载失败: SKILL.md (跳过)"
-        ((fail_count++))
+    # 下载所有 .skill 文件（不递归，跳过 archive/ 等子目录）
+    for skill_file in skills/*.skill; do
+        if [ -f "$skill_file" ]; then
+            filename=$(basename "$skill_file")
+            print_info "下载 $filename..."
+            curl -sL "https://raw.githubusercontent.com/Yuyyxz/kling-prompt-engineering/main/$skill_file" -o "$install_dir/$filename"
+            print_success "下载完成: $filename"
+        fi
+    done
+}
+
+# ============================================================
+# 验证脚本安装（可选）
+# 这些脚本用于 prompt 质量检查（Anti-Slop 检测、语法验证等）。
+# 普通用户只装 Skill 文件就够用了，可以用 --skip-validation 跳过。
+# 适合需要批量校验 prompt 或做 CI 集成的进阶用户。
+# ============================================================
+download_scripts() {
+    local install_dir=$1
+
+    # 检查 scripts/ 目录是否存在
+    if [ ! -d "scripts" ]; then
+        print_warning "scripts/ 目录不存在，跳过验证脚本安装"
+        return 0
     fi
-    
-    # 2. 下载标准 SKILL.md 子目录
-    for dir_name in "${SKILL_DIRS[@]}"; do
-        mkdir -p "$install_dir/$dir_name"
-        if curl -sfL "${REPO_RAW}/skills/${dir_name}/SKILL.md" -o "$install_dir/$dir_name/SKILL.md"; then
-            print_success "  $dir_name/SKILL.md"
-            ((success_count++))
-        else
-            print_warning "  下载失败: $dir_name/SKILL.md (跳过)"
-            ((fail_count++))
+
+    print_info "正在安装验证脚本（高级功能）..."
+
+    local scripts_dir="$install_dir/scripts"
+    mkdir -p "$scripts_dir"
+
+    local found_scripts=0
+    for script_file in scripts/*.py; do
+        if [ -f "$script_file" ]; then
+            filename=$(basename "$script_file")
+            print_info "安装 $filename..."
+            curl -sL "https://raw.githubusercontent.com/Yuyyxz/kling-prompt-engineering/main/$script_file" -o "$scripts_dir/$filename"
+            found_scripts=1
         fi
     done
-    
-    # 3. 下载 .skill 数据文件（向后兼容）
-    for filename in "${SKILL_FILES[@]}"; do
-        local url="${REPO_RAW}/skills/${filename}"
-        if curl -sfL "$url" -o "$install_dir/$filename"; then
-            print_success "  $filename"
-            ((success_count++))
-        else
-            print_warning "  下载失败: $filename (跳过)"
-            ((fail_count++))
-        fi
-    done
-    
-    echo ""
-    print_info "下载完成: ${success_count} 成功, ${fail_count} 失败"
-    
-    if [ "$fail_count" -gt 0 ]; then
-        print_warning "部分文件下载失败，请检查网络连接后重试"
+
+    if [ "$found_scripts" -eq 1 ]; then
+        print_success "验证脚本已安装到: $scripts_dir"
+        print_info "运行 python $scripts_dir/prompt_lint.py --help 查看用法"
+    else
+        print_warning "scripts/ 目录为空，无验证脚本可安装"
     fi
 }
 
@@ -219,6 +192,7 @@ main() {
     # 解析参数
     local platform=""
     local custom_dir=""
+    local skip_validation=0
     
     while [[ $# -gt 0 ]]; do
         case $1 in
@@ -229,6 +203,10 @@ main() {
             -d|--dir)
                 custom_dir=$2
                 shift 2
+                ;;
+            --skip-validation)
+                skip_validation=1
+                shift
                 ;;
             -h|--help)
                 show_help
@@ -252,24 +230,31 @@ main() {
     case $platform in
         claude)
             install_claude
+            [ "$skip_validation" -eq 0 ] && download_scripts "$HOME/.claude/skills"
             ;;
         cursor)
             install_cursor
+            [ "$skip_validation" -eq 0 ] && download_scripts "$HOME/.cursor/skills"
             ;;
         codex)
             install_codex
+            [ "$skip_validation" -eq 0 ] && download_scripts "$HOME/.codex/skills"
             ;;
         windsurf)
             install_windsurf
+            [ "$skip_validation" -eq 0 ] && download_scripts "$HOME/.windsurf/skills"
             ;;
         trae)
             install_trae
+            [ "$skip_validation" -eq 0 ] && download_scripts "$HOME/.trae/skills"
             ;;
         qwen)
             install_qwen
+            [ "$skip_validation" -eq 0 ] && download_scripts "$HOME/.qwen/skills"
             ;;
         generic)
             install_generic "$custom_dir"
+            [ "$skip_validation" -eq 0 ] && download_scripts "$custom_dir"
             ;;
         *)
             print_error "不支持的平台: $platform"
@@ -277,6 +262,10 @@ main() {
             exit 1
             ;;
     esac
+    
+    if [ "$skip_validation" -eq 1 ]; then
+        print_info "已跳过验证脚本安装（--skip-validation）"
+    fi
 }
 
 # 运行主函数

@@ -1,17 +1,32 @@
 # 20 — 风格标签系统（Style Tags）
 
-> 用户说"宫崎骏风"、"赛博朋克"、"韦斯·安德森"，自动映射到具体的镜头/色调/运动/光线参数。
+> 风格标签是**起点**，不是终点。
+
+先说清楚这个文件和 [09-反空话词典](09-anti-slop.md) 的关系——09 说"别直接写风格标签"，这个文件就是一堆风格标签。矛盾吗？不矛盾。
+
+09 反对的是：把"Wes Anderson"写进 prompt 就完事。
+这个文件做的是：帮你从"Wes Anderson"出发，找到**具体的镜头/光线/构图参数**。
+
+**核心规则：每个风格标签都必须被"翻译"成物理描述后才能写进 prompt。**
+
+标签是搜索词，不是 prompt 词。你用标签找到方向，然后用物理描述锁定画面。
 
 ---
 
-## 使用方式
+## 使用规则
 
-用户输入一个或多个风格标签，系统自动组合对应的镜头语言参数。
+1. **标签 → 翻译 → 写进 prompt。** 先用标签确定方向，再展开成具体的镜头型号、光线方向、构图方式、材质描述。
+2. **禁止直接丢标签。** 写"Wes Anderson 风格"不行。写"对称构图，粉彩色调，平面光，镜头匀速横移"才行。
+3. **组合不超过两个风格。** 叠三个风格 = 模型不知道听谁的。选一个导演风格 + 一个视觉/情绪风格就够了。
+4. **冲突风格不要硬组。** 极简 + 赛博朋克、治愈 + 暗黑哥特——情绪相反的参数会互相抵消。
 
-**示例：**
-- "帮我拍一个产品视频，赛博朋克风" → 冷色调 + 霓虹光 + 低角度 + 手持
-- "风景片，宫崎骏治愈风" → 暖色调 + 平视 + 缓慢横移 + 自然光
-- "短剧，诺兰悬疑风" → 冷色调 + 高对比 + 快速剪辑 + 不对称构图
+**翻译示例：**
+
+| 你说的 | 你应该写的 |
+|--------|-----------|
+| 韦斯·安德森风 | 对称构图，居中主体，粉彩色调，镜头匀速横移，平面柔光 |
+| 赛博朋克 | 冷蓝色调，霓虹粉紫光混合，雨天街道反射光，手持轻微晃动 |
+| 宫崎骏治愈风 | 暖色调，自然光黄金时刻，缓慢横移，风拂过草地，远景层叠山峦 |
 
 ---
 
@@ -29,6 +44,7 @@
 | 光线 | 均匀柔和光线 |
 | 节奏 | 匀速、有节奏感 |
 | 提示词 | symmetric composition, pastel colors, centered subject, smooth lateral track, whip pan |
+| → 翻译成 prompt | 对称构图，主体居中，粉彩色调（低饱和粉/薄荷绿/奶油黄），镜头匀速横移，平面柔光无硬阴影 |
 
 #### 诺兰（Christopher Nolan）
 | 参数 | 值 |
@@ -40,6 +56,7 @@
 | 光线 | 自然光，低调光 |
 | 节奏 | 快慢交替，紧张感 |
 | 提示词 | IMAX feel, wide angle, cold tones, high contrast, large format photography |
+| → 翻译成 prompt | IMAX 画幅比（1.43:1），20mm 广角镜头畸变，冷蓝色调，高对比度，自然光为主，暗部占画面 60% 以上 |
 
 #### 库布里克（Stanley Kubrick）
 | 参数 | 值 |
@@ -51,6 +68,7 @@
 | 光线 | 低调光，强对比 |
 | 节奏 | 缓慢，压迫感 |
 | 提示词 | one-point perspective, slow tracking shot, low angle looking up, cold tones, low-key lighting, symmetrical |
+| → 翻译成 prompt | 单点透视走廊，镜头从低角度仰视，对称构图，冷色调高饱和，低调光强对比，缓慢轨道推进 |
 
 #### 王家卫（Wong Kar-wai）
 | 参数 | 值 |
@@ -62,6 +80,7 @@
 | 光线 | 霓虹灯，混合色温 |
 | 节奏 | 慢，情绪化 |
 | 提示词 | high saturation, neon + warm tones, handheld, slow shutter, frame skipping |
+| → 翻译成 prompt | 框中框构图（门框/窗框前景），高饱和霓虹+暖色混合，手持晃动，慢快门拖影，抽帧跳切 |
 
 #### 宫崎骏（Hayao Miyazaki）
 | 参数 | 值 |
@@ -73,6 +92,7 @@
 | 光线 | 自然光，黄金时刻 |
 | 节奏 | 缓慢，治愈感 |
 | 提示词 | warm tones, soft palette, natural light, gentle movement, wind in hair, flowing water, drifting clouds, everyday details |
+| → 翻译成 prompt | 暖色调柔和色板，自然光黄金时刻，缓慢横移，风拂过草地，远景层叠山峦，日常细节特写 |
 
 #### 是枝裕和（Hirokazu Kore-eda）
 | 参数 | 值 |
@@ -84,6 +104,7 @@
 | 光线 | 自然光，柔和 |
 | 节奏 | 缓慢，日常感 |
 | 提示词 | natural light, low contrast, fixed camera, everyday feel, warm tones |
+| → 翻译成 prompt | 固定机位平视，自然光低对比，暖色调，日常家庭场景，极少镜头运动 |
 
 #### 大卫·芬奇（David Fincher）
 | 参数 | 值 |
@@ -95,6 +116,7 @@
 | 光线 | 低调光，控制精确 |
 | 节奏 | 精确，控制感 |
 | 提示词 | dark green/blue tones, desaturated, precise camera movement, controlled lighting |
+| → 翻译成 prompt | 暗绿/暗蓝色调，低饱和，精确控制的低调光，稳定器缓慢推进，画面冷峻克制 |
 
 #### 塔可夫斯基（Andrei Tarkovsky）
 | 参数 | 值 |
@@ -106,6 +128,7 @@
 | 光线 | 自然光，柔和 |
 | 节奏 | 极慢，冥想感 |
 | 提示词 | long take, wide angle, poetic composition, film grain, warm tones, very slow movement, water/rain/mist |
+| → 翻译成 prompt | 极慢长镜头，广角诗意构图，胶片颗粒质感，暖色调，雨/雾/倒影元素，自然光柔和 |
 
 ---
 
@@ -119,6 +142,7 @@
 | 环境 | 雨天街道，高楼，全息广告 |
 | 运动 | 手持，快速剪辑 |
 | 提示词 | neon lights, cyberpunk city, rain, holographic ads, cold blue + neon pink |
+| → 翻译成 prompt | 冷蓝+霓虹粉紫光混合，雨天湿街道反射光，高楼密集，手持轻微晃动 |
 
 #### 蒸汽朋克（Steampunk）
 | 参数 | 值 |
@@ -128,6 +152,7 @@
 | 环境 | 齿轮、管道、蒸汽 |
 | 运动 | 缓慢推进，环绕 |
 | 提示词 | steampunk, copper/bronze tones, gears, pipes, steam, warm side lighting |
+| → 翻译成 prompt | 暖铜色调，齿轮管道蒸汽元素，暖色侧光穿烟雾，缓慢环绕 |
 
 #### 复古胶片（Retro Film）
 | 参数 | 值 |
@@ -137,6 +162,7 @@
 | 环境 | 70-80年代风格 |
 | 运动 | 手持，慢快门 |
 | 提示词 | film grain, warm tones, desaturated, 70s aesthetic, vintage look |
+| → 翻译成 prompt | 胶片颗粒质感，暖色调低饱和，70年代复古美术，自然光柔和 |
 
 #### 黑色电影（Film Noir）
 | 参数 | 值 |
@@ -146,6 +172,7 @@
 | 环境 | 城市夜景，雨天 |
 | 运动 | 固定机位，低角度 |
 | 提示词 | film noir, high contrast, venetian blind shadows, black and white, low angle |
+| → 翻译成 prompt | 黑白低饱和，高对比侧光，百叶窗条纹阴影，低角度仰拍，城市夜景雨天 |
 
 #### 极简主义（Minimalist）
 | 参数 | 值 |
@@ -155,6 +182,7 @@
 | 环境 | 干净背景，少元素 |
 | 运动 | 锁定或极慢推进 |
 | 提示词 | minimalist, clean background, neutral colors, simple composition, slow movement |
+| → 翻译成 prompt | 干净背景中性色调，画面元素极少，主体居中，锁定或极慢推进 |
 
 #### 超现实（Surreal）
 | 参数 | 值 |
@@ -164,6 +192,7 @@
 | 环境 | 梦境般场景 |
 | 运动 | 缓慢，失重感 |
 | 提示词 | surreal, dreamlike, high saturation, unnatural lighting, floating/dreamy motion |
+| → 翻译成 prompt | 高饱和对比色，非自然光源（自发光物体），失重缓慢运动，梦境般场景 |
 
 #### 日系清新（Japanese Fresh）
 | 参数 | 值 |
@@ -173,6 +202,7 @@
 | 环境 | 日式街道/室内 |
 | 运动 | 平视，缓慢 |
 | 提示词 | Japanese aesthetic, soft warm tones, natural light, clean, fresh, airy |
+| → 翻译成 prompt | 暖白/淡蓝色调高亮度，自然光柔和，日式街道/室内，平视缓慢移动 |
 
 #### 暗黑哥特（Dark Gothic）
 | 参数 | 值 |
@@ -182,6 +212,7 @@
 | 环境 | 哥特建筑，教堂 |
 | 运动 | 缓慢推进，环绕 |
 | 提示词 | gothic, dark purple/red, low-key lighting, candlelight, gothic architecture |
+| → 翻译成 prompt | 暗紫/暗红色调低饱和，烛光低调光，哥特式尖拱/石柱建筑，缓慢推进或环绕 |
 
 ---
 
@@ -195,6 +226,7 @@
 | 运动 | 缓慢横移，云/风/水 |
 | 节奏 | 缓慢，放松 |
 | 提示词 | healing, warm tones, golden hour, gentle breeze, slow movement, relaxing |
+| → 翻译成 prompt | 暖色调柔和，黄金时刻自然光，微风拂过，缓慢横移，放松节奏 |
 
 #### 紧张悬疑（Suspense）
 | 参数 | 值 |
@@ -204,6 +236,7 @@
 | 运动 | 快速剪辑，手持 |
 | 节奏 | 快，紧张 |
 | 提示词 | suspense, cold tones, high contrast, low-key lighting, quick cuts, tension |
+| → 翻译成 prompt | 冷色调高对比，低调光深阴影，快速剪辑手持晃动，紧张节奏 |
 
 #### 热血燃（Hype）
 | 参数 | 值 |
@@ -213,6 +246,7 @@
 | 运动 | 快速跟拍，手持 |
 | 节奏 | 快，爆发感 |
 | 提示词 | hype, high saturation, fast cuts, backlight, energetic, explosive |
+| → 翻译成 prompt | 高饱和暖色调，强光逆光剪影，快速跟拍手持，爆发感剪辑节奏 |
 
 #### 文艺忧郁（Melancholy）
 | 参数 | 值 |
@@ -222,6 +256,7 @@
 | 运动 | 缓慢，静态 |
 | 节奏 | 慢，沉思 |
 | 提示词 | melancholy, desaturated, grey tones, overcast, slow movement, contemplative |
+| → 翻译成 prompt | 低饱和冷灰色调，阴天漫射柔光，极慢或静态镜头，沉思节奏 |
 
 #### 浪漫（Romantic）
 | 参数 | 值 |
@@ -231,15 +266,17 @@
 | 运动 | 缓慢推进，环绕 |
 | 节奏 | 慢，温柔 |
 | 提示词 | romantic, warm pink/orange, golden hour, backlit, gentle movement |
+| → 翻译成 prompt | 暖粉/暖橙色调，黄金时刻逆光，发丝/轮廓光晕，缓慢推进或轻环绕 |
 
-#### 史诗感（Epic）
+#### 宏大叙事（Grand Scale）
 | 参数 | 值 |
 |------|-----|
 | 色调 | 冷色调，高对比 |
 | 光线 | 强光，体积光 |
 | 运动 | 无人机，摇臂上升 |
 | 节奏 | 慢→快，宏大 |
-| 提示词 | epic, cold tones, volumetric lighting, drone shot, crane up, grand scale |
+| 提示词 | grand scale, cold tones, volumetric lighting, drone shot, crane up, massive structure |
+| → 翻译成 prompt | 冷色调高对比，体积光穿透空间，无人机高空缓降或摇臂上升，巨构建筑/大规模场景 |
 
 ---
 
@@ -271,21 +308,23 @@
 
 ## 输出格式
 
-当用户输入风格标签时，输出：
+当用户输入风格标签时，输出翻译后的物理描述——不是把标签丢进 prompt：
 
 ```
-【风格组合】
+【风格来源】
 导演：[导演风格]
 视觉：[视觉风格]
 情绪：[情绪风格]
 
-【镜头参数】
-构图：[构图方式]
-色调：[色调描述]
-光线：[光线设置]
-运动：[镜头运动]
-节奏：[节奏描述]
+【翻译结果】
+构图：[具体构图方式]
+色调：[具体色调描述]
+光线：[具体光线设置]
+运动：[具体镜头运动]
+节奏：[具体节奏描述]
 
-【提示词】
-[完整提示词，包含风格关键词]
+【最终 prompt】
+[用物理描述写成的 prompt，不包含任何风格标签]
 ```
+
+**注意：** 最终 prompt 里不应该出现"Wes Anderson""赛博朋克"这类标签词。标签已经翻译成具体参数了。

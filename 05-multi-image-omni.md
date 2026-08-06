@@ -62,9 +62,6 @@
 
 ---
 
-## 注意事项
----
-
 ## 多模态引用公式（Multi-Modal Reference Formula）
 
 > 借鉴 Seedance 2.0 的多模态引用系统。核心：用 **类型 + 索引** 引用素材，prompt 中直接描述素材间的关系。

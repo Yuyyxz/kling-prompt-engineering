@@ -1,222 +1,157 @@
-<p align="center">
-  <img src="assets/og-cover.png" alt="Kling & Seedance Prompt Engineering" width="100%">
-</p>
+# 可灵提示词工程 — 给拍视频的人写的手册
 
-# Kling & Seedance Prompt Engineering
+> 别向模型要"电影感"。回答一个问题：这个镜头对观众做了什么？
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+这是一个给 AI 视频生成写的提示词手册，以快手可灵（Kling）为主。不是论文，不是术语词典——是实战中总结出来的"怎么写 prompt 才能出片"。
 
-写给用可灵和 Seedance 做视频的人。不是提示词词典——是一套导演工作方法。
+22 个文件，从"我从来没写过"到"我要精确控制第 3 秒的音效对齐"，全覆盖。
 
-核心主张只有一句话：**别跟模型要"电影感"，告诉它这个镜头对观众做了什么。** "Cinematic, beautiful, 4k" 是愿望，不是方向。模型需要的是：谁在画面里、做什么动作、摄影机怎么动、光从哪来、观众听到什么。这些答出来，"电影感"是副产品。
-
-**支持模型：** Kling 3.0 / 3.0 Omni / O1 / 2.6 / 2.5 Turbo · Seedance 2.5 / 2.0
-**支持模式：** 文生视频 · 图生视频 · 多图参考 · 视频延长 · 运动迁移 · 口型同步 · 多镜头叙事
-**最高规格：** 4K / 15s（可灵 3.0）· 30s（Seedance 2.5）· 原生音频 · 智能分镜
-
-两个模型的脾气不同：可灵对东方美学和口型同步理解更好，Seedance 对中文长文本和动态场景更流畅。本项目的 Skill 会根据你的内容自动建议用哪个。
+**兼容模型：** Kling v3 / v2.5-turbo / v2-1-master / video-o1
+**支持模式：** 文生视频 · 图生视频 · 多图参考 · 视频续写 · 动作迁移 · 口型同步
 
 ---
 
-## 30 秒上手
+## 从哪里开始？
 
-**装 Skill，然后说话就行：**
+**先做这件事：** 打开 [17-user-journey.md](17-user-journey.md)，5 道题判断你在哪层。这个文件编号是 17，但你第一个该读它——知道自己在哪，才不会把时间浪费在不需要看的东西上。
 
-```bash
-# Claude Code
-curl -sL https://raw.githubusercontent.com/Yuyyxz/kling-prompt-engineering/main/install.sh | bash -s claude
+然后按你的情况选路线：
 
-# Cursor
-curl -sL https://raw.githubusercontent.com/Yuyyxz/kling-prompt-engineering/main/install.sh | bash -s cursor
+**写过但总翻车？** → [09-anti-slop.md](09-anti-slop.md)（90% 的问题出在这），再查 [18-troubleshooting-gallery.md](18-troubleshooting-gallery.md) 的快速诊断表。
 
-# 自定义目录
-curl -sL https://raw.githubusercontent.com/Yuyyxz/kling-prompt-engineering/main/install.sh | bash -s generic -d ~/.custom/skills/
+**想系统学？** → 按这个顺序：01 → 02 → 13 → 08 → 15 → 16。
+
+**就想抄作业？** → 直接去 [13-templates.md](13-templates.md) 拿模板，或者看 [examples/](examples/) 里的 5 个完整案例。
+
+---
+
+## 核心思路（30 秒版）
+
+写 prompt 之前先回答五个问题（导演五问）：
+
+1. **这场戏干嘛的？** 引入 / 深化 / 转折 / 收束
+2. **价值怎么变的？** 安全→威胁 / 陌生→盟友 / 掌控→无力
+3. **观众站在谁那边？** 和主角一起紧张？还是在远处看？
+4. **谁有权力？** 谁占空间、谁被挤到边缘
+5. **没说出来的是什么？** 角色说的和角色要的之间的差距
+
+答案决定后面一切——景别、角度、光线、运动、声音，全部服务于这五个答案。
+
+**黄金公式：**
+```
+[谁 + 在哪 + 做什么] + [景别 + 角度 + 运动] + [光源 + 方向] + [声音] + [约束]
 ```
 
-装完对 AI 说"帮我拍一个产品视频"。它会问你两三个问题，然后给你一个可以直接粘进可灵或 Seedance 的提示词。不需要背公式。
-
-**不想装东西？** 看 [cheatsheet.md](cheatsheet.md)，一页纸，打完印贴墙上。
-
----
-
-## 它怎么工作
-
-根目录的 [`SKILL.md`](SKILL.md) 是入口（标准 Claude Code / Cursor 格式）。逻辑很简单：
-
-你说一句话 → 它判断够不够 → 够就直接出词，不够就问最多两个问题 → 出词之前过一遍质量检查（有没有空话、有没有光源、是不是一个镜头塞了三个动作）。
-
-复杂需求（多集叙事、IP 风险、失败诊断）走完整流程，9 个环节逐步确认。简单需求不会被迫走完整流程——这是对用户时间的尊重。
-
-子 Skill 在 `skills/*/SKILL.md`，各有分工：模板库、风格标签、分镜表。
-
----
-
-## 工具
-
-```bash
-# 检查你的提示词有没有空话（cinematic/beautiful/4k 这类）
-python scripts/prompt_lint.py "你的提示词"
-
-# 自动评测（需要 claude CLI 或 API key）
-python evals/run_evals.py
-
-# 验证 skill 文件格式
-python scripts/validate_all.py skills/
+**一个完整例子：**
+```
+雨夜，快递员穿过湿滑的天桥，一扇铁门正在缓缓关闭。
+镜头：低角度侧面跟拍，从左到右，停在快递员的手抓住铁门的瞬间。
+光线：薄雾中的琥珀色工作灯，月光在湿金属上勾出冷色轮廓。
+声音：雨打钢架、呼吸声、铁门电机嗡鸣。
+约束：无文字、无 logo、无多余人物。
 ```
 
----
-
-## Skills
-
-| Skill | 用途 | 触发词 |
-|-------|------|--------|
-| `director-engine.skill` | 导演引擎：意图→技术执行 | "帮我拍"、"AI视频"、"可灵" |
-| `kling-screenwriting.skill` | 编剧助手 | "编剧"、"写剧本"、"故事" |
-| `kling-templates.skill` | 即用模板库（30+类型） | "模板"、"给我一个提示词" |
-| `kling-style-tags.skill` | 风格标签系统 | "风格"、"宫崎骏"、"赛博朋克" |
-| `kling-storyboard.skill` | 分镜表输出 | "分镜"、"storyboard" |
-| `timeline-format.skill` | 时间轴格式提示词 | "时间轴"、"timeline" |
-| `domain-skills.skill` | 15个行业垂直模板 | "电商"、"美食"、"房地产" |
-| `failure-atlas.skill` | 失败诊断与修复 | "生成失败"、"效果不好" |
-| `anti-slop.skill` | 弱词替换 | "提示词太虚"、"不具体" |
-
-完整列表见 [`skills/`](skills/) 目录。
+注意：没有"电影感""史诗感""8K"。每个词都能被摄影机或麦克风检测到。
 
 ---
 
-## 提示词公式
+## 反空话规则（最重要的事）
 
-```
-[风格锚：真实相机+镜头] + [主体+一个动作] + [镜头运动] + [光源] + [声音] + [约束]
-```
+> 如果一个词不能被摄影机、麦克风、测光表或秒表检测到，改写它。
 
-**实战验证的写法（自然语言流，不用标签）：**
+| 别写这个 | 改成这个 |
+|---------|---------|
+| 电影感 | 景别 + 运动 + 光线 + 色调 |
+| 史诗感 | 物理规模 + 人群 + 镜头距离 |
+| 8K / 杰作 / 高质量 | 删掉。一个字都别写 |
+| 氛围感 / 高级感 | 光源 + 色温 + 材质 |
+| 雨夜,霓虹,赛博朋克,4K | 写成一句话：谁在哪做什么 |
 
-```
-Anamorphic widescreen. Simulated ARRI Alexa 35 with Panavision Ultra Speed MKII lens, 24mm, T1.9.
-雨夜工业天桥，巨型锈蚀金属闸门从画面两侧缓缓合拢。闸门占满画面上方三分之二，
-底部最后一道缝隙中，一个渺小的黑色风衣人影正侧身通过。
-琥珀色工作灯在薄雾中散射出锥形光束，月光在湿金属表面拉出冷蓝色高光。
-低角度仰拍，广角畸变强化钢铁的压迫感。手持呼吸感微晃。
-雨滴打在钢铁上的回响，闸门电机低频嗡鸣渐强，最后一丝光消失。
-```
-
-注意：没有 "Camera:" "Lighting:" 这些标签。模型要的是自然语言，不是填表。标签是给你自己规划用的，不是给模型看的。
-
-**导演五问（写提示词前先回答）：**
-
-1. **功能** — 这个场景在故事中做什么？（引入/深化/转折/收束）
-2. **转折** — 价值反转是什么？（安全→威胁 / 陌生人→盟友）
-3. **视角** — 我们在谁的体验里？
-4. **权力** — 谁持有权力，如何流动？
-5. **潜台词** — 什么是真实但未说出的？
-
-详见 [01-directing-engine.md](01-directing-engine.md)。
+更多替换 → [09-anti-slop.md](09-anti-slop.md)
 
 ---
 
-## Anti-Slop：空话替换
+## 文件索引
 
-> If a word can't be detected by a camera, microphone, light meter, or stopwatch — rewrite it.
+### 基础层（入门必读）
 
-| Empty Word | Replace With |
-|-----------|-------------|
-| Cinematic | Shot size + movement + lighting + color grade |
-| Epic | Physical scale + crowd + camera distance |
-| Breathtaking | Visible contrast / reveal / motion |
-| 8K / Masterpiece | DELETE |
-| Moody / Atmospheric | Light source + color temp + ambient sound |
-| Premium / Luxurious | Material + whitespace + controlled lighting |
+| 文件 | 干什么用的 |
+|------|-----------|
+| [01-directing-engine.md](01-directing-engine.md) | 导演引擎：五问 → 三个补充字段 → 一致性原则 → 节拍编排 → 魔法前缀 |
+| [02-shot-language.md](02-shot-language.md) | 镜头语言：景别、角度、运动、支撑方式、FPV |
+| [03-t2v-guide.md](03-t2v-guide.md) | 文生视频：prompt 结构、多镜头语法、时长控制 |
+| [04-i2v-guide.md](04-i2v-guide.md) | 图生视频：源素材承载规则、保持模式 vs 变化模式、人物/产品保护 |
+| [09-anti-slop.md](09-anti-slop.md) | 反空话词典：6 类空话 + 替换表 + 中文空话陷阱 |
+| [13-templates.md](13-templates.md) | 即用模板：每种模式的骨架 + Recipe Cards + 5 种组合模式库 |
+| [17-user-journey.md](17-user-journey.md) | 用户分层路径：入门/进阶/专业三层 + 自测 + 推荐路线 |
 
-**Negation Rule:** "No blur" → "Hands resting still on the table." 否定句只放在约束槽。
+### 进阶层（理解"为什么"）
 
-详见 [09-anti-slop.md](09-anti-slop.md)。
+| 文件 | 干什么用的 |
+|------|-----------|
+| [05-multi-image-omni.md](05-multi-image-omni.md) | 多图参考：角色锁定、运动参考、镜头参考 |
+| [06-video-extension.md](06-video-extension.md) | 视频续写：续接、漂移修复、序列状态 |
+| [07-motion-transfer.md](07-motion-transfer.md) | 动作迁移：参考视频 → 角色图 → 动作嫁接 |
+| [08-audio-guide.md](08-audio-guide.md) | 音频指南：原生音频、对话、口型同步、10 场景音画配对示例 |
+| [10-allocation-model.md](10-allocation-model.md) | 算力分配：身份保真 vs 动作幅度 vs 场景密度 |
+| [11-genre-guides.md](11-genre-guides.md) | 类型片指南：叙事/非叙事分道 + 15 种类型（产品/短剧/动作/动画/美食/风景/VFX/科幻/恐怖/MV…） |
+| [12-kling-capability-map.md](12-kling-capability-map.md) | 可灵能力地图：能做什么、不能做什么、怎么绕 |
+| [16-language-strategy.md](16-language-strategy.md) | 中英文混合策略：什么用中文、什么用英文、速查表 |
 
----
+### 专业层（精确控制）
 
-## 文档索引
+| 文件 | 干什么用的 |
+|------|-----------|
+| [14-model-mechanics.md](14-model-mechanics.md) | 模型机制：理解生成器为什么这么工作 |
+| [15-timeline-syntax.md](15-timeline-syntax.md) | 时间轴语法：状态层 + 运动层 + 节奏层，5 个完整示例 |
+| [18-troubleshooting-gallery.md](18-troubleshooting-gallery.md) | 故障深度拆解：5 类 23 条，每条有完整 ❌→✅ 对比和原理分析 |
+| [19-cinematography-dictionary.md](19-cinematography-dictionary.md) | 摄影术语词典：100+ 项（景别/角度/运动/光线/色彩/音频/VFX/构图） |
+| [20-style-tags.md](20-style-tags.md) | 风格标签：8 导演风格 + 8 视觉风格 + 6 情绪风格 + 组合公式 |
+| [21-retake-protocol.md](21-retake-protocol.md) | 重试协议：5 个判定、单变量规则、重试预算、拍摄日志、诚实退出 |
+| [22-text-to-image.md](22-text-to-image.md) | 文生图完整指南：多模型适配（Kolors/Qwen/Seedream）、相机锚定、景深控制（光圈-视觉对照+虚化形状）、曝光控制（剪影/双重曝光/漏光/HDR）、色彩与影调（色温/互补色/7种电影调色）、完整布光体系（25种布光+光质+决策树）、光线词汇、情绪外化、类型专项指南（8种：人文街拍/广告/海报6模板/编辑杂志/建筑/角色概念艺术/中国风）、景观专项（9要素+6类型）、32种风格体系（12核心+20+扩展）、负面提示词策略、角色一致性、反塑料感、效果提升 |
 
-| Doc | Content |
-|-----|---------|
-| [01-directing-engine](01-directing-engine.md) | 导演引擎：导演五问 → 一致性原则 → 节拍编排 → 引导式构建 → 魔法前缀 |
-| [02-shot-language](02-shot-language.md) | 镜头语言：景别、角度、运动、支撑、FPV/无人机 |
-| [03-t2v-guide](03-t2v-guide.md) | 文生视频：提示词结构、多镜头语法、时长控制 |
-| [04-i2v-guide](04-i2v-guide.md) | 图生视频：保持 vs 变化模式、角色/产品保护 |
-| [05-multi-image-omni](05-multi-image-omni.md) | 多图参考：角色锁定、运动参考、相机参考 |
-| [06-video-extension](06-video-extension.md) | 视频延长：续写、漂移修复、序列状态 |
-| [07-motion-transfer](07-motion-transfer.md) | 运动迁移：参考视频 → 角色图 → 动作嫁接 |
-| [08-audio-guide](08-audio-guide.md) | 音频：原生音频、对白、口型同步、视听关系 |
-| [09-anti-slop](09-anti-slop.md) | Anti-Slop 词典：6 类空话 + 替换表 |
-| [10-allocation-model](10-allocation-model.md) | 预算分配：身份保真 vs 动作幅度 vs 场景密度 |
-| [11-genre-guides](11-genre-guides.md) | 类型指南：15 种类型（产品/短剧/动作/动画/美食/风景/VFX/科幻/恐怖/纪录片/MV/时尚/教育/体育/旅行） |
-| [12-kling-capability-map](12-kling-capability-map.md) | 可灵能力图：能做什么、怎么用、绕过限制 |
-| [13-templates](13-templates.md) | 即用模板：每种模式和场景的提示词骨架 |
-| [14-model-mechanics](14-model-mechanics.md) | 模型机制：理解生成器为什么这样工作 |
-| [18-troubleshooting-gallery](18-troubleshooting-gallery.md) | 故障排除：10 种常见失败模式 + 修复方法 |
-| [19-cinematography-dictionary](19-cinematography-dictionary.md) | 电影摄影词典：100+ 项术语速查 |
-| [20-style-tags](20-style-tags.md) | 风格标签：8 导演风格 + 8 视觉风格 + 6 情绪风格 + 组合公式 |
+### 参考资料
 
-### Advanced References
-
-| Doc | Content |
-|-----|---------|
-| [references/seedance-prompt-guide.md](references/seedance-prompt-guide.md) | Seedance 提示词实战指南（@引用语法、平台限制、场景模板） |
-| [examples/before_after.md](examples/before_after.md) | 5 组 before/after 提示词对比（附"为什么有效"） |
-| [adapters/model_router.yaml](adapters/model_router.yaml) | 模型路由层配置（Kling 5 模型 + Seedance 2 版本） |
-| [adapters/kling_adapter.yaml](adapters/kling_adapter.yaml) | Kling 模型专属配置 |
-| [adapters/seedance_adapter.yaml](adapters/seedance_adapter.yaml) | Seedance 模型专属配置 |
-| [adapters/prompt_translator.yaml](adapters/prompt_translator.yaml) | 多语言提示词翻译器 |
-| [examples/model_routing_examples.yaml](examples/model_routing_examples.yaml) | 5 个完整路由使用示例 |
-| [workflows/video_pipeline.yaml](workflows/video_pipeline.yaml) | 条件触发确认制 6 步生产流水线 |
+| 文件 | 内容 |
+|------|------|
+| [references/anti_slop_lexicon.md](references/anti_slop_lexicon.md) | Anti-Slop 完整词库 |
+| [references/failure_atlas.md](references/failure_atlas.md) | 失败诊断图谱速查表（一行一个问题，快速定位改哪句） |
+| [references/negative_prompt_library.md](references/negative_prompt_library.md) | 反向检查清单（生成后对照排查，不是 prompt 模板） |
+| [QUICK-REF.md](QUICK-REF.md) | 一页纸速查（贴在显示器边上那张） |
+| [CHECKLIST.md](CHECKLIST.md) | 提交前检查清单 |
+| [examples/](examples/) | 5 个完整实战案例 |
+| [CHALLENGES.md](CHALLENGES.md) | 10 个提示词挑战（从 ⭐ 到 ⭐⭐⭐，练手用） |
 
 ---
 
-## 我想做……去哪找？
+## 5 种组合模式（速览）
 
-| Goal | Go to |
-|------|-------|
-| 不知道怎么分析场景 | [01-directing-engine](01-directing-engine.md) · Step 1 |
-| 提示词太虚，没有具体镜头 | [02-shot-language](02-shot-language.md) |
-| 全是 "cinematic" / "epic" | [09-anti-slop](09-anti-slop.md) |
-| 一张图 → 视频，不知道写什么 | [04-i2v-guide](04-i2v-guide.md) |
-| 多图参考，角色分配不清 | [05-multi-image-omni](05-multi-image-omni.md) |
-| 视频延长接不上 | [06-video-extension](06-video-extension.md) |
-| 角色动作迁移 | [07-motion-transfer](07-motion-transfer.md) |
-| 加对白 / 口型同步 | [08-audio-guide](08-audio-guide.md) |
-| 角色脸融了 / 产品 logo 变形 | [10-allocation-model](10-allocation-model.md) |
-| 不知道可灵能做什么 | [12-kling-capability-map](12-kling-capability-map.md) |
-| 想要现成模板改一改 | [13-templates](13-templates.md) |
-| 生成失败了怎么修 | [18-troubleshooting-gallery](18-troubleshooting-gallery.md) |
+你的场景该用哪种结构？选一个骨架，填入具体内容：
+
+| 模式 | 公式 | 什么时候用 | 默认镜头 |
+|------|------|-----------|---------|
+| **定锚式** | 主体不动 + 单一动作 + 固定机位 | 产品、肖像、建筑 | 锁定 |
+| **递进式** | 远景 → 中景 → 特写 | 故事、品牌、旅行 | 推 → 跟 → 锁定 |
+| **对比式** | A 状态 —过渡→ B 状态 | 变身、季节、改造 | 锁定远景 |
+| **揭示式** | 遮挡/模糊 → 清晰/全貌 | 悬念、揭幕、出场 | 缓推 |
+| **跟随式** | 主体运动 + 镜头同速跟随 | 奔跑、骑行、追逐 | 稳定器跟拍 |
+
+完整结构公式 + 实战 prompt + 常见误用 → [13-templates.md](13-templates.md)「Prompt 组合模式库」
 
 ---
 
-## 常见坑
+## 常见翻车 & 修复
 
-1. **写 "cinematic" 等抽象词。** 模型无法处理抽象评价，用物理描述替代。
-2. **一个镜头塞太多动作。** 一镜 = 一拍 = 一变。多动作拆成多段。
-3. **用否定句当质量保险。** "No blur, no distortion" 反而会召唤这些概念。描述你要的。
-4. **重复描述参考图已有的信息。** I2V 只写图片无法展示的：运动、光变、声音。首行写 "Keep X unchanged"。
-5. **对白太长。** 15 秒口型预算：中文 = 一个短分句，英文 = 5-10 词。
-6. **用输出当续写参考。** 永远用原始参考图重新锚定。
-7. **不声明排除参考角色外貌。** 运动参考会携带外貌，必须写 "Do not copy performer's appearance"。
-8. **期望文字/logo 渲染。** 可灵 3.0 已支持原生文字渲染，但长段落/小字号仍建议后期。
-9. **用标签格式喂模型。** "Camera: ... Lighting: ..." 是规划格式，不是提示词格式。模型要自然语言流。
-10. **没有风格锚。** 不写真实相机/镜头型号，模型只能猜"电影感"是什么。写 "Shot on ARRI Alexa 35, Panavision 24mm T1.9" 比写 "cinematic" 有效一百倍。
+| 翻车 | 为什么 | 怎么修 |
+|------|--------|--------|
+| 面部变形 | 近景 + 快速运动 | 拉远镜头或减速 |
+| 产品/logo 变了 | 没在 prompt 里显式保护 | 开头写"保持[特征]完全不变" |
+| 动作和声音错位 | 没写时间锚点 | 用 `[Xs]` 标记对齐 |
+| 画面像壁纸 | 没有运动也没有变化 | 加一个缓慢镜头运动 + 一个自然变化 |
+| 文字乱码 | 模型不擅长渲染文字 | 加"无文字"约束，后期加 |
+| 续写跳变 | 没重复身份约束 | 每次续写重复身份 + 光线 + 镜头 |
 
----
-
-## 实战验证
-
-以下提示词全部通过 `prompt_lint.py` 检查（0 Error, 94/100），并用可灵官方 API 实际生成：
-
-| 场景 | 镜头 | 画幅 | 分辨率 | 时长 | 积分 | prompt_lint |
-|------|------|------|--------|------|------|-------------|
-| 工业闸门（压迫） | 24mm 广角仰拍 | 16:9 | 3840×2160 | 5s | 15 | 94/100 |
-| 人像（亲密） | 85mm T1.5 浅景深 | 16:9 | 1920×1080 | 5s | 6 | 94/100 |
-| 巨物佛像（敬畏） | 14mm 超广竖摇 | 9:16 | 2160×3840 | 10s | 30 | 94/100 |
-| 诺兰三镜预告 | IMAX 65mm 多焦段 | 16:9 | 1920×1080 | 10s | 12 | 94/100 |
-
-API 格式：`POST api-beijing.klingai.com/text-to-video/kling-3.0`，参数在 `settings` 对象下。详见 [12-kling-capability-map.md](12-kling-capability-map.md)。
+完整诊断矩阵（5 类 23 条）→ [18-troubleshooting-gallery.md](18-troubleshooting-gallery.md)
 
 ---
 
@@ -224,104 +159,78 @@ API 格式：`POST api-beijing.klingai.com/text-to-video/kling-3.0`，参数在 
 
 ```
 kling-prompt-engineering/
-├── README.md                          # 本文件
-├── SKILL.md                           # 导演引擎入口（Claude Code / Cursor 原生格式）
-├── CHANGELOG.md                       # 版本历史
-├── CLAUDE.md                          # 项目规范（给 AI 助手看的编辑规则）
-├── SKILL_SCHEMA.md                    # .skill 文件格式规范
-├── cheatsheet.md                      # 一页纸速查（A4 可打印）
-├── LICENSE                            # MIT License
-├── install.sh                         # 一键安装脚本
-├── requirements.txt                   # Python 依赖
-├── assets/
-│   └── og-cover.png                   # GitHub 社交预览图
-├── 01-directing-engine.md             # 导演方法论
-├── 02-shot-language.md                # 镜头语法参考
-├── 03-t2v-guide.md                    # 文生视频指南
-├── 04-i2v-guide.md                    # 图生视频指南
+├── README.md                          # 你正在看的这个
+├── QUICK-REF.md                       # 一页纸速查
+├── CHECKLIST.md                       # 提交前检查清单
+├── CHALLENGES.md                      # 10 个提示词挑战
+├── 01-directing-engine.md             # 导演引擎
+├── 02-shot-language.md                # 镜头语言
+├── 03-t2v-guide.md                    # 文生视频
+├── 04-i2v-guide.md                    # 图生视频
 ├── 05-multi-image-omni.md             # 多图参考
-├── 06-video-extension.md              # 视频延长
-├── 07-motion-transfer.md              # 运动迁移
-├── 08-audio-guide.md                  # 音频与口型同步
-├── 09-anti-slop.md                    # Anti-Slop 词典
-├── 10-allocation-model.md             # 预算分配模型
-├── 11-genre-guides.md                 # 类型指南
-├── 12-kling-capability-map.md         # 可灵能力与限制（含官方 API 文档）
-├── 13-templates.md                    # 即用提示词模板
-├── 14-model-mechanics.md              # 模型机制理论
-├── 18-troubleshooting-gallery.md      # 故障排除案例库
-├── 19-cinematography-dictionary.md    # 电影摄影词典
-├── 20-style-tags.md                   # 风格标签系统
-├── adapters/                          # 模型适配器
-│   ├── model_router.yaml              # 模型路由配置（Kling 5模型 + Seedance 2版本）
-│   ├── base_adapter.yaml              # 基础适配器接口
-│   ├── kling_adapter.yaml             # Kling 适配器
-│   ├── seedance_adapter.yaml          # Seedance 适配器
-│   └── prompt_translator.yaml         # 提示词翻译器
-├── skills/                            # Skill 文件
-│   ├── README.md                      # 格式说明（SKILL.md vs .skill）
-│   ├── kling-templates/SKILL.md       # 模板库（标准格式）
-│   ├── kling-style-tags/SKILL.md      # 风格标签（标准格式）
-│   ├── kling-storyboard/SKILL.md      # 分镜表（标准格式）
-│   ├── director-engine.skill          # 导演引擎数据（legacy）
-│   ├── domain-skills.skill            # 领域垂直数据（legacy）
-│   └── ...                            # 更多 .skill 数据文件
-├── scripts/                           # 工具脚本
-│   ├── prompt_lint.py                 # 提示词质量检查（Anti-Slop 可执行版）
-│   ├── validate_all.py                # Skill 格式综合验证
-│   └── ...                            # 其他验证脚本
-├── evals/                             # 自动评测
-│   ├── cases.json                     # 6 个测试用例
-│   ├── rubric.md                      # 10 条评分标准
-│   └── run_evals.py                   # LLM-judge 评测脚本
-├── examples/                          # 使用示例
-│   ├── before_after.md                # 5 组 before/after 对比
-│   └── model_routing_examples.yaml    # 模型路由示例
+├── 06-video-extension.md              # 视频续写
+├── 07-motion-transfer.md              # 动作迁移
+├── 08-audio-guide.md                  # 音频指南
+├── 09-anti-slop.md                    # 反空话词典
+├── 10-allocation-model.md             # 算力分配
+├── 11-genre-guides.md                 # 类型片指南
+├── 12-kling-capability-map.md         # 可灵能力地图
+├── 13-templates.md                    # 即用模板 + 组合模式库
+├── 14-model-mechanics.md              # 模型机制
+├── 15-timeline-syntax.md              # 时间轴语法
+├── 16-language-strategy.md            # 中英文混合策略
+├── 17-user-journey.md                 # 用户分层路径
+├── 18-troubleshooting-gallery.md      # 故障诊断
+├── 19-cinematography-dictionary.md    # 摄影术语词典
+├── 20-style-tags.md                   # 风格标签
+├── 21-retake-protocol.md              # 重试协议
+├── 22-text-to-image.md                # 文生图
 ├── references/                        # 参考资料
-│   ├── seedance-prompt-guide.md       # Seedance 提示词实战指南（官方手册）
-│   ├── anti_slop_lexicon.md           # 弱词词典
-│   ├── failure_atlas.md               # 失败图谱
-│   └── negative_prompt_library.md     # 负面提示词库
-├── workflows/                         # 生产流水线
-│   └── video_pipeline.yaml            # 6 步条件触发流水线
-└── research/                          # 调研文档
-    └── GitHub竞品调研报告.md           # 竞品分析
+│   ├── anti_slop_lexicon.md
+│   ├── failure_atlas.md
+│   └── negative_prompt_library.md
+├── examples/                          # 实战案例
+│   ├── 01-emotion-closeup.md
+│   ├── 02-product-showcase.md
+│   ├── 03-city-nightscape.md
+│   ├── 04-food-closeup.md
+│   └── 05-action-scene.md
+├── adapters/                          # 模型适配器
+│   ├── kling_adapter.yaml
+│   ├── seedance_adapter.yaml
+│   └── prompt_translator.yaml
+├── skills/                            # Skill 文件
+│   └── *.skill
+└── scripts/                           # 验证脚本
+    └── *.py
 ```
 
 ---
 
-## 验证
+## 原创内容与致谢
 
-```bash
-# 安装依赖
-pip install -r requirements.txt
+说清楚哪些是搬来的，哪些是自己写的。
 
-# 验证所有 Skill 文件
-python scripts/validate_all.py skills/
+**移植自 [seedance-2.0 Skill OS](https://github.com/Emily2040/seedance-2.0)：** 导演引擎的基础框架（导演五问 + 三个补充字段 + 一致性原则 + 节拍编排）、魔法前缀的思路、"描述可检测的物理现象"这条核心原则、源素材承载状态规则（I2V）、叙事/非叙事分道、重试协议、Prompt 压缩优先级。这些是整个项目的地基。
 
-# 验证单个文件
-python scripts/validate_all.py skills/director-engine.skill
-```
+**本项目原创的：**
+- 预算分配模型（身份保真 / 动作幅度 / 场景密度的三角交易）
+- 音画三层模型（环境音层 / 动作音效层 / 情绪音乐层）
+- 时间轴语法（状态层 + 运动层 + 节奏层）
+- 5 种组合模式（定锚式 / 递进式 / 对比式 / 揭示式 / 跟随式）
+- Anti-Slop 中文适配（中文空话陷阱、中文替换表）
+- 故障诊断矩阵（5 类 23 条）
+- 用户分层路径（入门 / 进阶 / 专业三层）
+- 中英文混合策略
+- 10 个音画场景示例
+- 多模型适配器（adapters/）——把同一套方法论翻译给不同模型消费
 
----
+**致谢：** 感谢 seedance-2.0 Skill OS 的作者提供了扎实的方法论基础。没有那个项目，这个项目不会存在。
 
-## 参与贡献
-
-Issues and PRs welcome. 如果你有经过验证的可灵提示词技巧，欢迎分享。
-
-提交前请运行 `python scripts/validate_all.py skills/` 确保验证通过。
-
-## License
-
-MIT — use freely, credit appreciated.
-
-## Credits
-
-Methodology ported from [seedance-2.0 Skill OS](https://github.com/Emily2040/seedance-2.0) director engine, adapted and expanded for Kling AI's specific capabilities and constraints.
+MIT License — 随便用，注明出处就行。
 
 ---
 
 <p align="center">
-  <i>导演模型，而非微调画面。</i><br>
-  <i>Direct the model. Don't tweak pixels.</i>
+  <i>导演模型，而非微调画面。</i>
 </p>
