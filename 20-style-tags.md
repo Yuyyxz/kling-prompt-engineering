@@ -15,6 +15,8 @@
 
 ## 使用规则
 
+> **验证状态说明：** 本文件的风格翻译参数分两档——「已实测」(在 Kling v3/v2.5 上跑过，效果稳定)和「经验推断」(基于电影语言理论推导，未系统实测)。已实测的标 ✅，经验推断的标 🔶。实战中优先用 ✅ 的；用 🔶 的请保留判断，欢迎反馈实测结果回来更新状态。
+
 1. **标签 → 翻译 → 写进 prompt。** 先用标签确定方向，再展开成具体的镜头型号、光线方向、构图方式、材质描述。
 2. **禁止直接丢标签。** 写"Wes Anderson 风格"不行。写"对称构图，粉彩色调，平面光，镜头匀速横移"才行。
 3. **组合不超过两个风格。** 叠三个风格 = 模型不知道听谁的。选一个导演风格 + 一个视觉/情绪风格就够了。
@@ -34,7 +36,7 @@
 
 ### 🎬 导演风格
 
-#### 韦斯·安德森（Wes Anderson）
+#### 韦斯·安德森（Wes Anderson）　🔶 经验推断（待实测）
 | 参数 | 值 |
 |------|-----|
 | 构图 | 对称构图，居中主体 |
@@ -46,7 +48,7 @@
 | 提示词 | symmetric composition, pastel colors, centered subject, smooth lateral track, whip pan |
 | → 翻译成 prompt | 对称构图，主体居中，粉彩色调（低饱和粉/薄荷绿/奶油黄），镜头匀速横移，平面柔光无硬阴影 |
 
-#### 诺兰（Christopher Nolan）
+#### 诺兰（Christopher Nolan）　🔶 经验推断（待实测）
 | 参数 | 值 |
 |------|-----|
 | 构图 | 不对称构图，前景遮挡 |
@@ -58,7 +60,7 @@
 | 提示词 | IMAX feel, wide angle, cold tones, high contrast, large format photography |
 | → 翻译成 prompt | IMAX 画幅比（1.43:1），20mm 广角镜头畸变，冷蓝色调，高对比度，自然光为主，暗部占画面 60% 以上 |
 
-#### 库布里克（Stanley Kubrick）
+#### 库布里克（Stanley Kubrick）　🔶 经验推断（待实测）
 | 参数 | 值 |
 |------|-----|
 | 构图 | 单点透视，对称构图，低角度仰视 |
@@ -70,7 +72,7 @@
 | 提示词 | one-point perspective, slow tracking shot, low angle looking up, cold tones, low-key lighting, symmetrical |
 | → 翻译成 prompt | 单点透视走廊，镜头从低角度仰视，对称构图，冷色调高饱和，低调光强对比，缓慢轨道推进 |
 
-#### 王家卫（Wong Kar-wai）
+#### 王家卫（Wong Kar-wai）　🔶 经验推断（待实测）
 | 参数 | 值 |
 |------|-----|
 | 构图 | 框中框，前景遮挡 |
@@ -82,7 +84,7 @@
 | 提示词 | high saturation, neon + warm tones, handheld, slow shutter, frame skipping |
 | → 翻译成 prompt | 框中框构图（门框/窗框前景），高饱和霓虹+暖色混合，手持晃动，慢快门拖影，抽帧跳切 |
 
-#### 宫崎骏（Hayao Miyazaki）
+#### 宫崎骏（Hayao Miyazaki）　🔶 经验推断（待实测）
 | 参数 | 值 |
 |------|-----|
 | 构图 | 平视，自然构图 |
@@ -94,7 +96,7 @@
 | 提示词 | warm tones, soft palette, natural light, gentle movement, wind in hair, flowing water, drifting clouds, everyday details |
 | → 翻译成 prompt | 暖色调柔和色板，自然光黄金时刻，缓慢横移，风拂过草地，远景层叠山峦，日常细节特写 |
 
-#### 是枝裕和（Hirokazu Kore-eda）
+#### 是枝裕和（Hirokazu Kore-eda）　🔶 经验推断（待实测）
 | 参数 | 值 |
 |------|-----|
 | 构图 | 平视，自然构图 |
@@ -106,7 +108,7 @@
 | 提示词 | natural light, low contrast, fixed camera, everyday feel, warm tones |
 | → 翻译成 prompt | 固定机位平视，自然光低对比，暖色调，日常家庭场景，极少镜头运动 |
 
-#### 大卫·芬奇（David Fincher）
+#### 大卫·芬奇（David Fincher）　🔶 经验推断（待实测）
 | 参数 | 值 |
 |------|-----|
 | 构图 | 精确构图，冷色调 |
@@ -118,7 +120,7 @@
 | 提示词 | dark green/blue tones, desaturated, precise camera movement, controlled lighting |
 | → 翻译成 prompt | 暗绿/暗蓝色调，低饱和，精确控制的低调光，稳定器缓慢推进，画面冷峻克制 |
 
-#### 塔可夫斯基（Andrei Tarkovsky）
+#### 塔可夫斯基（Andrei Tarkovsky）　🔶 经验推断（待实测）
 | 参数 | 值 |
 |------|-----|
 | 构图 | 长镜头，诗意构图 |
@@ -134,7 +136,7 @@
 
 ### 🎨 视觉风格
 
-#### 赛博朋克（Cyberpunk）
+#### 赛博朋克（Cyberpunk）　🔶 经验推断（待实测）
 | 参数 | 值 |
 |------|-----|
 | 色调 | 冷蓝+霓虹粉/紫 |
@@ -144,7 +146,7 @@
 | 提示词 | neon lights, cyberpunk city, rain, holographic ads, cold blue + neon pink |
 | → 翻译成 prompt | 冷蓝+霓虹粉紫光混合，雨天湿街道反射光，高楼密集，手持轻微晃动 |
 
-#### 蒸汽朋克（Steampunk）
+#### 蒸汽朋克（Steampunk）　🔶 经验推断（待实测）
 | 参数 | 值 |
 |------|-----|
 | 色调 | 暖铜色/棕色 |
@@ -154,7 +156,7 @@
 | 提示词 | steampunk, copper/bronze tones, gears, pipes, steam, warm side lighting |
 | → 翻译成 prompt | 暖铜色调，齿轮管道蒸汽元素，暖色侧光穿烟雾，缓慢环绕 |
 
-#### 复古胶片（Retro Film）
+#### 复古胶片（Retro Film）　🔶 经验推断（待实测）
 | 参数 | 值 |
 |------|-----|
 | 色调 | 暖色调，低饱和 |
@@ -164,7 +166,7 @@
 | 提示词 | film grain, warm tones, desaturated, 70s aesthetic, vintage look |
 | → 翻译成 prompt | 胶片颗粒质感，暖色调低饱和，70年代复古美术，自然光柔和 |
 
-#### 黑色电影（Film Noir）
+#### 黑色电影（Film Noir）　🔶 经验推断（待实测）
 | 参数 | 值 |
 |------|-----|
 | 色调 | 黑白/低饱和 |
@@ -174,7 +176,7 @@
 | 提示词 | film noir, high contrast, venetian blind shadows, black and white, low angle |
 | → 翻译成 prompt | 黑白低饱和，高对比侧光，百叶窗条纹阴影，低角度仰拍，城市夜景雨天 |
 
-#### 极简主义（Minimalist）
+#### 极简主义（Minimalist）　🔶 经验推断（待实测）
 | 参数 | 值 |
 |------|-----|
 | 色调 | 中性色/黑白 |
@@ -184,7 +186,7 @@
 | 提示词 | minimalist, clean background, neutral colors, simple composition, slow movement |
 | → 翻译成 prompt | 干净背景中性色调，画面元素极少，主体居中，锁定或极慢推进 |
 
-#### 超现实（Surreal）
+#### 超现实（Surreal）　🔶 经验推断（待实测）
 | 参数 | 值 |
 |------|-----|
 | 色调 | 高饱和，对比色 |
@@ -194,7 +196,7 @@
 | 提示词 | surreal, dreamlike, high saturation, unnatural lighting, floating/dreamy motion |
 | → 翻译成 prompt | 高饱和对比色，非自然光源（自发光物体），失重缓慢运动，梦境般场景 |
 
-#### 日系清新（Japanese Fresh）
+#### 日系清新（Japanese Fresh）　🔶 经验推断（待实测）
 | 参数 | 值 |
 |------|-----|
 | 色调 | 暖白/淡蓝，高亮度 |
@@ -204,7 +206,7 @@
 | 提示词 | Japanese aesthetic, soft warm tones, natural light, clean, fresh, airy |
 | → 翻译成 prompt | 暖白/淡蓝色调高亮度，自然光柔和，日式街道/室内，平视缓慢移动 |
 
-#### 暗黑哥特（Dark Gothic）
+#### 暗黑哥特（Dark Gothic）　🔶 经验推断（待实测）
 | 参数 | 值 |
 |------|-----|
 | 色调 | 暗紫/暗红，低饱和 |
@@ -218,7 +220,7 @@
 
 ### 🎵 情绪风格
 
-#### 治愈系（Healing）
+#### 治愈系（Healing）　🔶 经验推断（待实测）
 | 参数 | 值 |
 |------|-----|
 | 色调 | 暖色调，柔和 |
@@ -228,7 +230,7 @@
 | 提示词 | healing, warm tones, golden hour, gentle breeze, slow movement, relaxing |
 | → 翻译成 prompt | 暖色调柔和，黄金时刻自然光，微风拂过，缓慢横移，放松节奏 |
 
-#### 紧张悬疑（Suspense）
+#### 紧张悬疑（Suspense）　🔶 经验推断（待实测）
 | 参数 | 值 |
 |------|-----|
 | 色调 | 冷色调，高对比 |
@@ -238,7 +240,7 @@
 | 提示词 | suspense, cold tones, high contrast, low-key lighting, quick cuts, tension |
 | → 翻译成 prompt | 冷色调高对比，低调光深阴影，快速剪辑手持晃动，紧张节奏 |
 
-#### 热血燃（Hype）
+#### 热血燃（Hype）　🔶 经验推断（待实测）
 | 参数 | 值 |
 |------|-----|
 | 色调 | 高饱和，暖色 |
@@ -248,7 +250,7 @@
 | 提示词 | hype, high saturation, fast cuts, backlight, energetic, explosive |
 | → 翻译成 prompt | 高饱和暖色调，强光逆光剪影，快速跟拍手持，爆发感剪辑节奏 |
 
-#### 文艺忧郁（Melancholy）
+#### 文艺忧郁（Melancholy）　🔶 经验推断（待实测）
 | 参数 | 值 |
 |------|-----|
 | 色调 | 低饱和，冷灰 |
@@ -258,7 +260,7 @@
 | 提示词 | melancholy, desaturated, grey tones, overcast, slow movement, contemplative |
 | → 翻译成 prompt | 低饱和冷灰色调，阴天漫射柔光，极慢或静态镜头，沉思节奏 |
 
-#### 浪漫（Romantic）
+#### 浪漫（Romantic）　🔶 经验推断（待实测）
 | 参数 | 值 |
 |------|-----|
 | 色调 | 暖粉/暖橙 |
@@ -268,7 +270,7 @@
 | 提示词 | romantic, warm pink/orange, golden hour, backlit, gentle movement |
 | → 翻译成 prompt | 暖粉/暖橙色调，黄金时刻逆光，发丝/轮廓光晕，缓慢推进或轻环绕 |
 
-#### 宏大叙事（Grand Scale）
+#### 宏大叙事（Grand Scale）　🔶 经验推断（待实测）
 | 参数 | 值 |
 |------|-----|
 | 色调 | 冷色调，高对比 |
