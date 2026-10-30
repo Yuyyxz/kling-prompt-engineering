@@ -58,6 +58,8 @@
 | Python 验证脚本 | ✅ 允许 | json.loads() |
 | Pipeline YAML 中的参数 | ✅ 允许 | params: {duration: 5} |
 | 分镜脚本的结构化输出 | ✅ 允许 | 但必须同时提供自然语言版本 |
+
+分镜结构化格式已落地：`schemas/storyboard.schema.json` 定义格式，`scripts/validate_storyboard.py` 做校验（总时长、相邻景别、角色卡逐字一致、风格 token、引用完整性），示例在 `examples/storyboard-example.json`。模型硬事实以 `adapters/model_facts.yaml` 为单一数据源，`scripts/check_model_facts.py` 查口径漂移。分镜适配到具体模型用 `scripts/adapt_prompt.py`（读 model_facts 硬限制输出生成计划，不支持项显式警告）；`validate_storyboard.py --otio` 可导出 OpenTimelineIO 时间线给剪辑/合成阶段。风格库条目检索用 `scripts/search_styles.py`（索引 `data/styles.json`，由 `scripts/build_style_index.py` 从 24 号文档生成）。成片评分按 `evals/video-rubric.md` 打分、`evals/score_video.py` 聚合与基线回归；重拍日志用 `scripts/retake_report.py` 聚合成 failure-atlas 候选草稿。
 ## 必需事项
 
 - ✅ 必须先回答导演五问

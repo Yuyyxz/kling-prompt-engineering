@@ -3,6 +3,7 @@
 
 name: "prompt_translator"
 version: "1.0"
+# 状态说明: kling / seedance 的翻译规则为在用规则；runway_gen3 / sora / pika 三节是 draft_unverified 草案（模型未实现适配，见 adapters/model_facts.yaml 的 planned_models），不要把草案输出当成已验证的适配结果。
 description: "AI视频提示词翻译器，支持多语言、多模型适配"
 
 # 翻译规则

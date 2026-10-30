@@ -1,6 +1,8 @@
 # Model Router Configuration
 # 模型路由层配置 - 将用户需求路由到最适合的视频生成模型
 # NOTE: runway_gen3, sora, and pika adapters are planned but not yet implemented.
+# 硬事实单一数据源: adapters/model_facts.yaml — 本文件的时长/分辨率与它冲突时以它为准。
+# planned 模型的翻译规则在 prompt_translator.yaml 里是 draft_unverified，不要当成可用适配。
 
 version: "1.0"
 description: "AI 视频生成模型路由层，支持多模型适配和智能路由"

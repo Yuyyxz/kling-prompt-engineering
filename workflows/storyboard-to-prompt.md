@@ -335,6 +335,24 @@ ARRI Alexa Mini 拍摄，Cooke S7/i 系列，低饱和，混凝土灰+天空灰�
 
 ---
 
+## 结构化交付（JSON + 自然语言双份）
+
+分镜定稿后同时交付两个版本，缺一个都不算完成：
+
+- 结构化版：一份符合 `schemas/storyboard.schema.json` 的 JSON，11 维字段齐全，给机器校验和 workflow 的 manifest 挂载用。
+- 自然语言版：每个 shot 的 `prompt_text`，就是 JSON 里那个字段，给人看、给模型用。不要另外再维护一份散文版，两边迟早对不上。
+
+定稿前跑校验：
+
+```bash
+python scripts/validate_storyboard.py <分镜>.json --manifest <输出>.manifest.json
+```
+
+校验查总时长、相邻景别、角色卡逐字一致、风格 token 带齐、引用完整性。没过校验不要往生成环节交。
+manifest 片段里带每个 shot 的 prompt sha256 和分镜版本，重拍日志靠它对上是哪一版 prompt 出的片，见 `workflows/retake-log-template.md`。
+
+镜号建议写 SHOT-01 形式。旧分镜表用 S01 当镜号，但素材编号里 S 是场景，同一项目里两套 S 迟早撞号，校验会提醒。
+
 ## 交叉引用
 
 | 相关文件 | 关联内容 |
@@ -347,3 +365,5 @@ ARRI Alexa Mini 拍摄，Cooke S7/i 系列，低饱和，混凝土灰+天空灰�
 | [adapters/t2i_adapter.yaml](../adapters/t2i_adapter.yaml) | 文生图多模型适配 |
 | [adapters/kling_adapter.yaml](../adapters/kling_adapter.yaml) | 可灵视频模型适配 |
 | [adapters/seedance_adapter.yaml](../adapters/seedance_adapter.yaml) | Seedance 视频模型适配 |
+| [schemas/storyboard.schema.json](../schemas/storyboard.schema.json) | 分镜结构化格式定义 |
+| [workflows/retake-log-template.md](retake-log-template.md) | 重拍日志字段与纪律 |

@@ -1,0 +1,170 @@
+# 模型事实单一数据源（Single Source of Truth）
+#
+# 硬事实只在这里改：时长上限、分辨率、参考输入上限、多镜头、音频、语言。
+# 其他文件（12-kling-capability-map.md、adapters/kling_adapter.yaml、
+# adapters/model_router.yaml、根 SKILL.md 的 Model Gate 表）与这里冲突时，
+# 以这里为准，并把冲突文件改到与这里一致，不要反过来改这里去迁就旧文件。
+#
+# 口径说明（重要）：
+# - scope: official 指模型官方能力口径；channel 指具体接入渠道
+#   （官方 App / API / 第三方平台）实际开放的档位，渠道之间不一样。
+# - 凡 channel_dependent: true 的字段，写 prompt 前要在所用渠道再确认一次，
+#   不要把官方上限当成当前渠道一定能选的档位。
+# - 经验判断（哪类镜头更适合哪个模型）不放这里，放 12 和根 SKILL.md，
+#   这里只放能被规格和实测核对的事实。
+#
+# 维护规则：
+# - 改任何字段，必须同时改 verified_at 和在字段下补 source 说明。
+# - 超过 60 天没复核的字段视为待核实，使用时先提醒用户。
+
+meta:
+  version: "1.1.0"
+  verified_at: "2026-10-30"
+  verified_by: "仓库内三处口径交叉对齐（router / 根 SKILL Model Gate / capability-map）+ 公开页面多源一致项；1.1.0 增补 Kling 4.0（官方发布口径多家报道一致 + fal kling/v4 端点 Input Schema 交叉核对）与 Seedance 2.5 的 fal 渠道状态"
+  unverified_note: "Kling 4.0 的 4K/HDR 为官方 coming soon、10+ 对白语种清单未逐项核实；Seedance 2.5 官方直连 API 状态仍未核实（fal 渠道已确认可用）；Runway/Sora/Pika 不在本表，状态见文末 planned 一节。"
+
+models:
+  kling_3_0:
+    family: "kling"
+    display_name: "Kling 3.0"
+    provider: "Kuaishou"
+    scope: official
+    duration_s: { min: 3, max: 15 }
+    resolution_max: "4K"
+    channel_dependent: true
+    channel_note: "4K 与 15s 是否可选取决于渠道和档位，第三方平台常见上限是 1080p。"
+    aspect_ratios: ["16:9", "9:16", "1:1", "4:3", "3:4", "3:2", "2:3", "21:9"]
+    multi_shot: { supported: true, max_shots: 6 }
+    native_audio: true
+    dialogue_languages: ["zh", "en", "ja", "ko", "es"]
+    native_text_rendering: true
+    reference_inputs: { images_max: 7, note: "主体参考 1-7 图，见 kling_3_0_omni 的视频角色提取" }
+    status: "active"
+
+  kling_3_0_omni:
+    family: "kling"
+    display_name: "Kling 3.0 Omni"
+    provider: "Kuaishou"
+    scope: official
+    duration_s: { min: 3, max: 15 }
+    resolution_max: "1080p"
+    channel_dependent: true
+    multi_shot: { supported: true, max_shots: 6, custom_storyboard: true }
+    native_audio: true
+    voice_binding: true
+    video_character_extraction: { supported: true, source_clip_s: "3-8" }
+    status: "active"
+
+  kling_4_0:
+    family: "kling"
+    display_name: "Kling 4.0"
+    provider: "Kuaishou"
+    scope: official
+    released: "2026-10-16 全球开放（4.0 Flash 于 2026-09-28 先行限量，Flash 未上 API）"
+    duration_s: { min: 3, max: 30 }
+    resolution_max: "1080p"
+    channel_dependent: true
+    channel_note: "官方称 4K 与 10-bit HDR 为 coming soon、尚未交付，不要按 4K 写交付承诺；fal 端点当前 720p/1080p、画幅 16:9/9:16/1:1/21:9；官方直连 API 仍是 early access，第三方多走 fal 等渠道。"
+    aspect_ratios: ["16:9", "9:16", "1:1", "21:9"]
+    multi_shot: { supported: true, max_shots: 6, note: "fal 端点用 multi_prompt 逐镜给 prompt、总时长为各镜之和；镜数上限官方未单独公布，6 为渠道实测口径，超了先在渠道确认" }
+    keyframes: { max: 10, note: "关键帧可放在时间线任意位置；渠道口径为首帧 + 最多 8 个中间帧 + 尾帧" }
+    native_audio: true
+    stereo_audio: true
+    dialogue_languages: ["zh", "en", "ja", "ko", "es"]
+    dialogue_note: "官方称口型同步支持 10+ 语种与方言，上列 5 种沿用 3.0 已确认清单，完整清单未逐项核实。"
+    native_text_rendering: true
+    prompt_max_tokens: 8000
+    reference_inputs: { images_max: 10, videos_max: 5, videos_total_s: 30, elements_max: 7, combined_max: 15, addressing: "prompt 里用 @ImageN / @ElementN 指名素材分工" }
+    features: ["Creative Recreation（拿现成视频当模板换角色/产品）", "元素级定向编辑（表情/动作/机位/背景单独改）", "视频延长总长可达约 2 分钟", "白模/深度图视频可作参考（3D 代理）"]
+    status: "active"
+    source: "Kling 官方发布口径（2026-10-16 全球开放）经多家独立报道一致 + fal kling/v4 端点 Input Schema（duration 3-30、multi_prompt、720p/1080p、画幅四种）交叉核对，2026-10-30"
+
+  kling_o1:
+    family: "kling"
+    display_name: "Kling O1 (video-o1)"
+    provider: "Kuaishou"
+    scope: official
+    duration_s: { min: 3, max: 10 }
+    resolution_max: "1080p"
+    channel_dependent: true
+    features: ["参考生成", "风格化", "变换", "修复", "关键帧插值", "多主体一致性"]
+    status: "active"
+    note: "旧文档里的 video-o1 与本条目是同一个模型，规格以本条目为准（旧表写 720p/5-10s，已过期）。"
+
+  kling_2_6_pro:
+    family: "kling"
+    display_name: "Kling 2.6 Pro"
+    provider: "Kuaishou"
+    scope: official
+    duration_s: { min: 5, max: 10 }
+    resolution_max: "1080p"
+    native_audio: true
+    dialogue_languages: ["zh", "en"]
+    motion_path_control: true
+    status: "active"
+
+  kling_2_5_turbo:
+    family: "kling"
+    display_name: "Kling 2.5 Turbo"
+    provider: "Kuaishou"
+    scope: official
+    duration_s: { min: 5, max: 10 }
+    resolution_max: "1080p"
+    channel_dependent: true
+    channel_note: "个别渠道开放 15s 档位，官方主口径按 5-10s 写，需要 15s 时先在渠道确认。"
+    features: ["同档位里速度最快、成本最低", "Omni 多图参考", "口型同步"]
+    status: "active"
+    note: "旧 capability-map 表写 5/10/15s，与本条目的关系见 channel_note，不要再写回主规格表。"
+
+  kling_2_1_master:
+    family: "kling"
+    display_name: "Kling 2.1 Master"
+    provider: "Kuaishou"
+    scope: official
+    duration_s: { min: 5, max: 10 }
+    resolution_max: "720p"
+    status: "legacy"
+    note: "只在需要复现旧项目时选，新项目不用。"
+
+  kling_family:
+    family: "kling"
+    display_name: "Kling 全系（适配器默认值）"
+    max_duration_s: 15
+    extend_note: "视频延长可把总时长链到约 3 分钟，单次生成上限仍按各型号 duration_s 算，不要混写。本默认值对应 3.0 及以前的适配器默认；4.0 单次上限是 30s，见 kling_4_0 条目，不要拿 15 去卡 4.0。"
+    prompt_language_preference: "zh"
+    golden_formula_ref: "见 CLAUDE.md 新公式，本表不复制公式文本，避免两处各改一份。"
+
+  seedance_2_5:
+    family: "seedance"
+    display_name: "Seedance 2.5"
+    provider: "ByteDance"
+    scope: official
+    duration_s: { min: 5, max: 30 }
+    resolution_max: "1080p"
+    reference_inputs: { images_max: 30, videos_max: 10, audios_max: 10 }
+    features: ["时间戳分段控制", "Clay Render 3D 代理参考", "绿幕替换/视角编辑", "数分钟连续叙事（续写）"]
+    status: "active_via_jimeng_doubao"
+    channel_dependent: true
+    channel_note: "fal 已上线三个端点（text-to-video / image-to-video / reference-to-video），fal 渠道当前 480p/720p、时长 4-30 的整数秒、参考上限 50 个文件（30 图 + 10 视频 + 10 音频）、按 token 计费；官方 1080p 口径在 fal 选不到，写方案时按所用渠道的档位来。"
+    unverified: "官方直连 API（火山方舟/BytePlus）的正式开放状态未核实，写直连 API 方案前先查官方文档；经 fal 等第三方渠道调用已确认可用（fal 官方指南，2026-10-30 核对）。"
+
+  seedance_2_0:
+    family: "seedance"
+    display_name: "Seedance 2.0"
+    provider: "ByteDance"
+    scope: official
+    duration_s: { min: 5, max: 10 }
+    resolution_max: "1080p"
+    native_audio: true
+    audio_as_clock: true
+    features: ["音视频联合生成", "文/图/音/视频四模态输入", "中文长文本语义连贯"]
+    ip_name_blocking: true
+    ip_note: "平台屏蔽 IP/品牌名，涉及 IP 时改走可灵或用原创描述替代。"
+    status: "active"
+
+planned_models:
+  note: "以下模型只有路由意向，没有已实现的适配器。prompt_translator.yaml 里给它们的翻译规则是草案（draft），未验证，不要当成可用适配输出。"
+  models:
+    - { id: "runway_gen3", status: "planned", adapter: false, translator_rules: "draft_unverified" }
+    - { id: "sora", status: "planned", adapter: false, translator_rules: "draft_unverified" }
+    - { id: "pika", status: "planned", adapter: false, translator_rules: "draft_unverified" }

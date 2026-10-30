@@ -4,18 +4,23 @@
 model_id: "kling"
 model_name: "Kling"
 provider: "Kuaishou"
-version: "1.0"
+version: "1.1"
 description: "快手视频生成模型，东方意境理解佳，电影级质感"
 
 # 模型能力配置
+# 硬事实以 adapters/model_facts.yaml 为准（单一数据源，verified_at 见该文件）。
+# 这里只写全系层面的默认值，分型号的时长/分辨率不要写回这里。
 capabilities:
-  max_duration: "10s"
-  min_duration: "2s"
-  aspect_ratios: ["16:9", "9:16", "1:1"]
-  max_resolution: "1080p"
+  source_of_truth: "adapters/model_facts.yaml"
+  max_duration: "15s"
+  min_duration: "3s"
+  aspect_ratios: ["16:9", "9:16", "1:1", "4:3", "3:4", "3:2", "2:3", "21:9"]
+  max_resolution: "4K"
+  resolution_note: "4K 仅 Kling 3.0 且取决于渠道档位，分型号规格见 model_facts.yaml"
   fps: 24
   supports_image_input: true
-  supports_video_input: false
+  supports_video_input: true
+  video_input_note: "视频输入按型号区分：3.0 Omni 支持视频角色提取，O1 支持参考视频，具体见 model_facts.yaml"
   supports_audio_input: false
   supports_multi_language_lipsync: true
   supports_smart_storyboard: true
@@ -25,20 +30,21 @@ prompt_optimization:
   # 语言偏好
   language_preference: "zh"
   
-  # 提示词结构
+  # 提示词结构（与 CLAUDE.md 新公式对齐，旧版以镜头语言开头的公式已废弃）
   structure:
-    - "镜头语言"
-    - "主体描述"
-    - "动作描述"
-    - "环境描述"
-    - "光影描述"
-    - "画质描述"
-  
+    - "场景意图/戏剧功能"
+    - "一个可见节拍"
+    - "一个镜头运动"
+    - "真实光源"
+    - "参考角色绑定"
+    - "声音"
+    - "约束"
+
   # 推荐的提示词长度
   recommended_length: "30-200 字符"
-  
+
   # 黄金公式
-  golden_formula: "[镜头语言] + [主体动作与细节] + [环境氛围] + [光影与画质] + [运动轨迹]"
+  golden_formula: "[场景意图/戏剧功能] + [一个可见节拍] + [一个镜头运动] + [真实光源] + [参考角色绑定]"
   
   # 避免的提示词模式
   avoid_patterns:
