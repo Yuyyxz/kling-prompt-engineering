@@ -36,6 +36,25 @@ SLOP_TABLE = {
     "awesome": "删除；用一个可观察细节替代 (delete; replace with one observable detail)",
     "perfect": "删除；描述具体的物理状态 (delete; describe a specific physical state)",
     "flawless": "删除；描述具体的物理状态 (delete; describe a specific physical state)",
+    # 中文弱词（09-anti-slop.md 与 anti_slop_lexicon 已明文禁用，此前词表只有英文，
+    # 导致「氛围感拉满」这类中文空话全数漏检，2026-10-30 补齐）
+    "氛围感": "光源 + 色温 + 声音环境 (light source + color temp + sound environment)",
+    "电影感": "具体景别 + 镜头运动 + 光线 + 色调 (specific shot size + movement + light + tone)",
+    "高级感": "材质、留白、受控光线 (material, negative space, controlled light)",
+    "大片感": "物理规模 + 镜头距离 + 场景尺度 (physical scale, camera distance, set scale)",
+    "史诗感": "物理规模、风险、镜头距离 (physical scale, risk, camera distance)",
+    "宿命感": "具体的因果画面：人物动作 + 环境征兆 (concrete cause-effect image)",
+    "破碎感": "具体的脆弱状态：裂纹、颤抖、失衡姿态 (concrete fragile state)",
+    "松弛感": "具体的身体状态：呼吸、姿势、环境声 (concrete body state)",
+    "唯美": "色彩、光线行为、构图、材质 (color, light behavior, composition, material)",
+    "震撼": "观众记住的那一帧，描述出来 (describe the one frame the audience remembers)",
+    "绝美": "删除；用一个可观察细节替代 (delete; replace with one observable detail)",
+    "拉满": "删除；程度词不产生画面 (delete; intensifiers make no image)",
+    "神级": "删除；写明具体技法，如运镜方式 (delete; name the actual technique)",
+    "超高清": "删除；分辨率是渲染设置 (delete; resolution is a render setting)",
+    "绝绝子": "删除；用一个可观察细节替代 (delete; replace with one observable detail)",
+    "yyds": "删除 (delete)",
+    "封神": "删除；质量不是请求 (delete; quality is not a request)",
 }
 
 # ── Keyword lists ────────────────────────────────────────────
@@ -106,7 +125,8 @@ def find_slop(text: str) -> list[tuple[str, str]]:
     lower = text.lower()
     for word, repl in SLOP_TABLE.items():
         # word-boundary match for single words; substring for phrases
-        if " " in word:
+        # CJK 词没有 \b 边界语义（汉字属 \w，词中位置匹配不到），走子串匹配
+        if " " in word or not word.isascii():
             if word in lower:
                 found.append((word, repl))
         else:

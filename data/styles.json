@@ -1,0 +1,4295 @@
+{
+ "source": "24-prompt-library.md",
+ "generated_by": "scripts/build_style_index.py",
+ "count": 156,
+ "entries": [
+  {
+   "id": "A1",
+   "section": "A. 经典艺术风格",
+   "name_zh": "砼核",
+   "name_en": "Concretecore / 巨构混凝土",
+   "fields": {
+    "trigger": "brutalist megastructure + liminal space",
+    "keywords": "brutalist architecture, concrete megastructure, monumental scale, vast empty hall, endless corridor, liminal space, board-formed concrete, béton brut, weathered concrete, water stains, moss on concrete, rust stains, overcast sky, diffused ambient light, foggy atmosphere, cold fluorescent lighting, tiny figure for scale, desolate, silent, one-point perspective, desaturated grey tones",
+    "negative": "cyberpunk, neon lights, hologram, sci-fi, fantasy, dreamy, pastel, vaporwave, collapsed ruins, luxury, cozy, glass curtain wall, polished concrete, people, crowded, HDR",
+    "lighting": "阴天漫射(核心)/雾光/天窗缝隙光/荧光灯冷光",
+    "color": "混凝土灰 #B0A99F 主调,铁锈棕 #8B5E3C / 苔藓绿 #5A6E4A 点缀,全局低饱和冷灰",
+    "composition": "极远景仰视压迫 / 极远景俯视巨物 / 对称单点透视无限感",
+    "example": "extreme wide shot, worm's-eye view, looking up at colossal brutalist tower from ground level, three-point perspective emphasizing impossible height, fog shrouding the upper floors, weathered concrete facade with vertical water streaks, rust bleeding from exposed rebar near the base, tiny birds circling at mid-height revealing the true scale, overcast muted light, cold desaturated palette, the silence of giants, industrial decay without collapse, Sony Venice, 24mm, f/8",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开画面细节;→Seedream 补齐七要素",
+    "see_also": "research/concretecore-style-guide.md + 22c-style-system.md「33. 砼核」"
+   },
+   "extra": {},
+   "keywords_list": [
+    "brutalist architecture",
+    "concrete megastructure",
+    "monumental scale",
+    "vast empty hall",
+    "endless corridor",
+    "liminal space",
+    "board-formed concrete",
+    "béton brut",
+    "weathered concrete",
+    "water stains",
+    "moss on concrete",
+    "rust stains",
+    "overcast sky",
+    "diffused ambient light",
+    "foggy atmosphere",
+    "cold fluorescent lighting",
+    "tiny figure for scale",
+    "desolate",
+    "silent",
+    "one-point perspective",
+    "desaturated grey tones"
+   ]
+  },
+  {
+   "id": "A2",
+   "section": "A. 经典艺术风格",
+   "name_zh": "水墨国风",
+   "name_en": "Chinese Ink Wash",
+   "fields": {
+    "trigger": "Chinese ink painting style",
+    "keywords": "ink wash rendering, layered mountains, misty clouds, brush strokes, rice paper texture, negative space, breathing room, mountains fading into white mist, traditional Chinese painting",
+    "negative": "oil painting, 3d render, photorealistic, vibrant colors, digital art, neon",
+    "lighting": "留白即光,雾霭层次",
+    "color": "墨色浓淡(焦浓重淡清),宣纸白,极少量朱砂/花青点缀",
+    "composition": "S 形构图,留白 > 实景,远山淡影",
+    "example": "traditional Chinese landscape painting, ink wash rendering, layered mountains in different ink densities, pine trees on cliff edges, a small pavilion half-hidden in clouds, negative space, rice paper texture, soft morning mist light, pale sky glow",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开画面细节;→Seedream 补齐七要素"
+   },
+   "extra": {},
+   "keywords_list": [
+    "ink wash rendering",
+    "layered mountains",
+    "misty clouds",
+    "brush strokes",
+    "rice paper texture",
+    "negative space",
+    "breathing room",
+    "mountains fading into white mist",
+    "traditional Chinese painting"
+   ]
+  },
+  {
+   "id": "A3",
+   "section": "A. 经典艺术风格",
+   "name_zh": "油画古典",
+   "name_en": "Classical Oil Painting",
+   "fields": {
+    "trigger": "classical oil painting",
+    "keywords": "Rembrandt lighting, chiaroscuro, impasto brushstrokes, canvas texture, rich warm tones, 17th century portraiture, dramatic shadow, Old Master style",
+    "negative": "photorealistic, digital art, flat lighting, modern minimalist, anime",
+    "lighting": "伦勃朗光,明暗对照,暖烛光感",
+    "color": "深褐/赭石/鎏金/暗红,厚重层次",
+    "composition": "三分法,主体受光面朝光源",
+    "example": "classical oil painting of a merchant in 17th century Dutch clothing, Rembrandt lighting, chiaroscuro, impasto brushstrokes, canvas texture, rich warm brown and gold tones, dramatic shadow falling across the face",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开画面细节;→Seedream 补齐七要素"
+   },
+   "extra": {},
+   "keywords_list": [
+    "Rembrandt lighting",
+    "chiaroscuro",
+    "impasto brushstrokes",
+    "canvas texture",
+    "rich warm tones",
+    "17th century portraiture",
+    "dramatic shadow",
+    "Old Master style"
+   ]
+  },
+  {
+   "id": "A4",
+   "section": "A. 经典艺术风格",
+   "name_zh": "浮世绘",
+   "name_en": "Ukiyo-e",
+   "fields": {
+    "trigger": "ukiyo-e style",
+    "keywords": "Japanese woodblock print, flat color planes, bold outlines, Hokusai, waves, Edo period, grain of woodblock paper",
+    "negative": "3d, photorealistic, oil painting, soft gradient shading",
+    "lighting": "平面化,无真实光影",
+    "color": "普鲁士蓝/朱红/山吹黄,高饱和平面色",
+    "composition": "大胆对角线,装饰性边框",
+    "example": "ukiyo-e woodblock print, great wave style, bold blue outlines, flat color planes, Hokusai influence, Edo period aesthetic, grain texture, even flat light with no shadows, high-contrast outline against pale sky",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开画面细节;→Seedream 补齐七要素"
+   },
+   "extra": {},
+   "keywords_list": [
+    "Japanese woodblock print",
+    "flat color planes",
+    "bold outlines",
+    "Hokusai",
+    "waves",
+    "Edo period",
+    "grain of woodblock paper"
+   ]
+  },
+  {
+   "id": "A5",
+   "section": "A. 经典艺术风格",
+   "name_zh": "赛博朋克",
+   "name_en": "Cyberpunk",
+   "fields": {
+    "trigger": "cyberpunk, neon noir",
+    "keywords": "rain-soaked streets, neon reflections, holographic advertisements, megacity, augmented reality, cybernetic, high contrast, magenta and cyan",
+    "negative": "noir (纯黑白), rural, nature, daytime, desaturated",
+    "lighting": "霓虹主光,雨夜反射,紫青对撞",
+    "color": "品红/青/电光蓝,高饱和",
+    "composition": "拥挤街道,仰视巨楼,密集招牌",
+    "example": "cyberpunk city street at night, rain-soaked asphalt reflecting neon signs, holographic ads, crowded megacity, magenta and cyan palette, high contrast, wet reflections, wide shot",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开画面细节;→Seedream 补齐七要素"
+   },
+   "extra": {},
+   "keywords_list": [
+    "rain-soaked streets",
+    "neon reflections",
+    "holographic advertisements",
+    "megacity",
+    "augmented reality",
+    "cybernetic",
+    "high contrast",
+    "magenta and cyan"
+   ]
+  },
+  {
+   "id": "A6",
+   "section": "A. 经典艺术风格",
+   "name_zh": "蒸汽朋克",
+   "name_en": "Steampunk",
+   "fields": {
+    "trigger": "steampunk",
+    "keywords": "brass gears, steam pipes, Victorian machinery, clockwork mechanisms, goggles, dirigibles, copper and bronze",
+    "negative": "modern tech, clean futuristic, neon, minimalism",
+    "lighting": "钨丝暖光,蒸汽体积光",
+    "color": "黄铜金/深棕/铁锈红/墨绿",
+    "composition": "机械细节特写,齿轮分层",
+    "example": "steampunk workshop interior, brass gears and steam pipes, Victorian machinery, clockwork mechanisms, warm tungsten light through steam, copper and bronze tones, intricate mechanical details",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开画面细节;→Seedream 补齐七要素"
+   },
+   "extra": {},
+   "keywords_list": [
+    "brass gears",
+    "steam pipes",
+    "Victorian machinery",
+    "clockwork mechanisms",
+    "goggles",
+    "dirigibles",
+    "copper and bronze"
+   ]
+  },
+  {
+   "id": "A7",
+   "section": "A. 经典艺术风格",
+   "name_zh": "黑色电影",
+   "name_en": "Film Noir",
+   "fields": {
+    "trigger": "film noir",
+    "keywords": "high contrast, low-key lighting, venetian blind shadows, cigarette smoke, rain-soaked streets, 1950s detective, monochrome, chiaroscuro",
+    "negative": "colorful, bright, daylight, neon, comedy",
+    "lighting": "低调光,强对比,百叶窗影,烟雾",
+    "color": "黑白,深灰阶",
+    "composition": "斜线构图,人物半脸阴影",
+    "example": "film noir scene, detective in trench coat, venetian blind shadows across face, cigarette smoke, high contrast low-key lighting, monochrome, rain-soaked street through window",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开画面细节;→Seedream 补齐七要素"
+   },
+   "extra": {},
+   "keywords_list": [
+    "high contrast",
+    "low-key lighting",
+    "venetian blind shadows",
+    "cigarette smoke",
+    "rain-soaked streets",
+    "1950s detective",
+    "monochrome",
+    "chiaroscuro"
+   ]
+  },
+  {
+   "id": "A8",
+   "section": "A. 经典艺术风格",
+   "name_zh": "超现实主义",
+   "name_en": "Surrealism",
+   "fields": {
+    "trigger": "surrealism, dreamlike",
+    "keywords": "melting objects, impossible geometry, floating elements, Dali, Magritte, dream logic, scale distortion, empty sky",
+    "negative": "realistic, mundane, coherent architecture, everyday",
+    "lighting": "均匀梦幻光/矛盾光源",
+    "color": "低饱和,单一主调 + 强调色",
+    "composition": "错位透视,悬浮物体,极端尺度",
+    "example": "surrealist scene, a colossal whale floating above a desert highway, impossible scale, dream logic, Dali influence, muted earth tones with one red accent, soft dreamlike light",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开画面细节;→Seedream 补齐七要素"
+   },
+   "extra": {},
+   "keywords_list": [
+    "melting objects",
+    "impossible geometry",
+    "floating elements",
+    "Dali",
+    "Magritte",
+    "dream logic",
+    "scale distortion",
+    "empty sky"
+   ]
+  },
+  {
+   "id": "A9",
+   "section": "A. 经典艺术风格",
+   "name_zh": "极简主义",
+   "name_en": "Minimalism",
+   "fields": {
+    "trigger": "minimalist, minimal composition",
+    "keywords": "negative space, single subject, clean lines, monochrome, quiet mood, flat color, simplicity",
+    "negative": "busy, cluttered, ornate, detailed background, multiple subjects",
+    "lighting": "均匀柔光,少阴影",
+    "color": "单色系,靠明度拉开",
+    "composition": "大量留白,主体极小/居中",
+    "example": "minimalist composition, a single black stone on white sand, vast negative space, clean lines, quiet mood, soft diffused light, monochrome",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开画面细节;→Seedream 补齐七要素"
+   },
+   "extra": {},
+   "keywords_list": [
+    "negative space",
+    "single subject",
+    "clean lines",
+    "monochrome",
+    "quiet mood",
+    "flat color",
+    "simplicity"
+   ]
+  },
+  {
+   "id": "A10",
+   "section": "A. 经典艺术风格",
+   "name_zh": "波普艺术",
+   "name_en": "Pop Art",
+   "fields": {
+    "trigger": "pop art",
+    "keywords": "bold colors, halftone dots, Andy Warhol, comic style, consumer culture, thick outlines, flat colors",
+    "negative": "photorealistic, subtle, muted, realistic lighting",
+    "lighting": "平面光,无真实感",
+    "color": "原色对撞,高饱和",
+    "composition": "重复网格,单主体放大",
+    "example": "pop art portrait, bold primary colors, halftone dots, thick black outlines, Andy Warhol style, flat color planes, consumer culture aesthetic, hard studio flash lighting, graphic contrast",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开画面细节;→Seedream 补齐七要素"
+   },
+   "extra": {},
+   "keywords_list": [
+    "bold colors",
+    "halftone dots",
+    "Andy Warhol",
+    "comic style",
+    "consumer culture",
+    "thick outlines",
+    "flat colors"
+   ]
+  },
+  {
+   "id": "A11",
+   "section": "A. 经典艺术风格",
+   "name_zh": "哥特式",
+   "name_en": "Gothic",
+   "fields": {
+    "trigger": "gothic architecture",
+    "keywords": "pointed arches, flying buttresses, stained glass, cathedral, gargoyles, dark stone, candlelight, vaulted ceiling",
+    "negative": "modern, bright, cheerful, minimalist, glass curtain wall",
+    "lighting": "烛光,彩色玻璃光斑,昏暗",
+    "color": "暗石灰/深蓝紫/彩窗红蓝",
+    "composition": "仰视拱顶,对称中轴",
+    "example": "gothic cathedral interior, pointed arches and vaulted ceiling, stained glass casting colored light, candlelight, gargoyles in shadow, dark stone, solemn atmosphere",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开画面细节;→Seedream 补齐七要素"
+   },
+   "extra": {},
+   "keywords_list": [
+    "pointed arches",
+    "flying buttresses",
+    "stained glass",
+    "cathedral",
+    "gargoyles",
+    "dark stone",
+    "candlelight",
+    "vaulted ceiling"
+   ]
+  },
+  {
+   "id": "A12",
+   "section": "A. 经典艺术风格",
+   "name_zh": "浮世梦核",
+   "name_en": "Chinese Dreamcore",
+   "fields": {
+    "trigger": "中式梦核, Chinese dreamcore",
+    "keywords": "千禧年记忆, 旧小区, 老式家具, 斑驳墙面, 阳光斜照, VHS质感, 半透明窗帘, 记忆模糊感, 怀旧不安",
+    "negative": "现代建筑, 科幻, 恐怖, 鲜艳, 清晰锐利",
+    "lighting": "过曝柔光,夕阳斜照,记忆感模糊",
+    "color": "米黄/粉彩/褪色,低饱和",
+    "composition": "日常场景错位,熟悉又陌生",
+    "example": "中式梦核, 千禧年旧小区的楼道, 老式防盗门, 斑驳的米黄墙面, 夕阳从窗户斜照进来, 地面有拖把的水痕, VHS质感, 怀旧而微微不安",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开画面细节;→Seedream 补齐七要素"
+   },
+   "extra": {},
+   "keywords_list": [
+    "千禧年记忆",
+    "旧小区",
+    "老式家具",
+    "斑驳墙面",
+    "阳光斜照",
+    "VHS质感",
+    "半透明窗帘",
+    "记忆模糊感",
+    "怀旧不安"
+   ]
+  },
+  {
+   "id": "A13",
+   "section": "A. 经典艺术风格",
+   "name_zh": "印象派",
+   "name_en": "Impressionism",
+   "fields": {
+    "trigger": "impressionist painting",
+    "keywords": "visible brushstrokes, loose texture, light and color study, Monet, Renoir, soft edges, plein air, atmospheric color, dappled light, pastel dabs",
+    "negative": "photorealistic, sharp edges, dark chiaroscuro, digital airbrush",
+    "lighting": "户外自然光,光斑,薄雾感",
+    "color": "高亮低对比,补色并置(蓝橙/紫黄)",
+    "composition": "随意截取,非中心构图",
+    "example": "impressionist oil painting, Monet style water lilies, visible brushstrokes, dappled light on water, soft edges, plein air color study, pastel dabs of blue and pink, glow of low morning sun, no hard lines, wide landscape view, even natural light",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开画面细节;→Seedream 补齐七要素"
+   },
+   "extra": {},
+   "keywords_list": [
+    "visible brushstrokes",
+    "loose texture",
+    "light and color study",
+    "Monet",
+    "Renoir",
+    "soft edges",
+    "plein air",
+    "atmospheric color",
+    "dappled light",
+    "pastel dabs"
+   ]
+  },
+  {
+   "id": "A14",
+   "section": "A. 经典艺术风格",
+   "name_zh": "新艺术运动",
+   "name_en": "Art Nouveau",
+   "fields": {
+    "trigger": "art nouveau",
+    "keywords": "flowing organic lines, floral motifs, whiplash curves, stained glass, Mucha, decorative borders, gilded details, elegant female figure",
+    "negative": "geometric, brutalist, minimal, industrial",
+    "lighting": "平面装饰光,柔和",
+    "color": "金/祖母绿/赭红,装饰性高饱和",
+    "composition": "对称装饰框,曲线主导",
+    "example": "art nouveau poster, Mucha style, flowing organic lines, floral motifs, whiplash curves, elegant female figure with flowing hair, decorative gold border, emerald and ochre palette, stained glass background, soft diffused backlight glow",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开画面细节;→Seedream 补齐七要素"
+   },
+   "extra": {},
+   "keywords_list": [
+    "flowing organic lines",
+    "floral motifs",
+    "whiplash curves",
+    "stained glass",
+    "Mucha",
+    "decorative borders",
+    "gilded details",
+    "elegant female figure"
+   ]
+  },
+  {
+   "id": "A15",
+   "section": "A. 经典艺术风格",
+   "name_zh": "巴洛克",
+   "name_en": "Baroque",
+   "fields": {
+    "trigger": "baroque style",
+    "keywords": "dramatic chiaroscuro, opulent detail, Caravaggio, rich drapery, gilded frames, intense emotion, heavenly light, grand composition",
+    "negative": "minimal, flat lighting, modern, austere",
+    "lighting": "强明暗对照,天光穿透",
+    "color": "深褐/鎏金/宝蓝/绯红",
+    "composition": "对角线动势,强舞台感",
+    "example": "baroque painting, Caravaggio style, dramatic chiaroscuro, a figure in rich crimson drapery caught in heavenly light from above, gilded details, intense emotional expression, opulent dark background, grand diagonal composition",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开画面细节;→Seedream 补齐七要素"
+   },
+   "extra": {},
+   "keywords_list": [
+    "dramatic chiaroscuro",
+    "opulent detail",
+    "Caravaggio",
+    "rich drapery",
+    "gilded frames",
+    "intense emotion",
+    "heavenly light",
+    "grand composition"
+   ]
+  },
+  {
+   "id": "A16",
+   "section": "A. 经典艺术风格",
+   "name_zh": "国潮插画",
+   "name_en": "Chinese Trendy Illustration",
+   "fields": {
+    "trigger": "国潮, Chinese trendy illustration",
+    "keywords": "traditional motifs modernized, red and gold, dragon and phoenix, ink lines with flat color, chinoiserie, festive, graphic design, bold shapes",
+    "negative": "western style, minimal, muted, realistic photography",
+    "lighting": "平面光,装饰性",
+    "color": "中国红/鎏金/墨黑/青花蓝,高饱和",
+    "composition": "对称,纹样满铺,中心主体",
+    "example": "国潮插画, 中国传统纹样现代化, 龙与凤, 朱红与鎏金配色, 墨线勾勒配平面色块, 装饰性构图, 对称排列, 喜庆而时尚, 平面设计感, 均匀平光无阴影, 无西方写实感",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开画面细节;→Seedream 补齐七要素"
+   },
+   "extra": {},
+   "keywords_list": [
+    "traditional motifs modernized",
+    "red and gold",
+    "dragon and phoenix",
+    "ink lines with flat color",
+    "chinoiserie",
+    "festive",
+    "graphic design",
+    "bold shapes"
+   ]
+  },
+  {
+   "id": "A17",
+   "section": "A. 经典艺术风格",
+   "name_zh": "立体主义",
+   "name_en": "Cubism",
+   "fields": {
+    "trigger": "cubism",
+    "keywords": "geometric faceting, multiple perspectives, Picasso, Braque, fragmented planes, monochrome browns, angular forms, abstracted reality",
+    "negative": "realistic, smooth, natural colors, soft lighting, romantic",
+    "lighting": "平面光,无立体真实感",
+    "color": "赭褐/灰/墨黑,低饱和几何色块",
+    "composition": "多视角叠加,几何切面",
+    "example": "cubist painting, Picasso style, fragmented geometric planes, multiple perspectives of a guitar, angular forms, monochrome browns and greys, abstracted reality, flat light, no smooth shading",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开画面细节;→Seedream 补齐七要素"
+   },
+   "extra": {},
+   "keywords_list": [
+    "geometric faceting",
+    "multiple perspectives",
+    "Picasso",
+    "Braque",
+    "fragmented planes",
+    "monochrome browns",
+    "angular forms",
+    "abstracted reality"
+   ]
+  },
+  {
+   "id": "A18",
+   "section": "A. 经典艺术风格",
+   "name_zh": "野兽派",
+   "name_en": "Fauvism",
+   "fields": {
+    "trigger": "fauvism",
+    "keywords": "wild color, bold unnatural palette, Matisse, thick brushstrokes, flat perspective, expressive color, pure hues, simplified forms",
+    "negative": "muted, naturalistic, realistic skin tone, subtle",
+    "lighting": "平光,色彩即光线",
+    "color": "朱红/钴蓝/明黄/翠绿,纯色直撞",
+    "composition": "简化形,装饰性平面",
+    "example": "fauvist painting, Matisse style, wild unnatural colors, pure red and cobalt blue, thick expressive brushstrokes, flat perspective, simplified forms, color as emotion, no naturalistic tones, broad landscape view, even flat daylight",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开画面细节;→Seedream 补齐七要素"
+   },
+   "extra": {},
+   "keywords_list": [
+    "wild color",
+    "bold unnatural palette",
+    "Matisse",
+    "thick brushstrokes",
+    "flat perspective",
+    "expressive color",
+    "pure hues",
+    "simplified forms"
+   ]
+  },
+  {
+   "id": "A19",
+   "section": "A. 经典艺术风格",
+   "name_zh": "装饰艺术",
+   "name_en": "Art Deco",
+   "fields": {
+    "trigger": "art deco",
+    "keywords": "geometric symmetry, gold and black, stepped forms, sunburst motifs, luxury, chrome accents, sharp lines, 1920s glamour",
+    "negative": "organic curves, rustic, minimal, gothic",
+    "lighting": "强对比,金属反光,舞台光",
+    "color": "黑金/翠绿/深红/象牙白",
+    "composition": "对称几何,放射状,阶梯造型",
+    "example": "art deco style, geometric sunburst pattern, gold and black palette, stepped skyscraper silhouette, chrome accents, sharp symmetrical lines, 1920s luxury, glamorous lighting with metal reflections",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开画面细节;→Seedream 补齐七要素"
+   },
+   "extra": {},
+   "keywords_list": [
+    "geometric symmetry",
+    "gold and black",
+    "stepped forms",
+    "sunburst motifs",
+    "luxury",
+    "chrome accents",
+    "sharp lines",
+    "1920s glamour"
+   ]
+  },
+  {
+   "id": "A20",
+   "section": "A. 经典艺术风格",
+   "name_zh": "文艺复兴",
+   "name_en": "Renaissance",
+   "fields": {
+    "trigger": "renaissance",
+    "keywords": "classical composition, sfumato, Leonardo, Raphael, biblical scenes, warm oil glow, balanced symmetry, ideal beauty, architectural background",
+    "negative": "modern, abstract, impressionistic, casual",
+    "lighting": "柔和侧光,sfumato 烟雾渐变",
+    "color": "暖褐/金/深红/群青",
+    "composition": "金字塔式,中心对称,背景透视",
+    "example": "renaissance painting, classical composition, sfumato soft light, a Madonna with child in warm oil tones, balanced symmetry, architectural background with perspective, ideal beauty, deep red and ultramarine robes, gentle chiaroscuro",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开画面细节;→Seedream 补齐七要素"
+   },
+   "extra": {},
+   "keywords_list": [
+    "classical composition",
+    "sfumato",
+    "Leonardo",
+    "Raphael",
+    "biblical scenes",
+    "warm oil glow",
+    "balanced symmetry",
+    "ideal beauty",
+    "architectural background"
+   ]
+  },
+  {
+   "id": "A21",
+   "section": "A. 经典艺术风格",
+   "name_zh": "抽象表现主义",
+   "name_en": "Abstract Expressionism",
+   "fields": {
+    "trigger": "abstract expressionism",
+    "keywords": "gestural brushstrokes, color field, Pollock, Rothko, drips and splashes, emotional color, canvas texture, large scale, non-representational",
+    "negative": "realistic, representational, geometric precision, figurative",
+    "lighting": "无光源逻辑,色彩自发光",
+    "color": "大色块对撞,或单色场域渐变",
+    "composition": "无构图,直觉泼洒/色域分割",
+    "example": "abstract expressionism, gestural brushstrokes, Pollock style drips and splashes, emotional color field, layered paint texture, large canvas scale, raw energy, no recognizable subject, Rothko-like deep color blocks, gallery spotlight from above, full-frame composition",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开画面细节;→Seedream 补齐七要素"
+   },
+   "extra": {},
+   "keywords_list": [
+    "gestural brushstrokes",
+    "color field",
+    "Pollock",
+    "Rothko",
+    "drips and splashes",
+    "emotional color",
+    "canvas texture",
+    "large scale",
+    "non-representational"
+   ]
+  },
+  {
+   "id": "A22",
+   "section": "A. 经典艺术风格",
+   "name_zh": "水彩",
+   "name_en": "Watercolor",
+   "fields": {
+    "trigger": "watercolor painting",
+    "keywords": "transparent washes, paper texture, soft bleeding edges, wet-on-wet, delicate pigment, light through color, loose sketch, granulation",
+    "negative": "oil, thick impasto, photorealistic, hard edges, digital airbrush",
+    "lighting": "留白高光,色彩透光感",
+    "color": "通透淡彩,多层罩染",
+    "composition": "留白>实景,晕染边缘",
+    "example": "watercolor painting, transparent washes, wet-on-wet bleeding, soft edges, paper texture visible, delicate pigment in blues and greens, light through color, loose sketch of a harbor, granulation effect, white paper as highlight",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开画面细节;→Seedream 补齐七要素"
+   },
+   "extra": {},
+   "keywords_list": [
+    "transparent washes",
+    "paper texture",
+    "soft bleeding edges",
+    "wet-on-wet",
+    "delicate pigment",
+    "light through color",
+    "loose sketch",
+    "granulation"
+   ]
+  },
+  {
+   "id": "A23",
+   "section": "A. 经典艺术风格",
+   "name_zh": "涂鸦艺术",
+   "name_en": "Street Graffiti",
+   "fields": {
+    "trigger": "graffiti, street art",
+    "keywords": "spray paint, bold letters, stencil, urban wall, Banksy, dripping paint, vibrant colors, tags, layered murals, concrete background",
+    "negative": "clean gallery, minimal, corporate design, polished",
+    "lighting": "街头日光/黄昏霓虹,涂鸦在墙上",
+    "color": "荧光橙/青/粉,高饱和撞色",
+    "composition": "墙面为主体,涂鸦满铺或单点",
+    "example": "graffiti street art, spray paint mural on concrete wall, bold stencil figure, dripping paint, vibrant orange and cyan, layered tags, urban texture, Banksy influence, evening street light on the wall",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开画面细节;→Seedream 补齐七要素"
+   },
+   "extra": {},
+   "keywords_list": [
+    "spray paint",
+    "bold letters",
+    "stencil",
+    "urban wall",
+    "Banksy",
+    "dripping paint",
+    "vibrant colors",
+    "tags",
+    "layered murals",
+    "concrete background"
+   ]
+  },
+  {
+   "id": "A24",
+   "section": "A. 经典艺术风格",
+   "name_zh": "低多边形",
+   "name_en": "Low Poly",
+   "fields": {
+    "trigger": "low poly, lowpoly",
+    "keywords": "geometric triangles, flat facets, stylized 3d, minimal detail, clean shapes, vibrant flat colors, video game aesthetic, polygon mesh",
+    "negative": "photorealistic, smooth surface, high detail, realistic texture",
+    "lighting": "硬边光影,无渐变",
+    "color": "平面亮色,每面一色",
+    "composition": "几何造型,对称或散点",
+    "example": "low poly style, geometric triangle facets, a deer made of flat polygons, vibrant flat colors, clean shapes, stylized 3d game aesthetic, hard-edged shadows, minimal detail, polygon mesh visible, even studio light, centered subject",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开画面细节;→Seedream 补齐七要素"
+   },
+   "extra": {},
+   "keywords_list": [
+    "geometric triangles",
+    "flat facets",
+    "stylized 3d",
+    "minimal detail",
+    "clean shapes",
+    "vibrant flat colors",
+    "video game aesthetic",
+    "polygon mesh"
+   ]
+  },
+  {
+   "id": "A25",
+   "section": "A. 经典艺术风格",
+   "name_zh": "洛可可",
+   "name_en": "Rococo",
+   "fields": {
+    "trigger": "rococo",
+    "keywords": "ornate curves, pastel gold, playful cherubs, floral decoration, Watteau, luxury salon, shell motifs, soft romantic, lighthearted",
+    "negative": "dark, minimal, austere, modern",
+    "lighting": "柔和粉彩光,无硬影",
+    "color": "粉彩+鎏金+象牙白",
+    "composition": "S 形曲线,装饰满铺",
+    "example": "rococo style, ornate pastel interior, gold floral curves, playful cherubs on the ceiling, shell motifs, salon with silk drapery and marble, soft romantic light, ivory and blush pink with gold, lighthearted elegance, wide interior view, even soft glow",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开画面细节;→Seedream 补齐七要素"
+   },
+   "extra": {},
+   "keywords_list": [
+    "ornate curves",
+    "pastel gold",
+    "playful cherubs",
+    "floral decoration",
+    "Watteau",
+    "luxury salon",
+    "shell motifs",
+    "soft romantic",
+    "lighthearted"
+   ]
+  },
+  {
+   "id": "A26",
+   "section": "A. 经典艺术风格",
+   "name_zh": "新古典主义",
+   "name_en": "Neoclassicism",
+   "fields": {
+    "trigger": "neoclassicism",
+    "keywords": "heroic figures, classical columns, austere symmetry, David, ideal forms, marble, dramatic historical scene, restrained palette",
+    "negative": "ornate, pastel, playful, baroque excess",
+    "lighting": "强明暗侧光,雕塑感",
+    "color": "大理石灰+深褐+暗红,克制",
+    "composition": "对称稳定,古典三角",
+    "example": "neoclassical painting, heroic figure in classical setting, marble columns, austere symmetry, ideal forms, restrained palette of grey and deep red, dramatic side light, sculptural quality, historical gravitas",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开画面细节;→Seedream 补齐七要素"
+   },
+   "extra": {},
+   "keywords_list": [
+    "heroic figures",
+    "classical columns",
+    "austere symmetry",
+    "David",
+    "ideal forms",
+    "marble",
+    "dramatic historical scene",
+    "restrained palette"
+   ]
+  },
+  {
+   "id": "A27",
+   "section": "A. 经典艺术风格",
+   "name_zh": "浪漫主义",
+   "name_en": "Romanticism",
+   "fields": {
+    "trigger": "romanticism painting",
+    "keywords": "sublime nature, stormy seas, dramatic sky, emotional intensity, Turner, Delacroix, wild landscape, heroic struggle, vivid emotion",
+    "negative": "calm, restrained, minimal, documentary",
+    "lighting": "风暴光,破云光,强烈天空层次",
+    "color": "墨蓝/暖金/深红,浓烈",
+    "composition": "对角线动势,自然压倒人",
+    "example": "romanticism painting, Turner style stormy sea, dramatic sky with breaking light, a small ship in wild waves, emotional intensity, sublime nature overwhelming man, vivid warm light against dark clouds, turbulent energy",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开画面细节;→Seedream 补齐七要素"
+   },
+   "extra": {},
+   "keywords_list": [
+    "sublime nature",
+    "stormy seas",
+    "dramatic sky",
+    "emotional intensity",
+    "Turner",
+    "Delacroix",
+    "wild landscape",
+    "heroic struggle",
+    "vivid emotion"
+   ]
+  },
+  {
+   "id": "A28",
+   "section": "A. 经典艺术风格",
+   "name_zh": "表现主义",
+   "name_en": "Expressionism",
+   "fields": {
+    "trigger": "expressionism",
+    "keywords": "distorted forms, emotional color, exaggerated perspective, Munch, angular shapes, inner feeling, anxiety, raw brushwork, stark contrast",
+    "negative": "realistic, calm, beautiful, harmonious",
+    "lighting": "非自然光,情绪化明暗",
+    "color": "高对比撞色,焦虑色调",
+    "composition": "扭曲透视,失衡",
+    "example": "expressionist painting, Munch style, distorted figure on a bridge, emotional swirling sky, exaggerated perspective, raw brushwork, stark color contrast, inner anxiety made visible, unsettling energy, wide view, harsh unnatural light",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开画面细节;→Seedream 补齐七要素"
+   },
+   "extra": {},
+   "keywords_list": [
+    "distorted forms",
+    "emotional color",
+    "exaggerated perspective",
+    "Munch",
+    "angular shapes",
+    "inner feeling",
+    "anxiety",
+    "raw brushwork",
+    "stark contrast"
+   ]
+  },
+  {
+   "id": "A29",
+   "section": "A. 经典艺术风格",
+   "name_zh": "点彩派",
+   "name_en": "Pointillism",
+   "fields": {
+    "trigger": "pointillism",
+    "keywords": "tiny dots, optical mixing, Seurat, dots of pure color, divisionism, distance reveals image, scientific color, stippled texture",
+    "negative": "smooth gradients, blended strokes, photorealistic",
+    "lighting": "均匀日光,无渐变",
+    "color": "纯色点密集,光学混合",
+    "composition": "点阵铺满,远景清晰",
+    "example": "pointillism, Seurat style, a riverside scene made of tiny dots of pure color, optical mixing, stippled texture, even daylight, dots of blue yellow and red, divisionism, image resolves at distance",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开画面细节;→Seedream 补齐七要素"
+   },
+   "extra": {},
+   "keywords_list": [
+    "tiny dots",
+    "optical mixing",
+    "Seurat",
+    "dots of pure color",
+    "divisionism",
+    "distance reveals image",
+    "scientific color",
+    "stippled texture"
+   ]
+  },
+  {
+   "id": "A30",
+   "section": "A. 经典艺术风格",
+   "name_zh": "未来主义",
+   "name_en": "Futurism",
+   "fields": {
+    "trigger": "futurism",
+    "keywords": "speed, motion blur, dynamic lines, Boccioni, machine age, fragmented motion, angular energy, industrial power, movement trails",
+    "negative": "static, calm, traditional, pastoral",
+    "lighting": "动态光,速度感",
+    "color": "钢灰+红橙能量色",
+    "composition": "对角线冲刺,重复动势",
+    "example": "futurist painting, Boccioni style, a racing train with fragmented motion lines, dynamic diagonal composition, speed and energy, machine age aesthetic, angular forms, motion trails, industrial power, bold red and steel grey, dynamic directional light, full-frame action view",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开画面细节;→Seedream 补齐七要素"
+   },
+   "extra": {},
+   "keywords_list": [
+    "speed",
+    "motion blur",
+    "dynamic lines",
+    "Boccioni",
+    "machine age",
+    "fragmented motion",
+    "angular energy",
+    "industrial power",
+    "movement trails"
+   ]
+  },
+  {
+   "id": "A31",
+   "section": "A. 经典艺术风格",
+   "name_zh": "包豪斯",
+   "name_en": "Bauhaus",
+   "fields": {
+    "trigger": "bauhaus",
+    "keywords": "geometric shapes, primary colors, functional design, grid layout, sans-serif typography feel, Kandinsky, clean lines, form follows function, abstract geometry",
+    "negative": "ornate, organic curves, baroque, decorative excess",
+    "lighting": "均匀平面光",
+    "color": "红黄蓝+黑白灰",
+    "composition": "几何网格,非对称平衡",
+    "example": "bauhaus style, geometric composition of circles squares and triangles, primary colors red yellow blue with black and white, clean grid layout, functional design, Kandinsky influence, non-symmetric balance, flat even light",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开画面细节;→Seedream 补齐七要素"
+   },
+   "extra": {},
+   "keywords_list": [
+    "geometric shapes",
+    "primary colors",
+    "functional design",
+    "grid layout",
+    "sans-serif typography feel",
+    "Kandinsky",
+    "clean lines",
+    "form follows function",
+    "abstract geometry"
+   ]
+  },
+  {
+   "id": "A32",
+   "section": "A. 经典艺术风格",
+   "name_zh": "敦煌壁画",
+   "name_en": "Dunhuang Mural",
+   "fields": {
+    "trigger": "敦煌, Dunhuang mural",
+    "keywords": "flying apsaras, Buddhist art, cave painting, mineral pigments, gold leaf, Tang dynasty, lotus patterns, painted ceiling, aged fresco, celestial musicians",
+    "negative": "modern, western, photorealistic, minimal",
+    "lighting": "洞窟幽光,金箔反光",
+    "color": "赭红/石青/石绿/金箔",
+    "composition": "飞天飘带,对称神像,满铺纹样",
+    "example": "敦煌壁画, 飞天神女衣带飘舞, 石青石绿与赭红矿物颜料, 金箔点缀, 莲花纹样, 唐代风格, 洞窟墙面的年代剥落感, 宝相花边饰, 庄重华美, 幽光下的金箔微亮",
+    "adapter_notes": "→Kolors 中文最优;→Qwen 展开纹样细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "flying apsaras",
+    "Buddhist art",
+    "cave painting",
+    "mineral pigments",
+    "gold leaf",
+    "Tang dynasty",
+    "lotus patterns",
+    "painted ceiling",
+    "aged fresco",
+    "celestial musicians"
+   ]
+  },
+  {
+   "id": "A33",
+   "section": "A. 经典艺术风格",
+   "name_zh": "工笔重彩",
+   "name_en": "Gongbi Meticulous",
+   "fields": {
+    "trigger": "工笔, gongbi",
+    "keywords": "fine brush lines, meticulous detail, mineral color, silk painting, Tang-Song style, court painting, gold accents, bird-and-flower, delicate washes",
+    "negative": "sketchy, loose, impressionist, modern abstract",
+    "lighting": "平光,绢面柔和",
+    "color": "石青/朱砂/藤黄,矿物色沉稳",
+    "composition": "精细勾线,留白,均衡",
+    "example": "工笔重彩, 绢本设色, 精细勾线的花鸟, 石青与朱砂矿物颜料, 金粉点缀, 唐宋院体画风, 纤毫毕现的羽毛, 丝绸质感, 沉稳华贵, 平光柔和",
+    "adapter_notes": "→Kolors 中文最优;→Qwen 展开勾线细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "fine brush lines",
+    "meticulous detail",
+    "mineral color",
+    "silk painting",
+    "Tang-Song style",
+    "court painting",
+    "gold accents",
+    "bird-and-flower",
+    "delicate washes"
+   ]
+  },
+  {
+   "id": "A34",
+   "section": "A. 经典艺术风格",
+   "name_zh": "剪纸",
+   "name_en": "Chinese Paper Cutting",
+   "fields": {
+    "trigger": "剪纸, paper cutting",
+    "keywords": "red paper, intricate cutout patterns, folk art, symmetry, window decoration, zodiac animals, auspicious symbols, hollowed design",
+    "negative": "3d, photorealistic, colored complex, modern minimal",
+    "lighting": "透光,红色剪纸贴窗",
+    "color": "中国红为主,纸白",
+    "composition": "对称,满铺纹样,负形镂空",
+    "example": "剪纸, 红色镂空窗花, 精细对称图案, 生肖动物造型, 吉祥纹样, 民间艺术, 透光效果, 纸面质感, 镂空负形, 喜庆传统",
+    "adapter_notes": "→Kolors 中文最优;→Qwen 展开纹样细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "red paper",
+    "intricate cutout patterns",
+    "folk art",
+    "symmetry",
+    "window decoration",
+    "zodiac animals",
+    "auspicious symbols",
+    "hollowed design"
+   ]
+  },
+  {
+   "id": "A35",
+   "section": "A. 经典艺术风格",
+   "name_zh": "木版年画",
+   "name_en": "New Year Woodblock Print",
+   "fields": {
+    "trigger": "年画, woodblock print",
+    "keywords": "door gods, vibrant folk colors, New Year auspicious, coarse woodblock lines, Chinese folk art, festive symbols, bright red gold",
+    "negative": "minimal, muted, modern digital, realistic photo",
+    "lighting": "平面光,民俗喜庆",
+    "color": "大红/金黄/翠绿/桃粉,高饱和",
+    "composition": "对称门神,满铺装饰",
+    "example": "木版年画, 门神像, 粗犷木刻线条, 大红与金黄配色, 吉祥符号, 民俗喜庆, 高饱和平面色, 纸面印刷质感, 传统节庆气氛, 对称中景构图, 均匀平光",
+    "adapter_notes": "→Kolors 中文最优;→Qwen 展开线条细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "door gods",
+    "vibrant folk colors",
+    "New Year auspicious",
+    "coarse woodblock lines",
+    "Chinese folk art",
+    "festive symbols",
+    "bright red gold"
+   ]
+  },
+  {
+   "id": "A36",
+   "section": "A. 经典艺术风格",
+   "name_zh": "青花瓷",
+   "name_en": "Blue and White Porcelain",
+   "fields": {
+    "trigger": "青花, blue and white porcelain",
+    "keywords": "cobalt blue on white, porcelain glaze, Ming dynasty, floral scroll patterns, crackle texture, ceramic shine, underglaze painting",
+    "negative": "colorful glaze, modern design, rough clay, photorealistic people",
+    "lighting": "瓷面反光,柔光",
+    "color": "钴蓝+瓷白",
+    "composition": "器物居中,缠枝纹样,留白",
+    "example": "青花瓷, 白瓷钴蓝, 缠枝莲纹, 明代风格, 釉面光泽, 开片纹理, 器形典雅, 柔光下的瓷面反光, 素净高雅",
+    "adapter_notes": "→Kolors 中文最优;→Qwen 展开纹样细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "cobalt blue on white",
+    "porcelain glaze",
+    "Ming dynasty",
+    "floral scroll patterns",
+    "crackle texture",
+    "ceramic shine",
+    "underglaze painting"
+   ]
+  },
+  {
+   "id": "A37",
+   "section": "A. 经典艺术风格",
+   "name_zh": "极简 Zine 海报",
+   "name_en": "Minimal Zine Poster",
+   "fields": {
+    "trigger": "minimal zine poster, editorial zine, quiet paper poster",
+    "keywords": "tall vertical 3:5 paper canvas, huge negative space, old paper texture, tiny visual anchor, sparse typography, one high-chroma color anchor, risograph grain, xerox softness, halftone, scanned-paper look, flat orthographic, matte paper, ink bleed, aged paper mottling, serif/typewriter microtext",
+    "negative": "full-bleed scene, commercial headline, product ad, logo, glossy mockup, clean UI white, cinematic lighting, 3D render, neon, cute cartoon, dense scrapbook, too many colors, long clean text blocks, hard shadow, depth of field",
+    "lighting": "均匀漫射,平扫光感,无硬影,无景深",
+    "color": "纸色+灰黑基底,支撑**一个**高饱和色锚(钴蓝/群青/柠檬黄/翠绿,占画面 0.8-2.5%,缩略图可见),主色锚不降饱和",
+    "composition": "70-90% 留白;一个视觉簇占 8-25%,居中/中上/中下/左下/右上,不贴边",
+    "example": "tall vertical 3:5 paper poster, full-frame aged paper, 80 percent empty negative space, a small visual cluster occupying 15 percent placed lower-left, flat front-facing composition; a torn-paper clipping of a rainy old bookstore as the anchor, xerox softness, halftone grain, ink bleed at the torn edge; tiny serif type pressing against the image edge, one fully saturated cobalt-blue ink block behind the text, risograph misregistration, aged paper mottling; flat orthographic scanned-paper view, diffuse light, no shadow, no 3D, no neon, no commercial headline",
+    "adapter_notes": "→Kolors 压缩为中文描述(留白+色锚);→Qwen 展开四段式细节(画布/锚点/字体/纹理);→Seedream 要素齐全(构图比例写清楚)"
+   },
+   "extra": {},
+   "keywords_list": [
+    "tall vertical 3:5 paper canvas",
+    "huge negative space",
+    "old paper texture",
+    "tiny visual anchor",
+    "sparse typography",
+    "one high-chroma color anchor",
+    "risograph grain",
+    "xerox softness",
+    "halftone",
+    "scanned-paper look",
+    "flat orthographic",
+    "matte paper",
+    "ink bleed",
+    "aged paper mottling",
+    "serif/typewriter microtext"
+   ]
+  },
+  {
+   "id": "B1",
+   "section": "B. 电影/导演风格",
+   "name_zh": "韦斯·安德森",
+   "name_en": "Wes Anderson",
+   "fields": {
+    "trigger": "wes anderson style",
+    "keywords": "symmetric composition, pastel colors, centered subject, flat camera, quirky set design, meticulous staging, vintage aesthetic",
+    "negative": "asymmetric, dark, realistic grittiness, handheld shake",
+    "lighting": "均匀柔和,平面感",
+    "color": "粉彩低饱和(粉/薄荷绿/奶油黄)",
+    "composition": "严格对称,居中,正面平拍",
+    "example": "wes anderson style, symmetric composition, pastel color palette, centered subject in vintage hotel lobby, flat camera angle, meticulous staging, quirky details, soft even lighting",
+    "adapter_notes": "→Kolors 删镜头型号写中文场景;→Qwen 展开光线/运动细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "symmetric composition",
+    "pastel colors",
+    "centered subject",
+    "flat camera",
+    "quirky set design",
+    "meticulous staging",
+    "vintage aesthetic"
+   ]
+  },
+  {
+   "id": "B2",
+   "section": "B. 电影/导演风格",
+   "name_zh": "诺兰",
+   "name_en": "Christopher Nolan",
+   "fields": {
+    "trigger": "nolan style, IMAX feel",
+    "keywords": "large format, wide angle, cold tones, high contrast, natural light, practical effects, gravity-defying, monumental scale",
+    "negative": "neon, colorful, playful, sitcom lighting",
+    "lighting": "自然光,低调光",
+    "color": "冷蓝灰,高对比",
+    "composition": "广角畸变,人物小环境大",
+    "example": "nolan style, IMAX large format, wide angle lens distortion, cold blue tones, high contrast, monumental architecture dwarfing a tiny figure, natural light, practical feel",
+    "adapter_notes": "→Kolors 删镜头型号写中文场景;→Qwen 展开光线/运动细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "large format",
+    "wide angle",
+    "cold tones",
+    "high contrast",
+    "natural light",
+    "practical effects",
+    "gravity-defying",
+    "monumental scale"
+   ]
+  },
+  {
+   "id": "B3",
+   "section": "B. 电影/导演风格",
+   "name_zh": "王家卫",
+   "name_en": "Wong Kar-wai",
+   "fields": {
+    "trigger": "wong kar wai style",
+    "keywords": "high saturation, neon + warm tones, handheld, slow shutter, frame skipping, close-up, rain, cigarette smoke, longing atmosphere",
+    "negative": "clean, bright daylight, static tripod, documentary",
+    "lighting": "霓虹混合色温,慢门拖影",
+    "color": "高饱和霓虹+暖色对撞",
+    "composition": "框中框,前景遮挡,特写",
+    "example": "wong kar wai style, high saturation neon and warm tones, handheld camera, slow shutter motion blur, close-up of a woman in rain, cigarette smoke, longing atmosphere, frame skipping",
+    "adapter_notes": "→Kolors 删镜头型号写中文场景;→Qwen 展开光线/运动细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "high saturation",
+    "neon + warm tones",
+    "handheld",
+    "slow shutter",
+    "frame skipping",
+    "close-up",
+    "rain",
+    "cigarette smoke",
+    "longing atmosphere"
+   ]
+  },
+  {
+   "id": "B4",
+   "section": "B. 电影/导演风格",
+   "name_zh": "塔可夫斯基",
+   "name_en": "Andrei Tarkovsky",
+   "fields": {
+    "trigger": "tarkovsky style",
+    "keywords": "long takes, natural elemental, water rain earth, slow meditative pace, muted color, religious iconography, vast landscapes, ruined spaces",
+    "negative": "fast cutting, bright commercial, colorful, dialogue-driven",
+    "lighting": "自然光,雾,潮湿感",
+    "color": "土黄/灰绿/暗褐,低饱和",
+    "composition": "缓慢横移,人物渺小于自然",
+    "example": "tarkovsky style, vast misty landscape with a lone figure, extreme wide shot, wet earth and rain, muted earth tones, slow meditative composition, ruined wooden structure, natural elemental atmosphere, low overcast light",
+    "adapter_notes": "→Kolors 删镜头型号写中文场景;→Qwen 展开光线/运动细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "long takes",
+    "natural elemental",
+    "water rain earth",
+    "slow meditative pace",
+    "muted color",
+    "religious iconography",
+    "vast landscapes",
+    "ruined spaces"
+   ]
+  },
+  {
+   "id": "B5",
+   "section": "B. 电影/导演风格",
+   "name_zh": "宫崎骏",
+   "name_en": "Hayao Miyazaki",
+   "fields": {
+    "trigger": "ghibli style, miyazaki style",
+    "keywords": "hand-drawn animation, soft watercolor backgrounds, lush nature, whimsical, warm palette, detailed mechanical, floating clouds, gentle light",
+    "negative": "photorealistic, dark, gritty, neon, horror",
+    "lighting": "自然光,黄金时刻,柔光",
+    "color": "暖色柔和色板,清新绿/天空蓝",
+    "composition": "平视,多景别,自然融入",
+    "example": "ghibli style, hand-drawn animation, lush green valley with whimsical small house, soft watercolor background, warm golden light, floating clouds, detailed grass blades, gentle peaceful mood",
+    "adapter_notes": "→Kolors 删镜头型号写中文场景;→Qwen 展开光线/运动细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "hand-drawn animation",
+    "soft watercolor backgrounds",
+    "lush nature",
+    "whimsical",
+    "warm palette",
+    "detailed mechanical",
+    "floating clouds",
+    "gentle light"
+   ]
+  },
+  {
+   "id": "B6",
+   "section": "B. 电影/导演风格",
+   "name_zh": "新海诚",
+   "name_en": "Makoto Shinkai",
+   "fields": {
+    "trigger": "shinkai style, makoto shinkai",
+    "keywords": "hyper-detailed sky, volumetric clouds, lens flare, vivid blue, light rays, cityscape, romantic longing, bokeh",
+    "negative": "flat sky, muted, desaturated, gloomy",
+    "lighting": "逆光,丁达尔,光斑",
+    "color": "高饱和蓝天,黄昏橙紫渐变",
+    "composition": "天空占 2/3,人物小,远景大",
+    "example": "shinkai style, hyper-detailed cumulus clouds, vivid blue sky with light rays, lens flare, distant cityscape, small figure on hill, romantic longing mood, bokeh",
+    "adapter_notes": "→Kolors 删镜头型号写中文场景;→Qwen 展开光线/运动细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "hyper-detailed sky",
+    "volumetric clouds",
+    "lens flare",
+    "vivid blue",
+    "light rays",
+    "cityscape",
+    "romantic longing",
+    "bokeh"
+   ]
+  },
+  {
+   "id": "B7",
+   "section": "B. 电影/导演风格",
+   "name_zh": "昆汀",
+   "name_en": "Quentin Tarantino",
+   "fields": {
+    "trigger": "tarantino style",
+    "keywords": "bold saturated colors, trunk shot, retro cars, diner neon, 70s grain, close-up on eyes, pop culture props, stylized violence, dialogue tension",
+    "negative": "muted, realistic boring, modern clean, desaturated",
+    "lighting": "霓虹+钨丝混合,硬光",
+    "color": "高饱和红黄,复古暖调",
+    "composition": "低角度仰视,特写循环,车内/餐桌场景",
+    "example": "tarantino style, retro 70s diner interior, bold saturated red and yellow, neon sign glow, trunk shot angle, close-up on eyes, vintage car outside, film grain, stylized tension, pop culture props",
+    "adapter_notes": "→Kolors 删镜头型号写中文场景;→Qwen 展开光线/运动细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "bold saturated colors",
+    "trunk shot",
+    "retro cars",
+    "diner neon",
+    "70s grain",
+    "close-up on eyes",
+    "pop culture props",
+    "stylized violence",
+    "dialogue tension"
+   ]
+  },
+  {
+   "id": "B8",
+   "section": "B. 电影/导演风格",
+   "name_zh": "是枝裕和",
+   "name_en": "Hirokazu Kore-eda",
+   "fields": {
+    "trigger": "kore-eda style, 是枝裕和",
+    "keywords": "natural everyday, warm family moments, soft window light, handheld gentle, shallow depth, quiet observation, domestic details, muted warm tones",
+    "negative": "dramatic, stylized, high contrast, action",
+    "lighting": "窗边自然柔光,黄昏暖光",
+    "color": "低饱和暖调,米白/木褐",
+    "composition": "固定机位长镜,日常局部特写",
+    "example": "kore-eda style, family dinner scene in small apartment, soft window light, gentle handheld, shallow depth of field, quiet observation of everyday gesture, warm muted tones, domestic details, tender stillness",
+    "adapter_notes": "→Kolors 删镜头型号写中文场景;→Qwen 展开光线/运动细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "natural everyday",
+    "warm family moments",
+    "soft window light",
+    "handheld gentle",
+    "shallow depth",
+    "quiet observation",
+    "domestic details",
+    "muted warm tones"
+   ]
+  },
+  {
+   "id": "B9",
+   "section": "B. 电影/导演风格",
+   "name_zh": "希区柯克",
+   "name_en": "Alfred Hitchcock",
+   "fields": {
+    "trigger": "hitchcock style",
+    "keywords": "suspense composition, vertigo spiral, dutch angle, voyeuristic framing, dramatic backlight, silhouette, doppelganger, staircase, birds on wire",
+    "negative": "bright comedy, flat lighting, cheerful, action-packed",
+    "lighting": "低调光,剪影背光,强轮廓光",
+    "color": "冷灰蓝+强暗部,西装黑",
+    "composition": "荷兰角,楼梯螺旋,窗框窥视",
+    "example": "hitchcock style, dutch angle of a man on spiral staircase, voyeuristic window framing, dramatic backlight creating silhouette, cold grey-blue tones, suspense composition, birds flying across window, tension in the air",
+    "adapter_notes": "→Kolors 删镜头型号写中文场景;→Qwen 展开光线/运动细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "suspense composition",
+    "vertigo spiral",
+    "dutch angle",
+    "voyeuristic framing",
+    "dramatic backlight",
+    "silhouette",
+    "doppelganger",
+    "staircase",
+    "birds on wire"
+   ]
+  },
+  {
+   "id": "B10",
+   "section": "B. 电影/导演风格",
+   "name_zh": "大卫·林奇",
+   "name_en": "David Lynch",
+   "fields": {
+    "trigger": "lynch style, david lynch",
+    "keywords": "suburban dread, uncanny Americana, red curtain, distorted reality, humming sound, dream logic, wood paneling, harsh neon in daylight, surreal small town",
+    "negative": "clean narrative, bright cheerful, straightforward, realistic drama",
+    "lighting": "过曝日光+室内昏光,不自然混合",
+    "color": "褪色美国郊区别墅色,红帘/绿草反常饱和",
+    "composition": "对称但失衡,缓慢推镜感,异常细节",
+    "example": "lynch style, suburban american street in harsh daylight, red curtain in an open doorway, wood paneled living room with odd shadow, uncanny normalcy, dream logic, distorted reality, humming atmosphere, surreal small town dread",
+    "adapter_notes": "→Kolors 删镜头型号写中文场景;→Qwen 展开光线/运动细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "suburban dread",
+    "uncanny Americana",
+    "red curtain",
+    "distorted reality",
+    "humming sound",
+    "dream logic",
+    "wood paneling",
+    "harsh neon in daylight",
+    "surreal small town"
+   ]
+  },
+  {
+   "id": "B11",
+   "section": "B. 电影/导演风格",
+   "name_zh": "斯皮尔伯格",
+   "name_en": "Steven Spielberg",
+   "fields": {
+    "trigger": "spielberg style",
+    "keywords": "wonder and awe, lens flare, backlit silhouettes, magical golden light, childlike wonder, grand adventure, practical effects, glowing horizon, gentle music feel",
+    "negative": "dark gritty, cynical, flat lighting, horror",
+    "lighting": "逆光+镜头光晕,黄金时刻,发光地平线",
+    "color": "暖金/天空蓝,高光灿烂",
+    "composition": "剪影望向光,人物小世界大",
+    "example": "spielberg style, backlit silhouette of a boy on a bicycle against a glowing sunset horizon, lens flare, warm golden light, sense of wonder and adventure, practical feel, childlike awe, magical atmosphere",
+    "adapter_notes": "→Kolors 删镜头型号写中文场景;→Qwen 展开光线/运动细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "wonder and awe",
+    "lens flare",
+    "backlit silhouettes",
+    "magical golden light",
+    "childlike wonder",
+    "grand adventure",
+    "practical effects",
+    "glowing horizon",
+    "gentle music feel"
+   ]
+  },
+  {
+   "id": "B12",
+   "section": "B. 电影/导演风格",
+   "name_zh": "维伦纽瓦",
+   "name_en": "Denis Villeneuve",
+   "fields": {
+    "trigger": "villeneuve style",
+    "keywords": "monolithic scale, minimalist composition, desert vastness, muted earth tones, sound design implied, slow grandeur, stark geometry, dust and silence",
+    "negative": "colorful, fast-paced, cluttered, neon",
+    "lighting": "硬朗侧光,沙漠尘光,低调",
+    "color": "沙黄/土灰/墨黑,极低饱和",
+    "composition": "巨物居中,人物极小,对称或留白",
+    "example": "villeneuve style, colossal monolith in vast desert, minimalist composition, tiny human figure for scale, stark geometry, muted sand and grey tones, hard side light, dust in the air, slow grandeur, oppressive silence",
+    "adapter_notes": "→Kolors 删镜头型号写中文场景;→Qwen 展开光线/运动细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "monolithic scale",
+    "minimalist composition",
+    "desert vastness",
+    "muted earth tones",
+    "sound design implied",
+    "slow grandeur",
+    "stark geometry",
+    "dust and silence"
+   ]
+  },
+  {
+   "id": "B13",
+   "section": "B. 电影/导演风格",
+   "name_zh": "库布里克",
+   "name_en": "Stanley Kubrick",
+   "fields": {
+    "trigger": "kubrick style",
+    "keywords": "one-point perspective, symmetrical hallways, wide angle, cold precision, slow tracking, unsettling perfection, clinical lighting, repeating patterns",
+    "negative": "handheld chaos, warm cozy, casual, colorful",
+    "lighting": "冷白均匀光,无菌感",
+    "color": "冷白/金属灰/深黑,高对比克制",
+    "composition": "严格对称,单点透视走廊",
+    "example": "kubrick style, symmetrical hallway with one-point perspective, cold white even lighting, repeating doors, wide angle lens, unsettling perfection, clinical atmosphere, a lone figure at the vanishing point, precise composition",
+    "adapter_notes": "→Kolors 删镜头型号写中文场景;→Qwen 展开光线/运动细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "one-point perspective",
+    "symmetrical hallways",
+    "wide angle",
+    "cold precision",
+    "slow tracking",
+    "unsettling perfection",
+    "clinical lighting",
+    "repeating patterns"
+   ]
+  },
+  {
+   "id": "B14",
+   "section": "B. 电影/导演风格",
+   "name_zh": "黑泽明",
+   "name_en": "Akira Kurosawa",
+   "fields": {
+    "trigger": "kurosawa style",
+    "keywords": "weather as drama, wind in grass, rain battle, dramatic clouds, wide compositions, movement within frame, samurai, lens flare, epic staging",
+    "negative": "static, indoor, flat lighting, modern city",
+    "lighting": "自然光+风/雨/云动势",
+    "color": "墨色+大地色+天空强烈层次",
+    "composition": "宽幅群像,人物错落,天气主导",
+    "example": "kurosawa style, samurai on a hilltop, wind bending tall grass, dramatic clouds rolling, rain beginning, wide composition with multiple figures, weather as drama, natural light, grand staging, movement within frame",
+    "adapter_notes": "→Kolors 删镜头型号写中文场景;→Qwen 展开光线/运动细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "weather as drama",
+    "wind in grass",
+    "rain battle",
+    "dramatic clouds",
+    "wide compositions",
+    "movement within frame",
+    "samurai",
+    "lens flare",
+    "epic staging"
+   ]
+  },
+  {
+   "id": "B15",
+   "section": "B. 电影/导演风格",
+   "name_zh": "姜文",
+   "name_en": "Jiang Wen",
+   "fields": {
+    "trigger": "jiang wen style, 姜文",
+    "keywords": "bold satire, warm nostalgic, exaggerated performance, dramatic contrast, period setting, masculine energy, sun-drenched, playful violence, operatic",
+    "negative": "subtle, realistic restraint, documentary, cold",
+    "lighting": "强烈日光,硬阴影,暖调",
+    "color": "暖黄/红/高饱和,怀旧戏剧感",
+    "composition": "中近景压迫,夸张角度",
+    "example": "jiang wen style, sun-drenched courtyard in 1930s Beijing, exaggerated operatic composition, warm yellow light with hard shadows, bold colors, period setting, playful tension, bravado, nostalgic drama",
+    "adapter_notes": "→Kolors 删镜头型号写中文场景;→Qwen 展开光线/运动细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "bold satire",
+    "warm nostalgic",
+    "exaggerated performance",
+    "dramatic contrast",
+    "period setting",
+    "masculine energy",
+    "sun-drenched",
+    "playful violence",
+    "operatic"
+   ]
+  },
+  {
+   "id": "B16",
+   "section": "B. 电影/导演风格",
+   "name_zh": "奉俊昊",
+   "name_en": "Bong Joon-ho",
+   "fields": {
+    "trigger": "bong joon-ho style",
+    "keywords": "class satire, dramatic shifts, basement to penthouse, social tension, moody interiors, rain, claustrophobic framing, dark humor, precise staging",
+    "negative": "bright comedy, flat, simple, optimistic",
+    "lighting": "明暗分区(地下室暗/上层亮),雨天冷光",
+    "color": "暗绿/冷灰+局部暖",
+    "composition": "阶级对比构图,楼梯纵深",
+    "example": "bong joon-ho style, contrast between a dark basement room and a bright upper-class living room, rain outside window, claustrophobic framing, social tension, precise staging, cold grey light in basement and warm light above, dark humor implied, class divide visible in architecture, two-level interior view",
+    "adapter_notes": "→Kolors 删镜头型号写中文场景;→Qwen 展开光线/运动细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "class satire",
+    "dramatic shifts",
+    "basement to penthouse",
+    "social tension",
+    "moody interiors",
+    "rain",
+    "claustrophobic framing",
+    "dark humor",
+    "precise staging"
+   ]
+  },
+  {
+   "id": "B17",
+   "section": "B. 电影/导演风格",
+   "name_zh": "斯科塞斯",
+   "name_en": "Martin Scorsese",
+   "fields": {
+    "trigger": "scorsese style",
+    "keywords": "fast cuts, handheld energy, urban grit, voiceover feel, slow motion violence, neon streets, 70s grain, close-up faces, restless camera",
+    "negative": "static, clean, pastoral, slow meditative",
+    "lighting": "城市混合光,霓虹+街灯",
+    "color": "暗红/土黄/深蓝,粗粝",
+    "composition": "手持晃动,特写群像,跟拍",
+    "example": "scorsese style, urban street at night, handheld camera energy, close-up faces in neon light, slow motion moment, 70s film grain, gritty atmosphere, restless composition, city heat and tension",
+    "adapter_notes": "→Kolors 删镜头型号写中文场景;→Qwen 展开光线/运动细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "fast cuts",
+    "handheld energy",
+    "urban grit",
+    "voiceover feel",
+    "slow motion violence",
+    "neon streets",
+    "70s grain",
+    "close-up faces",
+    "restless camera"
+   ]
+  },
+  {
+   "id": "B18",
+   "section": "B. 电影/导演风格",
+   "name_zh": "雷德利·斯科特",
+   "name_en": "Ridley Scott",
+   "fields": {
+    "trigger": "ridley scott style",
+    "keywords": "sci-fi noir, atmospheric haze, monumental spaces, backlit smoke, industrial gloom, xenomorph shadow, commercial sheen, vast interiors",
+    "negative": "bright clean, cozy, playful, simple",
+    "lighting": "背光+烟雾体积光,工业冷光",
+    "color": "暗金属/青灰+荧光点缀",
+    "composition": "巨厅透视,烟雾层次,剪影",
+    "example": "ridley scott style, vast industrial interior with haze, backlit figure in smoke, monumental scale, sci-fi noir mood, cold metal and teal tones, shafts of light through grates, oppressive grandeur, gloom, wide hall view, volumetric light through smoke",
+    "adapter_notes": "→Kolors 删镜头型号写中文场景;→Qwen 展开光线/运动细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "sci-fi noir",
+    "atmospheric haze",
+    "monumental spaces",
+    "backlit smoke",
+    "industrial gloom",
+    "xenomorph shadow",
+    "commercial sheen",
+    "vast interiors"
+   ]
+  },
+  {
+   "id": "C1",
+   "section": "C. 建筑/空间风格",
+   "name_zh": "粗野主义",
+   "name_en": "Brutalism",
+   "fields": {
+    "trigger": "brutalist architecture",
+    "keywords": "raw concrete, béton brut, massive geometric forms, repetitive modular elements, monumental scale",
+    "negative": "ornate, glass curtain wall, cozy, wood interior, polished",
+    "lighting": "阴天漫射,硬光强化体量",
+    "color": "混凝土灰,天空灰,苔藓绿",
+    "composition": "24mm 广角仰拍,纵向压迫",
+    "example": "brutalist architecture, raw concrete massive geometric forms, repetitive modular balconies, monumental scale, overcast sky, hard shadow on one facade, 24mm wide angle from below",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开空间细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "raw concrete",
+    "béton brut",
+    "massive geometric forms",
+    "repetitive modular elements",
+    "monumental scale"
+   ]
+  },
+  {
+   "id": "C2",
+   "section": "C. 建筑/空间风格",
+   "name_zh": "后末日废土",
+   "name_en": "Post-Apocalyptic",
+   "fields": {
+    "trigger": "post-apocalyptic, wasteland",
+    "keywords": "overgrown ruins, abandoned city, rusted vehicles, dust, collapsed buildings, nature reclaiming, desolate highway, survivors' camp, muted brown-grey",
+    "negative": "clean, futuristic tech, neon, crowded, pristine",
+    "lighting": "扬尘昏黄,破云光柱,烟霾",
+    "color": "土黄/锈棕/灰绿,低饱和",
+    "composition": "废墟中渺小人物,引导线",
+    "example": "post-apocalyptic wasteland, extreme wide shot, overgrown abandoned city ruins, rusted vehicles half-buried in dust, collapsed skyscrapers, nature reclaiming concrete, dusty haze, muted brown-grey tones, lone survivor walking the highway, harsh noon light through dust",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开空间细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "overgrown ruins",
+    "abandoned city",
+    "rusted vehicles",
+    "dust",
+    "collapsed buildings",
+    "nature reclaiming",
+    "desolate highway",
+    "survivors' camp",
+    "muted brown-grey"
+   ]
+  },
+  {
+   "id": "C3",
+   "section": "C. 建筑/空间风格",
+   "name_zh": "阈限空间",
+   "name_en": "Liminal Space",
+   "fields": {
+    "trigger": "liminal space, liminalcore",
+    "keywords": "empty transition space, infinite corridor, vacant pool, abandoned mall, fluorescent lighting, no people, uncanny familiarity, the backrooms",
+    "negative": "people, furniture, lived-in, cozy, colorful decor",
+    "lighting": "荧光灯冷白,均匀无影",
+    "color": "冷白/米黄,褪色感",
+    "composition": "单点透视,对称,无限延伸",
+    "example": "liminal space, empty mall corridor at closing time, fluorescent lights, polished floor reflecting, no people, no signs of life, uncanny familiarity, one-point perspective, eerie stillness",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开空间细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "empty transition space",
+    "infinite corridor",
+    "vacant pool",
+    "abandoned mall",
+    "fluorescent lighting",
+    "no people",
+    "uncanny familiarity",
+    "the backrooms"
+   ]
+  },
+  {
+   "id": "C4",
+   "section": "C. 建筑/空间风格",
+   "name_zh": "巨构城市",
+   "name_en": "Megacity",
+   "fields": {
+    "trigger": "megacity, megastructure",
+    "keywords": "colossal cityscape, towering megastructures, aerial perspective, endless urban sprawl, scale contrast, tiny figures, monumental urbanism",
+    "negative": "rural, single building, flat skyline, cozy",
+    "lighting": "蓝时/黄昏,城市灯光,雾",
+    "color": "冷蓝灰+暖窗灯点缀",
+    "composition": "航拍极远景,尺度对比",
+    "example": "megacity aerial view, colossal megastructures towering to the sky, endless urban sprawl fading into fog, tiny figures on plaza for scale, blue hour, cold blue-grey with warm window lights, monumental urbanism",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开空间细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "colossal cityscape",
+    "towering megastructures",
+    "aerial perspective",
+    "endless urban sprawl",
+    "scale contrast",
+    "tiny figures",
+    "monumental urbanism"
+   ]
+  },
+  {
+   "id": "C5",
+   "section": "C. 建筑/空间风格",
+   "name_zh": "中式园林",
+   "name_en": "Chinese Garden",
+   "fields": {
+    "trigger": "Chinese classical garden, 中式园林",
+    "keywords": "rockery, moon gate, pavilion, lattice window, koi pond, mist, bonsai, bamboo, curved eaves, poetic atmosphere",
+    "negative": "modern glass, western palace, crowded, neon",
+    "lighting": "晨雾柔光,月光,灯笼暖光",
+    "color": "黛瓦白墙,竹青,木褐,水影",
+    "composition": "框景(月洞门/花窗),借景,留白",
+    "example": "Chinese classical garden, white wall and dark tiles, rockery with moss, moon gate framing bamboo, koi pond with mist, lattice window, morning soft light, poetic quiet atmosphere, ink-wash color palette",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开空间细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "rockery",
+    "moon gate",
+    "pavilion",
+    "lattice window",
+    "koi pond",
+    "mist",
+    "bonsai",
+    "bamboo",
+    "curved eaves",
+    "poetic atmosphere"
+   ]
+  },
+  {
+   "id": "C6",
+   "section": "C. 建筑/空间风格",
+   "name_zh": "废墟神庙",
+   "name_en": "Ruined Temple",
+   "fields": {
+    "trigger": "ruined temple, ancient ruins",
+    "keywords": "crumbling columns, broken statues, overgrown stone, dappled light, sacred decay, moss, fallen blocks, eternal silence",
+    "negative": "modern, restored, bright, tourist-filled, pristine",
+    "lighting": "树影斑驳,斜阳穿林",
+    "color": "石灰+苔绿+暖金斜光",
+    "composition": "柱列透视,仰视断柱",
+    "example": "ruined ancient temple, crumbling marble columns, broken statue half-covered in moss, dappled sunlight through trees, overgrown stone blocks, sacred decay, eternal silence, warm gold light on grey stone",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开空间细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "crumbling columns",
+    "broken statues",
+    "overgrown stone",
+    "dappled light",
+    "sacred decay",
+    "moss",
+    "fallen blocks",
+    "eternal silence"
+   ]
+  },
+  {
+   "id": "C7",
+   "section": "C. 建筑/空间风格",
+   "name_zh": "太空港",
+   "name_en": "Spaceport",
+   "fields": {
+    "trigger": "spaceport, space station",
+    "keywords": "massive docking bay, spacecraft, industrial corridors, panoramic space view, launch towers, engineering scale, cold metal and glass, orbital station",
+    "negative": "cyberpunk neon, fantasy, steam, medieval",
+    "lighting": "舷窗硬光,空间站冷白照明",
+    "color": "金属灰/深空黑+舷窗蓝",
+    "composition": "巨构对比小人,对称轴线",
+    "example": "spaceport interior, massive docking bay with a spacecraft, industrial catwalks, panoramic window showing planet below, launch tower, engineering scale, tiny technicians for scale, cold metal and glass, hard window light, symmetrical axis",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开空间细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "massive docking bay",
+    "spacecraft",
+    "industrial corridors",
+    "panoramic space view",
+    "launch towers",
+    "engineering scale",
+    "cold metal and glass",
+    "orbital station"
+   ]
+  },
+  {
+   "id": "C8",
+   "section": "C. 建筑/空间风格",
+   "name_zh": "江南水乡",
+   "name_en": "Jiangnan Water Town",
+   "fields": {
+    "trigger": "江南水乡, Jiangnan water town",
+    "keywords": "whitewashed walls, black tiles, stone bridge, canal, gondola, willows, misty morning, lanterns, water reflection, rain",
+    "negative": "modern skyscraper, desert, neon, western",
+    "lighting": "晨雾柔光,黄昏灯笼暖光,雨幕",
+    "color": "黛瓦白墙/青灰水面/红灯笼点缀",
+    "composition": "河道透视,拱桥框架,倒影对称",
+    "example": "江南水乡, 白墙黛瓦沿河而建, 石拱桥跨过河道, 乌篷船停靠, 晨雾弥漫, 水面倒影, 柳枝垂落, 几点红灯笼, 青灰调, 宁静诗意, 雨后湿润感",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开空间细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "whitewashed walls",
+    "black tiles",
+    "stone bridge",
+    "canal",
+    "gondola",
+    "willows",
+    "misty morning",
+    "lanterns",
+    "water reflection",
+    "rain"
+   ]
+  },
+  {
+   "id": "C9",
+   "section": "C. 建筑/空间风格",
+   "name_zh": "徽派建筑",
+   "name_en": "Huizhou Architecture",
+   "fields": {
+    "trigger": "徽派, Huizhou architecture",
+    "keywords": "horse-head walls, white plaster, black tiles, carved gate, courtyard, ink landscape, ancestral hall, wood carvings, mountain village",
+    "negative": "modern glass, skyscraper, colorful, western",
+    "lighting": "晨雾天光,黄昏暖檐",
+    "color": "白墙/黛瓦/青灰/木褐",
+    "composition": "马头墙层叠,天井框景,远山衬景",
+    "example": "徽派建筑, 粉墙黛瓦马头墙, 层叠的白色山墙在晨雾中, 青灰瓦檐, 木雕门楼, 天井院落, 远处青山如黛, 墨色氛围, 静谧古村, 晨光透过薄雾",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开空间细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "horse-head walls",
+    "white plaster",
+    "black tiles",
+    "carved gate",
+    "courtyard",
+    "ink landscape",
+    "ancestral hall",
+    "wood carvings",
+    "mountain village"
+   ]
+  },
+  {
+   "id": "C10",
+   "section": "C. 建筑/空间风格",
+   "name_zh": "地中海小镇",
+   "name_en": "Mediterranean Town",
+   "fields": {
+    "trigger": "mediterranean, greek island",
+    "keywords": "whitewashed walls, blue domes, narrow alleys, bougainvillea, terracotta, sea view, stone steps, sun-washed, Santorini",
+    "negative": "grey, industrial, modern skyscraper, cold",
+    "lighting": "正午阳光,海面反光,蓝白强对比",
+    "color": "纯白/圣托里尼蓝/陶土橙/三角梅紫红",
+    "composition": "阶梯巷道,圆顶天际线,海景纵深",
+    "example": "mediterranean town, whitewashed houses with blue domes, narrow stone alleys with bougainvillea, terracotta pots, sea view in the distance, bright noon sunlight, strong blue-white contrast, Santorini feel, sun-washed colors",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开空间细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "whitewashed walls",
+    "blue domes",
+    "narrow alleys",
+    "bougainvillea",
+    "terracotta",
+    "sea view",
+    "stone steps",
+    "sun-washed",
+    "Santorini"
+   ]
+  },
+  {
+   "id": "C11",
+   "section": "C. 建筑/空间风格",
+   "name_zh": "日式建筑",
+   "name_en": "Japanese Architecture",
+   "fields": {
+    "trigger": "japanese architecture, 和風",
+    "keywords": "sliding shoji screens, tatami room, torii gate, wooden engawa veranda, zen garden, koi pond, curved roof tiles, lanterns, wabi-sabi",
+    "negative": "western, modern glass, colorful, ornate",
+    "lighting": "纸门透光,竹影,黄昏灯笼",
+    "color": "木褐/纸白/青苔绿/墨",
+    "composition": "框景(门/窗),对称,低视角",
+    "example": "japanese architecture, tatami room with sliding shoji screens, light diffusing through rice paper, wooden engawa veranda, zen garden with raked sand, low angle view, wabi-sabi, warm wood and paper white, quiet elegance",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开空间细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "sliding shoji screens",
+    "tatami room",
+    "torii gate",
+    "wooden engawa veranda",
+    "zen garden",
+    "koi pond",
+    "curved roof tiles",
+    "lanterns",
+    "wabi-sabi"
+   ]
+  },
+  {
+   "id": "C12",
+   "section": "C. 建筑/空间风格",
+   "name_zh": "未来都市",
+   "name_en": "Neo-Futuristic City",
+   "fields": {
+    "trigger": "neo-futurism, futuristic city",
+    "keywords": "sleek curves, white and glass, vertical gardens, floating transport, clean geometry, sky bridges, biophilic design, utopian skyline, soft ambient glow",
+    "negative": "cyberpunk grime, neon overload, dystopian decay, steam",
+    "lighting": "柔和环境光,大面积发光面板",
+    "color": "白/浅灰+玻璃蓝绿+植被绿",
+    "composition": "仰视曲线楼,空中廊桥透视",
+    "example": "neo-futuristic city, sleek curved white buildings with vertical gardens, sky bridges between towers, floating transport pods, soft ambient glow, clean geometry, utopian skyline, glass and greenery, bright airy atmosphere",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开空间细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "sleek curves",
+    "white and glass",
+    "vertical gardens",
+    "floating transport",
+    "clean geometry",
+    "sky bridges",
+    "biophilic design",
+    "utopian skyline",
+    "soft ambient glow"
+   ]
+  },
+  {
+   "id": "C13",
+   "section": "C. 建筑/空间风格",
+   "name_zh": "哥特式教堂",
+   "name_en": "Gothic Cathedral",
+   "fields": {
+    "trigger": "gothic cathedral",
+    "keywords": "ribbed vaults, pointed arches, flying buttresses, rose window, stained glass, towering nave, stone columns, cathedral light",
+    "negative": "modern, minimal, glass tower, cozy",
+    "lighting": "彩窗透光,烛光,高窗天光",
+    "color": "石灰+彩窗红蓝+烛金",
+    "composition": "仰视拱顶,中轴对称,纵深",
+    "example": "gothic cathedral interior, ribbed vaults and pointed arches, towering nave, rose window casting colored light, stone columns receding, candlelight, solemn height, stained glass glow, symmetric axis",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开空间细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "ribbed vaults",
+    "pointed arches",
+    "flying buttresses",
+    "rose window",
+    "stained glass",
+    "towering nave",
+    "stone columns",
+    "cathedral light"
+   ]
+  },
+  {
+   "id": "C14",
+   "section": "C. 建筑/空间风格",
+   "name_zh": "拜占庭",
+   "name_en": "Byzantine",
+   "fields": {
+    "trigger": "byzantine architecture",
+    "keywords": "mosaic domes, golden interior, pendentives, Hagia Sophia, gilded icons, marble columns, arched windows, holy light, intricate tile",
+    "negative": "minimal, wooden, modern, gothic",
+    "lighting": "穹顶光环,金色反射",
+    "color": "金箔/深蓝/砖红+马赛克",
+    "composition": "仰视穹顶,对称中轴,马赛克满铺",
+    "example": "byzantine interior, golden mosaic dome, Hagia Sophia style, pendentives, gilded icons, marble columns, arched windows, warm holy light reflecting off gold, deep blue and red mosaics, grand symmetry",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开空间细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "mosaic domes",
+    "golden interior",
+    "pendentives",
+    "Hagia Sophia",
+    "gilded icons",
+    "marble columns",
+    "arched windows",
+    "holy light",
+    "intricate tile"
+   ]
+  },
+  {
+   "id": "C15",
+   "section": "C. 建筑/空间风格",
+   "name_zh": "福建土楼",
+   "name_en": "Fujian Tulou",
+   "fields": {
+    "trigger": "福建土楼, tulou",
+    "keywords": "circular earthen building, concentric rings, communal courtyard, clay walls, wooden balconies, tiled roofs, mountain valley, ancient fortress home",
+    "negative": "modern, glass, skyscraper, western",
+    "lighting": "天井光,黄昏暖墙",
+    "color": "夯土黄/青瓦灰/木褐",
+    "composition": "圆形中庭透视,环形楼层,仰视",
+    "example": "福建土楼, 圆形夯土建筑, 环形木结构楼层, 天井中庭, 青瓦屋顶, 山间谷地, 黄昏暖光打在土墙上, 古朴厚重, 俯视可见完整圆环, 家庭堡垒的岁月感",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开空间细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "circular earthen building",
+    "concentric rings",
+    "communal courtyard",
+    "clay walls",
+    "wooden balconies",
+    "tiled roofs",
+    "mountain valley",
+    "ancient fortress home"
+   ]
+  },
+  {
+   "id": "C16",
+   "section": "C. 建筑/空间风格",
+   "name_zh": "摩天大楼",
+   "name_en": "Skyscraper",
+   "fields": {
+    "trigger": "skyscraper, high-rise",
+    "keywords": "glass curtain wall, steel frame, vertical lines, observation deck, looking down, looking up, cloud level, city grid below, reflective facade",
+    "negative": "low-rise, rural, horizontal, cozy",
+    "lighting": "玻璃反光,高空日光/城市夜景",
+    "color": "玻璃蓝绿+钢灰+天空",
+    "composition": "仰视通天,俯视城市网格,对角线",
+    "example": "skyscraper looking up from street level, glass curtain wall reflecting clouds, vertical lines converging to sky, steel frame visible, dizzying height, city below, blue-grey glass tones, modern verticality, sense of scale, bright reflected daylight",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开空间细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "glass curtain wall",
+    "steel frame",
+    "vertical lines",
+    "observation deck",
+    "looking down",
+    "looking up",
+    "cloud level",
+    "city grid below",
+    "reflective facade"
+   ]
+  },
+  {
+   "id": "C17",
+   "section": "C. 建筑/空间风格",
+   "name_zh": "地下防空洞",
+   "name_en": "Underground Bunker",
+   "fields": {
+    "trigger": "underground bunker, fallout shelter",
+    "keywords": "concrete walls, bare bulbs, metal bunks, air ducts, emergency light, stocked shelves, cold damp, utilitarian, sealed heavy door",
+    "negative": "cozy, modern, bright, decorated",
+    "lighting": "裸露灯泡冷光,应急灯绿光",
+    "color": "混凝土灰+铁锈+应急绿",
+    "composition": "纵深通道,门框透视,压抑低顶",
+    "example": "underground bunker interior, raw concrete walls, bare bulbs hanging, metal bunks in rows, air ducts along ceiling, dim emergency light, stocked shelves, cold damp atmosphere, heavy sealed door, utilitarian gloom",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开空间细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "concrete walls",
+    "bare bulbs",
+    "metal bunks",
+    "air ducts",
+    "emergency light",
+    "stocked shelves",
+    "cold damp",
+    "utilitarian",
+    "sealed heavy door"
+   ]
+  },
+  {
+   "id": "C18",
+   "section": "C. 建筑/空间风格",
+   "name_zh": "灯塔",
+   "name_en": "Lighthouse",
+   "fields": {
+    "trigger": "lighthouse",
+    "keywords": "lone tower, cliff edge, rotating beam, storm waves, white and red stripes, keeper's cottage, beacon light, sea mist, isolation",
+    "negative": "city, bright sunny inland, crowded",
+    "lighting": "光束旋转,月光/风暴光",
+    "color": "白塔+红条+墨蓝海",
+    "composition": "塔立悬崖,光束扫海,低角度",
+    "example": "lighthouse on a cliff, white tower with red stripes, rotating beam sweeping the dark sea, storm waves below, sea mist, keeper's cottage at the base, isolation and duty, moonlight breaking through clouds, dramatic coastal light",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开空间细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "lone tower",
+    "cliff edge",
+    "rotating beam",
+    "storm waves",
+    "white and red stripes",
+    "keeper's cottage",
+    "beacon light",
+    "sea mist",
+    "isolation"
+   ]
+  },
+  {
+   "id": "D1",
+   "section": "D. 网络美学（-core 系）",
+   "name_zh": "梦核",
+   "name_en": "Dreamcore",
+   "fields": {
+    "trigger": "dreamcore, dreamlike nostalgia",
+    "keywords": "nostalgic childhood space, soft glow, pastel colors, VHS texture, memory blur, familiar yet strange, playground, school corridor, old mall, warm but uneasy",
+    "negative": "sharp focus, modern, scary, dark horror, neon",
+    "lighting": "过曝柔光,记忆感模糊",
+    "color": "粉彩低饱和,米黄/粉/薄荷绿",
+    "composition": "日常场景错位,熟悉又陌生",
+    "example": "dreamcore aesthetic, empty 90s school corridor, soft overexposed light from window, pastel colors, VHS texture, nostalgic but slightly unsettling, familiar yet strange, no people, memory-like blur",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开氛围细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "nostalgic childhood space",
+    "soft glow",
+    "pastel colors",
+    "VHS texture",
+    "memory blur",
+    "familiar yet strange",
+    "playground",
+    "school corridor",
+    "old mall",
+    "warm but uneasy"
+   ]
+  },
+  {
+   "id": "D2",
+   "section": "D. 网络美学（-core 系）",
+   "name_zh": "怪核",
+   "name_en": "Weirdcore",
+   "fields": {
+    "trigger": "weirdcore",
+    "keywords": "low quality, glitch, uncanny, distorted, cryptic text, out of place, unsettling, liminal, analog distortion, eerie collage",
+    "negative": "clean, polished, beautiful, coherent, high quality",
+    "lighting": "过曝/欠曝,不自然光",
+    "color": "褪色/灰绿/局部鲜艳",
+    "composition": "失衡,拼贴感,违和元素",
+    "example": "weirdcore image, low quality analog photo, glitch distortion, a bedroom with a tree growing through the floor, cryptic handwritten text, uncanny unsettling mood, faded colors, distorted perspective, harsh unnatural flash lighting",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开氛围细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "low quality",
+    "glitch",
+    "uncanny",
+    "distorted",
+    "cryptic text",
+    "out of place",
+    "unsettling",
+    "liminal",
+    "analog distortion",
+    "eerie collage"
+   ]
+  },
+  {
+   "id": "D3",
+   "section": "D. 网络美学（-core 系）",
+   "name_zh": "雨核",
+   "name_en": "Raincore",
+   "fields": {
+    "trigger": "raincore",
+    "keywords": "heavy rain, wet reflections, window raindrops, blurred city, cozy inside, moody sky, water droplets, grey-blue tones, rain sound",
+    "negative": "sunny, dry, bright cheerful, harsh shadows",
+    "lighting": "阴雨漫射,室内暖灯",
+    "color": "冷灰蓝+室内暖光",
+    "composition": "窗内看外,雨中街道,水洼倒影",
+    "example": "raincore, heavy rain on window glass, blurred city outside, a warm lamp glowing inside the room, water droplets running down, cold grey-blue tones with warm indoor light, wet reflections, close-up through window, shallow depth of field",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开氛围细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "heavy rain",
+    "wet reflections",
+    "window raindrops",
+    "blurred city",
+    "cozy inside",
+    "moody sky",
+    "water droplets",
+    "grey-blue tones",
+    "rain sound"
+   ]
+  },
+  {
+   "id": "D4",
+   "section": "D. 网络美学（-core 系）",
+   "name_zh": "池核",
+   "name_en": "Poolcore",
+   "fields": {
+    "trigger": "poolcore",
+    "keywords": "empty swimming pool, still water, tiles, reflection, indoor pool light, echo, chlorine blue, liminal water, vacant",
+    "negative": "crowded, beach, sunny fun, people swimming",
+    "lighting": "天窗光,水面反光",
+    "color": "池水蓝绿+瓷砖白",
+    "composition": "俯视水面,对称泳道,空无一人",
+    "example": "poolcore, empty indoor swimming pool, perfectly still turquoise water, white tile walls, skylight reflection on water surface, no people, echo of silence, liminal atmosphere, blue-green tones",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开氛围细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "empty swimming pool",
+    "still water",
+    "tiles",
+    "reflection",
+    "indoor pool light",
+    "echo",
+    "chlorine blue",
+    "liminal water",
+    "vacant"
+   ]
+  },
+  {
+   "id": "D5",
+   "section": "D. 网络美学（-core 系）",
+   "name_zh": "植核",
+   "name_en": "Plantcore",
+   "fields": {
+    "trigger": "plantcore, overgrown",
+    "keywords": "plants reclaiming, moss covered, vines on structures, greenhouse, lush greenery, nature takeover, humid, ferns, botanical ruins",
+    "negative": "desert, dead, sterile, minimal",
+    "lighting": "温室散射光,叶影",
+    "color": "深绿/苔绿/雾白",
+    "composition": "植被前景框架,爬藤引导线",
+    "example": "plantcore, abandoned greenhouse overgrown with ferns and vines, moss covering concrete paths, lush green everywhere, humid atmosphere, soft diffused light through glass, nature reclaiming, deep greens",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开氛围细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "plants reclaiming",
+    "moss covered",
+    "vines on structures",
+    "greenhouse",
+    "lush greenery",
+    "nature takeover",
+    "humid",
+    "ferns",
+    "botanical ruins"
+   ]
+  },
+  {
+   "id": "D6",
+   "section": "D. 网络美学（-core 系）",
+   "name_zh": "中式梦核",
+   "name_en": "Chinese Dreamcore",
+   "fields": {
+    "trigger": "中式梦核, Chinese dreamcore",
+    "keywords": "千禧年记忆, 旧小区, 老式家具, 斑驳墙面, 阳光斜照, VHS质感, 半透明窗帘, 记忆模糊感, 怀旧不安",
+    "negative": "现代建筑, 科幻, 恐怖, 鲜艳, 清晰锐利",
+    "lighting": "过曝柔光,夕阳斜照,记忆感模糊",
+    "color": "米黄/粉彩/褪色,低饱和",
+    "composition": "日常场景错位,熟悉又陌生",
+    "example": "中式梦核, 千禧年旧小区的楼道, 老式防盗门, 斑驳的米黄墙面, 夕阳从窗户斜照进来, 地面有拖把的水痕, VHS质感, 怀旧而微微不安",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开氛围细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "千禧年记忆",
+    "旧小区",
+    "老式家具",
+    "斑驳墙面",
+    "阳光斜照",
+    "VHS质感",
+    "半透明窗帘",
+    "记忆模糊感",
+    "怀旧不安"
+   ]
+  },
+  {
+   "id": "D7",
+   "section": "D. 网络美学（-core 系）",
+   "name_zh": "旧核",
+   "name_en": "Oldcore / 复古核",
+   "fields": {
+    "trigger": "oldcore, retro core",
+    "keywords": "1950s-80s nostalgia, old photographs, CRT TV, wood paneling, vintage tech, family album, retro kitchen, warm decay, forgotten era",
+    "negative": "modern clean, futuristic, sharp digital, neon cyberpunk",
+    "lighting": "旧照片泛黄光,CRT 荧幕光",
+    "color": "棕褐/米黄/褪色红,暖旧调",
+    "composition": "家庭旧物堆叠,电视/收音机时代道具",
+    "example": "oldcore aesthetic, 1980s family living room, wood paneling walls, CRT television glowing, retro kitchen appliances, faded family photos on shelf, warm decay, forgotten era, vintage texture, brown and beige tones",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开氛围细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "1950s-80s nostalgia",
+    "old photographs",
+    "CRT TV",
+    "wood paneling",
+    "vintage tech",
+    "family album",
+    "retro kitchen",
+    "warm decay",
+    "forgotten era"
+   ]
+  },
+  {
+   "id": "D8",
+   "section": "D. 网络美学（-core 系）",
+   "name_zh": "云核",
+   "name_en": "Cloudcore",
+   "fields": {
+    "trigger": "cloudcore",
+    "keywords": "floating islands, clouds below, soft dreamy sky, surreal altitude, lone structure on cloud, gentle pastel, weightless, ethereal",
+    "negative": "dark, stormy, grounded, gritty, neon",
+    "lighting": "高空柔光,云海反照",
+    "color": "云白/天空蓝/淡金",
+    "composition": "云海为地平,悬浮主体,留白",
+    "example": "cloudcore, a small white chapel floating on a cloud sea, wide shot, soft dreamy sky, pastel blue and gold, ethereal weightless atmosphere, clouds below as horizon, gentle surrealism, lone structure, airy composition, high-altitude soft light",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开氛围细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "floating islands",
+    "clouds below",
+    "soft dreamy sky",
+    "surreal altitude",
+    "lone structure on cloud",
+    "gentle pastel",
+    "weightless",
+    "ethereal"
+   ]
+  },
+  {
+   "id": "D9",
+   "section": "D. 网络美学（-core 系）",
+   "name_zh": "伤核",
+   "name_en": "Traumacore",
+   "fields": {
+    "trigger": "traumacore",
+    "keywords": "childhood hurt, broken toys, faded photos, soft violence, melancholy innocence, band-aids, tear-stained, nursery rhymes, gentle decay",
+    "negative": "happy, bright cheerful, clean, polished, aggressive gore",
+    "lighting": "过曝软光,记忆碎片感",
+    "color": "粉彩褪色+灰暗局部,婴儿蓝粉",
+    "composition": "童年物件特写,孤立主体,负空间",
+    "example": "traumacore, a worn teddy bear on a nursery floor, faded pastel pink, tear stains on its fur, broken crayons scattered, soft overexposed light, melancholy innocence, gentle decay, nostalgic hurt, quiet sadness",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开氛围细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "childhood hurt",
+    "broken toys",
+    "faded photos",
+    "soft violence",
+    "melancholy innocence",
+    "band-aids",
+    "tear-stained",
+    "nursery rhymes",
+    "gentle decay"
+   ]
+  },
+  {
+   "id": "D10",
+   "section": "D. 网络美学（-core 系）",
+   "name_zh": "天使核",
+   "name_en": "Angelcore",
+   "fields": {
+    "trigger": "angelcore",
+    "keywords": "soft white wings, halo glow, heavenly light, marble statues, clouds, ethereal purity, white lace, church light, serene beauty",
+    "negative": "dark, gothic horror, gritty, neon, sinful",
+    "lighting": "天窗圣光,柔白光晕",
+    "color": "纯白/浅金/天蓝,高调明亮",
+    "composition": "仰视圣像,羽毛飘落,对称",
+    "example": "angelcore, white marble angel statue in soft heavenly light, halo glow, delicate wings, white lace and light fabric, clouds outside the window, ethereal purity, serene beauty, warm golden-white palette, gentle holy atmosphere",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开氛围细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "soft white wings",
+    "halo glow",
+    "heavenly light",
+    "marble statues",
+    "clouds",
+    "ethereal purity",
+    "white lace",
+    "church light",
+    "serene beauty"
+   ]
+  },
+  {
+   "id": "D11",
+   "section": "D. 网络美学（-core 系）",
+   "name_zh": "梦境核",
+   "name_en": "Dreamlike Liminal",
+   "fields": {
+    "trigger": "dreamlike liminal, 梦境阈限",
+    "keywords": "unreal architecture, floating rooms, impossible stairs, corridor to nowhere, soft fog, muted pastel, gravity defied, quiet wonder",
+    "negative": "grounded, realistic physics, dark horror, gritty",
+    "lighting": "均匀梦幻光,无影",
+    "color": "灰白/雾蓝/淡粉,低饱和",
+    "composition": "悬浮结构,无尽延伸,错位透视",
+    "example": "dreamlike liminal, a floating staircase in a fog-filled hall, impossible architecture, corridor leading to nowhere, soft diffused light, muted pastel tones, gravity defied, quiet wonder, surreal but calm",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开氛围细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "unreal architecture",
+    "floating rooms",
+    "impossible stairs",
+    "corridor to nowhere",
+    "soft fog",
+    "muted pastel",
+    "gravity defied",
+    "quiet wonder"
+   ]
+  },
+  {
+   "id": "D12",
+   "section": "D. 网络美学（-core 系）",
+   "name_zh": "蒸汽波",
+   "name_en": "Vaporwave",
+   "fields": {
+    "trigger": "vaporwave, 蒸汽波",
+    "keywords": "pink and cyan grid, chrome statues, roman busts, neon sunset, retro computer, glitch text, tape deck, mall aesthetic, nostalgic 80s digital, VHS scanlines",
+    "negative": "natural color, photorealistic, warm film, modern clean",
+    "lighting": "霓虹紫粉+青蓝,荧光感",
+    "color": "品红/青蓝/紫,高饱和荧光",
+    "composition": "地平线网格,居中雕像,对称",
+    "example": "vaporwave, pink and cyan grid horizon, chrome roman bust statue, neon sunset gradient, retro computer interface, glitch text, VHS scanlines, 80s digital nostalgia, mall aesthetic, purple-pink glow, surreal synthetic mood",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开氛围细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "pink and cyan grid",
+    "chrome statues",
+    "roman busts",
+    "neon sunset",
+    "retro computer",
+    "glitch text",
+    "tape deck",
+    "mall aesthetic",
+    "nostalgic 80s digital",
+    "VHS scanlines"
+   ]
+  },
+  {
+   "id": "D13",
+   "section": "D. 网络美学（-core 系）",
+   "name_zh": "噩梦核",
+   "name_en": "Nightmarecore",
+   "fields": {
+    "trigger": "nightmarecore",
+    "keywords": "dark shadows, twisted forms, childhood fear, corrupted innocence, dim nightmare light, distorted toys, black and red, uncanny horror, dread",
+    "negative": "bright, cheerful, cozy, clean, comedic",
+    "lighting": "昏暗,阴影吞噬,红光局部",
+    "color": "黑+暗红+褪色局部",
+    "composition": "失衡,阴影笼罩,扭曲主体",
+    "example": "nightmarecore, a twisted childhood bedroom in darkness, distorted shadows on the wall, a corrupted teddy bear in a corner, dim nightmare light, black and deep red palette, dread and unease, familiar space made wrong, oppressive gloom",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开氛围细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "dark shadows",
+    "twisted forms",
+    "childhood fear",
+    "corrupted innocence",
+    "dim nightmare light",
+    "distorted toys",
+    "black and red",
+    "uncanny horror",
+    "dread"
+   ]
+  },
+  {
+   "id": "D14",
+   "section": "D. 网络美学（-core 系）",
+   "name_zh": "糖果核",
+   "name_en": "Candycore",
+   "fields": {
+    "trigger": "candycore, pastel sweet",
+    "keywords": "pastel pink blue mint, candy clouds, frosting textures, sugary fantasy, soft toys, marshmallow landscape, bubblegum, cute kawaii, sweet dream",
+    "negative": "dark, gritty, realistic, muted, horror",
+    "lighting": "柔光,奶油感",
+    "color": "粉/薄荷绿/天蓝,奶甜调",
+    "composition": "圆润造型,柔软质感",
+    "example": "candycore, pastel pink and mint landscape made of frosting textures, candy clouds in a bubblegum sky, soft plush toys, marshmallow hills, sugary fantasy, cute kawaii mood, dreamy sweet glow, soft rounded shapes",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开氛围细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "pastel pink blue mint",
+    "candy clouds",
+    "frosting textures",
+    "sugary fantasy",
+    "soft toys",
+    "marshmallow landscape",
+    "bubblegum",
+    "cute kawaii",
+    "sweet dream"
+   ]
+  },
+  {
+   "id": "D15",
+   "section": "D. 网络美学（-core 系）",
+   "name_zh": "花核",
+   "name_en": "Bloomcore",
+   "fields": {
+    "trigger": "bloomcore, floral dream",
+    "keywords": "flowers everywhere, overgrown petals, soft focus, botanical dream, pink blossoms, petals in air, gentle nostalgia, garden reverie, spring haze",
+    "negative": "winter, dead, minimal, urban concrete",
+    "lighting": "柔焦透光,花瓣透光",
+    "color": "樱粉/嫩绿/雾白",
+    "composition": "花海满铺,花瓣飘落,虚化",
+    "example": "bloomcore, flowers covering an old wooden house, soft focus, pink petals drifting through air, overgrown garden dream, botanical reverie, gentle nostalgia, spring haze, warm dreamy light, lush and soft",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开氛围细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "flowers everywhere",
+    "overgrown petals",
+    "soft focus",
+    "botanical dream",
+    "pink blossoms",
+    "petals in air",
+    "gentle nostalgia",
+    "garden reverie",
+    "spring haze"
+   ]
+  },
+  {
+   "id": "D16",
+   "section": "D. 网络美学（-core 系）",
+   "name_zh": "赛博核",
+   "name_en": "Cybercore",
+   "fields": {
+    "trigger": "cybercore",
+    "keywords": "digital grid, circuit patterns, glowing data streams, futuristic helmet, holographic code, neon veins, synthwave energy, machine beauty",
+    "negative": "organic natural, retro 80s mall, vaporwave pink, rustic",
+    "lighting": "霓虹+屏幕光,数据流光",
+    "color": "电青/霓虹紫+荧光绿",
+    "composition": "网格透视,数据流线,发光元素",
+    "example": "cybercore, a figure in futuristic helmet with glowing circuit patterns, holographic code floating, neon data streams, digital grid floor, synthwave energy, electric cyan and violet, machine beauty, glowing veins of light",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开氛围细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "digital grid",
+    "circuit patterns",
+    "glowing data streams",
+    "futuristic helmet",
+    "holographic code",
+    "neon veins",
+    "synthwave energy",
+    "machine beauty"
+   ]
+  },
+  {
+   "id": "E1",
+   "section": "E. 摄影风格",
+   "name_zh": "胶片摄影",
+   "name_en": "Film Photography",
+   "fields": {
+    "trigger": "35mm film, analog photo",
+    "keywords": "film grain, Kodak Portra, Fujifilm, natural colors, soft contrast, light leak, halation, organic tones",
+    "negative": "digital sharpness, HDR, plastic look, oversaturated",
+    "lighting": "自然光,略过曝",
+    "color": "Portra 暖调/富士绿调",
+    "composition": "纪实抓拍,不完美构图",
+    "example": "35mm film photo, Kodak Portra 400, soft natural tones, film grain, gentle contrast, slight light leak, organic warm skin tones, candid moment, analog feel",
+    "adapter_notes": "→Kolors 删相机型号写中文;→Qwen 保留镜头参数;→Seedream 要素齐全(人像最强)"
+   },
+   "extra": {},
+   "keywords_list": [
+    "film grain",
+    "Kodak Portra",
+    "Fujifilm",
+    "natural colors",
+    "soft contrast",
+    "light leak",
+    "halation",
+    "organic tones"
+   ]
+  },
+  {
+   "id": "E2",
+   "section": "E. 摄影风格",
+   "name_zh": "长曝光",
+   "name_en": "Long Exposure",
+   "fields": {
+    "trigger": "long exposure",
+    "keywords": "silky water, light trails, star trails, motion blur clouds, ND filter, smooth surfaces, time compression",
+    "negative": "frozen action, sharp moving objects, handheld shake",
+    "lighting": "低光+慢门,夜晚/黎明",
+    "color": "冷蓝夜+暖光轨",
+    "composition": "静止前景+流动背景",
+    "example": "long exposure city night, car light trails streaming through streets, silky river water, star trails above, ND filter smoothness, cold blue night with warm light trails, time compressed",
+    "adapter_notes": "→Kolors 删相机型号写中文;→Qwen 保留镜头参数;→Seedream 要素齐全(人像最强)"
+   },
+   "extra": {},
+   "keywords_list": [
+    "silky water",
+    "light trails",
+    "star trails",
+    "motion blur clouds",
+    "ND filter",
+    "smooth surfaces",
+    "time compression"
+   ]
+  },
+  {
+   "id": "E3",
+   "section": "E. 摄影风格",
+   "name_zh": "航拍",
+   "name_en": "Aerial",
+   "fields": {
+    "trigger": "aerial view, drone shot",
+    "keywords": "top-down, bird's eye, patterns, geometry from above, landscape abstraction, DJI, satellite-like, scale revealed",
+    "negative": "ground level, eye level, close-up",
+    "lighting": "正午顶光/黄昏低角",
+    "color": "地形色块,高饱和",
+    "composition": "俯视图案化,对称",
+    "example": "aerial drone view, top-down of terraced rice fields, geometric patterns, lush green terraces with water reflections, DJI Hasselblad look, pattern abstraction, morning light, sweeping scale",
+    "adapter_notes": "→Kolors 删相机型号写中文;→Qwen 保留镜头参数;→Seedream 要素齐全(人像最强)"
+   },
+   "extra": {},
+   "keywords_list": [
+    "top-down",
+    "bird's eye",
+    "patterns",
+    "geometry from above",
+    "landscape abstraction",
+    "DJI",
+    "satellite-like",
+    "scale revealed"
+   ]
+  },
+  {
+   "id": "E4",
+   "section": "E. 摄影风格",
+   "name_zh": "微距",
+   "name_en": "Macro",
+   "fields": {
+    "trigger": "macro photography",
+    "keywords": "extreme close-up, insect eye, dew drop, petal texture, shallow depth of field, magnification, tiny world, bokeh",
+    "negative": "wide scene, landscape, distant subject",
+    "lighting": "环形灯/自然侧光",
+    "color": "局部高饱和+背景虚化",
+    "composition": "主体充满,浅景深",
+    "example": "macro photography, extreme close-up of a dragonfly on a leaf, dew drops, wing texture visible, shallow depth of field, creamy bokeh background, morning light, tiny world detail",
+    "adapter_notes": "→Kolors 删相机型号写中文;→Qwen 保留镜头参数;→Seedream 要素齐全(人像最强)"
+   },
+   "extra": {},
+   "keywords_list": [
+    "extreme close-up",
+    "insect eye",
+    "dew drop",
+    "petal texture",
+    "shallow depth of field",
+    "magnification",
+    "tiny world",
+    "bokeh"
+   ]
+  },
+  {
+   "id": "E5",
+   "section": "E. 摄影风格",
+   "name_zh": "移轴",
+   "name_en": "Tilt-Shift",
+   "fields": {
+    "trigger": "tilt-shift, miniature effect",
+    "keywords": "selective focus, miniature city, toy-like, bokeh blur top and bottom, forced perspective, tiny people",
+    "negative": "deep focus, realistic scale, full sharpness",
+    "lighting": "明亮均匀",
+    "color": "鲜艳玩具感",
+    "composition": "高处俯视,焦点窄带",
+    "example": "tilt-shift photo, miniature city effect, cars and people look like toys, narrow sharp focus band, blur top and bottom, high angle, bright cheerful light, forced perspective",
+    "adapter_notes": "→Kolors 删相机型号写中文;→Qwen 保留镜头参数;→Seedream 要素齐全(人像最强)"
+   },
+   "extra": {},
+   "keywords_list": [
+    "selective focus",
+    "miniature city",
+    "toy-like",
+    "bokeh blur top and bottom",
+    "forced perspective",
+    "tiny people"
+   ]
+  },
+  {
+   "id": "E6",
+   "section": "E. 摄影风格",
+   "name_zh": "双重曝光",
+   "name_en": "Double Exposure",
+   "fields": {
+    "trigger": "double exposure",
+    "keywords": "two images merged, silhouette with landscape inside, transparency overlap, ghostly, layered, film magic",
+    "negative": "single exposure, clean separation, photorealistic single subject",
+    "lighting": "逆光剪影为底",
+    "color": "底图色+叠加图调",
+    "composition": "人形/山形轮廓+内部风景",
+    "example": "double exposure, silhouette of a woman's profile filled with a pine forest and misty mountains, ghostly transparency, layered film effect, warm light through trees, poetic",
+    "adapter_notes": "→Kolors 删相机型号写中文;→Qwen 保留镜头参数;→Seedream 要素齐全(人像最强)"
+   },
+   "extra": {},
+   "keywords_list": [
+    "two images merged",
+    "silhouette with landscape inside",
+    "transparency overlap",
+    "ghostly",
+    "layered",
+    "film magic"
+   ]
+  },
+  {
+   "id": "E7",
+   "section": "E. 摄影风格",
+   "name_zh": "黑白街拍",
+   "name_en": "Monochrome Street",
+   "fields": {
+    "trigger": "monochrome street photography",
+    "keywords": "black and white, high contrast, decisive moment, shadow play, urban geometry, candid, grain, Leica, documentary",
+    "negative": "color, soft pastel, studio, posed",
+    "lighting": "硬光强影,侧逆光",
+    "color": "纯黑白,灰阶丰富",
+    "composition": "抓拍瞬间,光影切割,几何框",
+    "example": "monochrome street photography, Leica look, high contrast black and white, decisive moment, shadow slicing across alley, candid pedestrian, film grain, urban geometry, documentary feel",
+    "adapter_notes": "→Kolors 删相机型号写中文;→Qwen 保留镜头参数;→Seedream 要素齐全(人像最强)"
+   },
+   "extra": {},
+   "keywords_list": [
+    "black and white",
+    "high contrast",
+    "decisive moment",
+    "shadow play",
+    "urban geometry",
+    "candid",
+    "grain",
+    "Leica",
+    "documentary"
+   ]
+  },
+  {
+   "id": "E8",
+   "section": "E. 摄影风格",
+   "name_zh": "红外摄影",
+   "name_en": "Infrared",
+   "fields": {
+    "trigger": "infrared photography",
+    "keywords": "false color, foliage glowing white-pink, surreal sky, dark water, eerie vegetation, dreamlike landscape, IR filter",
+    "negative": "natural colors, normal green foliage, realistic skin tone",
+    "lighting": "强日光(红外需要光)",
+    "color": "叶白/天深蓝/水近黑",
+    "composition": "树木剪影,水面反射,超现实场景",
+    "example": "infrared photography, trees glowing white and pink, deep blue sky, water nearly black, surreal dreamlike landscape, eerie vegetation glow, strong sunlight, IR false color, otherworldly mood",
+    "adapter_notes": "→Kolors 删相机型号写中文;→Qwen 保留镜头参数;→Seedream 要素齐全(人像最强)"
+   },
+   "extra": {},
+   "keywords_list": [
+    "false color",
+    "foliage glowing white-pink",
+    "surreal sky",
+    "dark water",
+    "eerie vegetation",
+    "dreamlike landscape",
+    "IR filter"
+   ]
+  },
+  {
+   "id": "E9",
+   "section": "E. 摄影风格",
+   "name_zh": "宝丽来",
+   "name_en": "Polaroid",
+   "fields": {
+    "trigger": "polaroid, instant photo",
+    "keywords": "white frame, faded print, square format, soft muted colors, light leak, vintage snapshot, slightly blurry, nostalgic texture, dated aesthetic",
+    "negative": "sharp digital, HDR, high contrast, professional studio",
+    "lighting": "自然光,略过曝,偏色",
+    "color": "褪色暖调/偏绿偏黄,低对比",
+    "composition": "随意快照,主体偏离中心,生活片段",
+    "example": "polaroid instant photo, white frame, faded square print, a dog on a lawn in summer, soft muted colors, light leak on one edge, slightly blurry, nostalgic snapshot texture, dated aesthetic",
+    "adapter_notes": "→Kolors 删相机型号写中文;→Qwen 保留镜头参数;→Seedream 要素齐全(人像最强)"
+   },
+   "extra": {},
+   "keywords_list": [
+    "white frame",
+    "faded print",
+    "square format",
+    "soft muted colors",
+    "light leak",
+    "vintage snapshot",
+    "slightly blurry",
+    "nostalgic texture",
+    "dated aesthetic"
+   ]
+  },
+  {
+   "id": "E10",
+   "section": "E. 摄影风格",
+   "name_zh": "水下摄影",
+   "name_en": "Underwater",
+   "fields": {
+    "trigger": "underwater photography",
+    "keywords": "light rays through water, bubbles, floating hair, deep blue gradient, marine life, suspended particles, weightless motion, scuba light",
+    "negative": "above water, beach surface, dry, crowded",
+    "lighting": "水面透光柱,散射光",
+    "color": "深蓝/青绿渐变,透亮感",
+    "composition": "光柱透视,上升气泡,自由悬浮",
+    "example": "underwater photography, light rays penetrating deep blue water, rising bubbles, a figure floating weightless, suspended particles, soft caustics on skin, deep blue to teal gradient, serene weightless mood",
+    "adapter_notes": "→Kolors 删相机型号写中文;→Qwen 保留镜头参数;→Seedream 要素齐全(人像最强)"
+   },
+   "extra": {},
+   "keywords_list": [
+    "light rays through water",
+    "bubbles",
+    "floating hair",
+    "deep blue gradient",
+    "marine life",
+    "suspended particles",
+    "weightless motion",
+    "scuba light"
+   ]
+  },
+  {
+   "id": "E11",
+   "section": "E. 摄影风格",
+   "name_zh": "剪影",
+   "name_en": "Silhouette",
+   "fields": {
+    "trigger": "silhouette",
+    "keywords": "black shape against bright background, rim light only, sunset backlight, profile outline, dramatic sky, no detail in shadow, minimal",
+    "negative": "detailed face, mid-tone lighting, colorful foreground",
+    "lighting": "强逆光,背景亮主体纯黑",
+    "color": "主体纯黑+背景暖橙/冷蓝",
+    "composition": "主体居中或三分,地平线低",
+    "example": "silhouette, a person standing on a cliff edge, pure black shape against vivid orange sunset, rim light outline, dramatic sky, no detail in shadow, minimal composition, emotional contrast",
+    "adapter_notes": "→Kolors 删相机型号写中文;→Qwen 保留镜头参数;→Seedream 要素齐全(人像最强)"
+   },
+   "extra": {},
+   "keywords_list": [
+    "black shape against bright background",
+    "rim light only",
+    "sunset backlight",
+    "profile outline",
+    "dramatic sky",
+    "no detail in shadow",
+    "minimal"
+   ]
+  },
+  {
+   "id": "E12",
+   "section": "E. 摄影风格",
+   "name_zh": "人像摄影",
+   "name_en": "Portrait",
+   "fields": {
+    "trigger": "portrait photography",
+    "keywords": "catchlight in eyes, shallow depth of field, creamy bokeh, natural skin texture, 85mm, headshot, candid expression, flattering light",
+    "negative": "plastic skin, over-smoothed, distorted face, HDR",
+    "lighting": "窗光/柔光箱,眼神光",
+    "color": "自然肤色,背景虚化暖调",
+    "composition": "85mm 半身/特写,三分线",
+    "example": "portrait photography, 85mm headshot, shallow depth of field, creamy bokeh background, soft window light, catchlight in eyes, natural skin texture, candid warm expression, professional flattering light",
+    "adapter_notes": "→Kolors 删相机型号写中文;→Qwen 保留镜头参数;→Seedream 要素齐全(人像最强)"
+   },
+   "extra": {},
+   "keywords_list": [
+    "catchlight in eyes",
+    "shallow depth of field",
+    "creamy bokeh",
+    "natural skin texture",
+    "85mm",
+    "headshot",
+    "candid expression",
+    "flattering light"
+   ]
+  },
+  {
+   "id": "E13",
+   "section": "E. 摄影风格",
+   "name_zh": "风光摄影",
+   "name_en": "Landscape",
+   "fields": {
+    "trigger": "landscape photography",
+    "keywords": "sweeping vista, foreground interest, leading lines, golden hour, dramatic sky, long depth of field, layered depth, Ansel Adams feel, grand scale",
+    "negative": "flat light, cluttered, urban, noon harsh",
+    "lighting": "黄金时刻/蓝调,顺光或侧光",
+    "color": "自然饱和,天空地面层次",
+    "composition": "前景引导线,三分地平,层叠",
+    "example": "landscape photography, sweeping mountain vista, foreground rocks as leading lines, golden hour light, dramatic clouds, deep depth of field, layered ridges fading, grand natural scale, rich warm tones",
+    "adapter_notes": "→Kolors 删相机型号写中文;→Qwen 保留镜头参数;→Seedream 要素齐全(人像最强)"
+   },
+   "extra": {},
+   "keywords_list": [
+    "sweeping vista",
+    "foreground interest",
+    "leading lines",
+    "golden hour",
+    "dramatic sky",
+    "long depth of field",
+    "layered depth",
+    "Ansel Adams feel",
+    "grand scale"
+   ]
+  },
+  {
+   "id": "E14",
+   "section": "E. 摄影风格",
+   "name_zh": "天文摄影",
+   "name_en": "Astrophotography",
+   "fields": {
+    "trigger": "astrophotography",
+    "keywords": "star trails, milky way core, deep sky objects, long exposure, telescope view, nebula colors, dark site, tracking mount, night landscape",
+    "negative": "daytime, light pollution, blurry stars, city",
+    "lighting": "极暗+星光+长时间曝光",
+    "color": "深黑+星云红蓝紫",
+    "composition": "星轨拱环,银河横贯,地景剪影",
+    "example": "astrophotography, milky way core rising over a mountain silhouette, long exposure, deep sky colors in red and blue, star trails beginning, dark site sky, no light pollution, telescope sharpness, vast cosmic scale",
+    "adapter_notes": "→Kolors 删相机型号写中文;→Qwen 保留镜头参数;→Seedream 要素齐全(人像最强)"
+   },
+   "extra": {},
+   "keywords_list": [
+    "star trails",
+    "milky way core",
+    "deep sky objects",
+    "long exposure",
+    "telescope view",
+    "nebula colors",
+    "dark site",
+    "tracking mount",
+    "night landscape"
+   ]
+  },
+  {
+   "id": "E15",
+   "section": "E. 摄影风格",
+   "name_zh": "夜景摄影",
+   "name_en": "Night Cityscape",
+   "fields": {
+    "trigger": "night cityscape, city lights",
+    "keywords": "bokeh lights, neon reflections, long exposure trails, high ISO grain, city glow, silhouetted skyline, light painting, dusk blue hour",
+    "negative": "daytime, flat, underexposed black void, blurry",
+    "lighting": "城市灯光+蓝色时刻",
+    "color": "深蓝+暖黄+霓虹点缀",
+    "composition": "车流光轨,楼群剪影,倒影",
+    "example": "night cityscape, blue hour sky, skyscraper silhouettes with glowing windows, long exposure car light trails, neon reflections on wet street, bokeh lights, high ISO grain, urban energy at night",
+    "adapter_notes": "→Kolors 删相机型号写中文;→Qwen 保留镜头参数;→Seedream 要素齐全(人像最强)"
+   },
+   "extra": {},
+   "keywords_list": [
+    "bokeh lights",
+    "neon reflections",
+    "long exposure trails",
+    "high ISO grain",
+    "city glow",
+    "silhouetted skyline",
+    "light painting",
+    "dusk blue hour"
+   ]
+  },
+  {
+   "id": "E16",
+   "section": "E. 摄影风格",
+   "name_zh": "美食摄影",
+   "name_en": "Food",
+   "fields": {
+    "trigger": "food photography",
+    "keywords": "steam rising, glistening texture, shallow depth of field, natural window light, styled plating, macro detail, warm appetizing tones, garnish",
+    "negative": "flat lighting, unappetizing, plastic look, dull",
+    "lighting": "侧窗光,45 度柔光,蒸汽背光",
+    "color": "暖食物色,高饱和诱惑",
+    "composition": "45 度俯拍,浅景深特写,桌面层次",
+    "example": "food photography, steaming bowl of noodles, natural window side light, glistening texture, shallow depth of field, warm appetizing tones, styled plating, chopsticks lifting noodles, 45 degree angle, steam backlit",
+    "adapter_notes": "→Kolors 删相机型号写中文;→Qwen 保留镜头参数;→Seedream 要素齐全(人像最强)"
+   },
+   "extra": {},
+   "keywords_list": [
+    "steam rising",
+    "glistening texture",
+    "shallow depth of field",
+    "natural window light",
+    "styled plating",
+    "macro detail",
+    "warm appetizing tones",
+    "garnish"
+   ]
+  },
+  {
+   "id": "E17",
+   "section": "E. 摄影风格",
+   "name_zh": "纪实摄影",
+   "name_en": "Documentary",
+   "fields": {
+    "trigger": "documentary photography",
+    "keywords": "real moment, unposed, available light, gritty texture, storytelling, human condition, candid, natural color, photojournalism",
+    "negative": "posed, studio, polished, staged, fake",
+    "lighting": "现有光,自然光源",
+    "color": "自然色,不过度调色",
+    "composition": "抓拍,中景叙事,环境交代",
+    "example": "documentary photography, unposed market scene, available light, real working hands, gritty natural texture, storytelling composition, candid faces, photojournalism style, natural color, human moment",
+    "adapter_notes": "→Kolors 删相机型号写中文;→Qwen 保留镜头参数;→Seedream 要素齐全(人像最强)"
+   },
+   "extra": {},
+   "keywords_list": [
+    "real moment",
+    "unposed",
+    "available light",
+    "gritty texture",
+    "storytelling",
+    "human condition",
+    "candid",
+    "natural color",
+    "photojournalism"
+   ]
+  },
+  {
+   "id": "M1",
+   "section": "第二部分 · 氛围系",
+   "name_zh": "荒芜孤寂",
+   "name_en": "Desolation",
+   "fields": {
+    "trigger": "desolation, desolate",
+    "keywords": "vast empty landscape, lone figure, abandoned structures, muted colors, oppressive silence, endless horizon, isolation",
+    "negative": "crowded, lively, colorful, joyful",
+    "lighting": "阴天/黄昏漫射",
+    "color": "低饱和,灰褐/冷蓝",
+    "composition": "极远景,人物极小,负空间",
+    "example": "desolate coastal plain, vast empty space, a single tiny figure standing at the edge, abandoned concrete bunker, overcast sky, muted grey-blue tones, oppressive silence, endless horizon, sense of isolation",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开光线/色彩细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "vast empty landscape",
+    "lone figure",
+    "abandoned structures",
+    "muted colors",
+    "oppressive silence",
+    "endless horizon",
+    "isolation"
+   ]
+  },
+  {
+   "id": "M2",
+   "section": "第二部分 · 氛围系",
+   "name_zh": "孤独深夜",
+   "name_en": "Nocturne Loneliness",
+   "fields": {
+    "trigger": "loneliness at night, night solitude",
+    "keywords": "empty street at night, single warm window, streetlight pool, fog, quiet city, reflections on wet asphalt, solitary figure",
+    "negative": "crowded street, party, bright daylight, cheerful",
+    "lighting": "路灯暖光孤岛,月光冷衬",
+    "color": "深蓝黑+暖黄灯点缀",
+    "composition": "人物背影,路灯成孤岛",
+    "example": "empty city street at night, fog, one streetlight casting a warm pool of light, solitary figure walking away, wet asphalt reflecting the light, quiet melancholy, deep blue-black with warm yellow accent",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开光线/色彩细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "empty street at night",
+    "single warm window",
+    "streetlight pool",
+    "fog",
+    "quiet city",
+    "reflections on wet asphalt",
+    "solitary figure"
+   ]
+  },
+  {
+   "id": "M3",
+   "section": "第二部分 · 氛围系",
+   "name_zh": "神圣庄严",
+   "name_en": "Sacred Awe",
+   "fields": {
+    "trigger": "sacred, awe",
+    "keywords": "cathedral-like space, shaft of light, dust motes, vaulted ceiling, silence, reverence, monumental void, stained glass",
+    "negative": "noisy, casual, mundane, crowded",
+    "lighting": "天窗光束,神圣感",
+    "color": "暖金+深影",
+    "composition": "仰视穹顶,对称",
+    "example": "sacred monumental hall, shaft of light from high window, dust motes floating, vaulted ceiling, profound silence, reverence, warm golden light against deep shadow, symmetric composition",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开光线/色彩细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "cathedral-like space",
+    "shaft of light",
+    "dust motes",
+    "vaulted ceiling",
+    "silence",
+    "reverence",
+    "monumental void",
+    "stained glass"
+   ]
+  },
+  {
+   "id": "M4",
+   "section": "第二部分 · 氛围系",
+   "name_zh": "静谧田园",
+   "name_en": "Pastoral Serenity",
+   "fields": {
+    "trigger": "pastoral, serene",
+    "keywords": "rolling hills, morning mist, farmhouse, golden light, wildflowers, peaceful, birds, dew, quiet countryside",
+    "negative": "urban, industrial, dark, chaotic",
+    "lighting": "晨光/黄金时刻,薄雾",
+    "color": "嫩绿/暖金/雾白",
+    "composition": "层叠丘陵,引导线",
+    "example": "pastoral landscape, rolling green hills in morning mist, small farmhouse, golden sunrise light, wildflowers in foreground, dew on grass, peaceful serene mood, soft warm tones",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开光线/色彩细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "rolling hills",
+    "morning mist",
+    "farmhouse",
+    "golden light",
+    "wildflowers",
+    "peaceful",
+    "birds",
+    "dew",
+    "quiet countryside"
+   ]
+  },
+  {
+   "id": "M5",
+   "section": "第二部分 · 氛围系",
+   "name_zh": "末世寂灭",
+   "name_en": "Post-Human Silence",
+   "fields": {
+    "trigger": "post-human, after humanity",
+    "keywords": "overgrown city, silent architecture, nature reclaiming, no humans, frozen time, moss covered, silent streets, civilization's echo",
+    "negative": "people, vehicles, active, bright commercial",
+    "lighting": "阴天/雾,无阳光",
+    "color": "灰绿/棕褐,低饱和",
+    "composition": "无人巨构,植被入侵",
+    "example": "post-human city, extreme wide aerial view, overgrown silent streets, moss covered buildings, vines on skyscrapers, no humans no vehicles, frozen time, grey-green tones, nature reclaiming civilization, silent echo, flat overcast light",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开光线/色彩细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "overgrown city",
+    "silent architecture",
+    "nature reclaiming",
+    "no humans",
+    "frozen time",
+    "moss covered",
+    "silent streets",
+    "civilization's echo"
+   ]
+  },
+  {
+   "id": "M6",
+   "section": "第二部分 · 氛围系",
+   "name_zh": "温暖治愈",
+   "name_en": "Cozy Warmth",
+   "fields": {
+    "trigger": "cozy, hygge",
+    "keywords": "warm light, fireplace glow, soft blanket, cup of tea, rainy window, warm wood, comfortable, intimate, gentle",
+    "negative": "cold, clinical, empty, harsh light, spacious void",
+    "lighting": "壁炉暖光,窗边柔光",
+    "color": "暖橙/木褐/奶油",
+    "composition": "近景,包围感",
+    "example": "cozy interior, fireplace glow, soft blanket on armchair, cup of tea steaming, rain on window, warm wood tones, intimate comfortable atmosphere, soft warm light, gentle shadows",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开光线/色彩细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "warm light",
+    "fireplace glow",
+    "soft blanket",
+    "cup of tea",
+    "rainy window",
+    "warm wood",
+    "comfortable",
+    "intimate",
+    "gentle"
+   ]
+  },
+  {
+   "id": "M7",
+   "section": "第二部分 · 氛围系",
+   "name_zh": "悬疑紧张",
+   "name_en": "Suspense",
+   "fields": {
+    "trigger": "suspense, thriller mood",
+    "keywords": "dark corridor, half-open door, single light source, long shadows, tension, ambiguous, off-frame threat, muted cold light",
+    "negative": "bright, cheerful, cozy, daylight, mundane",
+    "lighting": "单光源,硬阴影",
+    "color": "冷蓝黑,局部暖警示",
+    "composition": "门缝视角,前景遮挡",
+    "example": "suspenseful hallway, half-open door at the end, single harsh light source, long distorted shadows, tension in the air, cold blue-black palette, off-frame implied threat, ambiguous mood",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开光线/色彩细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "dark corridor",
+    "half-open door",
+    "single light source",
+    "long shadows",
+    "tension",
+    "ambiguous",
+    "off-frame threat",
+    "muted cold light"
+   ]
+  },
+  {
+   "id": "M8",
+   "section": "第二部分 · 氛围系",
+   "name_zh": "敬畏崇高",
+   "name_en": "Sublime",
+   "fields": {
+    "trigger": "sublime, overwhelming nature",
+    "keywords": "colossal scale, tiny human, storm sky, mountain vastness, ocean power, awe, insignificance, dramatic light",
+    "negative": "safe, cozy, mundane, small scale",
+    "lighting": "风暴光/破云光",
+    "color": "暗色+破晓金光",
+    "composition": "极端尺度对比",
+    "example": "sublime landscape, tiny climber on colossal cliff face, storm clouds breaking with a shaft of light, overwhelming scale, awe and insignificance, dramatic contrast, dark tones with golden break",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开光线/色彩细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "colossal scale",
+    "tiny human",
+    "storm sky",
+    "mountain vastness",
+    "ocean power",
+    "awe",
+    "insignificance",
+    "dramatic light"
+   ]
+  },
+  {
+   "id": "M9",
+   "section": "第二部分 · 氛围系",
+   "name_zh": "静谧清晨",
+   "name_en": "Quiet Dawn",
+   "fields": {
+    "trigger": "quiet dawn, early morning",
+    "keywords": "soft mist, first light, dew, empty street, birdsong, pale blue sky, calm water, fresh air, peaceful stillness",
+    "negative": "dark night, harsh midday, crowded, noisy",
+    "lighting": "日出前柔光,薄雾",
+    "color": "淡蓝/粉橙/雾白",
+    "composition": "开阔远景,低对比",
+    "example": "quiet dawn, thin mist over calm lake, first soft light, pale blue and pink sky, empty lakeside path, dew on grass, peaceful stillness, birdsong implied, gentle tones",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开光线/色彩细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "soft mist",
+    "first light",
+    "dew",
+    "empty street",
+    "birdsong",
+    "pale blue sky",
+    "calm water",
+    "fresh air",
+    "peaceful stillness"
+   ]
+  },
+  {
+   "id": "M10",
+   "section": "第二部分 · 氛围系",
+   "name_zh": "暴风雨前",
+   "name_en": "Before the Storm",
+   "fields": {
+    "trigger": "before the storm, storm brewing",
+    "keywords": "dark clouds gathering, oppressive sky, still air, tense atmosphere, muted colors, light fading, anticipation, wind bending grass",
+    "negative": "bright sunny, cheerful, clear sky, settled",
+    "lighting": "乌云遮日,最后一缕光",
+    "color": "墨灰+土黄,高对比暗调",
+    "composition": "低角度仰天,空旷地平线",
+    "example": "before the storm, dark clouds gathering over flat farmland, oppressive sky, still air, one last shaft of light on the horizon, wind bending grass, tense anticipation, muted grey-yellow tones",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开光线/色彩细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "dark clouds gathering",
+    "oppressive sky",
+    "still air",
+    "tense atmosphere",
+    "muted colors",
+    "light fading",
+    "anticipation",
+    "wind bending grass"
+   ]
+  },
+  {
+   "id": "M11",
+   "section": "第二部分 · 氛围系",
+   "name_zh": "烟火人间",
+   "name_en": "Everyday Warmth",
+   "fields": {
+    "trigger": "everyday life, human warmth",
+    "keywords": "street vendor steam, market bustle, warm lanterns, evening street, family dinner, neighborhood, living moments, golden glow",
+    "negative": "empty, cold, dystopian, futuristic",
+    "lighting": "黄昏暖光,路灯,蒸汽",
+    "color": "暖橙/木褐/红灯笼",
+    "composition": "中景生活流,密集但不乱",
+    "example": "evening street market, steam rising from food stalls, warm lanterns glowing, people in daily life, golden hour light, bustling but warm, rich orange and brown tones, human warmth",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开光线/色彩细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "street vendor steam",
+    "market bustle",
+    "warm lanterns",
+    "evening street",
+    "family dinner",
+    "neighborhood",
+    "living moments",
+    "golden glow"
+   ]
+  },
+  {
+   "id": "M12",
+   "section": "第二部分 · 氛围系",
+   "name_zh": "深海静谧",
+   "name_en": "Deep Sea Quiet",
+   "fields": {
+    "trigger": "deep sea, underwater stillness",
+    "keywords": "blue gradient, light rays through water, floating particles, marine life silhouette, silent depth, bioluminescence, pressure, vast blue",
+    "negative": "beach, bright sunny surface, crowded reef",
+    "lighting": "水面透光,生物光",
+    "color": "深蓝/青/荧光点缀",
+    "composition": "光柱透视,俯视深渊",
+    "example": "deep sea, light rays penetrating dark blue water, floating particles, a whale silhouette in the distance, bioluminescent dots, silent depth, gradient from dark navy to teal, vast and quiet",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开光线/色彩细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "blue gradient",
+    "light rays through water",
+    "floating particles",
+    "marine life silhouette",
+    "silent depth",
+    "bioluminescence",
+    "pressure",
+    "vast blue"
+   ]
+  },
+  {
+   "id": "M13",
+   "section": "第二部分 · 氛围系",
+   "name_zh": "宇宙孤寂",
+   "name_en": "Cosmic Isolation",
+   "fields": {
+    "trigger": "cosmic isolation, space solitude",
+    "keywords": "lone spacecraft, distant planet, star field, void, silent vastness, earthshine, awe of scale, cold light",
+    "negative": "busy space battle, colorful nebula fantasy, crowded",
+    "lighting": "恒星侧光,行星反照",
+    "color": "深空黑+冷蓝+暖星点",
+    "composition": "小飞船大虚空,对角线",
+    "example": "cosmic isolation, lone spacecraft drifting near a distant ringed planet, vast star field, deep void, cold side light, silent immensity, tiny human craft against cosmic scale, dark blue-black with warm star points",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开光线/色彩细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "lone spacecraft",
+    "distant planet",
+    "star field",
+    "void",
+    "silent vastness",
+    "earthshine",
+    "awe of scale",
+    "cold light"
+   ]
+  },
+  {
+   "id": "M14",
+   "section": "第二部分 · 氛围系",
+   "name_zh": "乡愁怀旧",
+   "name_en": "Nostalgia",
+   "fields": {
+    "trigger": "nostalgia, retro memory",
+    "keywords": "old photograph, faded colors, childhood home, vintage furniture, sepia tones, remembered light, worn objects, tender longing",
+    "negative": "modern, new, sharp digital, cold",
+    "lighting": "旧照片感,柔焦",
+    "color": "泛黄/褪色/暖棕",
+    "composition": "旧物特写,记忆碎片",
+    "example": "nostalgic scene, faded old photograph look, childhood home interior, worn wooden furniture, sepia and warm brown tones, soft remembered light, dust in sunbeam, tender longing, vintage texture",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开光线/色彩细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "old photograph",
+    "faded colors",
+    "childhood home",
+    "vintage furniture",
+    "sepia tones",
+    "remembered light",
+    "worn objects",
+    "tender longing"
+   ]
+  },
+  {
+   "id": "M15",
+   "section": "第二部分 · 氛围系",
+   "name_zh": "权力威压",
+   "name_en": "Monumental Power",
+   "fields": {
+    "trigger": "monumental power, authority",
+    "keywords": "colossal statue, government hall, symmetrical columns, low angle, shadows, scale of state, marble and stone, oppressive grandeur",
+    "negative": "cozy, small, playful, informal",
+    "lighting": "硬光,强明暗阴影",
+    "color": "石色+深影,高对比",
+    "composition": "低角度仰视,对称中轴",
+    "example": "monumental power, colossal stone statue in symmetrical government hall, low angle looking up, hard side light carving deep shadows, marble and granite, oppressive grandeur, scale of state, awe and intimidation",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开光线/色彩细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "colossal statue",
+    "government hall",
+    "symmetrical columns",
+    "low angle",
+    "shadows",
+    "scale of state",
+    "marble and stone",
+    "oppressive grandeur"
+   ]
+  },
+  {
+   "id": "M16",
+   "section": "第二部分 · 氛围系",
+   "name_zh": "温暖黄昏",
+   "name_en": "Golden Evening",
+   "fields": {
+    "trigger": "golden hour, evening glow",
+    "keywords": "warm sunset, long shadows, amber light, silhouettes, dust in light, peaceful end of day, golden haze",
+    "negative": "noon, harsh light, cold tones, night",
+    "lighting": "低角度暖光,长影",
+    "color": "琥珀/橙红/深紫",
+    "composition": "逆光剪影,地平线",
+    "example": "golden evening, low warm sun, long shadows on wheat field, amber light everywhere, silhouette of a tree and birds, dust glowing in light, peaceful end of day, golden haze, rich orange tones",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开光线/色彩细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "warm sunset",
+    "long shadows",
+    "amber light",
+    "silhouettes",
+    "dust in light",
+    "peaceful end of day",
+    "golden haze"
+   ]
+  },
+  {
+   "id": "M17",
+   "section": "第二部分 · 氛围系",
+   "name_zh": "诡异不安",
+   "name_en": "Uncanny Unease",
+   "fields": {
+    "trigger": "uncanny, uneasy",
+    "keywords": "too-perfect scene, wrong details, subtle wrongness, empty space watching, muted eerie light, familiar space altered, quiet dread",
+    "negative": "comfortable, bright cheerful, obvious horror, gore",
+    "lighting": "均匀但偏色,无自然感",
+    "color": "褪色+偏绿/偏蓝",
+    "composition": "正常构图但细节违和",
+    "example": "uncanny scene, an immaculate suburban street but the houses have no doors, wrong subtle details, muted eerie light, empty space that feels watched, familiar space altered, quiet dread, faded greenish tones, medium shot at eye level, normal daylight but slightly off",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开光线/色彩细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "too-perfect scene",
+    "wrong details",
+    "subtle wrongness",
+    "empty space watching",
+    "muted eerie light",
+    "familiar space altered",
+    "quiet dread"
+   ]
+  },
+  {
+   "id": "M18",
+   "section": "第二部分 · 氛围系",
+   "name_zh": "冬季寂寥",
+   "name_en": "Winter Stillness",
+   "fields": {
+    "trigger": "winter stillness, snow quiet",
+    "keywords": "fresh snow, bare trees, frozen lake, breath fog, muted white, cold blue, silent landscape, solitary cabin",
+    "negative": "summer, green, crowded, warm bright",
+    "lighting": "阴天雪光,低角度冷阳",
+    "color": "雪白+冰蓝+枯灰",
+    "composition": "留白雪地,孤树/孤屋",
+    "example": "winter stillness, wide shot, fresh snow on frozen lake, bare trees, silent white landscape, cold blue shadows, a solitary cabin with smoke, muted tones, breath fog implied, absolute quiet, low winter sun",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开光线/色彩细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "fresh snow",
+    "bare trees",
+    "frozen lake",
+    "breath fog",
+    "muted white",
+    "cold blue",
+    "silent landscape",
+    "solitary cabin"
+   ]
+  },
+  {
+   "id": "M19",
+   "section": "第二部分 · 氛围系",
+   "name_zh": "都市疏离",
+   "name_en": "Urban Alienation",
+   "fields": {
+    "trigger": "urban alienation, city isolation",
+    "keywords": "crowded street but lonely, anonymous figures, glass reflections, cold architecture, rain, no eye contact, isolated in mass, grey tones",
+    "negative": "warm community, cozy, countryside",
+    "lighting": "阴天城市光,玻璃反光",
+    "color": "冷灰蓝,低饱和",
+    "composition": "人群中的孤立个体,反射构图",
+    "example": "urban alienation, crowded city sidewalk but everyone isolated, anonymous figures with umbrellas, cold glass reflections, rain, grey-blue tones, no eye contact, loneliness in the mass, modern architecture looming, overcast diffused daylight",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开光线/色彩细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "crowded street but lonely",
+    "anonymous figures",
+    "glass reflections",
+    "cold architecture",
+    "rain",
+    "no eye contact",
+    "isolated in mass",
+    "grey tones"
+   ]
+  },
+  {
+   "id": "M20",
+   "section": "第二部分 · 氛围系",
+   "name_zh": "沙漠孤旅",
+   "name_en": "Desert Solitude",
+   "fields": {
+    "trigger": "desert solitude",
+    "keywords": "endless dunes, lone traveler, heat haze, vast silence, wind ripples, minimal shadow, gold and sand, slow time",
+    "negative": "crowded oasis, green, rainy, urban",
+    "lighting": "正午顶光/黄昏长影",
+    "color": "沙金/焦赭/天蓝",
+    "composition": "沙丘引导线,人物渺小",
+    "example": "desert solitude, extreme wide shot, endless golden dunes, a lone traveler walking a ridge line, heat haze, wind ripples on sand, vast silence, minimal shadow at noon, slow time, gold and sand tones with deep blue sky, harsh high sun",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开光线/色彩细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "endless dunes",
+    "lone traveler",
+    "heat haze",
+    "vast silence",
+    "wind ripples",
+    "minimal shadow",
+    "gold and sand",
+    "slow time"
+   ]
+  },
+  {
+   "id": "M21",
+   "section": "第二部分 · 氛围系",
+   "name_zh": "极光秘境",
+   "name_en": "Aurora Dream",
+   "fields": {
+    "trigger": "aurora, northern lights",
+    "keywords": "green and violet sky curtains, snowfield glow, star field, reflected in frozen lake, silent polar night, shimmering light, cold clean air",
+    "negative": "daylight, warm tropical, crowded, city lights",
+    "lighting": "极光为主光源,月光辅",
+    "color": "极光绿/紫+雪地蓝白",
+    "composition": "极光穹顶,水面倒影,前景剪影",
+    "example": "aurora dream, green and violet aurora curtains over snowfield, stars visible, aurora reflected in frozen lake, silent polar night, shimmering light, cold clean air, lone cabin silhouette, blue-white snow glow",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开光线/色彩细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "green and violet sky curtains",
+    "snowfield glow",
+    "star field",
+    "reflected in frozen lake",
+    "silent polar night",
+    "shimmering light",
+    "cold clean air"
+   ]
+  },
+  {
+   "id": "M22",
+   "section": "第二部分 · 氛围系",
+   "name_zh": "幽暗森林",
+   "name_en": "Dark Forest",
+   "fields": {
+    "trigger": "dark forest, woods at dusk",
+    "keywords": "dense trees, filtered dim light, fog between trunks, moss ground, mysterious path, muted green-brown, quiet dread, ancient woods",
+    "negative": "bright sunny, cheerful park, urban, colorful",
+    "lighting": "树冠滤光,暮色",
+    "color": "墨绿/深棕/雾灰",
+    "composition": "树列透视,小径引导,光线缝隙",
+    "example": "dark forest, dense ancient trees, dim light filtering through canopy, fog drifting between trunks, moss-covered ground, a faint path disappearing into shadow, muted green and brown, quiet dread, mysterious stillness",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开光线/色彩细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "dense trees",
+    "filtered dim light",
+    "fog between trunks",
+    "moss ground",
+    "mysterious path",
+    "muted green-brown",
+    "quiet dread",
+    "ancient woods"
+   ]
+  },
+  {
+   "id": "M23",
+   "section": "第二部分 · 氛围系",
+   "name_zh": "樱花春日",
+   "name_en": "Cherry Blossom Spring",
+   "fields": {
+    "trigger": "cherry blossom, spring",
+    "keywords": "pink petals falling, soft sunlight, sakura trees in bloom, gentle breeze, pastel sky, petals on water, dreamy brightness, renewal",
+    "negative": "autumn, dead branches, harsh contrast, winter",
+    "lighting": "晨光透花,柔和逆光",
+    "color": "樱粉/天蓝/嫩绿",
+    "composition": "花瓣前景散景,树下人影,河道花瓣",
+    "example": "cherry blossom spring, sakura trees in full bloom, pink petals falling in gentle breeze, soft morning sunlight through petals, pastel blue sky, petals floating on stream, dreamy brightness, sense of renewal, shallow depth of field",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开光线/色彩细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "pink petals falling",
+    "soft sunlight",
+    "sakura trees in bloom",
+    "gentle breeze",
+    "pastel sky",
+    "petals on water",
+    "dreamy brightness",
+    "renewal"
+   ]
+  },
+  {
+   "id": "M24",
+   "section": "第二部分 · 氛围系",
+   "name_zh": "老城烟火",
+   "name_en": "Old Town Life",
+   "fields": {
+    "trigger": "old town, historic street",
+    "keywords": "narrow alley, worn stone walls, hanging laundry, evening lamps, old shops, resident life, warm windows, layered architecture, timeless",
+    "negative": "modern glass, empty, new, commercial",
+    "lighting": "黄昏街灯,窗口暖光,天色余晖",
+    "color": "暖黄灯光+青灰墙面+褪色招牌",
+    "composition": "巷道纵深,门框取景,生活细节",
+    "example": "old town evening, narrow stone alley, hanging laundry between buildings, warm lamps glowing, old shop signs, resident silhouettes in windows, layered historic architecture, timeless atmosphere, golden streetlight on worn walls",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开光线/色彩细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "narrow alley",
+    "worn stone walls",
+    "hanging laundry",
+    "evening lamps",
+    "old shops",
+    "resident life",
+    "warm windows",
+    "layered architecture",
+    "timeless"
+   ]
+  },
+  {
+   "id": "M25",
+   "section": "第二部分 · 氛围系",
+   "name_zh": "雷雨将至",
+   "name_en": "Approaching Thunderstorm",
+   "fields": {
+    "trigger": "thunderstorm approaching",
+    "keywords": "dark cumulonimbus, lightning far off, wind bending trees, dust rising, sudden chill, dramatic sky, first raindrops, electricity in air, grey-gold contrast",
+    "negative": "clear sky, sunny, calm settled, bright",
+    "lighting": "乌云遮日,远处闪电微光",
+    "color": "墨黑云层+铅灰+暗金边缘",
+    "composition": "低角度仰天,空旷地平线,风动前景",
+    "example": "approaching thunderstorm, massive dark cumulonimbus rolling in, distant lightning flicker, wind bending the wheat field, dust rising from the road, first heavy raindrops, grey-gold edge light on clouds, dramatic sky, electric tension",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开光线/色彩细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "dark cumulonimbus",
+    "lightning far off",
+    "wind bending trees",
+    "dust rising",
+    "sudden chill",
+    "dramatic sky",
+    "first raindrops",
+    "electricity in air",
+    "grey-gold contrast"
+   ]
+  },
+  {
+   "id": "M26",
+   "section": "第二部分 · 氛围系",
+   "name_zh": "晨雾山峦",
+   "name_en": "Misty Mountains Dawn",
+   "fields": {
+    "trigger": "misty mountains, mountain dawn",
+    "keywords": "layered ridges, cloud sea below, golden sunrise peak, mist flowing in valleys, silhouetted pines, fresh cold air, first light, depth fading",
+    "negative": "noon, clear, harsh light, urban",
+    "lighting": "日出低光,雾海反照",
+    "color": "黛青山影+暖金峰顶+雾白",
+    "composition": "层叠山脊由近及远,前景树影剪影",
+    "example": "misty mountains at dawn, extreme wide shot, layered ridges fading into cloud sea, golden sunrise lighting the highest peak, mist flowing through valleys, silhouetted pine trees in foreground, cold fresh air, first light, depth fading with distance, quiet grandeur",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开光线/色彩细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "layered ridges",
+    "cloud sea below",
+    "golden sunrise peak",
+    "mist flowing in valleys",
+    "silhouetted pines",
+    "fresh cold air",
+    "first light",
+    "depth fading"
+   ]
+  },
+  {
+   "id": "M27",
+   "section": "第二部分 · 氛围系",
+   "name_zh": "午夜都市",
+   "name_en": "Midnight City",
+   "fields": {
+    "trigger": "midnight city, city at night",
+    "keywords": "empty streets, streetlights, neon reflections, skyscraper canyons, quiet hum, blue hour, lone taxi, office lights, wet asphalt",
+    "negative": "daytime, crowded, rural, bright cheerful",
+    "lighting": "路灯+霓虹+玻璃反光,蓝夜",
+    "color": "深蓝黑+霓虹点缀",
+    "composition": "楼间峡谷透视,倒影对称",
+    "example": "midnight city, empty street between skyscraper canyons, streetlights casting pools of light, neon reflections on wet asphalt, a lone taxi passing, office windows glowing, deep blue night, quiet hum, urban solitude",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开光线/色彩细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "empty streets",
+    "streetlights",
+    "neon reflections",
+    "skyscraper canyons",
+    "quiet hum",
+    "blue hour",
+    "lone taxi",
+    "office lights",
+    "wet asphalt"
+   ]
+  },
+  {
+   "id": "M28",
+   "section": "第二部分 · 氛围系",
+   "name_zh": "林间小屋",
+   "name_en": "Forest Cabin",
+   "fields": {
+    "trigger": "forest cabin, woodland retreat",
+    "keywords": "wooden cabin, chimney smoke, pine forest, warm window, snow or autumn leaves, forest clearing, cozy isolation, morning mist",
+    "negative": "city, modern concrete, crowded, desert",
+    "lighting": "窗口暖光,森林散射光",
+    "color": "木褐/松绿+暖黄窗光",
+    "composition": "小屋居中,树环绕,小路引向",
+    "example": "forest cabin, wooden house in a pine clearing, chimney smoke rising, warm light from the window, morning mist between trees, autumn leaves on the ground, cozy isolation, peaceful retreat, warm yellow against green-brown",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开光线/色彩细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "wooden cabin",
+    "chimney smoke",
+    "pine forest",
+    "warm window",
+    "snow or autumn leaves",
+    "forest clearing",
+    "cozy isolation",
+    "morning mist"
+   ]
+  },
+  {
+   "id": "M29",
+   "section": "第二部分 · 氛围系",
+   "name_zh": "古堡暮色",
+   "name_en": "Castle at Dusk",
+   "fields": {
+    "trigger": "castle, fortress at dusk",
+    "keywords": "stone battlements, crenellations, drawbridge, dark ivy, dramatic sky, torches, medieval, hillside fortress, last light",
+    "negative": "modern, bright midday, cheerful, glass",
+    "lighting": "暮色余晖,火把暖光",
+    "color": "石灰+墨蓝天空+火把橙",
+    "composition": "低角度仰视城堡,剪影天际线",
+    "example": "castle at dusk, stone battlements against deep blue evening sky, last warm light on the walls, dark ivy climbing, torches flickering on the walls, medieval fortress on a hillside, dramatic silhouette, ancient solemnity",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开光线/色彩细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "stone battlements",
+    "crenellations",
+    "drawbridge",
+    "dark ivy",
+    "dramatic sky",
+    "torches",
+    "medieval",
+    "hillside fortress",
+    "last light"
+   ]
+  },
+  {
+   "id": "M30",
+   "section": "第二部分 · 氛围系",
+   "name_zh": "候车大厅",
+   "name_en": "Train Station",
+   "fields": {
+    "trigger": "train station, station hall",
+    "keywords": "vaulted glass roof, steam from trains, sunbeams through glass, travelers, departure board, echo, vintage clock, platform",
+    "negative": "empty modern mall, airport lounge, no people",
+    "lighting": "天窗光束,蒸汽透光",
+    "color": "铸铁黑+玻璃白+暖灯",
+    "composition": "拱顶透视,光柱,人影剪影",
+    "example": "train station hall, vaulted glass and iron roof, sunbeams streaming through, steam drifting from a departing train, travelers silhouetted, vintage clock, echoes, sense of journey, warm light through glass",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开光线/色彩细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "vaulted glass roof",
+    "steam from trains",
+    "sunbeams through glass",
+    "travelers",
+    "departure board",
+    "echo",
+    "vintage clock",
+    "platform"
+   ]
+  },
+  {
+   "id": "M31",
+   "section": "第二部分 · 氛围系",
+   "name_zh": "海底遗迹",
+   "name_en": "Sunken Ruins",
+   "fields": {
+    "trigger": "sunken ruins, underwater ruins",
+    "keywords": "submerged temple, columns underwater, fish among stones, green-blue water, light shafts, seaweed, ancient mystery, silt",
+    "negative": "above water, modern, bright surface, dry",
+    "lighting": "水面光柱,深海微光",
+    "color": "深青绿+透光蓝绿",
+    "composition": "柱列沉没,光柱斜射,鱼群",
+    "example": "sunken ruins, an ancient temple submerged in clear green-blue water, marble columns leaning, light shafts from surface, fish swimming through the pillars, seaweed and silt, mysterious ancient atmosphere, quiet depth",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开光线/色彩细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "submerged temple",
+    "columns underwater",
+    "fish among stones",
+    "green-blue water",
+    "light shafts",
+    "seaweed",
+    "ancient mystery",
+    "silt"
+   ]
+  },
+  {
+   "id": "M32",
+   "section": "第二部分 · 氛围系",
+   "name_zh": "星空旷野",
+   "name_en": "Starry Field",
+   "fields": {
+    "trigger": "starry night, milky way",
+    "keywords": "milky way visible, no light pollution, silhouette meadow, tent glow, meteor, constellations, deep navy sky, earth glow on horizon",
+    "negative": "city lights, overcast, daytime, pollution",
+    "lighting": "银河光,帐篷微光,地照",
+    "color": "深蓝黑+星点+暖帐篷光",
+    "composition": "银河拱桥,地平线剪影",
+    "example": "starry night, milky way arching over a dark meadow, no light pollution, a tent with warm glow, meteors streaking, constellations vivid, deep navy sky, earth glow on horizon, vast and silent, sense of wonder",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开光线/色彩细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "milky way visible",
+    "no light pollution",
+    "silhouette meadow",
+    "tent glow",
+    "meteor",
+    "constellations",
+    "deep navy sky",
+    "earth glow on horizon"
+   ]
+  },
+  {
+   "id": "M33",
+   "section": "第二部分 · 氛围系",
+   "name_zh": "秋日落叶",
+   "name_en": "Autumn Leaves",
+   "fields": {
+    "trigger": "autumn, fall season",
+    "keywords": "golden leaves, falling foliage, warm low sun, maple red, crisp air, leaf-covered path, cozy sweater, harvest light, amber tones",
+    "negative": "winter, spring green, harsh noon, bleak",
+    "lighting": "低角度暖阳,透叶金光",
+    "color": "金黄/枫红/琥珀+树影",
+    "composition": "落叶引导线,逆光叶影",
+    "example": "autumn scene, golden maple leaves falling, low warm sunlight through branches, leaf-covered park path, crisp air, amber and red tones, a bench half-buried in leaves, soft backlit glow, harvest warmth",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开光线/色彩细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "golden leaves",
+    "falling foliage",
+    "warm low sun",
+    "maple red",
+    "crisp air",
+    "leaf-covered path",
+    "cozy sweater",
+    "harvest light",
+    "amber tones"
+   ]
+  },
+  {
+   "id": "M34",
+   "section": "第二部分 · 氛围系",
+   "name_zh": "夏日午后",
+   "name_en": "Summer Afternoon",
+   "fields": {
+    "trigger": "summer afternoon, lazy summer",
+    "keywords": "dappled shade, cicada heat, ice cold drink, white curtain, fan breeze, bright green, afternoon nap, heat haze, iced tea",
+    "negative": "winter, dark, gloomy, autumn",
+    "lighting": "斑驳树影,透窗强光",
+    "color": "亮绿/天空蓝+冷饮透亮",
+    "composition": "窗台静物,树影投墙,慵懒中景",
+    "example": "summer afternoon, dappled shade on a white wall, iced tea glass with condensation, bright green leaves outside, white curtain moving, cicada summer feel, heat haze in distance, bright airy light, lazy warm mood",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开光线/色彩细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "dappled shade",
+    "cicada heat",
+    "ice cold drink",
+    "white curtain",
+    "fan breeze",
+    "bright green",
+    "afternoon nap",
+    "heat haze",
+    "iced tea"
+   ]
+  },
+  {
+   "id": "M35",
+   "section": "第二部分 · 氛围系",
+   "name_zh": "篝火之夜",
+   "name_en": "Campfire Night",
+   "fields": {
+    "trigger": "campfire, bonfire night",
+    "keywords": "warm fire glow, sparks rising, faces lit orange, dark forest around, smoke curling, marshmallow, night sky stars, crackling warmth, circle of light",
+    "negative": "daytime, cold blue, city lights, wet",
+    "lighting": "篝火暖光为主,周围黑暗",
+    "color": "火橙+暗蓝夜+星点",
+    "composition": "火光包围圈,仰视星火,剪影围坐",
+    "example": "campfire night, warm orange fire glow on faces, sparks rising into dark sky, smoke curling, dark pine forest surrounding, stars visible above, cozy circle of light against deep night, crackling warmth, contrast of fire orange and night blue",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开光线/色彩细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "warm fire glow",
+    "sparks rising",
+    "faces lit orange",
+    "dark forest around",
+    "smoke curling",
+    "marshmallow",
+    "night sky stars",
+    "crackling warmth",
+    "circle of light"
+   ]
+  },
+  {
+   "id": "M36",
+   "section": "第二部分 · 氛围系",
+   "name_zh": "黄昏海岸",
+   "name_en": "Dusk Shore",
+   "fields": {
+    "trigger": "dusk shore, coastal evening",
+    "keywords": "purple-pink sky, tide going out, wet sand reflection, lighthouse far, gentle waves, last light, seagulls, cool wind, blue hour",
+    "negative": "noon, bright sunny, inland, crowded",
+    "lighting": "日落余晖,蓝调时刻,海面反光",
+    "color": "紫粉天空+深蓝海+沙金",
+    "composition": "水平线低,倒影对称,远景灯塔",
+    "example": "dusk shore, purple-pink sky over quiet sea, tide pools reflecting the last light, wet sand mirror, distant lighthouse, gentle waves, seagulls passing, blue hour, cool sea breeze, peaceful end of day, soft gradient sky",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开光线/色彩细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "purple-pink sky",
+    "tide going out",
+    "wet sand reflection",
+    "lighthouse far",
+    "gentle waves",
+    "last light",
+    "seagulls",
+    "cool wind",
+    "blue hour"
+   ]
+  },
+  {
+   "id": "M37",
+   "section": "第二部分 · 氛围系",
+   "name_zh": "雪夜",
+   "name_en": "Snow Night",
+   "fields": {
+    "trigger": "snow night, snowfall",
+    "keywords": "falling snow, streetlamp glow, footprints in snow, silent street, warm window, cold blue, snowflakes, muffled quiet, winter lights",
+    "negative": "summer, rain, bright colorful, dry",
+    "lighting": "路灯暖光+雪反冷光",
+    "color": "冷蓝白+暖黄灯",
+    "composition": "雪中灯光锥,脚印延伸,窗光暖点",
+    "example": "snow night, heavy snow falling, streetlamp casting warm cone of light, fresh footprints in snow, silent street, a warm window glowing, cold blue shadows, snowflakes catching light, muffled quiet, winter stillness with warmth",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开光线/色彩细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "falling snow",
+    "streetlamp glow",
+    "footprints in snow",
+    "silent street",
+    "warm window",
+    "cold blue",
+    "snowflakes",
+    "muffled quiet",
+    "winter lights"
+   ]
+  },
+  {
+   "id": "M38",
+   "section": "第二部分 · 氛围系",
+   "name_zh": "废弃游乐园",
+   "name_en": "Abandoned Amusement Park",
+   "fields": {
+    "trigger": "abandoned amusement park",
+    "keywords": "rusted ferris wheel, overgrown carousel, faded paint, silent roller coaster, broken lights, cracked pavement, weeds through rides, eerie nostalgia",
+    "negative": "crowded, functioning, bright new, cheerful",
+    "lighting": "阴天漫射/黄昏斜光,破败氛围",
+    "color": "褪色红蓝+锈棕+灰",
+    "composition": "摩天轮剪影,空荡过道,植被入侵",
+    "example": "abandoned amusement park, rusted ferris wheel against overcast sky, overgrown carousel with faded horses, weeds through cracked pavement, silent roller coaster, peeling paint, eerie nostalgia, quiet decay, late afternoon shadow",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开光线/色彩细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "rusted ferris wheel",
+    "overgrown carousel",
+    "faded paint",
+    "silent roller coaster",
+    "broken lights",
+    "cracked pavement",
+    "weeds through rides",
+    "eerie nostalgia"
+   ]
+  },
+  {
+   "id": "M39",
+   "section": "第二部分 · 氛围系",
+   "name_zh": "夜市",
+   "name_en": "Night Market",
+   "fields": {
+    "trigger": "night market",
+    "keywords": "string lights, steam from stalls, glowing lanterns, crowded warmth, sizzling food, colorful signage, smoke and aroma, night bustle, red glow",
+    "negative": "empty, cold, daytime, minimal",
+    "lighting": "灯笼+摊位灯,暖色满铺",
+    "color": "暖红/金黄+食物色",
+    "composition": "街道纵深,蒸汽光柱,密集摊位",
+    "example": "night market, string lights overhead, steam rising from food stalls, glowing red lanterns, sizzling grill smoke, colorful signs, crowded warm bustle, night energy, golden and red glow, inviting chaos",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开光线/色彩细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "string lights",
+    "steam from stalls",
+    "glowing lanterns",
+    "crowded warmth",
+    "sizzling food",
+    "colorful signage",
+    "smoke and aroma",
+    "night bustle",
+    "red glow"
+   ]
+  },
+  {
+   "id": "M40",
+   "section": "第二部分 · 氛围系",
+   "name_zh": "竹林幽径",
+   "name_en": "Bamboo Path",
+   "fields": {
+    "trigger": "bamboo forest, bamboo path",
+    "keywords": "tall bamboo stalks, filtered light, green shade, winding path, leaves rustling, mist between stalks, quiet green, gentle breeze",
+    "negative": "urban, bright open, desert, harsh",
+    "lighting": "滤光斑驳,雾中散射",
+    "color": "竹绿/深绿+光斑白",
+    "composition": "竹列透视,小径弯曲,仰视竹梢",
+    "example": "bamboo forest path, tall stalks lining a winding trail, light filtering through leaves, green shade, mist between stalks, gentle breeze, quiet stillness, deep green tones, path disappearing into fog, serene seclusion",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开光线/色彩细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "tall bamboo stalks",
+    "filtered light",
+    "green shade",
+    "winding path",
+    "leaves rustling",
+    "mist between stalks",
+    "quiet green",
+    "gentle breeze"
+   ]
+  },
+  {
+   "id": "M41",
+   "section": "第二部分 · 氛围系",
+   "name_zh": "麦田黄昏",
+   "name_en": "Wheat Field Evening",
+   "fields": {
+    "trigger": "wheat field, golden field",
+    "keywords": "ripe wheat, golden hour, wind ripples, lone tree, horizon glow, harvest, birds scattering, warm breeze, amber sea",
+    "negative": "urban, winter, green field, cloudy dull",
+    "lighting": "低角度暖阳,逆光穗影",
+    "color": "金黄/琥珀+暖橙天空",
+    "composition": "麦浪层次,孤树剪影,地平线低",
+    "example": "wheat field at golden hour, ripe grain rippling in wind, a lone tree silhouetted, horizon glowing warm, birds scattering, amber sea of wheat, low sun backlight, harvest warmth, serene endlessness",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开光线/色彩细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "ripe wheat",
+    "golden hour",
+    "wind ripples",
+    "lone tree",
+    "horizon glow",
+    "harvest",
+    "birds scattering",
+    "warm breeze",
+    "amber sea"
+   ]
+  },
+  {
+   "id": "M42",
+   "section": "第二部分 · 氛围系",
+   "name_zh": "老电影院",
+   "name_en": "Old Cinema",
+   "fields": {
+    "trigger": "old cinema, vintage theater",
+    "keywords": "red velvet seats, dusty projector beam, film grain, marquee lights, old posters, worn carpet, vintage screen glow, nostalgic darkness",
+    "negative": "modern multiplex, bright clean, empty new, digital",
+    "lighting": "放映机光束,钨丝壁灯",
+    "color": "暗红+暖金+银幕亮",
+    "composition": "座椅排透视,光束锥,舞台框",
+    "example": "old cinema interior, red velvet seats in rows, dusty projector beam through the dark, vintage marquee light glowing, worn carpet, old movie posters, film grain, nostalgic darkness, warm tungsten wall lamps, screen glow ahead",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开光线/色彩细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "red velvet seats",
+    "dusty projector beam",
+    "film grain",
+    "marquee lights",
+    "old posters",
+    "worn carpet",
+    "vintage screen glow",
+    "nostalgic darkness"
+   ]
+  },
+  {
+   "id": "M43",
+   "section": "第二部分 · 氛围系",
+   "name_zh": "雨夜",
+   "name_en": "Rainy Night",
+   "fields": {
+    "trigger": "rainy night, night rain",
+    "keywords": "rain streaks, wet umbrella, streetlight halos, reflections on road, footsteps in puddle, muffled sounds, dark blue, window rain",
+    "negative": "dry, sunny, bright cheerful, clear sky",
+    "lighting": "路灯晕圈,雨丝反光",
+    "color": "深蓝黑+暖黄灯晕",
+    "composition": "湿路倒影,伞下视角,窗内看雨",
+    "example": "rainy night, rain streaking past a streetlight halo, wet asphalt reflecting orange light, a lone umbrella crossing the street, puddles catching glow, deep blue night, muffled quiet, droplets on window glass, melancholic calm",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开光线细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "rain streaks",
+    "wet umbrella",
+    "streetlight halos",
+    "reflections on road",
+    "footsteps in puddle",
+    "muffled sounds",
+    "dark blue",
+    "window rain"
+   ]
+  },
+  {
+   "id": "M44",
+   "section": "第二部分 · 氛围系",
+   "name_zh": "雾都",
+   "name_en": "Foggy City",
+   "fields": {
+    "trigger": "foggy city, misty metropolis",
+    "keywords": "skyscrapers in fog, blurred skyline, ghostly buildings, muffled city, low visibility, damp air, floating mist, layered silhouettes",
+    "negative": "clear sky, sharp, sunny, dry",
+    "lighting": "雾中漫射,轮廓柔和",
+    "color": "灰白+浅蓝灰",
+    "composition": "楼群层次渐隐,仰视雾中高楼",
+    "example": "foggy city, skyscraper silhouettes fading into dense fog, ghostly layered skyline, blurred streetlights, muffled atmosphere, damp grey air, buildings half-hidden, low visibility, cold urban mystery",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开层次细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "skyscrapers in fog",
+    "blurred skyline",
+    "ghostly buildings",
+    "muffled city",
+    "low visibility",
+    "damp air",
+    "floating mist",
+    "layered silhouettes"
+   ]
+  },
+  {
+   "id": "M45",
+   "section": "第二部分 · 氛围系",
+   "name_zh": "湖畔晨光",
+   "name_en": "Lake Morning",
+   "fields": {
+    "trigger": "lake morning, lakeside dawn",
+    "keywords": "mirror water, morning mist, fishing boat, reeds, soft sunrise, mist over water, silence, reflection, gentle ripples",
+    "negative": "windy waves, midday harsh, city, crowded",
+    "lighting": "日出柔光,水面反照",
+    "color": "淡金+雾灰+水蓝",
+    "composition": "水平线低,倒影对称,芦苇前景",
+    "example": "lake morning, mirror-still water reflecting soft sunrise, thin mist over the lake, a fishing boat silhouette, reeds in foreground, gentle ripples, absolute calm, pale gold and grey-blue, peaceful solitude",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开光线细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "mirror water",
+    "morning mist",
+    "fishing boat",
+    "reeds",
+    "soft sunrise",
+    "mist over water",
+    "silence",
+    "reflection",
+    "gentle ripples"
+   ]
+  },
+  {
+   "id": "M46",
+   "section": "第二部分 · 氛围系",
+   "name_zh": "草原牧歌",
+   "name_en": "Grassland Pastoral",
+   "fields": {
+    "trigger": "grassland, prairie",
+    "keywords": "endless green meadow, grazing herds, rolling hills, big sky, wind through grass, distant mountains, nomad tent, clouds shadows",
+    "negative": "urban, desert, forest, crowded",
+    "lighting": "大面日光,云影流动",
+    "color": "嫩绿+天空蓝+云白",
+    "composition": "地平线低,羊群散点,云影",
+    "example": "grassland pastoral, wide shot, endless green meadow under big sky, grazing sheep scattered, rolling hills, wind rippling the grass, distant blue mountains, nomad tent, cloud shadows drifting, vast open space, serene freedom, bright midday sun",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开草原细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "endless green meadow",
+    "grazing herds",
+    "rolling hills",
+    "big sky",
+    "wind through grass",
+    "distant mountains",
+    "nomad tent",
+    "clouds shadows"
+   ]
+  },
+  {
+   "id": "M47",
+   "section": "第二部分 · 氛围系",
+   "name_zh": "高原经幡",
+   "name_en": "Plateau Prayer Flags",
+   "fields": {
+    "trigger": "plateau, prayer flags",
+    "keywords": "colorful prayer flags, snow mountains, thin air, wind fluttering, tibetan plateau, clear blue sky, stupa, high altitude, spiritual stillness",
+    "negative": "sea level, forest, humid, city",
+    "lighting": "高原强日光,雪山反光",
+    "color": "经幡五色+雪山白+天空蓝",
+    "composition": "经幡前景,雪山远景,仰视",
+    "example": "plateau with prayer flags, colorful flags fluttering in wind, snow peaks behind, vivid blue sky, thin clear air, stupa in the distance, high altitude light, spiritual stillness, wind as movement, majestic calm",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开经幡细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "colorful prayer flags",
+    "snow mountains",
+    "thin air",
+    "wind fluttering",
+    "tibetan plateau",
+    "clear blue sky",
+    "stupa",
+    "high altitude",
+    "spiritual stillness"
+   ]
+  },
+  {
+   "id": "M48",
+   "section": "第二部分 · 氛围系",
+   "name_zh": "瀑布",
+   "name_en": "Waterfall",
+   "fields": {
+    "trigger": "waterfall",
+    "keywords": "cascading water, mist spray, mossy rocks, rainbows in spray, thunderous sound, deep pool, green gorge, power of water, fresh cold air",
+    "negative": "dry, flat water, desert, city",
+    "lighting": "透林光,水雾反光,彩虹",
+    "color": "水白+苔绿+岩褐",
+    "composition": "竖幅飞流,前景岩石,仰视",
+    "example": "waterfall, water cascading over mossy cliffs into a deep pool, mist spray catching light, a faint rainbow in the spray, green gorge walls, rainbows in mist, powerful flow, fresh cold air, vertical composition, wild beauty",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开水雾细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "cascading water",
+    "mist spray",
+    "mossy rocks",
+    "rainbows in spray",
+    "thunderous sound",
+    "deep pool",
+    "green gorge",
+    "power of water",
+    "fresh cold air"
+   ]
+  },
+  {
+   "id": "M49",
+   "section": "第二部分 · 氛围系",
+   "name_zh": "火山",
+   "name_en": "Volcano",
+   "fields": {
+    "trigger": "volcano, volcanic",
+    "keywords": "glowing lava, ash plume, crater, molten rock, smoke column, black slopes, night glow, destruction and creation, heat haze",
+    "negative": "calm meadow, cold blue, green valley, settled",
+    "lighting": "熔岩橙光,夜空对比",
+    "color": "熔岩橙红+黑灰+夜蓝",
+    "composition": "喷发剪影,岩浆流线,广角全景",
+    "example": "volcano at night, glowing lava flowing down black slopes, ash plume rising, crater glow against dark sky, molten red-orange veins, smoke column, heat haze, raw destructive power, dramatic contrast of fire and night",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开熔岩细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "glowing lava",
+    "ash plume",
+    "crater",
+    "molten rock",
+    "smoke column",
+    "black slopes",
+    "night glow",
+    "destruction and creation",
+    "heat haze"
+   ]
+  },
+  {
+   "id": "M50",
+   "section": "第二部分 · 氛围系",
+   "name_zh": "老书店",
+   "name_en": "Old Bookstore",
+   "fields": {
+    "trigger": "old bookstore, used bookshop",
+    "keywords": "stacked books, dusty sunlight, wooden shelves, paper smell, reading lamp, worn armchair, floor to ceiling shelves, quiet haven, warm amber",
+    "negative": "modern minimal, empty shelves, e-reader, cold lighting",
+    "lighting": "窗光+台灯暖光,灰尘光束",
+    "color": "书脊彩色+木褐+暖黄",
+    "composition": "书架透视,光束,阅读角落",
+    "example": "old bookstore, floor-to-ceiling wooden shelves packed with books, dusty sunbeams through window, a warm reading lamp on a worn armchair, paper texture, quiet haven, amber light, cat on a bookshelf, cozy literary stillness",
+    "adapter_notes": "→Kolors 压缩为中文描述;→Qwen 展开细节;→Seedream 要素齐全"
+   },
+   "extra": {},
+   "keywords_list": [
+    "stacked books",
+    "dusty sunlight",
+    "wooden shelves",
+    "paper smell",
+    "reading lamp",
+    "worn armchair",
+    "floor to ceiling shelves",
+    "quiet haven",
+    "warm amber"
+   ]
+  }
+ ]
+}
