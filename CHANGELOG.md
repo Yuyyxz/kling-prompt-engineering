@@ -46,7 +46,7 @@ All notable changes to this project will be documented in this file.
 - CI（validate.yml）新增两步：check_model_facts、validate_storyboard 示例
 
 ### Notes
-- 本批改动只在本地工作副本，未推送 GitHub（推送 403 问题未解决，见仓库外记录）。
+- 本批改动已于 2026-10-30 推送 GitHub（commits 66c68309 等）。例外：`.github/workflows/validate.yml` 的本批更新（新增 check_model_facts 与 validate_storyboard 两步）因 Meta Muse AI 应用没有 Workflows 权限未能随批推送，远程仍是旧版，待手动更新。
 
 ## [Unreleased - 第一批] - kpe 第一批 skill 迁移 + 数字口径对齐
 
